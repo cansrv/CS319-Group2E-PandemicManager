@@ -1,8 +1,8 @@
 # CS319-Group2E-PandemicManager
 Pandemic manager project of Dutch Chocolate group. <br />
-CS319 Project Requirements 
+CS319 Project Requirements <hr/>
 
-General (Applied for All): <br />
+General (Applied for All): <hr />
 Create a personal account with bilkent mail: Different types of account for(Administrator (staff?, teacher etc.), Student) <br />
 ⇒ Ability to create a personal account with different roles. <br />
 Login/Logout: <br />
@@ -30,7 +30,7 @@ Covid info around campus <br />
 Covid info notifications <br />
 ⇒ Getting alert notifications when someone in your workspace/class get covid <br />
 
-Teacher Specific: <br />
+Teacher Specific: <hr />
 Create a class for teachers <br />
 ⇒ Teachers create classes for each of their sections which allows students to enroll to classes. <br />
 Cancel class for teachers (in case teacher gets covid) <br />
@@ -42,7 +42,7 @@ Attendance <br />
 Classroom seating plan <br />
 ⇒ Information of who is sitting next to who. <br />
 
-Still in discussion: <br />
+Still in discussion: <hr />
 Forum or automated email for communication between students and teachers? <br />
 Ability to label other people if one is under risk? (Similar to a Covid hotline) <br />
 Marking meetings to get info about risks (similar to the structure of a class) <br />
