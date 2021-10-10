@@ -1,6 +1,6 @@
 # CS319-Group2E-PandemicManager
 Pandemic manager project of Dutch Chocolate group. <br />
-CS319 Project Requirements <hr/>
+CS319 Project Requirements
 <hr />
 General (Applied for All):
 Create a personal account with bilkent mail: Different types of account for(Administrator (staff?, teacher etc.), Student) <br />
@@ -48,5 +48,6 @@ Ability to label other people if one is under risk? (Similar to a Covid hotline)
 Marking meetings to get info about risks (similar to the structure of a class) <br />
 Marking the people who had contact with someone with Covid-19  <br />
 Adding staff specific features such as creating workspace for staff (gym trainers, library staff, cafeteria staff) and having functions similar to a class <br />
+<hr/>
 
 
