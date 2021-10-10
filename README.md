@@ -1,6 +1,6 @@
 # CS319-Group2E-PandemicManager
 Pandemic manager project of Dutch Chocolate group. <br />
-Project Description
+Project Description <br />
 This project will a web-based app designed to help regulate the current situation due to pandemic in the Bilkent University. This app will enable both administrators, teachers and students to be aware of the covid related regulations and information in the Bilkent University campus with various features.
 <br>
 <hr />
