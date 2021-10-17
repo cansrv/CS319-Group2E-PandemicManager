@@ -44,7 +44,7 @@ Attendance <br />
 Classroom seating plan <br />
 ⇒ Information of who is sitting next to who. <br />
 <hr />
-Still in discussion: 
+Still in discussion: <br />
 Automated email for communication between students and teachers? <br />
 Ability to label other people if one is under risk? (Similar to a Covid hotline) <br />
 Marking meetings to get info about risks (similar to the structure of a class) <br />
