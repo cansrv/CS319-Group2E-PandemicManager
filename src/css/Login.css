@@ -1,6 +1,44 @@
 html {
   background-color: #25c4da;
+  font-family: Quicksand;
 }
 .mainContainer {
   background-color: #25c4da;
+}
+
+.leftContainer {
+  color: white;
+}
+
+.logoContainer {
+  margin-top: 170px;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("../images/panman_logo.png") no-repeat center;
+  width: 280px;
+  height: 290px;
+}
+.nameContainer {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 45px;
+  text-align: center;
+  width: 500px;
+  height: 93px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+}
+
+.aboutContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 498px;
+  height: 208px;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 36px;
+  text-align: center;
+  margin: auto;
 }

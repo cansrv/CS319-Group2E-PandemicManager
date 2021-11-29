@@ -1,0 +1,21 @@
+html, * {
+    background-color: #25C4DA;
+}
+.panman-text {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 3.2rem;
+    margin-right: auto;
+    margin-left: 0.5rem;
+    margin-block: auto;
+    color: #FFFFFF;
+}
+.sign-up-header {
+    display: flex;
+}
+
+.sign-up-card {
+    background: #E5E5E5;
+}
