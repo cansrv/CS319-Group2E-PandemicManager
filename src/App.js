@@ -1,4 +1,3 @@
-
 import {SignUp} from '../src/Pages/SignUp';
 
 function App() {
