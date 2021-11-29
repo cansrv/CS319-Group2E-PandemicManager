@@ -1,6 +1,32 @@
 html {
   background-color: #25c4da;
+  font-family: Quicksand;
 }
 .mainContainer {
   background-color: #25c4da;
+}
+
+.leftContainer {
+  color: white;
+}
+
+.logoContainer {
+  margin-top: 170px;
+}
+.nameContainer {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+  text-align: center;
+}
+
+.aboutContainer {
+  width: 498px;
+  height: 208px;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 36px;
+  text-align: center;
+  margin: auto;
 }
