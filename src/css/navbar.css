@@ -1,0 +1,14 @@
+.navbar {
+	height: 80px;
+	background: #25C4DA;
+	width: 100%;
+	text-align: center;
+
+}
+.logo{
+	height: 68px;
+	width: 68px;
+	left: 66px;
+	top: 11px;
+	border-radius: 1000px;
+}
