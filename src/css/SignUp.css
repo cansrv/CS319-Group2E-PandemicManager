@@ -55,12 +55,21 @@ html, body {
     font-family: sans-serif;
     font-style: normal;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 2.5rem;
     display: flex;
     align-items: center;
     text-align: center;
     color: #FFFFFF;
     margin-left: auto;
+    background-color: #25C4DA;
+    border-color: white;
+}
 
+.sign-up-button:hover {
+    box-shadow: #25c4da;
+    background-color: #25748a;
+}
+.sign-up-button:focus {
+    background-color: #25e9ff ;
 }

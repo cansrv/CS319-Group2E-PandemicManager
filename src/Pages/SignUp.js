@@ -40,7 +40,7 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Name: < /label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="text" className="form-control" id="name"
-                                                   onChange={(e) => handleChange(e)}/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Name"/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -48,14 +48,14 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Surname: < /label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="text" className="form-control" id="surname"
-                                                   onChange={(e) => handleChange(e)}/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Surname"/>
                                         < /div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
                                         <label htmlFor="id" className="col-lg-3 col-form-label form-text"> ID: < /label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="number" className="form-control" id="id"
-                                                   onChange={(e) => handleChange(e)}/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Ex:21xxxxxx"/>
                                         < /div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -63,7 +63,7 @@ export const SignUp = () => {
                                                   className="col-lg-3 col-form-label form-text"> Mail: < /label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="email" className="form-control" id="email"
-                                                   onChange={(e) => handleChange(e)}/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Bilkent Mail"/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -71,15 +71,15 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Password: < /label>
                                         <div className = "col-lg-7 col-12 sign-up-form-container" >
                                         <input type="password" className="form-control" id="password"
-                                               onChange={(e) => handleChange(e)}/>
+                                               onChange={(e) => handleChange(e)} placeholder="Password"/>
                                     </div>
                                         </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
                                         <label htmlFor="hesCode" className="col-lg-3 col-form-label form-text"> HES
                                             Code: < /label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
-                                            <input type="number" className="form-control" id="HEScode"
-                                                   onChange={(e) => handleChange(e)}/>
+                                            <input type="text" className="form-control" id="HEScode"
+                                                   onChange={(e) => handleChange(e)} placeholder="Ex:29ef23"/>
                                         < /div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
