@@ -73,3 +73,7 @@ html, body {
 .sign-up-button:focus {
     background-color: #25e9ff ;
 }
+
+.text-underline {
+    text-decoration: underline;
+}

@@ -1,5 +1,6 @@
 import "../css/SignUp.css"
 import React, {useState} from 'react';
+import { Link } from "react-router-dom"
 
 export const SignUp = () => {
     const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', surname: '', id: '', password: '', HEScode: ''});
@@ -82,15 +83,17 @@ export const SignUp = () => {
                                                    onChange={(e) => handleChange(e)} placeholder="Ex:29ef23"/>
                                         < /div>
                                     </div>
-                                    <div className="form-group row d-flex justify-content-between align-items-center">
-                                        <div className="col-sm-11">
+                                    <div className="row d-flex justify-content-between align-items-center col-sm-11">
                                             <button type="submit" className="btn btn-primary sign-up-button"
                                                     onClick={(e) => handleSubmit(e)}> Sign-up
                                             < /button>
-                                        < /div>
                                     </div>
+                                    <Link to="/">
+                                    <div className="row d-flex justify-content-between align-items-center col-sm-11">
+                                       <p className="text-muted ml-auto mt-2 mr-2 text-underline"> Back to login</p>
+                                    </div>
+                                    </Link>
                                 </form>
-
                             </div>
                         </section>
                     </div>
