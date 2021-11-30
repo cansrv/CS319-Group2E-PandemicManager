@@ -95,13 +95,15 @@ html {
   font-size: 22px;
   line-height: 36px;
   color: white;
-  margin-left: 140px;
+  margin-left: 180px;
+  justify-content: center;
 }
 
 .signupLink {
   color: white;
   font-weight: bold;
   text-decoration: underline;
+  padding-left: 70px;
 }
 
 .emailInput,
