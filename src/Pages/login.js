@@ -3,21 +3,42 @@ import "../css/Login.css"
 const Login = () => {
     return (
         <div className = "mainContainer">
+            <div className="seperator"></div>
             <div className = "row">
                 <div className = "col-6 justify-content-center text-center leftContainer">
-                    <div className = "row col-12 justify-content-center text-center logoContainer">
-                        Logo
-                    </div>
+                    <div className = "row col-12 justify-content-center text-center logoContainer"></div>
                     <div className = "row col-12 justify-content-center text-center nameContainer">
                         PANMAN
                     </div>
                     <div className = "row col-12 justify-content-center text-center aboutContainer">
-                        “blandit turpis cursus in hac habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc congue nisi vitae suscipit tellus mauris a diam maecenas sed enim ut sem”
+                        Welcome stranger! PanMan is a pandemic manager application for all Bilkenters. 
+                        But, it is not only an app, it is an idea, it is a way of life. 
+                        You are free and recommended to use it, but come in at your own risk…
                     </div>
                 </div>
-                {console.log("I am at the login page")}
                 <div className = "col-6 rightContainer">
-                    Right Side
+                    <form className>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label label">Email: </label>
+                            <div class="col-8 inputGroup">
+                                <input type="email" class="form-control emailInput" id="inputEmail3" placeholder="Email"/>
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label label">Password: </label>
+                            <div class="col-8 inputGroup">
+                                <input type="password" class="form-control passwordInput" id="inputPassword3" placeholder="Password"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10 buttonContainer">
+                                <button type="submit" href= "#" class="btn loginButton">Log-in</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div className = "signupPrompt">
+                        Don’t have an Account? <a href = "#" className="signupLink">Sign-up</a>
+                    </div>
                 </div>
             </div>
         </div>

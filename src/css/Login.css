@@ -10,6 +10,24 @@ html {
   color: white;
 }
 
+.seperator {
+  position: absolute;
+  left: 690px;
+  background: url(../images/seperator.png) no-repeat;
+  z-index: +1;
+  height: 900px;
+  width: 10px;
+  top: 30px;
+}
+
+.rightContainer {
+  width: 500px;
+  height: 281px;
+  margin-top: 383px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .logoContainer {
   margin-top: 170px;
   margin-left: auto;
@@ -41,4 +59,56 @@ html {
   line-height: 36px;
   text-align: center;
   margin: auto;
+  margin-bottom: 231px;
+}
+
+.label {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+}
+
+.loginButton {
+  border-radius: 10px;
+  background-color: white;
+  color: #25c4da;
+  font-weight: bold;
+  font-size: 22px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: 200px;
+  border: 1px solid #ffffff;
+}
+
+.loginButton:hover {
+  background-color: #25c4da;
+  color: white;
+}
+
+.signupPrompt {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 36px;
+  color: white;
+  margin-left: 140px;
+}
+
+.signupLink {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.emailInput,
+.passwordInput {
+  width: 400px;
+}
+
+.inputGroup {
+  padding-top: 7px;
 }
