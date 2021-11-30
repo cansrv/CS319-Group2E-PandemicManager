@@ -1,4 +1,4 @@
-html, * {
+html, body {
     background-color: #25C4DA;
 }
 .panman-text {
@@ -14,8 +14,66 @@ html, * {
 }
 .sign-up-header {
     display: flex;
+    min-height: 10vh;
 }
 
 .sign-up-card {
-    background: #E5E5E5;
+    background-color: #FFF;
+}
+
+.panman-logo {
+    background: url("../images/panman_logo.png") no-repeat center;
+    background-size: contain;
+    width: 7rem;
+    height: 7rem;
+}
+
+.sign-up-text {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 4rem;
+    color: #000000;
+}
+
+.form-text {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin-left: 2rem;
+    color: #000000;
+}
+
+.sign-up-form-container {
+    margin-right: 3rem;
+}
+
+.sign-up-button{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: auto;
+    background-color: #25C4DA;
+    border-color: white;
+}
+
+.sign-up-button:hover {
+    box-shadow: #25c4da;
+    background-color: #25748a;
+}
+.sign-up-button:focus {
+    background-color: #25e9ff ;
+}
+
+.text-underline {
+    text-decoration: underline;
 }
