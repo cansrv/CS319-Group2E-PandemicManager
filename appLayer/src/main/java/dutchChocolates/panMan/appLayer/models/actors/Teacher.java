@@ -12,8 +12,10 @@ import java.util.UUID;
 
 public class Teacher extends User {
 
-    public Teacher(CovidInformation covidInformation, String userName, String password, UUID identifier) {
+    public Teacher(CovidInformation covidInformation, String userName, String password, UUID identifier,
+                   ArrayList<Class> classes) {
         super(covidInformation, userName, password, identifier);
+        this.classes = classes;
     }
 
     @Override
@@ -54,6 +56,26 @@ public class Teacher extends User {
     @Override
     public void setIdentifier(UUID identifier) {
         super.setIdentifier(identifier);
+    }
+
+    @Override
+    public String getMail() {
+        return super.getMail();
+    }
+
+    @Override
+    public void setMail(String mail) {
+        super.setMail(mail);
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return super.getPhoneNumber();
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        super.setPhoneNumber(phoneNumber);
     }
 
     @Override

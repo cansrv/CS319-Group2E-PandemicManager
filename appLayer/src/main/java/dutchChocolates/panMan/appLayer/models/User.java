@@ -12,6 +12,8 @@ public abstract class User {
     String userName;
     String password;
     UUID identifier;
+    String mail;
+    String phoneNumber;
 
     public User() {}
 
@@ -52,5 +54,21 @@ public abstract class User {
 
     public void setIdentifier(UUID identifier) {
         this.identifier = identifier;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
