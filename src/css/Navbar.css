@@ -1,41 +1,62 @@
-*{
-	margin: 0px;
-	padding: 0px;
+.panman-bg {
+	background-color: #000;
 }
 
-.navbar {
-	height: 80px;
-	background: #25C4DA;
-	width: 100%;
-}
-.logoContainer{
-	margin-left: -25px;	
+.panman-logo {
 	background: url("../images/panman_logo.png") no-repeat center;
 	background-size: contain;
-	width: 68px;
-	height: 68px;
-}
-.brandContainer{
-	color: white;
-	margin-left: -95px;
-	vertical-align: center;
-	
-}
-#brandName{
-	font-weight: bold;
-	font-size: 26px;
-	margin: 0;
-	width: 159px;
-	display: inline;
+	width: 4.1rem;
+	height: 4.1rem;
 }
 
-#brandDesc{
-	font-size: 26px;
-	font-weight: lighter;
-	margin: 0px 0px 0px 56px;
-	width: 372px;
-	display: inline;
+.navbar-logo-text {
+	font-family: sans-serif;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 2rem;
+	letter-spacing: 0em;
+	color: white;
 }
-.userInfo{
-	width: 105px;
+
+.navbar-name-text{
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1.3rem;
+	line-height: 1.5rem;
+	color: white;
 }
+
+.user-logo {
+	background: url("../images/user-logo.png") no-repeat;
+	background-size: contain;
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.username {
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	color: #FFFFFF;
+}
+
+.account-status{
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	color: #FFFFFF;
+}
+.navbar-content-area {
+	width: 100%;
+}
+
+.user-info, .navbar-panman-content {
+	width: 49%;
+}
+
