@@ -11,19 +11,17 @@ html {
 }
 
 .seperator {
-  position: absolute;
-  left: 690px;
   background: url(../images/seperator.png) no-repeat;
   z-index: +1;
-  height: 900px;
-  width: 10px;
-  top: 30px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .rightContainer {
-  width: 500px;
-  height: 281px;
-  margin-top: 383px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -66,8 +64,6 @@ html {
   font-style: normal;
   font-weight: bold;
   line-height: 40px;
-  display: flex;
-  align-items: center;
   color: white;
   font-size: 20px;
 }
@@ -78,9 +74,6 @@ html {
   color: #25c4da;
   font-weight: bold;
   font-size: 22px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-left: 200px;
   border: 1px solid #ffffff;
 }
 
@@ -90,27 +83,7 @@ html {
 }
 
 .signupPrompt {
-  font-style: normal;
   font-weight: 300;
   font-size: 22px;
-  line-height: 36px;
   color: white;
-  margin-left: 180px;
-  justify-content: center;
-}
-
-.signupLink {
-  color: white;
-  font-weight: bold;
-  text-decoration: underline;
-  padding-left: 70px;
-}
-
-.emailInput,
-.passwordInput {
-  width: 400px;
-}
-
-.inputGroup {
-  padding-top: 7px;
 }
