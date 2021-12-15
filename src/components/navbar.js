@@ -4,7 +4,7 @@ import '../css/Navbar.css'
 const Navbar = () => {
 
 	return(
-		<nav className="navbar navbar-expand-lg fixed-top panman-bg container d-flex">
+		<nav className="navbar navbar-expand-lg panman-bg container d-flex">
 			<button className="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
 					aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon">fghbjbjjjbjbjb</span>

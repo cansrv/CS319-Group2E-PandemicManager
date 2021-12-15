@@ -2,6 +2,7 @@
 import { BrowserRouter, Router, Route, Routes, Switch } from 'react-router-dom';
 import Login from './Pages/Login';
 import {SignUp} from './Pages/SignUp';
+import StaffCampusPage from './Pages/StaffCampusPage';
 import Navbar from './components/navbar'
 
 
@@ -11,7 +12,7 @@ function App() {
       <Routes>
         <Route path = "/login" element={<Login></Login>}>
         </Route>
-          <Route path="/" element={<Navbar/>}></Route>
+          <Route path="/" exact element={<StaffCampusPage/>}></Route>
         <Route path = "/signup" element={<SignUp></SignUp>}>
         </Route>
       </Routes>
