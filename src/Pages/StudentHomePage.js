@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
 
 const StudentHomePage = () => {
-    const [isCovid, setIsCovid] = useState(true)
+    const [isCovid, setIsCovid] = useState(false)
     const [remainingDays, setremainingDays] = useState(10)
     const [isoStart, setIsoStart] = useState("27.11.2021")
     const [isoEnd, setIsoEnd] = useState("10.11.2021")
@@ -82,9 +82,13 @@ const StudentHomePage = () => {
                                 <div className="row">
                                     <div className="col-lg-12 col-10 offset-1 py-3 px-4 offset-lg-2 my-3 my-sm-5 isolation-info d-flex flex-column">
                                         <p className="row iso-info-header m-auto">Isolation Information</p>
-                                        <div className="row px-3">Remaining Days: {remainingDays} Days </div>
-                                        <div className="row px-3">Start of Isolation: {isoStart}</div>
-                                        <div className="row px-3">End of Isolation: {isoEnd}</div>
+                                        {isCovid?(
+                                            <>
+                                            <div className="row px-3">Remaining Days: {remainingDays} Days </div>
+                                            <div className="row px-3">Start of Isolation: {isoStart}</div>
+                                            <div className="row px-3">End of Isolation: {isoEnd}</div>
+                                            </>
+                                        ) : <p className="mx-auto">You are allowed on campus!!</p>}
                                     </div>
                                 </div>
                         </div>

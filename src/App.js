@@ -17,7 +17,7 @@ function App() {
             element = { < Login > < /Login>}> <
                 /Route> <
                 Route path = "/"
-                exact element = { < InstructorCampusPage / > } > < /Route> <
+                exact element = { < StudentHomePage / > } > < /Route> <
                 Route path = "/signup"
                 element = { < SignUp > < /SignUp>}> <
                     /Route> <
