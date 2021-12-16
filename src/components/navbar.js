@@ -1,14 +1,14 @@
-
+import Sidebar from "../components/Sidebar"
 import '../css/Navbar.css'
 
 const Navbar = () => {
 
 	return(
+		<>
+		<div className="collapse navbar-collapse" id="navbarSupportedContent">
+		<Sidebar/>
+		</div>
 		<nav className="navbar navbar-expand-lg panman-bg container d-flex">
-			<button className="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-					aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-				<span className="navbar-toggler-icon">fghbjbjjjbjbjb</span>
-			</button>
 			{/*LİNK KOY*/}
 			<div className="row navbar-content-area">
 				<div className="col-lg-7 col-md-12 d-flex offset-1 offset-md-0
@@ -29,7 +29,21 @@ const Navbar = () => {
 					</div>
 				</div>
 			</div>
+			<button className="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+				<span className="navbar-toggler-icon bg-dark"></span>
+			</button>
+			<div className="collapse navbar-collapse" id="navbarSupportedContent">
+				<section className="sidebar-link mb-1 mt-1 hover-effect d-sm-none nav-item"> <span className="ml-lg-3 ml-2">Home</span></section>
+				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Profile</span></section>
+				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Tests</span></section>
+				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Campus</span></section>
+				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Courses</span></section>
+				<section className="sidebar-link hover-effect logout-div d-md-none"><span className="ml-lg-3 ml-2">Logout</span></section>
+			</div>
 		</nav>
+		</>
 	)
 }
 
