@@ -5,6 +5,7 @@ import StaffCampusPage from './Pages/StaffCampusPage';
 import StudentHomePage from "./Pages/StudentHomePage"
 import InstructorCampusPage from './Pages/InstructorCampusPage';
 import Navbar from './components/navbar'
+import StudentTestsPage from "../src/Pages/StudentTestsPage"
 
 
 function App() {

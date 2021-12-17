@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
 
 const StudentHomePage = () => {
-    const [isCovid, setIsCovid] = useState(false)
+    const [isCovid, setIsCovid] = useState(true)
     const [remainingDays, setremainingDays] = useState(10)
     const [isoStart, setIsoStart] = useState("27.11.2021")
     const [isoEnd, setIsoEnd] = useState("10.11.2021")
