@@ -3,8 +3,8 @@ package dutchChocolates.panMan.appLayer.models.groups;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class UserCreatedGroup extends Group {
     //Properties
@@ -23,7 +23,7 @@ public class UserCreatedGroup extends Group {
         this.date = date;
     }
 
-    public UserCreatedGroup(ArrayList<User> participants, Location location, Date date){
+    public UserCreatedGroup(List<User> participants, Location location, Date date){
         super.setParticipants(participants);
         this.location = location;
         this.date = date;
@@ -46,11 +46,11 @@ public class UserCreatedGroup extends Group {
         this.date = date;
     }
 
-    public ArrayList<User> getParticipants() {
+    public List<User> getParticipants() {
         return super.getParticipants();
     }
 
-    public boolean setParticipants(ArrayList<User> participants) {
+    public boolean setParticipants(List<User> participants) {
         try{
             super.setParticipants(participants);
             return true;
