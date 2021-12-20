@@ -3,7 +3,7 @@ package dutchChocolates.panMan.appLayer.models.groups;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SystemCreatedGroup extends Group {
     //Properties
@@ -17,7 +17,7 @@ public class SystemCreatedGroup extends Group {
         this.location = location;
     }
 
-    public SystemCreatedGroup(ArrayList<User> participants, Location location){
+    public SystemCreatedGroup(List<User> participants, Location location){
         this.location = location;
         super.setParticipants(participants);
     }
@@ -31,18 +31,13 @@ public class SystemCreatedGroup extends Group {
         this.location = location;
     }
 
-    public ArrayList<User> getParticipants(){
+    public List<User> getParticipants(){
         return super.getParticipants();
     }
 
-    public boolean setParticipants(ArrayList<User> participants){
-        try{
+    public boolean setParticipants(List<User> participants){
             super.setParticipants(participants);
             return true;
-        }catch(Exception e){
-            System.out.println(e);
-            return false;
-        }
     }
 
 }

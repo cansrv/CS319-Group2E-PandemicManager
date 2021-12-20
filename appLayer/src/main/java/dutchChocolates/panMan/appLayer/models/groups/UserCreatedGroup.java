@@ -51,13 +51,8 @@ public class UserCreatedGroup extends Group {
     }
 
     public boolean setParticipants(List<User> participants) {
-        try{
             super.setParticipants(participants);
             return true;
-        }catch(Exception e){
-            System.out.println(e);
-            return false;
-        }
     }
 
 
