@@ -1,6 +1,8 @@
 package dutchChocolates.panMan.appLayer.models.actors;
 
 import dutchChocolates.panMan.appLayer.models.*;
+import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 
 import java.util.List;
 import java.util.UUID;

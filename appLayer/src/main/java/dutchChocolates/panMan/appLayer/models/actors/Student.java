@@ -2,7 +2,7 @@ package dutchChocolates.panMan.appLayer.models.actors;
 
 import dutchChocolates.panMan.appLayer.models.CovidInformationCard;
 import dutchChocolates.panMan.appLayer.models.Group;
-import dutchChocolates.panMan.appLayer.models.Section;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.User;
 
 import java.util.List;
