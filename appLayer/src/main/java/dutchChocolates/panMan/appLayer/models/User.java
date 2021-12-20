@@ -16,7 +16,6 @@ public abstract class User {
     CovidInformationCard covidInformationCard;
 
     // Constructors
-
     public User(String password, String mail, String phoneNumber, String bilkentID) {
         this.password = password;
         this.mail = mail;
@@ -39,8 +38,7 @@ public abstract class User {
     public User() {
     }
 
-    // Operators
-
+    //Operators
     public boolean addToGroupsCreated(Group groupsCreated) {
         this.groupsCreated.add(groupsCreated);
         return true;
@@ -51,12 +49,7 @@ public abstract class User {
         return true;
     };
 
-
-
-
-    // Getters & Setters
-
-
+    //Methods
     public String getUsername() {
         return username;
     }
@@ -137,4 +130,5 @@ public abstract class User {
         this.covidInformationCard = covidInformationCard;
         return true;
     }
+
 }

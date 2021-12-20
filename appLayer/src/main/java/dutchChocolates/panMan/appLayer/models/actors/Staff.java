@@ -9,8 +9,6 @@ import java.util.UUID;
 
 public class Staff extends User {
     // Constructors
-
-
     public Staff() {
     }
 
