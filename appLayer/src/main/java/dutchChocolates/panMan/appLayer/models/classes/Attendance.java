@@ -5,32 +5,27 @@ import dutchChocolates.panMan.appLayer.models.actors.Student;
 import java.util.Date;
 import java.util.List;
 
-public class Attendance extends Lecture{
+public class Attendance {
     //Properties
     private List<Student> students;
     private Date date;
 
     //Constructors
-    public Attendance(){}
+    public Attendance(){
+
+    }
 
     public Attendance(List<Student> students, Date date) {
         this.students = students;
         this.date = date;
     }
 
-    public Attendance(String roomName, boolean isSpareHour, Attendance attendance, List<Student> students, Date date) {
-        super(roomName, isSpareHour, attendance);
-        this.students = students;
-        this.date = date;
-    }
 
     //Methods
-    @Override
     public List<Student> getStudents() {
         return this.students;
     }
 
-    @Override
     public void setStudents(List<Student> students) {
         this.students = students;
     }

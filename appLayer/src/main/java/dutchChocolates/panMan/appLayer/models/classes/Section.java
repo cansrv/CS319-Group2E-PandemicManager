@@ -17,7 +17,8 @@ public class Section {
     private int sectionNumber;
 
     //Constructors
-    public Section(){}
+    public Section(){
+    }
 
     public Section(List<Lecture> lectures, List<Student> students, List<Instructor> instructors, List<TA> TAs, Course course, boolean isOnline, int sectionNumber) {
         this.lectures = lectures;

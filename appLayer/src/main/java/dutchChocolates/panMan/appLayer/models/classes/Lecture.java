@@ -13,12 +13,8 @@ public class Lecture extends Section{
     private Attendance attendance;
 
     //Constructors
-    public Lecture(){}
-
-    public Lecture(String roomName, boolean isSpareHour, Attendance attendance) {
-        this.roomName = roomName;
-        this.isSpareHour = isSpareHour;
-        this.attendance = attendance;
+    public Lecture(){
+        super();
     }
 
     public Lecture(List<Lecture> lectures, List<Student> students, List<Instructor> instructors, List<TA> TAs, Course course, boolean isOnline, int sectionNumber, String roomName, boolean isSpareHour, Attendance attendance) {

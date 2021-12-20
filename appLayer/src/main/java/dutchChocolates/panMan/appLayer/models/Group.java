@@ -13,6 +13,7 @@ public abstract class Group {
     //Constructors
     public Group(List<User> participants) {
         this.participants = participants;
+        identifier = UUID.randomUUID();
     }
 
     public Group(UUID identifier, List<User> participants) {

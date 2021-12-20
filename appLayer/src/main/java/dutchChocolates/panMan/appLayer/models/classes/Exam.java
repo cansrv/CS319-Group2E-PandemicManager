@@ -2,6 +2,7 @@ package dutchChocolates.panMan.appLayer.models.classes;
 
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.actors.TA;
 
 import java.util.List;
 
@@ -10,14 +11,12 @@ public class Exam extends Lecture{
     private Instructor courseCoordinator;
 
     //Constructors
-    public Exam(){}
-
-    public Exam(Instructor courseCoordinator) {
-        this.courseCoordinator = courseCoordinator;
+    public Exam(){
+        super();
     }
 
-    public Exam(String roomName, boolean isSpareHour, Attendance attendance, Instructor courseCoordinator) {
-        super(roomName, isSpareHour, attendance);
+    public Exam(List<Lecture> lectures, List<Student> students, List<Instructor> instructors, List<TA> TAs, Course course, boolean isOnline, int sectionNumber, String roomName, boolean isSpareHour, Attendance attendance, Instructor courseCoordinator) {
+        super(lectures, students, instructors, TAs, course, isOnline, sectionNumber, roomName, isSpareHour, attendance);
         this.courseCoordinator = courseCoordinator;
     }
 

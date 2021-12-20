@@ -22,7 +22,7 @@ public class SystemCreatedGroup extends Group {
     }
 
     public SystemCreatedGroup() {
-
+        super();
     }
 
     //Methods
