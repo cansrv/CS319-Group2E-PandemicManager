@@ -1,5 +1,7 @@
 package dutchChocolates.panMan.appLayer.models;
 
+import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -42,12 +44,12 @@ public abstract class User {
     public boolean addToGroupsCreated(Group groupsCreated) {
         this.groupsCreated.add(groupsCreated);
         return true;
-    };
+    }
 
     public boolean addToGroupsParticipated(Group groupsParticipated) {
         this.groupsParticipated.add(groupsParticipated);
         return true;
-    };
+    }
 
     //Methods
     public String getUsername() {

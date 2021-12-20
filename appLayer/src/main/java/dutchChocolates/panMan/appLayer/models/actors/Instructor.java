@@ -3,6 +3,7 @@ package dutchChocolates.panMan.appLayer.models.actors;
 import dutchChocolates.panMan.appLayer.models.*;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
 import java.util.List;
 import java.util.UUID;
