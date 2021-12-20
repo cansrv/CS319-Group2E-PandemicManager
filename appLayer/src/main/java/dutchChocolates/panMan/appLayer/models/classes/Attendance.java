@@ -13,7 +13,13 @@ public class Attendance extends Lecture{
     //Constructors
     public Attendance(){}
 
-    public Attendance(List<Student> students, Date date){
+    public Attendance(List<Student> students, Date date) {
+        this.students = students;
+        this.date = date;
+    }
+
+    public Attendance(String roomName, boolean isSpareHour, Attendance attendance, List<Student> students, Date date) {
+        super(roomName, isSpareHour, attendance);
         this.students = students;
         this.date = date;
     }

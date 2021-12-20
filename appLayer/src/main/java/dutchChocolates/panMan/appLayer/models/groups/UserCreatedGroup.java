@@ -5,6 +5,7 @@ import dutchChocolates.panMan.appLayer.models.User;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class UserCreatedGroup extends Group {
     //Properties
@@ -12,19 +13,18 @@ public class UserCreatedGroup extends Group {
     private Date date;
 
     //Constructors
-    public UserCreatedGroup(){}
-
-    public UserCreatedGroup(Location location){
-        this.location = location;
-    }
-
-    public UserCreatedGroup(Location location, Date date){
+    public UserCreatedGroup(List<User> participants, Location location, Date date) {
+        super(participants);
         this.location = location;
         this.date = date;
     }
 
-    public UserCreatedGroup(List<User> participants, Location location, Date date){
-        super.setParticipants(participants);
+    public UserCreatedGroup() {
+        super();
+    }
+
+    public UserCreatedGroup(UUID identifier, List<User> participants, Location location, Date date) {
+        super(identifier, participants);
         this.location = location;
         this.date = date;
     }

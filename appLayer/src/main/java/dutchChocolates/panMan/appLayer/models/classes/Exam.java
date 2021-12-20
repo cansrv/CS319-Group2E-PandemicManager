@@ -12,7 +12,12 @@ public class Exam extends Lecture{
     //Constructors
     public Exam(){}
 
-    public Exam(Instructor courseCoordinator){
+    public Exam(Instructor courseCoordinator) {
+        this.courseCoordinator = courseCoordinator;
+    }
+
+    public Exam(String roomName, boolean isSpareHour, Attendance attendance, Instructor courseCoordinator) {
+        super(roomName, isSpareHour, attendance);
         this.courseCoordinator = courseCoordinator;
     }
 
