@@ -1,72 +1,40 @@
 package dutchChocolates.panMan.appLayer.models.actors;
 
-import dutchChocolates.panMan.appLayer.models.User;
-import dutchChocolates.panMan.appLayer.models.communications.Message;
-import dutchChocolates.panMan.appLayer.models.covidinformatics.CovidInformation;
+import dutchChocolates.panMan.appLayer.models.CovidInformationCard;
+import dutchChocolates.panMan.appLayer.models.Group;
+import dutchChocolates.panMan.appLayer.models.Section;
 
+import java.util.List;
 import java.util.UUID;
 
-public class TA extends User {
+public class TA extends Student {
+    // Attributes
 
-    public TA(CovidInformation covidInformation, String userName, String password, UUID identifier) {
-        super(covidInformation, userName, password, identifier);
+    List<Section> sectionsTaught;
+
+    // Constructors
+
+    public TA(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught) {
+        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections);
+        this.sectionsTaught = sectionsTaught;
     }
 
-    @Override
-    public CovidInformation getCovidInformation() {
-        return super.getCovidInformation();
+    public TA(String password, String mail, String phoneNumber, String bilkentID) {
+        super(password, mail, phoneNumber, bilkentID);
     }
 
-    @Override
-    public void setCovidInformation(CovidInformation covidInformation) {
-        super.setCovidInformation(covidInformation);
+    public TA() {
     }
 
-    @Override
-    public String getUserName() {
-        return super.getUserName();
+    // Operations
+
+
+    public List<Section> getSectionsTaught() {
+        return sectionsTaught;
     }
 
-    @Override
-    public void setUserName(String userName) {
-        super.setUserName(userName);
-    }
-
-    @Override
-    public String getPassword() {
-        return super.getPassword();
-    }
-
-    @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
-    }
-
-    @Override
-    public UUID getIdentifier() {
-        return super.getIdentifier();
-    }
-
-    @Override
-    public void setIdentifier(UUID identifier) {
-        super.setIdentifier(identifier);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    public User searchUser(String name) {
-        return null;
-    }
-
-    public void sendMessage(Message message) {
-
+    public boolean setSectionsTaught(List<Section> sectionsTaught) {
+        this.sectionsTaught = sectionsTaught;
+        return true;
     }
 }
