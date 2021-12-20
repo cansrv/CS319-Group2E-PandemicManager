@@ -34,13 +34,4 @@ public class SystemCreatedGroup extends Group {
         this.location = location;
     }
 
-    public List<User> getParticipants(){
-        return super.getParticipants();
-    }
-
-    public boolean setParticipants(List<User> participants){
-            super.setParticipants(participants);
-            return true;
-    }
-
 }

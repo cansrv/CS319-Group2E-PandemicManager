@@ -17,7 +17,7 @@ public class Section {
     private int sectionNumber;
 
     //Constructors
-    public Section(){
+    public Section() {
     }
 
     public Section(List<Lecture> lectures, List<Student> students, List<Instructor> instructors, List<TA> TAs, Course course, boolean isOnline, int sectionNumber) {
@@ -35,56 +35,70 @@ public class Section {
         return lectures;
     }
 
-    public void setLectures(List<Lecture> lectures) {
+    public boolean setLectures(List<Lecture> lectures) {
         this.lectures = lectures;
+        return true;
     }
 
     public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public boolean setStudents(List<Student> students) {
         this.students = students;
+        return true;
     }
 
     public List<Instructor> getInstructors() {
         return instructors;
     }
 
-    public void setInstructors(List<Instructor> instructors) {
+    public boolean setInstructors(List<Instructor> instructors) {
         this.instructors = instructors;
+        return true;
     }
 
     public List<TA> getTAs() {
         return TAs;
     }
 
-    public void setTAs(List<TA> TAs) {
+    public boolean setTAs(List<TA> TAs) {
         this.TAs = TAs;
+        return true;
     }
 
     public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public boolean setCourse(Course course) {
         this.course = course;
+        return true;
     }
 
     public boolean isOnline() {
         return isOnline;
     }
 
-    public void setOnline(boolean online) {
+    public boolean setOnline(boolean online) {
         isOnline = online;
+        return true;
     }
 
     public int getSectionNumber() {
         return sectionNumber;
     }
 
-    public void setSectionNumber(int sectionNumber) {
+    public boolean setSectionNumber(int sectionNumber) {
         this.sectionNumber = sectionNumber;
+        return true;
+    }
+
+    // Methods
+
+    public boolean addLecture(Lecture lecture) {
+        lectures.add(lecture);
+        return true;
     }
 
 }

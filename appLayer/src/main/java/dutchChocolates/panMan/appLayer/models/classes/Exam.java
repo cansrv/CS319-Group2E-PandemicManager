@@ -15,8 +15,8 @@ public class Exam extends Lecture{
         super();
     }
 
-    public Exam(List<Lecture> lectures, List<Student> students, List<Instructor> instructors, List<TA> TAs, Course course, boolean isOnline, int sectionNumber, String roomName, boolean isSpareHour, Attendance attendance, Instructor courseCoordinator) {
-        super(lectures, students, instructors, TAs, course, isOnline, sectionNumber, roomName, isSpareHour, attendance);
+    public Exam(String roomName, boolean isSpareHour, Attendance attendance, Instructor courseCoordinator) {
+        super(roomName, isSpareHour, attendance);
         this.courseCoordinator = courseCoordinator;
     }
 

@@ -19,6 +19,7 @@ public abstract class User {
 
     // Constructors
     public User(String password, String mail, String phoneNumber, String bilkentID) {
+        this.identifier = UUID.randomUUID();
         this.password = password;
         this.mail = mail;
         this.phoneNumber = phoneNumber;

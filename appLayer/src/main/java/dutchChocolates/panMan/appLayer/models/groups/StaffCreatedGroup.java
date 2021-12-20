@@ -12,6 +12,7 @@ public class StaffCreatedGroup extends UserCreatedGroup {
 
     //Constructors
     public StaffCreatedGroup() {
+        super();
     }
 
     public StaffCreatedGroup(List<User> participants, Location location, Date date) {

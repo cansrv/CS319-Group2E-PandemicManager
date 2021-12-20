@@ -1,7 +1,5 @@
 package dutchChocolates.panMan.appLayer.models;
 
-import dutchChocolates.panMan.appLayer.models.groups.Location;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -13,7 +11,7 @@ public abstract class Group {
     //Constructors
     public Group(List<User> participants) {
         this.participants = participants;
-        identifier = UUID.randomUUID();
+        this.identifier = UUID.randomUUID();
     }
 
     public Group(UUID identifier, List<User> participants) {

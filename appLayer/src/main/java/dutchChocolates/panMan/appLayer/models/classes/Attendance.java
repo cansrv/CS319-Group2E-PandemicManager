@@ -2,6 +2,7 @@ package dutchChocolates.panMan.appLayer.models.classes;
 
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +12,12 @@ public class Attendance {
     private Date date;
 
     //Constructors
-    public Attendance(){
+    public Attendance() {
+    }
 
+    public Attendance(List<Student> students) {
+        this.students = students;
+        this.date = getDate();
     }
 
     public Attendance(List<Student> students, Date date) {

@@ -13,6 +13,13 @@ public class UserCreatedGroup extends Group {
     private Date date;
 
     //Constructors
+
+    public UserCreatedGroup(List<User> participants, Location location) {
+        super(participants);
+        this.location = location;
+        this.date = getDate();
+    }
+
     public UserCreatedGroup(List<User> participants, Location location, Date date) {
         super(participants);
         this.location = location;
@@ -44,15 +51,6 @@ public class UserCreatedGroup extends Group {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public List<User> getParticipants() {
-        return super.getParticipants();
-    }
-
-    public boolean setParticipants(List<User> participants) {
-            super.setParticipants(participants);
-            return true;
     }
 
 
