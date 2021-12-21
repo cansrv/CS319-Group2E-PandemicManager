@@ -39,7 +39,7 @@ public class UserMediator {
     public Group createGroup(List<User> participants, String loc) {
         Location location = new Location(loc);
 
-        return new UserCreatedGroup(participants,location);
+        return new UserCreatedGroup(participants, location);
     }
 
     public boolean addToGroupsParticipated(User user, Group group) {

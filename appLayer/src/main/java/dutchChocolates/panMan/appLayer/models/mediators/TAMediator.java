@@ -19,7 +19,8 @@ public class TAMediator {
 
     private static TAMediator taMediator = null;
 
-    private TAMediator() {}
+    private TAMediator() {
+    }
 
     public static TAMediator getInstance() {
         if (taMediator == null) {
@@ -29,13 +30,13 @@ public class TAMediator {
     }
 
     public List<Student> getRiskyStudents(TA ta, Course course) {
-        if(! course.getTAs().contains(ta))
+        if (!course.getTAs().contains(ta))
             return null;
         ArrayList<Student> toBeReturned = new ArrayList<>();
         ArrayList<Student> risky = new ArrayList<>();
         ArrayList<Student> marked = new ArrayList<>();
         ArrayList<Student> positive = new ArrayList<>();
-        for (Student student: course.getStudents()) {
+        for (Student student : course.getStudents()) {
             switch (student.getCovidInformationCard().getCovidStatus()) {
                 case Risky:
                     risky.add(student);
@@ -52,13 +53,13 @@ public class TAMediator {
     }
 
     public List<Student> getRiskyStudents(TA ta, Section section) {
-        if(! section.getTAs().contains(ta))
+        if (!section.getTAs().contains(ta))
             return null;
         ArrayList<Student> toBeReturned = new ArrayList<>();
         ArrayList<Student> risky = new ArrayList<>();
         ArrayList<Student> marked = new ArrayList<>();
         ArrayList<Student> positive = new ArrayList<>();
-        for (Student student: section.getStudents()) {
+        for (Student student : section.getStudents()) {
             switch (student.getCovidInformationCard().getCovidStatus()) {
                 case Risky:
                     risky.add(student);

@@ -6,16 +6,16 @@ import dutchChocolates.panMan.appLayer.models.actors.TA;
 
 import java.util.List;
 
-public class Exam extends Lecture{
+public class Exam extends Lecture {
     //Properties
     private Instructor courseCoordinator;
 
     //Constructors
-    public Exam(){
+    public Exam() {
         super();
     }
 
-    public Exam(String roomName,  Attendance attendance, Instructor courseCoordinator) {
+    public Exam(String roomName, Attendance attendance, Instructor courseCoordinator) {
         super(roomName, false, attendance);
         this.courseCoordinator = courseCoordinator;
     }
@@ -29,7 +29,7 @@ public class Exam extends Lecture{
         this.courseCoordinator = courseCoordinator;
     }
 
-    public boolean removeAbsents(List<Student> students){
+    public boolean removeAbsents(List<Student> students) {
         return true;
     }
 

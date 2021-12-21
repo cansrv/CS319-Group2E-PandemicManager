@@ -17,53 +17,54 @@ public class InstructorMediator {
     private static InstructorMediator instructorMediator = null;
 
     //Constructors
-    private InstructorMediator(){}
+    private InstructorMediator() {
+    }
 
     //Methods
-    public static InstructorMediator getInstance(){
+    public static InstructorMediator getInstance() {
         if (instructorMediator == null) {
             instructorMediator = new InstructorMediator();
         }
         return instructorMediator;
     }
 
-    public List<Student> getRiskyStudents(Instructor instructor, Course course){
+    public List<Student> getRiskyStudents(Instructor instructor, Course course) {
         return new ArrayList<Student>();
     }
 
-    public List<Student> getRiskyStudents(Instructor instructor, Section section){
+    public List<Student> getRiskyStudents(Instructor instructor, Section section) {
         return new ArrayList<Student>();
     }
 
-    public boolean cancelClass(Instructor instructor, Course course){
+    public boolean cancelClass(Instructor instructor, Course course) {
         return true;
     }
 
-    public boolean cancelClass(Instructor instructor, Section section){
+    public boolean cancelClass(Instructor instructor, Section section) {
         return true;
     }
 
-    public boolean createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom){
+    public boolean createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom) {
         return true;
     }
 
-    public boolean endExam(Instructor instructor, Exam exam){
+    public boolean endExam(Instructor instructor, Exam exam) {
         return true;
     }
 
-    public boolean enterAbsentees(Instructor instructor, Exam exam, List<Student> absentees){
+    public boolean enterAbsentees(Instructor instructor, Exam exam, List<Student> absentees) {
         return true;
     }
 
-    public boolean switchToOnline(Instructor instructor, Section section, boolean isOnline){
+    public boolean switchToOnline(Instructor instructor, Section section, boolean isOnline) {
         return true;
     }
 
-    public boolean switchToOnline(Instructor instructor, Lecture lecture, boolean isOnline){
+    public boolean switchToOnline(Instructor instructor, Lecture lecture, boolean isOnline) {
         return true;
     }
 
-    public boolean sendMessage(MessageType messageType, List<String> destinationAddress, String body, String header){
+    public boolean sendMessage(MessageType messageType, List<String> destinationAddress, String body, String header) {
         return true;
     }
 

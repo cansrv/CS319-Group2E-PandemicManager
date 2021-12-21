@@ -13,7 +13,7 @@ public class Lecture {
     private Attendance attendance;
 
     //Constructors
-    public Lecture(){
+    public Lecture() {
     }
 
     public Lecture(String roomName, boolean isSpareHour, Attendance attendance) {
@@ -29,7 +29,8 @@ public class Lecture {
     }
 
     public boolean setRoomName(String roomName) {
-        this.roomName = roomName;return true;
+        this.roomName = roomName;
+        return true;
     }
 
     public boolean isSpareHour() {
@@ -37,7 +38,8 @@ public class Lecture {
     }
 
     public boolean setSpareHour(boolean spareHour) {
-        isSpareHour = spareHour;return true;
+        isSpareHour = spareHour;
+        return true;
     }
 
     public Attendance getAttendance() {
@@ -45,6 +47,7 @@ public class Lecture {
     }
 
     public boolean setAttendance(Attendance attendance) {
-        this.attendance = attendance;return true;
+        this.attendance = attendance;
+        return true;
     }
 }

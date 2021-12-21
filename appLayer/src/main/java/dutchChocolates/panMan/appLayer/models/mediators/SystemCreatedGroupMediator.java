@@ -4,10 +4,11 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.groups.SystemCreatedGroup;
 
-public class SystemCreatedGroupMediator  {
-    private static SystemCreatedGroupMediator systemCreatedGroupMediator  = null;
+public class SystemCreatedGroupMediator {
+    private static SystemCreatedGroupMediator systemCreatedGroupMediator = null;
 
-    private SystemCreatedGroupMediator() {}
+    private SystemCreatedGroupMediator() {
+    }
 
     public static SystemCreatedGroupMediator getInstance() {
         if (systemCreatedGroupMediator == null) {
@@ -21,7 +22,7 @@ public class SystemCreatedGroupMediator  {
     }
 
     public boolean exitGroup(SystemCreatedGroup systemCreatedGroup, User user) {
-       return systemCreatedGroup.getParticipants().remove(user);
+        return systemCreatedGroup.getParticipants().remove(user);
     }
 
 }

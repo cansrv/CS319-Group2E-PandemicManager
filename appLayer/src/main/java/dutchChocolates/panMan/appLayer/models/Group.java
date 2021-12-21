@@ -23,11 +23,11 @@ public abstract class Group {
     }
 
     //Methods
-    public List<User> getParticipants(){
+    public List<User> getParticipants() {
         return this.participants;
     }
 
-    public boolean setParticipants(List<User> participants){
+    public boolean setParticipants(List<User> participants) {
         this.participants = participants;
         return true;
     }

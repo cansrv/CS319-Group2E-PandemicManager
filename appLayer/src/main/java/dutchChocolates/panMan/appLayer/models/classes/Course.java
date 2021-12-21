@@ -18,7 +18,7 @@ public class Course {
 
 
     //Constructors
-    public Course(){
+    public Course() {
     }
 
     public Course(List<Exam> exams, List<Section> sections, List<Student> students, List<Instructor> instructors, List<TA> TAs, String courseName) {

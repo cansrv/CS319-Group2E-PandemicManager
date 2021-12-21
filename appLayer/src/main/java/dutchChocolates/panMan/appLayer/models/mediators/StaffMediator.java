@@ -10,7 +10,10 @@ import java.util.List;
 
 public class StaffMediator {
     private static StaffMediator staffMediator = null;
-    private StaffMediator() {}
+
+    private StaffMediator() {
+    }
+
     public static StaffMediator getInstance() {
         if (staffMediator == null) {
             staffMediator = new StaffMediator();
@@ -24,7 +27,7 @@ public class StaffMediator {
 
     public StaffCreatedGroup createStaffGroup(List<User> participants, String location) {
 
-        return new StaffCreatedGroup(new Location(location),participants);
+        return new StaffCreatedGroup(new Location(location), participants);
     }
 
     public boolean endStaffCreatedGroup(StaffCreatedGroup staffCreatedGroup) {

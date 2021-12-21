@@ -29,5 +29,4 @@ public class StaffCreatedGroup extends UserCreatedGroup {
     //Methods
 
 
-
 }

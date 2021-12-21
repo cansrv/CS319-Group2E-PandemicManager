@@ -7,17 +7,18 @@ public class MessageMediator {
     private static MessageMediator messageMediator = null;
 
     //Constructors
-    private MessageMediator(){}
+    private MessageMediator() {
+    }
 
     //Methods
-    public static MessageMediator getInstance(){
+    public static MessageMediator getInstance() {
         if (messageMediator == null) {
             messageMediator = new MessageMediator();
         }
         return messageMediator;
     }
 
-    public boolean sendMessage(Message message){
+    public boolean sendMessage(Message message) {
         return true;
     }
 

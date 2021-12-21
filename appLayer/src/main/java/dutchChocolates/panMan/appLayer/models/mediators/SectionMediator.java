@@ -13,11 +13,12 @@ public class SectionMediator {
 
 
     //Constructors
-    private SectionMediator(){}
+    private SectionMediator() {
+    }
 
 
     //Methods
-    public static SectionMediator getInstance(){
+    public static SectionMediator getInstance() {
         if (sectionMediator == null) {
             sectionMediator = new SectionMediator();
         }

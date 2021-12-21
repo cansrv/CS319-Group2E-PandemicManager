@@ -3,13 +3,15 @@ package dutchChocolates.panMan.appLayer.models.classes;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 
 import java.sql.Time;
+import java.time.Clock;
 import java.util.Date;
 import java.util.List;
 
 public class Attendance {
     //Properties
     private List<Student> students;
-    private Date date;
+    private Date enteranceDate;
+    private Date endingDate;
 
     //Constructors
     public Attendance() {
@@ -17,12 +19,12 @@ public class Attendance {
 
     public Attendance(List<Student> students) {
         this.students = students;
-        this.date = getDate();
+        this.enteranceDate = Date.from(Clock.systemDefaultZone().instant());
     }
 
     public Attendance(List<Student> students, Date date) {
         this.students = students;
-        this.date = date;
+        this.enteranceDate = date;
     }
 
 
@@ -36,12 +38,20 @@ public class Attendance {
     }
 
     public Date getDate() {
-        return this.date;
+        return this.enteranceDate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.enteranceDate = date;
     }
 
+
+    public Date getEndingDate() {
+        return endingDate;
+    }
+
+    public void setEndingDate(Date endingDate) {
+        this.endingDate = endingDate;
+    }
 
 }

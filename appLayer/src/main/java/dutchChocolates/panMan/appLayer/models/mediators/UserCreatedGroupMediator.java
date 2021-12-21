@@ -7,9 +7,10 @@ import java.util.List;
 
 public class UserCreatedGroupMediator {
 
-    private static UserCreatedGroupMediator userCreatedGroupMediator  = null;
+    private static UserCreatedGroupMediator userCreatedGroupMediator = null;
 
-    private UserCreatedGroupMediator() {}
+    private UserCreatedGroupMediator() {
+    }
 
     public static UserCreatedGroupMediator getInstance() {
         if (userCreatedGroupMediator == null) {
@@ -37,7 +38,7 @@ public class UserCreatedGroupMediator {
     }
 
     public boolean endGroup(Group group, User user) {
-        for(int i = 0; i < group.getParticipants().size(); i++) {
+        for (int i = 0; i < group.getParticipants().size(); i++) {
             group.getParticipants().get(i).getGroupsParticipated().remove(group);
         }
         return user.getGroupsCreated().remove(group);
