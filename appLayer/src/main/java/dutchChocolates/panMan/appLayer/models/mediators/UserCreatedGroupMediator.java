@@ -19,22 +19,27 @@ public class UserCreatedGroupMediator {
     }
 
     public boolean addParticipant(Group group, User user) {
-        return true;
+        return group.getParticipants().add(user);
     }
 
     public boolean addParticipants(Group group, List<User> users) {
-        return true;
+        return group.getParticipants().addAll(users);
     }
 
-    public boolean exitGroup(Group group) {
-        return true;
+    public boolean exitGroup(Group group, User user) {
+        group.getParticipants().remove(user);
+        return user.getGroupsCreated().remove(group);
     }
 
     public boolean dismissFromGroup(Group group, User user) {
-        return true;
+        group.getParticipants().remove(user);
+        return user.getGroupsParticipated().remove(group);
     }
 
-    public boolean endGroup(Group group) {
-        return true;
+    public boolean endGroup(Group group, User user) {
+        for(int i = 0; i < group.getParticipants().size(); i++) {
+            group.getParticipants().get(i).getGroupsParticipated().remove(group);
+        }
+        return user.getGroupsCreated().remove(group);
     }
 }

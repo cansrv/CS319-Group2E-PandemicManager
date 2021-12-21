@@ -3,6 +3,9 @@ package dutchChocolates.panMan.appLayer.models.groups;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +20,7 @@ public class UserCreatedGroup extends Group {
     public UserCreatedGroup(List<User> participants, Location location) {
         super(participants);
         this.location = location;
-        this.date = getDate();
+        this.date = Date.from(Clock.systemDefaultZone().instant());
     }
 
     public UserCreatedGroup(List<User> participants, Location location, Date date) {
