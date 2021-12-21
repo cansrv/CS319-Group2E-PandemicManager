@@ -16,7 +16,7 @@ public class Staff extends User {
         super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
     }
 
-    public Staff(String password, String mail, String phoneNumber, String bilkentID) {
-        super(password, mail);
+    public Staff(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
+        super(password, mail, name, surname, bilkentID, HESCode);
     }
 }

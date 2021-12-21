@@ -13,10 +13,10 @@ public class Instructor extends User {
     List<Section> sections;
 
     //Constructors
-    public Instructor(String password, String mail, String phoneNumber, String bilkentID, List<Course> courses, List<Section> sections) {
-        super(password, mail);
-        this.courses = courses;
-        this.sections = sections;
+
+
+    public Instructor(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
+        super(password, mail, name, surname, bilkentID, HESCode);
     }
 
     public Instructor(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Course> courses, List<Section> sections, String fullName) {

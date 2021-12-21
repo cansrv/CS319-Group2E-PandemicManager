@@ -19,7 +19,7 @@ public abstract class User {
     CovidInformationCard covidInformationCard;
 
     // Constructors
-    public User(String password, String mail) {
+    public User(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
         this.identifier = UUID.randomUUID();
         this.password = password;
         this.mail = mail;

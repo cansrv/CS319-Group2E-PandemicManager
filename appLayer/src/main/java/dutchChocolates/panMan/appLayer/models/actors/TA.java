@@ -19,8 +19,8 @@ public class TA extends Student {
         this.sectionsTaught = sectionsTaught;
     }
 
-    public TA(String password, String mail, String phoneNumber, String bilkentID) {
-        super(password, mail, phoneNumber, bilkentID);
+    public TA(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
+        super(password, mail, name, surname, bilkentID, HESCode);
     }
 
     public TA() {

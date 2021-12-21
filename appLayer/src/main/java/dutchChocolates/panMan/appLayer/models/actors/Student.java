@@ -16,8 +16,8 @@ public class Student extends User {
     // Constructors
 
 
-    public Student(String password, String mail, String phoneNumber, String bilkentID) {
-        super(password, mail);
+    public Student(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
+        super(password, mail, name, surname, bilkentID, HESCode);
     }
 
     public Student(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, String fullName) {
