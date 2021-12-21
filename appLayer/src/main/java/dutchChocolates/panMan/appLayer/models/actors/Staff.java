@@ -12,11 +12,11 @@ public class Staff extends User {
     public Staff() {
     }
 
-    public Staff(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard) {
-        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard);
+    public Staff(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
     }
 
     public Staff(String password, String mail, String phoneNumber, String bilkentID) {
-        super(password, mail, phoneNumber, bilkentID);
+        super(password, mail);
     }
 }

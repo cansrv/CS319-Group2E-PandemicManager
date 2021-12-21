@@ -14,8 +14,8 @@ public class TA extends Student {
 
     // Constructors
 
-    public TA(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught) {
-        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections);
+    public TA(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught, String fullName) {
+        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections, fullName);
         this.sectionsTaught = sectionsTaught;
     }
 

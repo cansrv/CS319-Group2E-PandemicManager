@@ -14,13 +14,13 @@ public class Instructor extends User {
 
     //Constructors
     public Instructor(String password, String mail, String phoneNumber, String bilkentID, List<Course> courses, List<Section> sections) {
-        super(password, mail, phoneNumber, bilkentID);
+        super(password, mail);
         this.courses = courses;
         this.sections = sections;
     }
 
-    public Instructor(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Course> courses, List<Section> sections) {
-        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard);
+    public Instructor(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Course> courses, List<Section> sections, String fullName) {
+        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard,fullName );
         this.courses = courses;
         this.sections = sections;
     }

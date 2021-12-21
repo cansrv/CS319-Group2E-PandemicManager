@@ -17,11 +17,11 @@ public class Student extends User {
 
 
     public Student(String password, String mail, String phoneNumber, String bilkentID) {
-        super(password, mail, phoneNumber, bilkentID);
+        super(password, mail);
     }
 
-    public Student(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections) {
-        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard);
+    public Student(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, String fullName) {
+        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
         this.sections = sections;
     }
 

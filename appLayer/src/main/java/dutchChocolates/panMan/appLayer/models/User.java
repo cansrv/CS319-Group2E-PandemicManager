@@ -8,6 +8,7 @@ import java.util.UUID;
 public abstract class User {
     // Attributes
     String username;
+    String fullName;
     String password;
     UUID identifier;
     String mail;
@@ -18,15 +19,13 @@ public abstract class User {
     CovidInformationCard covidInformationCard;
 
     // Constructors
-    public User(String password, String mail, String phoneNumber, String bilkentID) {
+    public User(String password, String mail) {
         this.identifier = UUID.randomUUID();
         this.password = password;
         this.mail = mail;
-        this.phoneNumber = phoneNumber;
-        this.bilkentID = bilkentID;
     }
 
-    public User(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard) {
+    public User(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
         this.identifier = identifier;
@@ -36,6 +35,7 @@ public abstract class User {
         this.groupsCreated = groupsCreated;
         this.groupsParticipated = groupsParticipated;
         this.covidInformationCard = covidInformationCard;
+        this.fullName = fullName;
     }
 
     public User() {
