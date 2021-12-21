@@ -26,6 +26,6 @@ public class StaffMediator {
 
     public boolean endStaffCreatedGroup(StaffCreatedGroup staffCreatedGroup) {
         return true;
-    };
+    }
 
 }
