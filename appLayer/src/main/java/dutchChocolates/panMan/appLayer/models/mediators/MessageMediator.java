@@ -19,7 +19,9 @@ public class MessageMediator {
     }
 
     public boolean sendMessage(Message message) {
+
         return true;
+
     }
 
 }

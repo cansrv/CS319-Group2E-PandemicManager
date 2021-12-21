@@ -25,21 +25,27 @@ public class UserMediator {
     }
 
     public User searchByName(String name) {
+        //TODO: Add queries for searching by name
+
         return null;
     }
 
     public User searchByID(String bilkentID) {
+
+        //TODO: Add queries for searching by ID
+
         return null;
     }
 
-    public Group createGroup() {
-        return new UserCreatedGroup();
+    public boolean createGroup(User user) {
+        return user.addToGroupsCreated(new UserCreatedGroup());
     }
 
-    public Group createGroup(List<User> participants, String loc) {
+    public boolean createGroup(List<User> participants, String loc, User user) {
         Location location = new Location(loc);
-
-        return new UserCreatedGroup(participants, location);
+        UserCreatedGroup group = new UserCreatedGroup(null, location);
+        UserCreatedGroupMediator.getInstance().addParticipants(group, participants);
+        return user.getGroupsCreated().add(group);
     }
 
     public boolean addToGroupsParticipated(User user, Group group) {
@@ -47,11 +53,11 @@ public class UserMediator {
         return UserCreatedGroupMediator.getInstance().addParticipant(group, user);
     }
 
-    public boolean addToGroupsParticipated(List<User> user, Group group) {
-        for (User value : user) {
+    public boolean addToGroupsParticipated(List<User> users, Group group) {
+        for (User value : users) {
             value.addToGroupsParticipated(group);
         }
-        return UserCreatedGroupMediator.getInstance().addParticipants(group, user);
+        return UserCreatedGroupMediator.getInstance().addParticipants(group, users);
     }
 
     public boolean getAppointment(User user, Date testDate, TestType testType) {
@@ -63,7 +69,9 @@ public class UserMediator {
     }
 
     public boolean markRisky(String name) {
-
-        return searchByName(name).getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+        User markPotential = searchByName(name);
+        if(markPotential.getCovidInformationCard().getCovidStatus() == CovidStatus.Negative)
+           return markPotential.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+        return false;
     }
 }

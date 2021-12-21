@@ -10,8 +10,7 @@ import java.util.List;
 public class Attendance {
     //Properties
     private List<Student> students;
-    private Date enteranceDate;
-    private Date endingDate;
+    private Date date;
 
     //Constructors
     public Attendance() {
@@ -19,12 +18,12 @@ public class Attendance {
 
     public Attendance(List<Student> students) {
         this.students = students;
-        this.enteranceDate = Date.from(Clock.systemDefaultZone().instant());
+        this.date = Date.from(Clock.systemDefaultZone().instant());
     }
 
     public Attendance(List<Student> students, Date date) {
         this.students = students;
-        this.enteranceDate = date;
+        this.date = date;
     }
 
 
@@ -38,20 +37,12 @@ public class Attendance {
     }
 
     public Date getDate() {
-        return this.enteranceDate;
+        return this.date;
     }
 
     public void setDate(Date date) {
-        this.enteranceDate = date;
+        this.date = date;
     }
 
-
-    public Date getEndingDate() {
-        return endingDate;
-    }
-
-    public void setEndingDate(Date endingDate) {
-        this.endingDate = endingDate;
-    }
 
 }

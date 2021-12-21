@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.models.mediators;
 
 import dutchChocolates.panMan.appLayer.models.User;
+import dutchChocolates.panMan.appLayer.models.actors.Staff;
 import dutchChocolates.panMan.appLayer.models.groups.Location;
 import dutchChocolates.panMan.appLayer.models.groups.StaffCreatedGroup;
 import dutchChocolates.panMan.appLayer.models.messages.Message;
@@ -25,13 +26,15 @@ public class StaffMediator {
         return MessageMediator.getInstance().sendMessage(new Message(messageType, destinationAddress, body, header));
     }
 
-    public StaffCreatedGroup createStaffGroup(List<User> participants, String location) {
-
-        return new StaffCreatedGroup(new Location(location), participants);
+    public boolean createStaffGroup(List<User> participants, String location, Staff staff) {
+        StaffCreatedGroup group = new StaffCreatedGroup(new Location(location), null);
+        StaffCreatedGroupMediator.getInstance().addParticipants(group,participants);
+        return staff.addToGroupsCreated(group);
     }
 
-    public boolean endStaffCreatedGroup(StaffCreatedGroup staffCreatedGroup) {
-        return StaffCreatedGroupMediator.getInstance().endGroup(staffCreatedGroup);
+    public boolean endStaffCreatedGroup(StaffCreatedGroup staffCreatedGroup, Staff staff) {
+        StaffCreatedGroupMediator.getInstance().endGroup(staffCreatedGroup);
+        return staff.getGroupsCreated().remove(staffCreatedGroup);
 
     }
 

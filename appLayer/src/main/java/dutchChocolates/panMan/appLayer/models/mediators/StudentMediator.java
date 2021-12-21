@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.models.mediators;
 
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidStatus;
 
 import java.util.List;
@@ -20,10 +21,9 @@ public class StudentMediator {
     }
 
     public boolean getRiskyStudents(Student student) {
-        for (int i = 0; i < student.getSections().size(); i++) {
-            for (int j = 0; j < student.getSections().get(i).getStudents().size(); j++)
-                if (student.getSections().get(i).getStudents().get(j).getCovidInformationCard().getCovidStatus() != CovidStatus.Negative)
-                    return true;
+        for (Section section: student.getSections()) {
+            if(SectionMediator.getInstance().getRiskyStudents(section).size() != 0)
+                return true;
         }
         return false;
     }

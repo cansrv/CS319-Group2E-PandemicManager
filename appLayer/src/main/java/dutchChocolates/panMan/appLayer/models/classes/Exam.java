@@ -4,6 +4,8 @@ import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 
+import java.time.Clock;
+import java.util.Date;
 import java.util.List;
 
 public class Exam extends Lecture {

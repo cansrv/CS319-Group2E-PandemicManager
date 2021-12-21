@@ -21,18 +21,32 @@ public class StaffCreatedGroupMediator {
     }
 
     public boolean addParticipant(Group group, User user) {
-        return true;
+        // TODO: Add entrance time to DB.
+        user.addToGroupsParticipated(group);
+        return group.getParticipants().add(user);
     }
 
     public boolean addParticipants(Group group, List<User> users) {
-        return true;
+        // TODO: Add entrance times of all users to DB.
+
+        for (User user: users) {
+            user.addToGroupsParticipated(group);
+        }
+        return group.getParticipants().addAll(users);
     }
 
     public boolean dismissFromGroup(Group group, User user) {
-        return true;
+        // TODO: Add exit time to DB.
+        group.getParticipants().remove(user);
+        return user.getGroupsParticipated().remove(group);
     }
 
     public boolean endGroup(Group group) {
+        // TODO: Add exit time to DB
+        for (User user : group.getParticipants()) {
+            user.getGroupsParticipated().remove(group);
+        }
+
         return true;
     }
 

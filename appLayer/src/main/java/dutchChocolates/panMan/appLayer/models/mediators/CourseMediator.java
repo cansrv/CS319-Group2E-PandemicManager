@@ -51,7 +51,8 @@ public class CourseMediator {
     public boolean endExam(Instructor instructor, Exam exam, Course course) {
         if (!exam.getCourseCoordinator().equals(instructor))
             return false;
-        return course.getExams().remove(exam);
+        return ExamMediator.getInstance().endExam(instructor, exam, course);
+
 
     }
 

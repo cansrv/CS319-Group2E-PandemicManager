@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.models.mediators;
 
 import dutchChocolates.panMan.appLayer.models.User;
+import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
@@ -32,47 +33,17 @@ public class TAMediator {
     public List<Student> getRiskyStudents(TA ta, Course course) {
         if (!course.getTAs().contains(ta))
             return null;
-        ArrayList<Student> toBeReturned = new ArrayList<>();
-        ArrayList<Student> risky = new ArrayList<>();
-        ArrayList<Student> marked = new ArrayList<>();
-        ArrayList<Student> positive = new ArrayList<>();
-        for (Student student : course.getStudents()) {
-            switch (student.getCovidInformationCard().getCovidStatus()) {
-                case Risky:
-                    risky.add(student);
-                case Marked:
-                    marked.add(student);
-                case Positive:
-                    positive.add(student);
-            }
+        ArrayList<Student> riskyStudents = new ArrayList<>();
+        for (Section section: course.getSections()) {
+            riskyStudents.addAll(SectionMediator.getInstance().getRiskyStudents(section));
         }
-        toBeReturned.addAll(risky);
-        toBeReturned.addAll(marked);
-        toBeReturned.addAll(positive);
-        return toBeReturned;
+        return riskyStudents;
     }
 
     public List<Student> getRiskyStudents(TA ta, Section section) {
         if (!section.getTAs().contains(ta))
             return null;
-        ArrayList<Student> toBeReturned = new ArrayList<>();
-        ArrayList<Student> risky = new ArrayList<>();
-        ArrayList<Student> marked = new ArrayList<>();
-        ArrayList<Student> positive = new ArrayList<>();
-        for (Student student : section.getStudents()) {
-            switch (student.getCovidInformationCard().getCovidStatus()) {
-                case Risky:
-                    risky.add(student);
-                case Marked:
-                    marked.add(student);
-                case Positive:
-                    positive.add(student);
-            }
-        }
-        toBeReturned.addAll(risky);
-        toBeReturned.addAll(marked);
-        toBeReturned.addAll(positive);
-        return toBeReturned;
+        return SectionMediator.getInstance().getRiskyStudents(section);
     }
 
     public boolean enterAbsentees(TA ta, Exam exam, List<Student> absentees) {

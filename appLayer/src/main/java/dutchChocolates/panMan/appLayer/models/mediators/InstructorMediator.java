@@ -28,47 +28,17 @@ public class InstructorMediator {
     public List<Student> getRiskyStudents(Instructor instructor, Course course) {
         if (!course.getInstructors().contains(instructor))
             return null;
-        ArrayList<Student> toBeReturned = new ArrayList<>();
-        ArrayList<Student> risky = new ArrayList<>();
-        ArrayList<Student> marked = new ArrayList<>();
-        ArrayList<Student> positive = new ArrayList<>();
-        for (Student student : course.getStudents()) {
-            switch (student.getCovidInformationCard().getCovidStatus()) {
-                case Risky:
-                    risky.add(student);
-                case Marked:
-                    marked.add(student);
-                case Positive:
-                    positive.add(student);
-            }
+        ArrayList<Student> riskyStudents = new ArrayList<>();
+        for (Section section: course.getSections()) {
+            riskyStudents.addAll(SectionMediator.getInstance().getRiskyStudents(section));
         }
-        toBeReturned.addAll(risky);
-        toBeReturned.addAll(marked);
-        toBeReturned.addAll(positive);
-        return toBeReturned;
+        return riskyStudents;
     }
 
     public List<Student> getRiskyStudents(Instructor instructor, Section section) {
         if (!section.getInstructors().contains(instructor))
             return null;
-        ArrayList<Student> toBeReturned = new ArrayList<>();
-        ArrayList<Student> risky = new ArrayList<>();
-        ArrayList<Student> marked = new ArrayList<>();
-        ArrayList<Student> positive = new ArrayList<>();
-        for (Student student : section.getStudents()) {
-            switch (student.getCovidInformationCard().getCovidStatus()) {
-                case Risky:
-                    risky.add(student);
-                case Marked:
-                    marked.add(student);
-                case Positive:
-                    positive.add(student);
-            }
-        }
-        toBeReturned.addAll(risky);
-        toBeReturned.addAll(marked);
-        toBeReturned.addAll(positive);
-        return toBeReturned;
+        return SectionMediator.getInstance().getRiskyStudents(section);
     }
 
     public boolean cancelClass(Instructor instructor, Course course) {
@@ -141,7 +111,8 @@ public class InstructorMediator {
     }
 
     public boolean sendMessage(MessageType messageType, List<String> destinationAddress, String body, String header) {
-        return true; //SEN DE YARGILANACAKSIN MESAAAAJ.
+        // TODO: Called during specific time intervals
+        return true;
     }
 
 }

@@ -18,10 +18,14 @@ public class SystemCreatedGroupMediator {
     }
 
     public boolean joinGroup(SystemCreatedGroup systemCreatedGroup, User user) {
+        // TODO: Add entrance time to DB.
+        user.addToGroupsParticipated(systemCreatedGroup);
         return systemCreatedGroup.getParticipants().add(user);
     }
 
     public boolean exitGroup(SystemCreatedGroup systemCreatedGroup, User user) {
+        // TODO: Add exit time to DB.
+        user.getGroupsParticipated().remove(systemCreatedGroup);
         return systemCreatedGroup.getParticipants().remove(user);
     }
 
