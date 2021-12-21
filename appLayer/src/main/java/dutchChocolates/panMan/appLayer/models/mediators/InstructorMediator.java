@@ -29,18 +29,66 @@ public class InstructorMediator {
     }
 
     public List<Student> getRiskyStudents(Instructor instructor, Course course) {
-        return new ArrayList<Student>();
+        if (!course.getInstructors().contains(instructor))
+            return null;
+        ArrayList<Student> toBeReturned = new ArrayList<>();
+        ArrayList<Student> risky = new ArrayList<>();
+        ArrayList<Student> marked = new ArrayList<>();
+        ArrayList<Student> positive = new ArrayList<>();
+        for (Student student : course.getStudents()) {
+            switch (student.getCovidInformationCard().getCovidStatus()) {
+                case Risky:
+                    risky.add(student);
+                case Marked:
+                    marked.add(student);
+                case Positive:
+                    positive.add(student);
+            }
+        }
+        toBeReturned.addAll(risky);
+        toBeReturned.addAll(marked);
+        toBeReturned.addAll(positive);
+        return toBeReturned;
     }
 
     public List<Student> getRiskyStudents(Instructor instructor, Section section) {
-        return new ArrayList<Student>();
+        if (!section.getInstructors().contains(instructor))
+            return null;
+        ArrayList<Student> toBeReturned = new ArrayList<>();
+        ArrayList<Student> risky = new ArrayList<>();
+        ArrayList<Student> marked = new ArrayList<>();
+        ArrayList<Student> positive = new ArrayList<>();
+        for (Student student : section.getStudents()) {
+            switch (student.getCovidInformationCard().getCovidStatus()) {
+                case Risky:
+                    risky.add(student);
+                case Marked:
+                    marked.add(student);
+                case Positive:
+                    positive.add(student);
+            }
+        }
+        toBeReturned.addAll(risky);
+        toBeReturned.addAll(marked);
+        toBeReturned.addAll(positive);
+        return toBeReturned;
     }
 
     public boolean cancelClass(Instructor instructor, Course course) {
+        if(!course.getInstructors().contains(instructor)){
+            return false;
+        }
+        for(Section section : course.getSections()){
+            section.setOnline(true);
+        }
         return true;
     }
 
     public boolean cancelClass(Instructor instructor, Section section) {
+        if(!section.getInstructors().contains(instructor)){
+            return false;
+        }
+        section.setOnline(true);
         return true;
     }
 
@@ -56,11 +104,21 @@ public class InstructorMediator {
         return true;
     }
 
-    public boolean switchToOnline(Instructor instructor, Section section, boolean isOnline) {
+    public boolean switchToOnline(Instructor instructor, Course course, boolean isOnline) {
+        if(!course.getInstructors().contains(instructor)){
+            return false;
+        }
+        for(Section section : course.getSections()){
+            section.setOnline(isOnline);
+        }
         return true;
     }
 
-    public boolean switchToOnline(Instructor instructor, Lecture lecture, boolean isOnline) {
+    public boolean switchToOnline(Instructor instructor, Section section, boolean isOnline) {
+        if(!section.getInstructors().contains(instructor)){
+            return false;
+        }
+        section.setOnline(isOnline);
         return true;
     }
 
