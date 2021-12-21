@@ -2,10 +2,7 @@ package dutchChocolates.panMan.appLayer.models.mediators;
 
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
-import dutchChocolates.panMan.appLayer.models.classes.Course;
-import dutchChocolates.panMan.appLayer.models.classes.Exam;
-import dutchChocolates.panMan.appLayer.models.classes.Lecture;
-import dutchChocolates.panMan.appLayer.models.classes.Section;
+import dutchChocolates.panMan.appLayer.models.classes.*;
 import dutchChocolates.panMan.appLayer.models.messages.MessageType;
 
 import java.util.ArrayList;
@@ -92,15 +89,36 @@ public class InstructorMediator {
         return true;
     }
 
-    public boolean createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom) {
+    public boolean createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom, Course course) {
+        if(!course.getInstructors().contains(instructor)){
+            return false;
+        }
+        CourseMediator courseMediator = CourseMediator.getInstance();
+        for(Exam exam : course.getExams()){
+            courseMediator.createExam(instructor, attendees, date, examRoom, course);
+        }
         return true;
     }
 
-    public boolean endExam(Instructor instructor, Exam exam) {
+    public boolean endExam(Instructor instructor, Exam exam, Course course) {
+        if(!exam.getCourseCoordinator().equals(instructor) || !course.getInstructors().contains(instructor)){
+            return false;
+        }
+        CourseMediator courseMediator = CourseMediator.getInstance();
+        for(Exam examHolder : course.getExams()){
+            if(examHolder.equals(exam)){
+                courseMediator.endExam(instructor, exam, course);
+            }
+        }
         return true;
     }
 
     public boolean enterAbsentees(Instructor instructor, Exam exam, List<Student> absentees) {
+        if(!exam.getCourseCoordinator().equals(instructor)){
+            return false;
+        }
+        ExamMediator em = ExamMediator.getInstance();
+        em.markAbsentees(exam, absentees);
         return true;
     }
 
@@ -123,7 +141,7 @@ public class InstructorMediator {
     }
 
     public boolean sendMessage(MessageType messageType, List<String> destinationAddress, String body, String header) {
-        return true;
+        return true; //SEN DE YARGILANACAKSIN MESAAAAJ.
     }
 
 }
