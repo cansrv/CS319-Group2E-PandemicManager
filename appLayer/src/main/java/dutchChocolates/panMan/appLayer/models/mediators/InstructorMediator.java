@@ -20,7 +20,7 @@ public class InstructorMediator {
     private InstructorMediator(){}
 
     //Methods
-    public InstructorMediator getInstance(){
+    public static InstructorMediator getInstance(){
         if (instructorMediator == null) {
             instructorMediator = new InstructorMediator();
         }

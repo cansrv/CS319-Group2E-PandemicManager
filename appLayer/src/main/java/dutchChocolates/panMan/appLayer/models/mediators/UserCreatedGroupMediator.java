@@ -11,7 +11,7 @@ public class UserCreatedGroupMediator {
 
     private UserCreatedGroupMediator() {}
 
-    public UserCreatedGroupMediator getInstance() {
+    public static UserCreatedGroupMediator getInstance() {
         if (userCreatedGroupMediator == null) {
             userCreatedGroupMediator = new UserCreatedGroupMediator();
         }

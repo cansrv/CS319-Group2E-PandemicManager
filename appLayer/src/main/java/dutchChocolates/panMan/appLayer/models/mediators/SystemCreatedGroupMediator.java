@@ -8,7 +8,7 @@ public class SystemCreatedGroupMediator  {
 
     private SystemCreatedGroupMediator() {}
 
-    public SystemCreatedGroupMediator getInstance() {
+    public static SystemCreatedGroupMediator getInstance() {
         if (systemCreatedGroupMediator == null) {
             systemCreatedGroupMediator = new SystemCreatedGroupMediator();
         }

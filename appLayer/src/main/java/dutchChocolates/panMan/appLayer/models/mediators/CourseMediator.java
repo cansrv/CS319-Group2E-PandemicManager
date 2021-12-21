@@ -21,7 +21,7 @@ public class CourseMediator {
 
 
     //Methods
-    public CourseMediator getInstance(){
+    public static CourseMediator getInstance(){
         if (courseMediator == null) {
             courseMediator = new CourseMediator();
         }

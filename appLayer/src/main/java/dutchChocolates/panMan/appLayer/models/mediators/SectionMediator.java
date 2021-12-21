@@ -17,7 +17,7 @@ public class SectionMediator {
 
 
     //Methods
-    public SectionMediator getInstance(){
+    public static SectionMediator getInstance(){
         if (sectionMediator == null) {
             sectionMediator = new SectionMediator();
         }

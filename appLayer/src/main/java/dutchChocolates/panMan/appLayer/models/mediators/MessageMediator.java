@@ -10,7 +10,7 @@ public class MessageMediator {
     private MessageMediator(){}
 
     //Methods
-    public MessageMediator getInstance(){
+    public static MessageMediator getInstance(){
         if (messageMediator == null) {
             messageMediator = new MessageMediator();
         }

@@ -9,7 +9,7 @@ import java.util.List;
 public class StaffMediator {
     private static StaffMediator staffMediator = null;
     private StaffMediator() {}
-    public StaffMediator getInstance() {
+    public static StaffMediator getInstance() {
         if (staffMediator == null) {
             staffMediator = new StaffMediator();
         }

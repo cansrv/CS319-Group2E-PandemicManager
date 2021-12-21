@@ -10,7 +10,7 @@ public class StudentMediator {
 
     private StudentMediator() {}
 
-    public StudentMediator getInstance() {
+    public static StudentMediator getInstance() {
         if (studentMediator == null) {
             studentMediator = new StudentMediator();
         }

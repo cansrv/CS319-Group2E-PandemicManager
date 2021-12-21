@@ -15,7 +15,7 @@ public class ExamMediator {
     private ExamMediator(){}
 
     //Methods
-    public ExamMediator getInstance(){
+    public static ExamMediator getInstance(){
         if (examMediator == null) {
             examMediator = new ExamMediator();
         }

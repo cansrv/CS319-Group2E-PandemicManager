@@ -13,7 +13,7 @@ public class StaffCreatedGroupMediator {
     private StaffCreatedGroupMediator() {
     }
 
-    public StaffCreatedGroupMediator getInstance() {
+    public static StaffCreatedGroupMediator getInstance() {
         if (staffCreatedGroupMediator == null) {
             staffCreatedGroupMediator = new StaffCreatedGroupMediator();
         }

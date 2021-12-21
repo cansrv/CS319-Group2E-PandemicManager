@@ -15,7 +15,7 @@ public class TAMediator {
 
     private TAMediator() {}
 
-    public TAMediator getInstance() {
+    public static TAMediator getInstance() {
         if (taMediator == null) {
             taMediator = new TAMediator();
         }
