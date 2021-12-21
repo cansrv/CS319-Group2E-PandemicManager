@@ -3,6 +3,7 @@ package dutchChocolates.panMan.appLayer.models.mediators;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
+import dutchChocolates.panMan.appLayer.models.classes.Attendance;
 import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
@@ -40,8 +41,9 @@ public class CourseMediator {
         return true;
     }
 
-    public boolean createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom){
-        return true;
+    public Exam createExam(Instructor instructor, List<Student> attendees, Date date, String examRoom){
+        Attendance attendance = new Attendance();
+        return new Exam(examRoom, false, );
     }
 
     public boolean switchToOnline(Lecture lecture, boolean isOnline){
