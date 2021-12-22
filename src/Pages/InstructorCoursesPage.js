@@ -2,6 +2,8 @@ import '../css/StudentCoursesPage.css'
 import Navbar from '../components/navbar'
 import courses from '../components/courseData'
 import Sidebar from '../components/Sidebar'
+import TakeAttendanceModal from '../components/TakeAttendanceModal'
+import ViewDetailedInfoModal from '../components/viewDetailedInfo'
 
 const InstructorCoursesPage = () => {
 	const attendance = [
@@ -92,26 +94,27 @@ const InstructorCoursesPage = () => {
 								return (
 
 									<div className="col-12 col-md-6">
-										<div class="card courseCard text-center my-4 ">
-											<div class="card-header cardColoredPart">
+										<div className="card courseCard text-center my-4 ">
+											<div className="card-header cardColoredPart">
 												<span className='courseName'>{courses.name}</span>
 												<span className='sectionAndType'> Section: {courses.section} ({courses.type})</span>
 											</div>
-											<div class="card-body">
-												<ul class="attendanceList list-group list-group-flush">
+											<div className="card-body">
+												<ul className="attendanceList list-group list-group-flush">
 													{attendance.map((attendance) => {
 														return (
-															<li class=" list-group-item d-flex justify-content-between">
+															<li className=" list-group-item d-flex justify-content-between">
 																<div>Week {attendance.week}</div>
-																<div><a href = "#" > Take Attendance</a></div>
+																<a data-toggle="modal" href="#takeAttendanceModal"  > Take Attendance</a>
+																
 															</li>
 														)
 													})}
 
 												</ul>
 											</div>
-											<div class="card-footer cardColoredPart text-muted">
-												<a href = "#" className= "text-white">View Detailed Info</a>
+											<div className="card-footer cardColoredPart text-muted">
+												<a data-toggle="modal" href="#viewDetailedInfoModal" className= "text-white">View Detailed Info</a>
 											</div>
 										</div>
 									</div>
@@ -121,10 +124,16 @@ const InstructorCoursesPage = () => {
 							}
 
 						</div>
+						
+
+						
+						
 
 					</div>
 				</div>
 			</div>
+		<TakeAttendanceModal/>
+		<ViewDetailedInfoModal/>
 		</>
 	)
 }
