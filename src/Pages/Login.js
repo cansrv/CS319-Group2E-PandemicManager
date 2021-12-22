@@ -36,7 +36,7 @@ const Login = () => {
                                 <button type="submit" href= "#" class="btn loginButton">Log-in</button>
                             </div>
                         </div>
-                        <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center">
+                        <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center pb-3">
                             Don’t have an Account? <Link to = "/signup" className="pl-2" >Sign-up</Link>
                         </div>
                     </form>
