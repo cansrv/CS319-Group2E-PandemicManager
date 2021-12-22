@@ -23,4 +23,7 @@
 	line-height: 31px;
 	color: white;
 }
-
+.attendanceList{
+	height: 200px;
+	overflow: auto;
+}

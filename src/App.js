@@ -7,6 +7,7 @@ import StudentCoursesPage from './Pages/StudentCoursesPage';
 import InstructorCampusPage from './Pages/InstructorCampusPage';
 import Navbar from './components/navbar'
 import StudentTestsPage from "../src/Pages/StudentTestsPage"
+import InstructorCoursesPage from './Pages/InstructorCoursesPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                 <Route path = "/" element = { <Login></Login>}></Route> 
                 <Route path = "/studentHomePage"exact element = { <StudentHomePage/>}></Route>
                 <Route path= "/studentCoursesPage"  element={<StudentCoursesPage />}></Route>
+                <Route path="/instructorCoursesPage" element={<InstructorCoursesPage />}></Route>
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
             </Routes> 
         </BrowserRouter>

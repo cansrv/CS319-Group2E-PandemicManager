@@ -3,7 +3,7 @@ import Navbar from '../components/navbar'
 import courses from '../components/courseData'
 import Sidebar from '../components/Sidebar'
 
-const StudentCoursesPage = () =>{
+const InstructorCoursesPage = () => {
 	const attendance = [
 		{
 			week: 1,
@@ -56,14 +56,7 @@ const StudentCoursesPage = () =>{
 			attendance: attendance
 
 		},
-		{
-			name: 'CS-315',
-			section: 4,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
+		
 		{
 			name: 'CS-319',
 			section: 1,
@@ -82,48 +75,49 @@ const StudentCoursesPage = () =>{
 		}
 	]
 
-	return(
+	return (
 		<>
 			<div className="container px-5">
 				<div className="row">
-					<Navbar/>
+					<Navbar />
 				</div>
-				
+
 				<div className='row align-items-between'>
 					<div className="d-none d-md-block col-md-2">
-						<Sidebar/>
+						<Sidebar />
 					</div>
 					<div className="col-12 col-md-10 bg-light ">
 						<div className="row">
-							{courses.map((courses)=>{
-								return(
-									
-										<div className="col-12 col-md-6">
-											<div class="card courseCard text-center my-4 ">
-												<div class="card-header cardColoredPart">
-														<span className = 'courseName'>{courses.name}</span>
-														<span className='sectionAndType'> Section: {courses.section} ({courses.type})</span>
-												</div>
-												<div class="card-body">
+							{courses.map((courses) => {
+								return (
+
+									<div className="col-12 col-md-6">
+										<div class="card courseCard text-center my-4 ">
+											<div class="card-header cardColoredPart">
+												<span className='courseName'>{courses.name}</span>
+												<span className='sectionAndType'> Section: {courses.section} ({courses.type})</span>
+											</div>
+											<div class="card-body">
 												<ul class="attendanceList list-group list-group-flush">
-														{attendance.map((attendance)=>{
-															return (
-																<li class=" list-group-item d-flex justify-content-between"> 
-																	<div>Week {attendance.week}</div> 
-																	<div>{attendance.attendance}</div>
-																</li>
+													{attendance.map((attendance) => {
+														return (
+															<li class=" list-group-item d-flex justify-content-between">
+																<div>Week {attendance.week}</div>
+																<div><a href = "#" > Take Attendance</a></div>
+															</li>
 														)
-														})}
-														
-													</ul>
-												</div>
-												<div class="card-footer cardColoredPart text-muted">
-													<p className = 'courseName'>{courses.instructor}</p>
-												</div>
+													})}
+
+												</ul>
+											</div>
+											<div class="card-footer cardColoredPart text-muted">
+												<a href = "#" className= "text-white">View Detailed Info</a>
 											</div>
 										</div>
-									
-								)})
+									</div>
+
+								)
+							})
 							}
 
 						</div>
@@ -134,4 +128,4 @@ const StudentCoursesPage = () =>{
 		</>
 	)
 }
-export default StudentCoursesPage
+export default InstructorCoursesPage
