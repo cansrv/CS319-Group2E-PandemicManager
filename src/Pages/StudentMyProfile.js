@@ -15,32 +15,32 @@ const StudentMyProfilePage = () => {
                 <div className="d-none d-lg-block col-md-2">
                     <Sidebar/>
                 </div>
-                <div className="col-lg-10 col-md-12 bg-light">
+                <div className="col-lg-10 col-12 bg-light">
                     <div className="row">
-                        <div className="col-6 d-flex flex-column justify-content-center align-items-center">
+                        <div className="col-xl-6 col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                             <div className="row">
-                                <button className="editButton btn btn-lg py-3 px-5 mt-5">Edit HES Code</button>
+                                <button className="editButton btn btn-lg py-xl-3 px-xl-5 mt-5">Edit HES Code</button>
                             </div>
                             <div className="row">
-                                <button className="editButton btn btn-lg py-3 px-5 mt-5">Edit Vaccination Card</button>
+                                <button className="editButton btn btn-lg py-xl-3 px-xl-5 mt-5">Edit Vaccination Card</button>
                             </div>
                             <div className="row">
-                                <button className="markSelfRiskyButton btn btn-lg py-3 px-5 mt-5">Mark Self as Risky</button>
+                                <button className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5">Mark Self as Risky</button>
                             </div>
                             <div className="row">
                             <form className="my-5">
-                                <div className="form-row">
-                                    <div className="col">
-                                        <input type="text" className="form-search form-control-lg px-2" placeholder="Bilkent ID"/>
+                                <div className="row">
+                                    <div className="col d-flex">
+                                        <input type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID"/>
                                     </div>
-                                    <div className="col">
-                                        <button className="markSomeoneRiskyButton btn btn-lg px-3">Mark Someone Risky</button>
+                                    <div className="col d-flex">
+                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" >Mark Someone Risky</button>
                                     </div>
                                 </div>
                             </form>
                             </div>
                         </div>
-                        <div className="col-6">
+                        <div className="col-xl-6 col-12 col-lg-6">
                             <div className="covid-info d-flex flex-column my-5">
                                 <div className="row d-flex justify-content-center">
                                     <img src={PanManLogo} className="panman-logo-content mt-3"/>

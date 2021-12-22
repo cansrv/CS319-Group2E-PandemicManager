@@ -19,6 +19,7 @@ function App() {
                 <Route path = "/studentHomePage"exact element = { <StudentHomePage/>}></Route>
                 <Route path= "/studentCoursesPage"  element={<StudentCoursesPage />}></Route>
                 <Route path="/instructorCoursesPage" element={<InstructorCoursesPage />}></Route>
+                <Route path="/studentMyProfilePage" element={<StudentMyProfile />}></Route>
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
             </Routes> 
         </BrowserRouter>

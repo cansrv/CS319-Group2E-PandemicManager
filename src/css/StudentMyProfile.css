@@ -70,6 +70,8 @@
     line-height: 30px;
     color: #000000;
     border-bottom: 0.5px solid #000000;
+    scroll-behavior: auto;
+    overflow: auto;
 }
 
 .bold {
