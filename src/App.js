@@ -6,6 +6,7 @@ import StudentHomePage from "./Pages/StudentHomePage"
 import InstructorCampusPage from './Pages/InstructorCampusPage';
 import Navbar from './components/navbar'
 import StudentTestsPage from "../src/Pages/StudentTestsPage"
+import StudentMyProfile from "./Pages/StudentMyProfile"
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
             element = { < Login > < /Login>}> <
                 /Route> <
                 Route path = "/"
-                exact element = { < StudentHomePage / > } > < /Route> <
+                exact element = { < StudentMyProfile / > } > < /Route> <
                 Route path = "/signup"
                 element = { < SignUp > < /SignUp>}> <
                     /Route> <
