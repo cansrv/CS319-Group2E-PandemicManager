@@ -8,6 +8,7 @@ import InstructorCampusPage from './Pages/InstructorCampusPage';
 import Navbar from './components/navbar'
 import StudentTestsPage from "../src/Pages/StudentTestsPage"
 import InstructorCoursesPage from './Pages/InstructorCoursesPage';
+import StudentMyProfile from "./Pages/StudentMyProfile"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
             </Routes> 
         </BrowserRouter>
+
                 );
             }
 
