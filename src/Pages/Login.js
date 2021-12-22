@@ -19,21 +19,21 @@ const Login = () => {
                 </div>
                 <div className = "d-flex col-12 col-md-6 align-items-center rightContainer justify-content-between">
                     <form className = "col-12">
-                        <div class="form-group flex-row d-flex justify-content-between align-items-center">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label label">Email: </label>
-                            <div class="col-8 inputGroup">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email"/>
+                        <div className="form-group flex-row d-flex justify-content-between align-items-center">
+                            <label for="inputEmail3" className="col-sm-2 col-form-label label">Email: </label>
+                            <div className="col-8 inputGroup">
+                                <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
                             </div>
                         </div>
-                        <div class="form-group flex-row d-flex justify-content-between align-items-center">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label label">Password: </label>
-                            <div class="col-8 inputGroup">
-                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+                        <div className="form-group flex-row d-flex justify-content-between align-items-center">
+                            <label for="inputPassword3" className="col-sm-2 col-form-label label">Password: </label>
+                            <div className="col-8 inputGroup">
+                                <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
                             </div>
                         </div>
-                        <div class="form-group flex-row d-flex justify-content-center align-items-center">
-                            <div class="buttonContainer">
-                                <button type="submit" href= "#" class="btn loginButton">Log-in</button>
+                        <div className="form-group flex-row d-flex justify-content-center align-items-center">
+                            <div className="buttonContainer">
+                                <button type="submit" href= "#" className="btn loginButton">Log-in</button>
                             </div>
                         </div>
                         <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center pb-3">
