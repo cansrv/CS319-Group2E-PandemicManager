@@ -84,4 +84,5 @@
     line-height: 30px;
     text-decoration-line: underline;
     color: #0066FF;
+    flex-grow: 1;
 }
