@@ -4,17 +4,23 @@ import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationC
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@DiscriminatorValue("TA")
 public class TA extends Student {
     // Attributes
 
+    @OneToMany
     List<Section> sectionsTaught;
 
     // Constructors
 
-    public TA(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught, String fullName) {
+    public TA(String username, String password, long identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught, String fullName) {
         super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections, fullName);
         this.sectionsTaught = sectionsTaught;
     }

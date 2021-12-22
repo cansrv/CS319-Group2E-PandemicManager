@@ -4,13 +4,29 @@ import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 
+import javax.persistence.*;
 import java.time.Clock;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class Exam extends Lecture {
     //Properties
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @OneToOne
     private Instructor courseCoordinator;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     //Constructors
     public Exam() {

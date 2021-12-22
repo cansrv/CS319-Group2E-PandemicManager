@@ -2,33 +2,51 @@ package dutchChocolates.panMan.appLayer.models;
 
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Inheritance
+@DiscriminatorColumn(name = "userType", discriminatorType = DiscriminatorType.STRING)
 public abstract class User {
     // Attributes
-    String username;
-    String fullName;
-    String password;
-    UUID identifier;
-    String mail;
-    String phoneNumber;
-    String bilkentID;
-    List<Group> groupsCreated;
-    List<Group> groupsParticipated;
-    CovidInformationCard covidInformationCard;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "identifier", nullable = false)
+    Long id;
+    @Basic
+    private String username;
+    @Basic
+    private String fullName;
+    @Basic
+    private String password;
+    @Basic
+    private String mail;
+    @Basic
+    private String phoneNumber;
+    @Basic
+    private String bilkentID;
+    @ManyToMany(targetEntity = Group.class)
+    private List<Group> groupsCreated;
+    @ManyToMany(targetEntity =  Group.class)
+    private List<Group> groupsParticipated;
+    @OneToOne
+    private CovidInformationCard covidInformationCard;
 
     // Constructors
-    public User(String password, String mail, String name, String surname, String bilkentID, String HESCode) {
-        this.identifier = UUID.randomUUID();
+    public User(String password, String mail, String name, String surname, String bilkentID, String hesCode) {
         this.password = password;
         this.mail = mail;
+        this.fullName = name + " " + surname;
+        this.bilkentID = bilkentID;
+        this.setCovidInformationCard(new CovidInformationCard(hesCode));
     }
 
-    public User(String username, String password, UUID identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+    public User(String username, String password, Long id, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
-        this.identifier = identifier;
+        this.id = id;
         this.mail = mail;
         this.phoneNumber = phoneNumber;
         this.bilkentID = bilkentID;
@@ -39,7 +57,6 @@ public abstract class User {
     }
 
     public User() {
-        identifier = UUID.randomUUID();
     }
 
     //Operators
@@ -54,6 +71,16 @@ public abstract class User {
     }
 
     //Methods
+
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -72,12 +99,12 @@ public abstract class User {
         return true;
     }
 
-    public UUID getIdentifier() {
-        return identifier;
+    public Long getId() {
+        return id;
     }
 
-    public boolean setIdentifier(UUID identifier) {
-        this.identifier = identifier;
+    public boolean setId(long id) {
+        this.id = id;
         return true;
     }
 

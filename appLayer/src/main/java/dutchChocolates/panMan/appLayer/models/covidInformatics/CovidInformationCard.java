@@ -1,19 +1,46 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+@Entity
 public class CovidInformationCard {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     // Attributes
+    @OneToOne
     VaccinationCard vaccinationCard;
+    @OneToMany
     List<Test> tests;
-    HESCodeStatus hesCodeStatus;
+    @ElementCollection
     List<String> hesCodes;
+    @Basic
+    HESCodeStatus hesCodeStatus;
+    @Basic
     CovidStatus covidStatus;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     // Constructors
 
+    public CovidInformationCard(String hesCode) {
+        this.vaccinationCard = null;
+        this.hesCodes.add(hesCode);
+        this.covidStatus = null;
+        this.hesCodeStatus = HESCodeStatus.OK;
+        this.tests = null;
+    }
 
     public CovidInformationCard(VaccinationCard vaccinationCard, List<Test> tests, HESCodeStatus hesCodeStatus, List<String> hesCodes, CovidStatus covidStatus) {
         this.vaccinationCard = vaccinationCard;

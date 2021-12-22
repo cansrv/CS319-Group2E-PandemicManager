@@ -1,21 +1,26 @@
 package dutchChocolates.panMan.appLayer.models;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
-
-public abstract class Group {
+@Entity
+@Inheritance
+@DiscriminatorColumn(name = "groupType", discriminatorType = DiscriminatorType.STRING)public abstract class Group {
     //Properties
-    UUID identifier;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    Long id;
+    @ManyToMany(targetEntity = User.class)
     List<User> participants;
 
     //Constructors
     public Group(List<User> participants) {
         this.participants = participants;
-        this.identifier = UUID.randomUUID();
     }
 
-    public Group(UUID identifier, List<User> participants) {
-        this.identifier = identifier;
+    public Group(long id, List<User> participants) {
+        this.id = id;
         this.participants = participants;
     }
 
