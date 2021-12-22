@@ -4,6 +4,7 @@ import courses from '../components/courseData'
 import Sidebar from '../components/Sidebar'
 import TakeAttendanceModal from '../components/TakeAttendanceModal'
 import ViewDetailedInfoModal from '../components/viewDetailedInfo'
+import {useState} from 'react'
 
 const InstructorCoursesPage = () => {
 	const attendance = [
@@ -77,6 +78,7 @@ const InstructorCoursesPage = () => {
 		}
 	]
 
+	const [currentWeek, setCurrentWeek] = useState(1);
 	return (
 		<>
 			<div className="container px-5">
@@ -105,7 +107,7 @@ const InstructorCoursesPage = () => {
 														return (
 															<li className=" list-group-item d-flex justify-content-between">
 																<div>Week {attendance.week}</div>
-																<a data-toggle="modal" href="#takeAttendanceModal"  > Take Attendance</a>
+																<a data-toggle="modal" href="#takeAttendanceModal"  onClick={()=>setCurrentWeek(attendance.week)}> Take Attendance</a>
 																
 															</li>
 														)
