@@ -1,0 +1,26 @@
+*{
+	font-family:sans-serif;
+}
+.courseCard{
+	border-radius: 10px;
+	border: 7px solid #25C4DA;
+
+}
+.cardColoredPart{
+	background: #25C4DA !important;
+}
+.courseName{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 31px;
+	color: white;
+}
+.sectionAndType{
+	font-style: normal;
+
+	font-size: 20px;
+	line-height: 31px;
+	color: white;
+}
+
