@@ -7,17 +7,19 @@ import StudentCoursesPage from './Pages/StudentCoursesPage';
 import InstructorCampusPage from './Pages/InstructorCampusPage';
 import Navbar from './components/navbar'
 import StudentTestsPage from "../src/Pages/StudentTestsPage"
+import GroupsPage from './Pages/GroupsPage';
 
 
 function App() {
     return ( 
         <BrowserRouter>
             <Routes>
-                <Route path = "/" element = { <Login></Login>}></Route> 
-                <Route path = "/studentHomePage"exact element = { <StudentHomePage/>}></Route>
+                <Route path = "/login" exact element = { <Login></Login>}></Route> 
+                <Route path = "/studentHomePage" element = { <StudentHomePage/>}></Route>
                 <Route path= "/studentCoursesPage"  element={<StudentCoursesPage />}></Route>
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
-            </Routes> 
+                <Route path = "/" element = {<GroupsPage></GroupsPage>}></Route>
+            </Routes>
         </BrowserRouter>
                 );
             }
