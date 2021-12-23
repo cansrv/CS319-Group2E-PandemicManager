@@ -23,13 +23,18 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path = "/signup" element = {<SignUp></SignUp>}></Route>
-                <Route path = "/login" element = {<Login></Login>}></Route> 
-                <Route path = "/studentHomePage" element = {!loggedIn ? <Navigate to="/login"/> : <StudentHomePage/>}></Route>
-                <Route path= "/studentCoursesPage"  element={!loggedIn ? <Navigate to="/login"/> : <StudentCoursesPage/>}></Route>
-                <Route path="/instructorCoursesPage" element={!loggedIn ? <Navigate to="/login"/> : <InstructorCoursesPage />}></Route>
-                <Route path="/instructorCampusPage" element={!loggedIn ? <Navigate to="/login"/> : <InstructorCampusPage />}></Route>
-                <Route path="/studentMyProfilePage" element={!loggedIn ? <Navigate to="/login"/> : <StudentMyProfile />}></Route>
-                <Route path = "/" element = {!loggedIn ? <Navigate to="/login"/> : <GroupsPage></GroupsPage>}></Route>
+                <Route path = "/" element = {<Login></Login>}></Route> 
+                <Route path = "/home" element = {!loggedIn ? <Navigate to="/"/> : <StudentHomePage/>}></Route>
+                <Route path= "/courses"  
+                element={!loggedIn ? <Navigate to="/"/> : 
+                        (userType === "student" ? <StudentCoursesPage userType={userType}/> 
+                        : <InstructorCoursesPage userType={userType}/>)}>
+                </Route>
+                <Route path="/campus" element={!loggedIn ? <Navigate to="/"/> : (userType === "student" ? <StaffCampusPage userType={userType}/> 
+                        : <InstructorCampusPage userType={userType}/>)}></Route>
+                <Route path="/myProfile" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile userType={userType}/>}></Route>
+                <Route path="/tests" element={!loggedIn ? <Navigate to="/"/> : <StudentTestsPage userType={userType}/>}></Route>
+                <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage userType={userType}/>}></Route>
             </Routes>
         </BrowserRouter>
 
