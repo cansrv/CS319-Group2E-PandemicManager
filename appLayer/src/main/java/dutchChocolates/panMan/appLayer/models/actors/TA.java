@@ -4,18 +4,12 @@ import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationC
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.List;
-import java.util.UUID;
 
-@Entity
-@DiscriminatorValue("TA")
+import java.util.List;
+
+
 public class TA extends Student {
     // Attributes
-
-    @OneToMany
     List<Section> sectionsTaught;
 
     // Constructors

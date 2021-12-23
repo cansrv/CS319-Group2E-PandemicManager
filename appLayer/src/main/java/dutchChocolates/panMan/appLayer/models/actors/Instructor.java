@@ -5,17 +5,12 @@ import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import java.util.List;
 import java.util.UUID;
-@Entity
-@DiscriminatorValue("INSTRUCTOR")
+
 public class Instructor extends User {
-    @ManyToMany(targetEntity = Course.class)
     List<Course> courses;
-    @ManyToMany(targetEntity = Section.class)
+
     List<Section> sections;
 
     //Constructors

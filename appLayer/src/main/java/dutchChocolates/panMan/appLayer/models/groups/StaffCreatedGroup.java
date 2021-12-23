@@ -2,15 +2,12 @@ package dutchChocolates.panMan.appLayer.models.groups;
 
 import dutchChocolates.panMan.appLayer.models.User;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+
 import java.time.Clock;
-import java.time.Instant;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-@Entity
-@DiscriminatorValue("USERCREATEDGROUP")
+
+
 public class StaffCreatedGroup extends UserCreatedGroup {
     //Properties
 

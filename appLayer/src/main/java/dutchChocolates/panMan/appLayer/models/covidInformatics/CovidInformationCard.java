@@ -1,27 +1,17 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
-@Entity
+
 public class CovidInformationCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
     // Attributes
-    @OneToOne
+    private Long id;
     VaccinationCard vaccinationCard;
-    @OneToMany
     List<Test> tests;
-    @ElementCollection
     List<String> hesCodes;
-    @Basic
     HESCodeStatus hesCodeStatus;
-    @Basic
     CovidStatus covidStatus;
 
     public Long getId() {
@@ -39,7 +29,7 @@ public class CovidInformationCard {
         this.hesCodes.add(hesCode);
         this.covidStatus = null;
         this.hesCodeStatus = HESCodeStatus.OK;
-        this.tests = null;
+        this.tests = new ArrayList<>();
     }
 
     public CovidInformationCard(VaccinationCard vaccinationCard, List<Test> tests, HESCodeStatus hesCodeStatus, List<String> hesCodes, CovidStatus covidStatus) {

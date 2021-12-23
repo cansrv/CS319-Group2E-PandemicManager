@@ -4,26 +4,15 @@ import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 
-import javax.persistence.*;
 import java.util.List;
-@Entity
+
 public class Section {
-
     //Properties
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
-    @OneToMany
     private List<Lecture> lectures;
-    @OneToMany
     private List<Student> students;
-    @OneToMany
     private List<Instructor> instructors;
-    @OneToMany
     private List<TA> TAs;
-    @OneToOne
     private Course course;
     private boolean isOnline;
     private int sectionNumber;

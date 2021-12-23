@@ -3,16 +3,12 @@ package dutchChocolates.panMan.appLayer.models.groups;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+
 import java.util.List;
-import java.util.UUID;
-@Entity
-@DiscriminatorValue("SYSTEMCREATEDGROUP")
+
+
 public class SystemCreatedGroup extends Group {
     //Properties
-    @OneToOne
     Location location;
 
     //Constructors

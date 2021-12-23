@@ -1,22 +1,14 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
-import javax.persistence.*;
-import java.util.Date;
-@Entity
-public class Test {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
+import java.util.Date;
+
+public class Test {
     // Attributes
-    @Basic
+    private Long id;
     Date testDate;
-    @Basic
     TestType testType;
-    @Basic
     ResultType resultType;
-    @Basic
     VariantType variantType;
 
     public Long getId() {

@@ -2,36 +2,22 @@ package dutchChocolates.panMan.appLayer.models;
 
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.UUID;
 
-@Entity
-@Inheritance
-@DiscriminatorColumn(name = "userType", discriminatorType = DiscriminatorType.STRING)
+import java.util.List;
+
+
+
 public abstract class User {
     // Attributes
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "identifier", nullable = false)
     Long id;
-    @Basic
     private String username;
-    @Basic
     private String fullName;
-    @Basic
     private String password;
-    @Basic
     private String mail;
-    @Basic
     private String phoneNumber;
-    @Basic
     private String bilkentID;
-    @ManyToMany(targetEntity = Group.class)
     private List<Group> groupsCreated;
-    @ManyToMany(targetEntity =  Group.class)
     private List<Group> groupsParticipated;
-    @OneToOne
     private CovidInformationCard covidInformationCard;
 
     // Constructors

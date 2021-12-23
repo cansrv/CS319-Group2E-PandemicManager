@@ -5,15 +5,10 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.User;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import java.util.List;
-@Entity
-@DiscriminatorValue("STUDENT")
+
 public class Student extends User {
     // Attributes
-    @OneToMany
     List<Section> sections;
 
     // Constructors

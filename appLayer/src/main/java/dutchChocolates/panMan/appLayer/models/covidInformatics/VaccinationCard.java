@@ -1,25 +1,14 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
-@Entity
 public class VaccinationCard {
-    @Basic
     String firstName;
-    @Basic
     String middleName;
-    @Basic
     String lastName;
-    @Basic
     Date birthDate;
-    @Id
     String personalIdNumber;
-    @OneToMany
     List<Vaccine> vaccines;
 
     // Constructors
