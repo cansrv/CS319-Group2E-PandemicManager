@@ -3,11 +3,12 @@ package dutchChocolates.panMan.appLayer.models.groups;
 import dutchChocolates.panMan.appLayer.models.User;
 
 
+import javax.persistence.Entity;
 import java.time.Clock;
 import java.util.Date;
 import java.util.List;
 
-
+@Entity
 public class StaffCreatedGroup extends UserCreatedGroup {
     //Properties
 

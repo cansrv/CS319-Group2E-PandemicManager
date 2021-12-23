@@ -1,11 +1,14 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
+import javax.persistence.*;
 import java.util.Date;
 
-
+@Entity
 public class Vaccine {
     //Properties
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)    private Long id;
     String manufacturer;
     Date applicationDate;
     String country;

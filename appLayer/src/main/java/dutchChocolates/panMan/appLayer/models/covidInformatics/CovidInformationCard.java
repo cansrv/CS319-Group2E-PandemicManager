@@ -1,15 +1,21 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@Entity
 public class CovidInformationCard {
     // Attributes
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)    private Long id;
+    @OneToOne
     VaccinationCard vaccinationCard;
+    @ElementCollection
     List<Test> tests;
+    @ElementCollection
     List<String> hesCodes;
     HESCodeStatus hesCodeStatus;
     CovidStatus covidStatus;

@@ -1,11 +1,14 @@
 package dutchChocolates.panMan.appLayer.models.groups;
 
 
+import javax.persistence.*;
 
-
+@Entity
 public class Location {
     //Properties
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private String name;
 
 
@@ -26,14 +29,5 @@ public class Location {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 
 }

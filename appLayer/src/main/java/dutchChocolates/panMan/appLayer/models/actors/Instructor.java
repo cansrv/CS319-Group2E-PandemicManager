@@ -5,12 +5,15 @@ import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
-
+@Entity
 public class Instructor extends User {
-    List<Course> courses;
 
+    @ManyToMany
+    List<Course> courses;
+    @ManyToMany
     List<Section> sections;
 
     //Constructors

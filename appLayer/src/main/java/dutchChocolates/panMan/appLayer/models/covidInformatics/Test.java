@@ -1,10 +1,14 @@
 package dutchChocolates.panMan.appLayer.models.covidInformatics;
 
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
 public class Test {
     // Attributes
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Long id;
     Date testDate;
     TestType testType;

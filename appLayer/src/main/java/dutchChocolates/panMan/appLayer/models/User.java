@@ -1,23 +1,40 @@
 package dutchChocolates.panMan.appLayer.models;
 
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
     // Attributes
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     Long id;
+    @CreationTimestamp
+    @Column(name="entrytime", nullable = false, updatable = false, insertable = false)
+    private Timestamp entryTime;
+    @UpdateTimestamp
+    @Column(name="exittime")
+    private Timestamp exitTime;
     private String username;
     private String fullName;
     private String password;
     private String mail;
     private String phoneNumber;
     private String bilkentID;
+    @ManyToMany
     private List<Group> groupsCreated;
+    @ManyToMany
     private List<Group> groupsParticipated;
+    @OneToOne
     private CovidInformationCard covidInformationCard;
 
     // Constructors

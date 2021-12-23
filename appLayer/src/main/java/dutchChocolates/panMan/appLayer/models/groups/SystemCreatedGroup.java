@@ -4,11 +4,13 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
 
+import javax.persistence.*;
 import java.util.List;
 
-
+@Entity
 public class SystemCreatedGroup extends Group {
     //Properties
+    @ManyToOne
     Location location;
 
     //Constructors

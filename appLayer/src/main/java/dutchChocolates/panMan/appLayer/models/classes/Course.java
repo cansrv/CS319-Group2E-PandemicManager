@@ -5,15 +5,23 @@ import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 
 
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Course {
     //Properties
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)    private Long id;
+    @OneToMany
     private List<Exam> exams;
+    @OneToMany
     private List<Section> sections;
+    @OneToMany
     private List<Student> students;
+    @ManyToMany
     private List<Instructor> instructors;
+    @ManyToMany
     private List<TA> TAs;
     private String courseName;
 

@@ -4,13 +4,18 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.time.Clock;
 import java.util.Date;
 import java.util.List;
 
-
+@Entity
 public class UserCreatedGroup extends Group {
     //Properties
+    @ManyToOne
     private Location location;
     private Date date;
 

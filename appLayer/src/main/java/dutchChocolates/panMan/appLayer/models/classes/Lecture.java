@@ -4,11 +4,17 @@ import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 
+import javax.persistence.*;
+
+@Entity
 public class Lecture {
     //Properties
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)    private Long id;
     private String roomName;
     private boolean isSpareHour;
+    @OneToOne
     private Attendance attendance;
 
     public Long getId() {

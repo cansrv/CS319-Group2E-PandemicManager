@@ -2,14 +2,17 @@ package dutchChocolates.panMan.appLayer.models.classes;
 
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 
+import javax.persistence.*;
 import java.time.Clock;
 import java.util.Date;
 import java.util.List;
-
+@Entity
 public class Attendance {
     //Properties
-    private Long id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)    private Long id;
+    @OneToMany
     private List<Student> students;
 
     private Date date;

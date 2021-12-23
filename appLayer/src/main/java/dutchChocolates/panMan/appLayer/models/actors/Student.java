@@ -5,10 +5,15 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.User;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.List;
-
+@Entity
 public class Student extends User {
     // Attributes
+    @ManyToMany
     List<Section> sections;
 
     // Constructors

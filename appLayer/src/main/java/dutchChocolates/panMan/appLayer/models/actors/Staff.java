@@ -4,9 +4,10 @@ import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationC
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.UUID;
-
+@Entity
 public class Staff extends User {
     // Constructors
     public Staff() {
