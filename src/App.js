@@ -17,19 +17,19 @@ import {useState} from "react"
 function App() {
 
     const [userType, setUserType] = useState("student")
-    const [loggedIn, setLoggedIn] = useState(true)
+    const [loggedIn, setLoggedIn] = useState(false)
 
     return ( 
         <BrowserRouter>
             <Routes>
                 <Route path = "/signup" element = {<SignUp></SignUp>}></Route>
-                <Route path = "/login" element = {<Login></Login>}></Route> 
-                <Route path = "/studentHomePage" element = {!loggedIn ? <Navigate to="/login"/> : <StudentHomePage/>}></Route>
-                <Route path= "/studentCoursesPage"  element={!loggedIn ? <Navigate to="/login"/> : <StudentCoursesPage/>}></Route>
-                <Route path="/instructorCoursesPage" element={!loggedIn ? <Navigate to="/login"/> : <InstructorCoursesPage />}></Route>
-                <Route path="/instructorCampusPage" element={!loggedIn ? <Navigate to="/login"/> : <InstructorCampusPage />}></Route>
-                <Route path="/studentMyProfilePage" element={!loggedIn ? <Navigate to="/login"/> : <StudentMyProfile />}></Route>
-                <Route path = "/" element = {!loggedIn ? <Navigate to="/login"/> : <GroupsPage></GroupsPage>}></Route>
+                <Route path = "/" element = {<Login></Login>}></Route> 
+                <Route path = "/studentHomePage" element = {!loggedIn ? <Navigate to="/"/> : <StudentHomePage/>}></Route>
+                <Route path= "/studentCoursesPage"  element={!loggedIn ? <Navigate to="/"/> : <StudentCoursesPage/>}></Route>
+                <Route path="/instructorCoursesPage" element={!loggedIn ? <Navigate to="/"/> : <InstructorCoursesPage />}></Route>
+                <Route path="/instructorCampusPage" element={!loggedIn ? <Navigate to="/"/> : <InstructorCampusPage />}></Route>
+                <Route path="/studentMyProfilePage" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile />}></Route>
+                <Route path = "/groupsPage" element = {!loggedIn ? <Navigate to="/"/> : <GroupsPage></GroupsPage>}></Route>
             </Routes>
         </BrowserRouter>
 
