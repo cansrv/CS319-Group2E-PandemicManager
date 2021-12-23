@@ -1,0 +1,33 @@
+.card-header {
+  background-color: #25c4da;
+  color: white;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card {
+  width: 350px;
+  margin: auto;
+}
+
+.card-body {
+  height: 200px;
+  overflow: auto;
+}
+
+.createGroupButton {
+  background-color: #25c4da;
+  border: #25c4da;
+}
+
+#createGroupModal {
+  width: fit-content;
+  margin: auto;
+}
+
+.addedParticipantsList {
+  height: 200px;
+  overflow: auto;
+}
