@@ -6,7 +6,6 @@ const Navbar = () => {
 	return(
 		<>
 		<div className="collapse navbar-collapse" id="navbarSupportedContent">
-		<Sidebar/>
 		</div>
 		<nav className="navbar navbar-expand-lg panman-bg container d-flex">
 			{/*LİNK KOY*/}

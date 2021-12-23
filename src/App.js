@@ -12,6 +12,7 @@ import InstructorCoursesPage from './Pages/InstructorCoursesPage';
 import StudentMyProfile from "./Pages/StudentMyProfile"
 
 
+
 function App() {
     return ( 
         <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
                 <Route path = "/studentHomePage" element = { <StudentHomePage/>}></Route>
                 <Route path= "/studentCoursesPage"  element={<StudentCoursesPage />}></Route>
                 <Route path="/instructorCoursesPage" element={<InstructorCoursesPage />}></Route>
+                <Route path="/studentMyProfilePage" element={<StudentMyProfile />}></Route>
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
                 <Route path = "/groups" element = {<GroupsPage></GroupsPage>}></Route>
             </Routes>
