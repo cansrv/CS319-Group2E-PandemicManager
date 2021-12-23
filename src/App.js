@@ -17,7 +17,7 @@ import {useState} from "react"
 function App() {
 
     const [userType, setUserType] = useState("student")
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(true)
 
     return ( 
         <BrowserRouter>

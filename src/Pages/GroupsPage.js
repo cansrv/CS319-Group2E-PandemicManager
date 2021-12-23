@@ -111,7 +111,7 @@ const GroupsPage = () => {
 					<div className="d-none d-md-block col-md-2">
 						<Sidebar></Sidebar>
 					</div>
-					<div className="col-12 col-md-10 bg-light ">
+					<div className="col-12 col-md-10 bg-light contentContainer">
                         <div className="row col-12 d-flex justify-content-end">
                             <button className="col-12 col-md-3 btn btn-primary m-md-3 createGroupButton" data-toggle="modal" data-target="#createGroupModal">
                                 Create Group
@@ -191,11 +191,11 @@ const GroupsPage = () => {
 							{groups.length ? groups.map((group)=>{
 								return(
 										<div className="col-12 col-md-6">
-											<div className="card text-center my-4 ">
-												<div className="card-header">
-													<span><h5 className="card-title">{group.groupName}</h5></span>
+											<div className="groupCard text-center my-4 ">
+												<div className="groupCardHeader card-header">
+													<span><h5 className="groupCardTitle card-title">{group.groupName}</h5></span>
                                                     <span>
-                                                        <span className="card-text">{
+                                                        <span className="groupCardText card-text">{
                                                             group.isActive ? (
                                                                 <span className="card-text px-3">(Active)</span>
                                                             ) : (
@@ -206,7 +206,7 @@ const GroupsPage = () => {
                                                         </span>
                                                     </span>
 												</div>
-												<div className="card-body">
+												<div className="groupCardBody card-body">
                                                     <ul className="attendanceList list-group list-group-flush">
 														{group.participants.map((participant) => {
                                                                 return (
@@ -218,7 +218,7 @@ const GroupsPage = () => {
                                                         )}
 													</ul>													
 												</div>
-												<div className="card-footer">
+												<div className="groupCardFooter card-footer">
                                                     <span>
                                                         <button className="btn btn-danger m-2" onClick={() => deleteGroup(group)} type="button">Delete Group</button>
                                                     </span>
@@ -227,9 +227,11 @@ const GroupsPage = () => {
 										</div>
 									
 								)}) : (
-                                    <div className="container">
-                                        No Groups Found
-                                    </div>
+                                    
+                                        <div className="container bg-danger display-4 text-light d-flex justify-content-center mx-5 rounded">
+                                            No Groups Found
+                                        </div>
+                                    
                                 )
 							}
 						</div>

@@ -1,18 +1,18 @@
-.card-header {
+.groupCardHeader {
   background-color: #25c4da;
   color: white;
 }
 
-.card-title {
+.groupCardTitle {
   font-weight: bold;
 }
 
-.card {
+.groupCard {
   width: 350px;
   margin: auto;
 }
 
-.card-body {
+.groupCardBody {
   height: 200px;
   overflow: auto;
 }
@@ -29,5 +29,10 @@
 
 .addedParticipantsList {
   height: 200px;
+  overflow: auto;
+}
+
+.contentContainer {
+  height: 100vh;
   overflow: auto;
 }
