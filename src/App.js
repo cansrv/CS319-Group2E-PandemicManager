@@ -14,16 +14,18 @@ import StudentMyProfile from "./Pages/StudentMyProfile"
 
 
 function App() {
+  
+
     return ( 
         <BrowserRouter>
             <Routes>
-                <Route path = "/login" exact element = { <Login></Login>}></Route> 
-                <Route path = "/studentHomePage" element = { <StudentHomePage/>}></Route>
+                <Route path = "/" exact element = { <Login></Login>}></Route> 
+                <Route path = "/HomePage" element = { <StudentHomePage/>}></Route>
                 <Route path= "/studentCoursesPage"  element={<StudentCoursesPage />}></Route>
                 <Route path="/instructorCoursesPage" element={<InstructorCoursesPage />}></Route>
                 <Route path="/studentMyProfilePage" element={<StudentMyProfile />}></Route>
                 <Route path = "/signup" element = { <SignUp > </SignUp>}></Route>
-                <Route path = "/" element = {<GroupsPage></GroupsPage>}></Route>
+                <Route path = "/groups" element = {<GroupsPage></GroupsPage>}></Route>
             </Routes>
         </BrowserRouter>
 
