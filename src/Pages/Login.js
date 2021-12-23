@@ -56,8 +56,10 @@ const Login = () => {
                         </div>
                         <div className="form-group flex-row d-flex justify-content-center align-items-center">
                             <div className="buttonContainer">
-                                <button type="submit" href= "#" className="btn loginButton"
+                                <Link to="/home">
+                                    <button type="submit" href= "#" className="btn loginButton"
                                 onClick={() => login()}>Log-in</button>
+                                </Link>
                             </div>
                         </div>
                         <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center pb-3">

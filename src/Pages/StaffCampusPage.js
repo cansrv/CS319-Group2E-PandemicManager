@@ -3,6 +3,7 @@ import Navbar from "../components/navbar"
 import '../css/StaffCampusPage.css'
 import report from "../components/weeklyReportData"
 import Sidebar from "../components/Sidebar"
+import { Link } from "react-router-dom"
 
 const StaffCampusPage = () => {
         const [status, setStatus] = useState(false)
@@ -61,9 +62,12 @@ const StaffCampusPage = () => {
                                             </div>
                                             <div className="row d-flex justify-content-center">
                                                     <div className="col-12 col-sm-4 mb-2">
-                                                            <button className='groupsButton px-5 py-3'>
+                                                            <Link to="/groups">
+                                                                    <button className='groupsButton px-5 py-3'>
                                                                     Groups
                                                             </button>
+                                                            </Link>
+                                                           
                                                     </div>
                                             </div>
 
