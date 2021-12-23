@@ -1,8 +1,9 @@
 import Sidebar from "../components/Sidebar"
 import '../css/Navbar.css'
+import {useState} from 'react'
 
 const Navbar = () => {
-
+	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "student"})
 	return(
 		<>
 		<div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,7 +22,7 @@ const Navbar = () => {
 						<div className="d-none d-lg-block user-logo mr-3"></div>
 						<div className="d-none d-lg-block">
 							<div>
-								<div className="username">Mehmet Yılmaz</div>
+								<div className="username">{ `${person.name} ${person.surname}`}</div>
 								<div className="account-status text-muted">Student</div>
 							</div>
 						</div>

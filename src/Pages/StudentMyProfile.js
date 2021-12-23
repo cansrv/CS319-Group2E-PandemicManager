@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
 
 const StudentMyProfilePage = () => {
+    const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", email: "mehmet.yılmaz@ug.bilkent.edu.tr", ID: "21901784"})
     return (
         <div className='container'>
             <div className='row'>
@@ -47,10 +48,10 @@ const StudentMyProfilePage = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-11 mt-2">
-                                       <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> Mehmet</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> Yılmaz</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> mehmet.yılmaz@ug.bilkent.edu.tr</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> 21901784</div>
+                                       <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> {person.name}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> {person.surname}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> {person.email}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> {person.ID}</div>
                                     </div>
                                 </div>
                                 <div className="row mt-4 ml-3 mb-5">
