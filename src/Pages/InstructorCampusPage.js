@@ -3,6 +3,7 @@ import Navbar from "../components/navbar"
 import '../css/InstructorCampusPage.css'
 import report from "../components/weeklyReportData"
 import exams from "../components/examData"
+import { Link } from "react-router-dom"
 
 
 const InstructorCampusPage = () => {
@@ -50,6 +51,9 @@ const InstructorCampusPage = () => {
     
     const dateHandler = (value) => {
         console.log(value);
+		var formattedDate = value.substring(0, 2) + "." + value.substring(3,5) + "." + value.substring(6)
+		console.log(value.substring(0, 2));
+		// "12.05.2021"
         setDate(value);
     };
     const newParticipantHandler = (value) => {
@@ -223,7 +227,11 @@ const InstructorCampusPage = () => {
 								</tbody>
 							</table>
 						</div>
-						
+						<Link to="/groups">
+                                                                    <button className='groupsButton px-5 py-3'>
+                                                                    Groups
+                                                            </button>
+                                                            </Link>
 					</div>
 				</div>
 			</div>
