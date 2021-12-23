@@ -47,7 +47,7 @@ const StudentMyProfilePage = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-11 mt-2">
-                                       <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> Mehmet</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> Mehmet</div>
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> Yılmaz</div>
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> mehmet.yılmaz@ug.bilkent.edu.tr</div>
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> 21901784</div>
