@@ -12,7 +12,7 @@ const Navbar = () => {
 			<div className="row navbar-content-area">
 				<div className="col-lg-7 col-md-12 d-flex offset-1 offset-md-0
 				justify-content-md-center justify-content-center align-items-center">
-					<a className="navbar-brand" href="/studenthomepage"><div className="panman-logo"></div></a>
+					<a className="navbar-brand" href="/home"><div className="panman-logo"></div></a>
 					<span className="navbar-logo-text ml-md-4 ml-1">PanMan</span>
 					<span className="navbar-name-text ml-lg-4 ml-3 d-none d-sm-inline">University Pandemic Manager</span>
 				</div>

@@ -15,7 +15,7 @@ const StaffCampusPage = () => {
                             </div>
 
                             <div className = 'row align-items-between'>
-                                    <div className="d-none d-md-block col-md-2 border">
+                                    <div className="d-none d-md-block col-md-2 ">
                                             <Sidebar/>
                                     </div>
                                     <div className="col-12 col-md-10   bg-light ">

@@ -73,7 +73,7 @@ const StudentTestsPage = () => {
                         </div>
                     </div>
                     <div className="col-lg-5 d-flex justify-content-center align-items-center mb-5 my-3">
-                        <div className="test-appointment-button py-2 px-4 d-flex justify-content-center align-items-center">
+                        <div className="btn test-appointment-button py-2 px-4 d-flex justify-content-center align-items-center">
                             <p className="get-appointment-text">Get Test Appointment</p>
                         </div>
                     </div>
