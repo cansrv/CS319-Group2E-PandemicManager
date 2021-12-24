@@ -6,6 +6,7 @@ const Login = () => {
 
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
+    const [loggedIn, setLoggedIn] = useState(false)
 
     const mailHandler = (value) => {
         console.log(value);
@@ -17,8 +18,19 @@ const Login = () => {
         setPassword(value);
     };
 
-    const login = () => {
-        window.alert("The input creditentials are mail: ", mail, "password: ", password);
+    const login = (e) => {
+        e.preventDefault()
+        if (mail !== "" && password !== "") {
+            console.log("The input creditentials are mail: " + mail + "password: " + password);
+            setLoggedIn(true);
+            window.location.href("/home")
+        }
+        else if (mail == "") {
+            window.alert("Please enter mail");
+        }
+        else if (password == "") {
+            window.alert("Please enter password");
+        }
     }
 
     return (
@@ -56,10 +68,12 @@ const Login = () => {
                         </div>
                         <div className="form-group flex-row d-flex justify-content-center align-items-center">
                             <div className="buttonContainer">
-                                <Link to="/home">
-                                    <button type="submit" href= "#" className="btn loginButton"
-                                onClick={() => login()}>Log-in</button>
-                                </Link>
+                            
+                                    <button type="submit" href= {loggedIn ? "/home" : "/login"} className="btn loginButton"
+                                    onClick={(e) => login(e)}>Log-in</button>
+                                
+                                    
+                                
                             </div>
                         </div>
                         <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center pb-3">
