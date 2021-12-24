@@ -1,0 +1,15 @@
+.nameInfo{
+	background: #25C4DA;
+	border-radius: 10px 10px 0px 0px;
+
+}
+.form-control{
+	border-radius: 0% !important;
+}
+.btn-outline-secondary{
+	border-radius: 0% !important;
+}
+.takeAttendanceList{
+	height: 400px;
+	overflow: auto;
+}

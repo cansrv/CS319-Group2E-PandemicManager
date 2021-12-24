@@ -95,7 +95,7 @@ const InstructorCoursesPage = () => {
 							{courses.map((courses) => {
 								return (
 
-									<div className="col-12 col-md-6">
+									<div className="col-12 col-lg-6">
 										<div className="card courseCard text-center my-4 ">
 											<div className="card-header cardColoredPart">
 												<span className='courseName'>{courses.name}</span>
