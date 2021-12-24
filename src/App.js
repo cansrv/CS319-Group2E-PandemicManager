@@ -16,7 +16,7 @@ import {useState} from "react"
 
 function App() {
 
-    const [userType, setUserType] = useState("student")
+    const [userType, setUserType] = useState("instructor")
     const [loggedIn, setLoggedIn] = useState(true)
 
     return ( 
