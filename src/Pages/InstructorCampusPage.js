@@ -4,6 +4,7 @@ import '../css/InstructorCampusPage.css'
 import report from "../components/weeklyReportData"
 import exams from "../components/examData"
 import { Link } from "react-router-dom"
+import Sidebar from "../components/Sidebar"
 
 
 const InstructorCampusPage = () => {
@@ -72,8 +73,8 @@ const InstructorCampusPage = () => {
 				</div>
 
 				<div className='row align-items-between'>
-					<div className="d-none d-md-block col-md-2  bg-dark">
-						{/*SIDEBAR*/}
+					<div className="d-none d-md-block col-md-2">
+						<Sidebar/>
 					</div>
 					<div className="col-12 col-md-10   bg-light ">
 						<div className="row mt-4 d-flex justify-content-between ml-5">
@@ -228,10 +229,10 @@ const InstructorCampusPage = () => {
 							</table>
 						</div>
 						<Link to="/groups">
-                                                                    <button className='groupsButton px-5 py-3'>
-                                                                    Groups
-                                                            </button>
-                                                            </Link>
+                            <button className='groupsButton mb-3 py-3'>
+                            Groups
+                            </button>
+                        </Link>
 					</div>
 				</div>
 			</div>

@@ -67,7 +67,7 @@ const GroupsPage = () => {
         console.log(value);
 		var formattedDate =  value.substring(8) + "/" + value.substring(5,7) + "/" + value.substring(0, 4) 
 		console.log(formattedDate);
-        setDate(value);
+        setDate(formattedDate);
     };
     const newParticipantHandler = (value) => {
         console.log(value);

@@ -22,8 +22,8 @@ const Login = () => {
         e.preventDefault()
         if (mail !== "" && password !== "") {
             console.log("The input creditentials are mail: " + mail + "password: " + password);
-            setLoggedIn(true);
-            window.location.href("/home")
+            setLoggedIn(true)
+            window.location.href = "/home"
         }
         else if (mail == "") {
             window.alert("Please enter mail");
