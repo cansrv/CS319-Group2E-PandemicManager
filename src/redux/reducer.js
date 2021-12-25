@@ -5,9 +5,15 @@ const reducer =  (state,action) =>{
             ...state
         }
     }
-    if (action.type === "LOGIN") {
+    if (action.type === "ADD_NEW_GROUP") {
         return {
-            ...action.payload,
+            groups: new Array(action.payload.group),
+            ...state
+        }
+    }
+    if (action.type === "REMOVE_GROUP") {
+        return {
+            groups: new Array(action.payload.group),
             ...state
         }
     }
