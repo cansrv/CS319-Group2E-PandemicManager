@@ -1,9 +1,10 @@
 import Sidebar from "../components/Sidebar"
 import '../css/Navbar.css'
 import {useState} from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "student"})
+	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "staff"})
 	const [click, setClick] = useState(false)
 	return(
 		<>
@@ -28,23 +29,46 @@ const Navbar = () => {
 					</div>
 				</div>
 			</div>
-			<button onClick={setClick(!click)} className="navbar-toggler" type="button" data-toggle="collapse"
+			<button onClick={()=>setClick(!click)} className="navbar-toggler btn btn-block bg-white toggler-w mr-auto bg-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
-				<span className="navbar-toggler-icon bg-dark"></span>
+				<span className="navbar-toggler-icon"></span>
 			</button>
-			{click&&
+			{click &&
 			<div className="collapse navbar-collapse" id="navbarSupportedContent">
-				<section className="sidebar-link mb-1 mt-1 hover-effect d-sm-none nav-item"> <span className="ml-lg-3 ml-2">Home</span></section>
-				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Profile</span></section>
-				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Tests</span></section>
-				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Campus</span></section>
-				<section className="sidebar-link mb-1 hover-effect d-md-none"><span className="ml-lg-3 ml-2">Courses</span></section>
-				<section className="sidebar-link hover-effect logout-div d-md-none"><span className="ml-lg-3 ml-2">Logout</span></section>
-			</div>}
+				<Link to="/home" className="text-decoration-none text-white">
+					<section className="sidebar-link mb-1 mt-1 hover-effect nav-item text-white"><span
+						className="ml-lg-3 ml-2">Home</span></section>
+				</Link>
+				<Link to="/myProfile" className="text-decoration-none text-white">
+					<section className="sidebar-link mb-1 hover-effect "><span
+						className="ml-lg-3 ml-2 text-light">Profile</span></section>
+				</Link>
+				<Link to="/tests" className="text-decoration-none text-white">
+					<section className="sidebar-link mb-1 hover-effect"><span
+						className="ml-lg-3 ml-2 text-light">Tests</span></section>
+				</Link>
+				<Link to="/campus" className="text-decoration-none text-white">
+					<section className="sidebar-link mb-1 hover-effect"><span
+						className="ml-lg-3 ml-2 text-light">Campus</span></section>
+				</Link>
+
+				{
+					!(person.accountType === "staff") ? <Link to="/courses" className="text-decoration-none text-white">
+						<section className="sidebar-link mb-1 hover-effect"><span
+							className="ml-lg-3 ml-2 text-light">Courses</span></section>
+					</Link> : null}
+
+				<Link to="/" className="text-decoration-none text-white">
+					<section className="sidebar-link hover-effect logout-div"><span
+						className="ml-lg-3 ml-2 text-light">Logout</span></section>
+				</Link>
+			</div>
+			}
 		</nav>
 		</>
 	)
 }
+
 
 export default Navbar
