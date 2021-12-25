@@ -35,12 +35,15 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 												<ul className="attendanceList list-group list-group-flush">
 													{attendance.map((attendance) => {
 														return (
+															<>
 															<li className=" list-group-item d-flex justify-content-between">
-																<div>Week {attendance.week}</div>
-																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.week}`)}  onClick={()=>{setCurrentWeek(attendance.week)
-																	console.log(attendance.week)}}> Take Attendance</a>
+																<div>Lecture {attendance.lecture}</div>
+																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.lecture}${courses.name}${courses.section}`)}  onClick={()=>{setCurrentWeek(attendance.lecture)
+																	console.log(attendance.lecture)}}> Take Attendance</a>
 																
 															</li>
+															<TakeAttendanceModal lecture ={attendance.lecture} courseName = {courses.name} section = {courses.section}/>
+															</>
 														)
 													})}
 
@@ -60,7 +63,7 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 					</div>
 				</div>
 			</div>
-		<TakeAttendanceModal week ={attendance.week}/>
+		
 		<ViewDetailedInfoModal/>
 		</>
 	)

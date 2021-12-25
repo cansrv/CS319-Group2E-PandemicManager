@@ -8,23 +8,23 @@ export const state_prototype = {
     exams: [],
     attendance: [
         {
-            week: 1,
+            lecture: 1,
             attendance: '3/3'
         },
         {
-            week: 2,
+            lecture: 2,
             attendance: '2/3'
         },
         {
-            week: 3,
+            lecture: 3,
             attendance: '0/3'
         },
         {
-            week: 4,
+            lecture: 4,
             attendance: '1/3'
         },
         {
-            week: 5,
+            lecture: 5,
             attendance: '3/3'
         },
 
@@ -49,14 +49,14 @@ export const state_prototype = {
 
         },
         {
-            name: 'CS-319',
+            name: 'CS-310',
             section: 1,
             instructor: 'Eray Tuzun',
             type: 'Face to Face',
 
         },
         {
-            name: 'CS-319',
+            name: 'CS-339',
             section: 1,
             instructor: 'Eray Tuzun',
             type: 'Face to Face',
