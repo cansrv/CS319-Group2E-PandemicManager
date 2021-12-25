@@ -29,7 +29,7 @@ const Navbar = ({name, surname, accountType}) => {
 					</div>
 				</div>
 			</div>
-			<button onClick={()=>setClick(!click)} className="navbar-toggler btn btn-block bg-white toggler-w mr-auto bg-toggler" type="button" data-toggle="collapse"
+			<button onClick={()=>setClick(!click)} className="navbar-toggler btn btn-block toggler-w mr-auto bg-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 					aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
