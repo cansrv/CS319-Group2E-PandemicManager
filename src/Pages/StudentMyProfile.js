@@ -3,8 +3,9 @@ import Navbar from "../components/navbar"
 import '../css/StudentMyProfile.css'
 import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
+import {connect} from "react-redux"
 
-const StudentMyProfilePage = () => {
+const StudentMyProfilePage = ({name, surname, email, ID}) => {
     const input = useRef(null)
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -17,7 +18,6 @@ const StudentMyProfilePage = () => {
             window.alert(id)
         }
     }
-    const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", email: "mehmet.yılmaz@ug.bilkent.edu.tr", ID: "21901784"})
     return (
         <div className='container'>
             <div className='row'>
@@ -60,10 +60,10 @@ const StudentMyProfilePage = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-11 mt-2">
-                                       <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> {person.name}</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> {person.surname}</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> {person.email}</div>
-                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> {person.ID}</div>
+                                       <div className="covid-info-content py-3 ml-3"> <span className="bold">Name:</span> {name}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> {surname}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> {email}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> {ID}</div>
                                     </div>
                                 </div>
                                 <div className="row mt-4 ml-3 mb-5">
@@ -78,5 +78,13 @@ const StudentMyProfilePage = () => {
         </div>
     );
 }
+const mapStateToProps = state => {
+    return {
+        name: state.name,
+        surname: state.name,
+        email: state.email,
+        ID: state.id
+    };
+}
 
-export default StudentMyProfilePage;
+export default connect(mapStateToProps)(StudentMyProfilePage);
