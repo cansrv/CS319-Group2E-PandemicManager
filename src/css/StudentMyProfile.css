@@ -1,0 +1,88 @@
+.editButton {
+  background: #78d23d;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 29px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+.markSelfRiskyButton {
+  background: #ff0000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 29px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.form-search {
+  background: #ffffff;
+  border: 3px solid #25c4da;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.markSomeoneRiskyButton {
+  background: #ff0000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+.covid-info {
+  background: rgba(229, 229, 229, 0.23);
+  border: 7px solid #25c4da;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.panman-logo-content {
+  background: url("../images/panman_logo.png") no-repeat center;
+  background-size: contain;
+  width: 10rem;
+  height: 10rem;
+}
+
+.covid-info-content {
+  font-family: Arial;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  border-bottom: 0.5px solid #000000;
+  scroll-behavior: auto;
+  overflow: auto;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.vaccination-card-link {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  flex-grow: 1;
+}

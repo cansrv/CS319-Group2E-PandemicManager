@@ -1,0 +1,37 @@
+*{
+font-family: sans-serif;
+}
+.riskyTable{
+	border-style: solid;
+  	border-width: 5px;
+	border-color:rgb(210,30,53);
+	border-collapse: separate;
+	border-top: 0px;
+}
+.tableDiv{
+	height: 375px;
+	overflow: auto;
+	
+}
+.switchF2F{
+
+	width: 100%;
+	background: #FF0000;
+	border-radius: 10px;
+	height: 73px;
+	margin-top: 7vh;
+	margin-bottom: 3.5vh;
+	color: white;
+	font-weight: bold;
+
+}
+.switchOnline{
+	width: 100%;
+	height: 73px;
+	border-radius: 10px;
+	margin-top: 3.5vh;
+	margin-bottom: 7vh;
+	background: #78D23D;
+	color: white;
+	font-weight: bold;
+}
