@@ -1,11 +1,18 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
+import dutchChocolates.panMan.appLayer.models.actors.Staff;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.VaccinationCard;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.Vaccine;
 import dutchChocolates.panMan.appLayer.repositories.InstructorRepository;
 import dutchChocolates.panMan.appLayer.repositories.StaffRepository;
 import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
@@ -33,7 +40,7 @@ public class UserService {
     private TARepository taRepository;
 
     //Methods
-    public User getUser(String sKey) {
+    public User searchUser(String sKey) {
         if (studentRepository.findStudentByBilkentID(sKey).getBilkentID().equals(sKey))
             return studentRepository.findStudentByBilkentID(sKey);
         else if (studentRepository.findStudentByFullName(sKey).getFullName().equals(sKey))
@@ -41,60 +48,130 @@ public class UserService {
 
         else if (taRepository.findTAByBilkentID(sKey).getBilkentID().equals(sKey))
             return taRepository.findTAByBilkentID(sKey);
-        else if(taRepository.findTAByFullName(sKey).getFullName().equals(sKey))
+        else if (taRepository.findTAByFullName(sKey).getFullName().equals(sKey))
             return taRepository.findTAByFullName(sKey);
 
         else if (staffRepository.findStaffByBilkentID(sKey).getBilkentID().equals(sKey))
             return staffRepository.findStaffByBilkentID(sKey);
-        else if( staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey))
+        else if (staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey))
             return staffRepository.findStaffByFullName(sKey);
 
         else if (instructorRepository.findInstructorByBilkentID(sKey).getBilkentID().equals(sKey))
             return instructorRepository.findInstructorByBilkentID(sKey);
-        else if(instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey))
+        else if (instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey))
             return instructorRepository.findInstructorByFullName(sKey);
 
         else
             return null;
     }
 
-    public String setUser(String jsonUser) {
+    public User getUser(User user) {
+        User tempUser;
+
+        if (user.getMail().contains("@ug")) {
+            tempUser = studentRepository.getById(user.getMail());
+        } else if (user.getMail().contains("@staff")) {
+            tempUser = staffRepository.getById(user.getMail());
+        } else if (user.getMail().contains("@ta")) {
+            tempUser = taRepository.getById(user.getMail());
+        } else {
+            tempUser = instructorRepository.getById(user.getMail());
+        }
+
+        return tempUser;
+    }
+
+    public String setUser(User user) {
+        try {
+            if (user.getMail().contains("@ug")) {
+                studentRepository.save((Student) user);
+            } else if (user.getMail().contains("@staff")) {
+                staffRepository.save((Staff) user);
+            } else if (user.getMail().contains("@ta")) {
+                taRepository.save((TA) user);
+            } else {
+                instructorRepository.save((Instructor) user);
+            }
+            return "Successful";
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return "Fail";
+        }
+
+    }
+
+    public String checkAccess(User user) {
         return null;
     }
 
-    public String checkAccess(Student student) {
-        return null;
+    public List<Section> getStudentSections(Student student) {
+        Student tempStudent = studentRepository.getById(student.getMail());
+        return tempStudent.getSections();
     }
 
-    public List<String> getStudentCourses(Student student) {
-        return null;
+    public String setStudentSections(Student student, List<Section> studentSections) {
+        try {
+            student.setSections(studentSections);
+            studentRepository.saveAndFlush(student);
+            return "Successful";
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
-    public String setStudentCourse(Student student, List<String> jsonStudentCourses) {
-        return null;
+    public List<Section> getInstructorSections(Instructor instructor) {
+        Instructor instructorFromDatabase = instructorRepository.getById(instructor.getMail());
+        return instructorFromDatabase.getSections();
     }
 
-    public List<String> getInstructorCourses(Instructor instructor) {
-        return null;
+    public String setInstructorCourses(Instructor instructor, List<Course> instructorCourses) {
+        try {
+            instructor.setCourses(instructorCourses);
+            setUser(instructor);
+            return "Successful";
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
-    public String setInstructorCourses(Instructor instructor, List<String> jsonInstructorCourses) {
-        return null;
+    public CovidInformationCard getUserCovidInformation(User user) {
+        User tempUser = getUser(user);
+        return tempUser.getCovidInformationCard();
     }
 
-    public String getUserCovidInformation(User user) {
-        return null;
+    public String setUserCovidInformation(User user, CovidInformationCard covidInformationCard) {
+        try {
+            User tempUser = getUser(user);
+            tempUser.setCovidInformationCard(covidInformationCard);
+            setUser(user);
+            return "Successful";
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
-    public String setUserCovidInformation(User user, List<String> jsonCovidInformation) {
-        return null;
+    public List<Group> getUserGroups(User user) {
+        User tempUser = getUser(user);
+        return tempUser.getGroupsParticipated();
     }
 
-    public List<String> getUserGroups(User user) {
-        return null;
-    }
-
-    public String setUserGroup(User user, List<String> jsonUserGroups) {
-        return null;
+    public String setUserGroup(User user, List<Group> userGroups) {
+        try {
+            User tempUser = getUser(user);
+            tempUser.setGroupsParticipated(userGroups);
+            setUser(user);
+            return "Successful";
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 }

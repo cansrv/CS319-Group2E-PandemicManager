@@ -45,7 +45,7 @@ public class UserController {
 
         String sKey = jsonObject.get("sKey").getAsString();
         try {
-            User u = userService.getUser(sKey);
+            User u = userService.searchUser(sKey);
             return u.toString();
         } catch (Exception ex) {
             if(ex.getClass().equals(NullPointerException.class)) {
