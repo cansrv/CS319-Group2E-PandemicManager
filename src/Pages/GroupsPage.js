@@ -43,7 +43,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         console.log(value);
 		var formattedDate =  value.substring(8) + "/" + value.substring(5,7) + "/" + value.substring(0, 4) 
 		console.log(formattedDate);
-        setDate(value);
+        setDate(formattedDate);
     };
     const newParticipantHandler = (value) => {
         console.log(value);
@@ -74,8 +74,9 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         var filteredArray = groups.filter(function(item) {
             return item.groupName !== group.groupName
         })
+
         console.log(filteredArray);
-        remove_group(filteredArray)
+        remove_group(filteredArray);
         console.log(group.groupName, "is removed");
     }
 
@@ -166,7 +167,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                             </div>
                         </div>
 						<div className="row">
-							{groups.length ? groups.map((group)=>{
+							{groups.length ? groups?.map((group)=>{
 								return(
 										<div className="col-12 col-md-6">
 											<div className="groupCard text-center my-4 ">
@@ -186,7 +187,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 												</div>
 												<div className="groupCardBody card-body">
                                                     <ul className="attendanceList list-group list-group-flush">
-														{group.participants.map((participant) => {
+														{group?.participants?.map((participant) => {
                                                                 return (
                                                                 <li className=" list-group-item d-flex justify-content-between"> 
 																    <div>{participant}</div> 

@@ -6,15 +6,20 @@ const reducer =  (state,action) =>{
         }
     }
     if (action.type === "ADD_NEW_GROUP") {
+        var newGroups = [];
+        if (!action.payload.group.length) {
+            newGroups = [...state.groups, action.payload.group];
+        }
         return {
-            groups: new Array(action.payload.group),
-            ...state
+            ...state,
+            groups: newGroups,
         }
     }
     if (action.type === "REMOVE_GROUP") {
+        var newGroups = action.payload.group;
         return {
-            groups: new Array(action.payload.group),
-            ...state
+            ...state,
+            groups: newGroups,
         }
     }
     return state;
