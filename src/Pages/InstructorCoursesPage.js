@@ -52,6 +52,7 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 											<div className="card-footer cardColoredPart text-muted">
 												<a data-toggle="modal" href="#viewDetailedInfoModal" className= "text-white">View Detailed Info</a>
 											</div>
+											<ViewDetailedInfoModal />
 										</div>
 									</div>
 
