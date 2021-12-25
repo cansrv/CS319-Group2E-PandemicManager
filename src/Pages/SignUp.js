@@ -11,13 +11,14 @@ export const SignUp = () => {
         axios.post("http://127.0.0.1:4567/signup",
             signUpInfo
         ).then((response) => {
-            console.log(response)})
+            console.log(response.data)})
     }, [dataSendNeeded])
 
     const handleChange = (e) => {
         const name = e.target.id;
         const value = e.target.value;
         setSignUpInfo({ ...signUpInfo, [name]: value });
+        console.log(value)
     };
     const handleSubmit = (e) => {
         e.preventDefault();
