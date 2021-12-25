@@ -1,4 +1,5 @@
 import '../css/viewDetailedInfo.css'
+import { connect } from 'react-redux'
 const riskyStudents = [
 	//account type mail yolla
 	{
@@ -50,7 +51,7 @@ const riskyStudents = [
 		id: "21903214"
 	},
 ]
-const ViewDetailedInfoModal = () => {
+const ViewDetailedInfoModal = ({courses, switchCourseType}) => {
 	return (
 		< div className="modal fade" id="viewDetailedInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
 			<div className="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -86,10 +87,14 @@ const ViewDetailedInfoModal = () => {
 							<div className="col-5">
 								<div className="row">
 									<div className="col-12">
-										<div className = "btn d-flex align-items-center justify-content-center switchF2F">Make Lesson Face To Face</div>
+										<div onClick= {() => {
+											switchCourseType(courses.type)
+										}} className = "btn d-flex align-items-center justify-content-center switchF2F">Make Lesson Face To Face</div>
 									</div>
 									<div className="col-12">
-										<div className="btn d-flex align-items-center justify-content-center switchOnline">Make Lesson Online</div>
+										<div onClick={() => {
+											switchCourseType(courses.type)
+										}} className="btn d-flex align-items-center justify-content-center switchOnline">Make Lesson Online</div>
 									</div>
 
 								</div>
@@ -105,4 +110,16 @@ const ViewDetailedInfoModal = () => {
 		</div >
 	)
 }
-export default ViewDetailedInfoModal;
+const mapDispatchToProps = dispatch => {
+	return {
+		switchCourseType: (courseType) => {
+			dispatch({type: "SWITCH_COURSE_TYPE", payload: courseType})
+		}
+	};
+}
+const mapStateToProps = state => {
+	return {
+		courses: state.courses
+	};
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ViewDetailedInfoModal)
