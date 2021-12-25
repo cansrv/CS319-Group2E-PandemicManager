@@ -51,7 +51,7 @@ const riskyStudents = [
 		id: "21903214"
 	},
 ]
-const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) => {
+const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, accountType}) => {
 	const handleTypeSwitch = (course) => {
 		switchCourseType(course)
 		window.alert("You have switched course type")
@@ -90,8 +90,10 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) 
 								</table>
 							</div>
 							<div className="col-5">
-								<div className="row">
-									<div className="col-12">
+								
+									{accountType === "instructor" ? (
+										<div className="row">
+										<div className="col-12">
 										<div onClick= {() => {
 											handleTypeSwitch(course)
 										}} className ={`btn d-flex align-items-center justify-content-center switchF2F ${(type === "Face to Face")?"disabled": null}`}
@@ -103,8 +105,11 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) 
 										}} className={`btn d-flex align-items-center justify-content-center switchOnline ${(type === "Online") ? "disabled" : null}`}
 										>Make Lesson Online</div>
 									</div>
-
-								</div>
+										</div>
+									) : (
+										null
+									)}
+								
 							</div>
 						</div>
 					</div>
@@ -126,7 +131,8 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = state => {
 	return {
-		courses: state.courses
+		courses: state.courses,
+		accountType: state.accountType
 	};
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ViewDetailedInfoModal)
