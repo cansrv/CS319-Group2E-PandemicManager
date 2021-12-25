@@ -1,7 +1,11 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
+import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
+import dutchChocolates.panMan.appLayer.repositories.LectureRepository;
+import dutchChocolates.panMan.appLayer.repositories.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +19,11 @@ public class CourseService {
     @Autowired
     CourseRepository courseRepository;
 
-    public String addCourse(List<String> loginList) {
+    @Autowired
+    SectionRepository sectionRepository;
 
-        for(int i = 0; i < loginList.size(); i++) {
-            Course course = new Course();
-            course.setCourseName(loginList.get(i));
-            courseRepository.save(course);
-        }
-        return "Successful";
-    }
+    @Autowired
+    LectureRepository lectureRepository;
 
     //Constructors
 
@@ -36,6 +36,61 @@ public class CourseService {
      */
 
     //Methods
+
+    public String getCourse(String courseName){
+        return
+    }
+
+    public String addUserToCourse(User user){
+        return
+    }
+
+    public String addCourse(List<String> loginList) {
+
+        for(int i = 0; i < loginList.size(); i++) {
+            Course course = new Course();
+            course.setCourseName(loginList.get(i));
+            courseRepository.save(course);
+        }
+        return "Successful";
+    }
+
+    public String editCourse(List<String> loginList){
+        return
+    }
+
+    public String getSection(String sectionName){
+        return
+    }
+
+    public String setSection(List<String> sectionList){
+        return
+    }
+
+    public String getLecture(String lectureName){
+        return
+    }
+
+    public String setLecture(List<String> lectureList){
+        return
+    }
+
+    public List<String> getSectionsOfCourse(Course course){
+        return
+    }
+
+    public String setSectionsOfCourse(List<String> sectionList){
+
+    }
+
+    public List<String> getLecturesOfSection(Section section){
+        return
+    }
+
+    public String setLecturesOfSection(List<String> lectureList){
+        return
+    }
+
 
 
 
