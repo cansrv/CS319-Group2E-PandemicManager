@@ -17,8 +17,11 @@ const Login = ({login_account}) => {
             loginInfo
         ).then((response) => {
             console.log(response)
-            login_account(response.data)
-        }).catch(error => { console.error(error); window.alert("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
+            if (response.data !== null){
+                login_account(response.data)
+            }
+        }).catch(error => { console.error(error);
+            console.log("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
     }, [loggedIn])
 
     const mailHandler = (value) => {
