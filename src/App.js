@@ -15,10 +15,11 @@ import {createStore} from "redux";
 import {Provider} from "react-redux"
 import reducer from "../src/redux/reducer"
 import {state_prototype} from "../src/redux/redux_state"
+import ExamsPage from './Pages/ExamsPage';
 
 function App() {
     const store = createStore(reducer, state_prototype ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-    const [userType, setUserType] = useState("student")
+    const [userType, setUserType] = useState("instructor")
     const [loggedIn, setLoggedIn] = useState(true)
 
     return (
@@ -38,10 +39,11 @@ function App() {
                 <Route path="/myProfile" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile userType={userType}/>}></Route>
                 <Route path="/tests" element={!loggedIn ? <Navigate to="/"/> : <StudentTestsPage userType={userType}/>}></Route>
                 <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage />}></Route>
+                <Route path="/exams" element={!loggedIn ? <Navigate to="/"/> : <ExamsPage />}></Route>
             </Routes>
         </BrowserRouter>
         </Provider>
                 );
             }
 
-            export default App;
+export default App;

@@ -145,118 +145,12 @@ const InstructorCampusPage = (user) => {
 								</div>)}
 							</div>
 							<div className="d-none d-sm-block col-12 col-sm-4">
-								<button className="btn createExam text-center d-flex justify-content-center align-items-center" data-toggle="modal" data-target="#createExamModal">
-									Create Exam
-								</button>
-								<div className="modal fade" id="createExamModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div className="modal-dialog modal-dialog-centered" role="document">
-                                <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">Create an Exam</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <form>
-									<div class="form-group">
-										<label for="courseSelect">Select Course</label>
-										<select class="form-control" id="courseSelect" value={examCourse} onChange={(e) => examCourseHandler(e.target.value)}>
-											<option>Select an Option</option>
-										{courses.map((course) => {
-											return  <option>{course}</option>
-										})}
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="examType">Select Exam Type</label>
-										<select class="form-control" id="examType" onChange={(e) => examTypeHandler(e.target.value)} value={examType}>
-											<option>Select an Option</option>
-											<option>Face to Face</option>
-											<option>Online</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="examType">Select Exam Classification</label>
-										<select class="form-control" id="examType" onChange={(e) => examClassificationHandler(e.target.value)} value={examClassification}>
-											<option>Select an Option</option>
-										<option>Midterm 1</option>
-										<option>Midterm 2</option>
-										<option>Final</option>
-										<option>Quiz</option>
-										</select>
-									</div>
-                                    <div className="form-group row d-flex justify-content-between">
-                                        <label for="placeInput" className="col-sm-6 col-form-label">Building Code (e.g. EE, B)</label>
-                                        <div className="col-sm-6">
-                                        <input type="text" 
-                                        className="form-control text-uppercase" 
-                                        id="typeInput" 
-                                        placeholder="Building" 
-                                        value={examBuilding}
-                                        required
-                                        onChange={(e) => examBuildingHandler(e.target.value)}></input>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row d-flex justify-content-between">
-                                        <label for="placeInput" className="col-sm-6 col-form-label">Room Name (e.g. 102, Z04)</label>
-                                        <div className="col-sm-6">
-                                        <input type="text" 
-                                        className="form-control" 
-                                        id="typeInput" 
-                                        placeholder="Room" 
-                                        value={examRoom}
-                                        required
-                                        onChange={(e) => examRoomHandler(e.target.value)}></input>
-                                        </div>
-                                    </div>
-                                    <div className="form-group row d-flex justify-content-between">
-                                        <label for="idInput" className="col-sm-4 col-form-label">Participant ID</label>
-                                        <div className="col-sm-5">
-                                        <input type="number" className="form-control" id="idInput" 
-                                        placeholder="Participant ID"
-                                        value={newParticipant}
-                                        required
-                                        onChange={(e) => newParticipantHandler(e.target.value)}></input>
-                                        </div>
-                                        <button className="btn btn-success col-sm-2 mr-3" type="button" onClick={() => addParticipant()}>Add</button>
-                                    </div>
-                                    <div className="form-group row d-flex justify-content-between">
-                                        <label for="dateInput" className="col-sm-4 col-form-label">Date</label>
-                                        <div className="col-sm-8">
-                                        <input type="date" className="form-control" id="dateInput" placeholder="Date"
-                                        
-                                        onChange={(e) => dateHandler(e.target.value)}></input>
-                                        </div>
-                                    </div>
-                                    </form>
-                                    <div className="row">
-                                        <ul className="list-group w-100 mx-3 addedParticipantsList">
-                                        {addedParticipants.length ? 
-                                        addedParticipants.map((participant) => {
-                                            return (
-                                                <li className="list-group-item d-flex justify-content-between align-items-center"> 
-												    <span>{participant}</span> 
-                                                    <span>
-                                                        <button className="btn btn-danger" type="button"
-                                                        onClick={() => removeParticipant(participant)}>Remove</button>
-                                                    </span>
-												</li>
-                                            )
-                                        }) : (
-                                            <div>
-                                                No Participants Added
-                                            </div>
-                                        )}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-primary" onClick={() => createExam()}>Create Exam</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
+								<Link to="/exams">
+									<button className="btn createExam text-center d-flex justify-content-center align-items-center">
+										Exams Page
+									</button>
+								</Link>
+							
 							</div>	
 						</div>
 						<div className="row mt-4 d-flex justify-content-center">
@@ -314,7 +208,7 @@ const InstructorCampusPage = (user) => {
 							</table>
 						</div>
 						<Link to="/groups">
-                            <button className='groupsButton mb-3 py-3'>
+                            <button className='groupsButton mb-3 py-3 btn'>
                             	Groups
                             </button>
                         </Link>
