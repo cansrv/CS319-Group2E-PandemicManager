@@ -4,7 +4,7 @@ import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "staff"})
+	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "Student"})
 	const [click, setClick] = useState(false)
 	return(
 		<>
@@ -23,7 +23,7 @@ const Navbar = () => {
 						<div className="d-none d-lg-block">
 							<div>
 								<div className="username">{ `${person.name} ${person.surname}`}</div>
-								<div className="account-status text-muted">Student</div>
+								<div className="account-status text-muted">{person.accountType}</div>
 							</div>
 						</div>
 					</div>

@@ -1,10 +1,22 @@
-import {useState} from "react"
+import {useState, useRef} from "react"
 import Navbar from "../components/navbar"
 import '../css/StudentMyProfile.css'
 import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
 
 const StudentMyProfilePage = () => {
+    const input = useRef(null)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+      const id = input.current.value
+        console.log(id)
+      const check = (id === "") || (Number(id) === NaN) || (Number(id) > 0)
+
+        if (check) {
+            //yollancak data
+            window.alert(id)
+        }
+    }
     const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", email: "mehmet.yılmaz@ug.bilkent.edu.tr", ID: "21901784"})
     return (
         <div className='container'>
@@ -29,10 +41,10 @@ const StudentMyProfilePage = () => {
                                 <button className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5">Mark Self as Risky</button>
                             </div>
                             <div className="row">
-                            <form className="my-5">
+                            <form className="my-5" onSubmit={(e) => handleSubmit(e)}>
                                 <div className="row">
                                     <div className="col d-flex">
-                                        <input type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID"/>
+                                        <input ref={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID"/>
                                     </div>
                                     <div className="col d-flex">
                                         <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" >Mark Someone Risky</button>
