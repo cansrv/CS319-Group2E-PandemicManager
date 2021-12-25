@@ -66,6 +66,7 @@ export const state_prototype = {
     vaccinated: false,
     recovered: false,
     negativeTest: false,
+    exams:[],
     isAllowedOnCampus: true,
     weeklyReport: [
         {
