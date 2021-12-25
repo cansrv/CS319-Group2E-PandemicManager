@@ -9,10 +9,16 @@ const Login = ({login_account}) => {
     const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect( () => {
-        if (loggedIn === true) {
-            //axios
-            //login_account()
+        var loginInfo = {
+            mail: mail,
+            password: password
         }
+        axios.post("http://127.0.0.1:4567/login",
+            loginInfo
+        ).then((response) => {
+            console.log(response)
+            login_account(response.data)
+        }).catch(error => { console.error(error); window.alert("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
     }, [loggedIn])
 
     const mailHandler = (value) => {
