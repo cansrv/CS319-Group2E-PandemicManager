@@ -10,9 +10,7 @@ import java.util.List;
 @Entity
 public class Course {
     //Properties
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)    private Long id;
+
     @OneToMany
     private List<Exam> exams;
     @OneToMany
@@ -23,15 +21,9 @@ public class Course {
     private List<Instructor> instructors;
     @ManyToMany
     private List<TA> TAs;
+    @Id
     private String courseName;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 
     //Constructors

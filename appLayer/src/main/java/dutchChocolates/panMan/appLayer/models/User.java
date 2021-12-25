@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,6 +41,9 @@ public abstract class User {
         this.mail = mail;
         this.fullName = name + " " + surname;
         this.bilkentID = bilkentID;
+        this.username = bilkentID + fullName;
+        groupsParticipated = new ArrayList<>();
+        groupsCreated = new ArrayList<>();
         this.setCovidInformationCard(new CovidInformationCard(hesCode));
     }
 

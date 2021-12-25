@@ -3,8 +3,6 @@ package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserLoginService;
-import dutchChocolates.panMan.appLayer.repositories.InstructorRepository;
-import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,11 +37,11 @@ public class UserLoginController {
         loginList.add(jsonLogin.get(LOGIN_PASSWORD).getAsString());
 
 
-        return userLoginService.getByMail(loginList.get(0));
+        return userLoginService.signInMethod(loginList.get(0), loginList.get(1));
 
 
     }
-
+/*
     public UserLoginService getUserLoginService() {
         return userLoginService;
     }
@@ -51,5 +49,5 @@ public class UserLoginController {
     public void setUserLoginService(UserLoginService userLoginService) {
         this.userLoginService = userLoginService;
     }
-
+*/
 }
