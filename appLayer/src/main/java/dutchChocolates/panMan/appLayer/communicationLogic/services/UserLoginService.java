@@ -3,10 +3,11 @@ package dutchChocolates.panMan.appLayer.communicationLogic.services;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
-
+@Service
 public class UserLoginService {
     //Properties
     @Autowired
@@ -14,21 +15,15 @@ public class UserLoginService {
 
 
     //Constructors
-    public UserLoginService(StudentRepository studentRepository){
-        this.studentRepository = studentRepository;
-    }
-
 
     //Methods
     @Transactional
     public String getByMail(String mail) throws EntityNotFoundException {
-        User tempUser =  studentRepository.getByMail(mail);
+        User tempUser =  studentRepository.getById(mail);
 
-        if(tempUser == null){
-            return "Amnskim student yok nooooo";
-        }else{
-            return "Found the student yeeeee";
-        }
+
+            return tempUser.toString();
+
 
     }
 

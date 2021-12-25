@@ -17,10 +17,9 @@ import java.util.List;
 @RestController
 public class UserLoginController {
     //Properties
+    @Autowired
     private UserLoginService userLoginService;
 
-    @Autowired
-    private StudentRepository studentRepository;
 
     private final String LOGIN_MAIL = "mail";
     private final String LOGIN_PASSWORD = "password";
@@ -39,7 +38,6 @@ public class UserLoginController {
         loginList.add(jsonLogin.get(LOGIN_MAIL).getAsString());
         loginList.add(jsonLogin.get(LOGIN_PASSWORD).getAsString());
 
-        userLoginService = new UserLoginService(this.studentRepository);
 
         return userLoginService.getByMail(loginList.get(0));
 

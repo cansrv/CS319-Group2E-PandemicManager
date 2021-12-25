@@ -13,8 +13,8 @@ public class Staff extends User {
     public Staff() {
     }
 
-    public Staff(String username, String password, long identifier, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
-        super(username, password, identifier, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
+    public Staff(String username, String password, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+        super(username, password, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
     }
 
     public Staff(String password, String mail, String name, String surname, String bilkentID, String HESCode) {

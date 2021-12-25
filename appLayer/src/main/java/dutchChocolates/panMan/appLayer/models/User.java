@@ -14,12 +14,8 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
     // Attributes
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    Long id;
     @CreationTimestamp
-    @Column(name="entrytime", nullable = false, updatable = false, insertable = false)
+    @Column(name="entrytime", updatable = false)
     private Timestamp entryTime;
     @UpdateTimestamp
     @Column(name="exittime")
@@ -27,6 +23,8 @@ public abstract class User {
     private String username;
     private String fullName;
     private String password;
+    @Id
+    @Column(name = "mail", unique = true)
     private String mail;
     private String phoneNumber;
     private String bilkentID;
@@ -46,10 +44,9 @@ public abstract class User {
         this.setCovidInformationCard(new CovidInformationCard(hesCode));
     }
 
-    public User(String username, String password, Long id, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+    public User(String username, String password, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
-        this.id = id;
         this.mail = mail;
         this.phoneNumber = phoneNumber;
         this.bilkentID = bilkentID;
@@ -99,15 +96,6 @@ public abstract class User {
 
     public boolean setPassword(String password) {
         this.password = password;
-        return true;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public boolean setId(long id) {
-        this.id = id;
         return true;
     }
 
@@ -165,4 +153,21 @@ public abstract class User {
         return true;
     }
 
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "entryTime=" + entryTime +
+                ", exitTime=" + exitTime +
+                ", username='" + username + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", mail='" + mail + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", bilkentID='" + bilkentID + '\'' +
+                ", groupsCreated=" + groupsCreated +
+                ", groupsParticipated=" + groupsParticipated +
+                ", covidInformationCard=" + covidInformationCard +
+                '}';
+    }
 }
