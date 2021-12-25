@@ -79,8 +79,8 @@ const StudentHomePage = ({
                                                 </div>) : 
                                                 
                                                     (<div className="carousel-item carouselCourse active class-info ">
-                                                        <div className="col-10 d-flex align-items-center flex-column">
-                                                            <div className="row">
+                                                        <div className="col-10  d-flex align-items-center flex-column">
+                                                            <div className="row ">
                                                                 <h3 >No Courses</h3>
                                                             </div>
                                                             
@@ -124,7 +124,7 @@ const StudentHomePage = ({
                                                 <span className="sr-only">Next</span>
                                             </button>
                                         </div>) : 
-                                        <div className="isolation-info d-flex justify-content-center mx-auto display-4 p-4">
+                                        <div className="isolation-info d-flex justify-content-center mx-auto display-4 p-4 px-5">
                                             Welcome to PanMan!
                                         </div>
                                         }

@@ -32,7 +32,7 @@ const StudentCoursesPage = ({courses, attendance}) => {
 													{attendance.map((attendance) => {
 														return (
 															<li class=" list-group-item d-flex justify-content-between">
-																<div>Week {attendance.week}</div>
+																<div>Lecture {attendance.lecture}</div>
 																<div>{attendance.attendance}</div>
 															</li>
 														)
