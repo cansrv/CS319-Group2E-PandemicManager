@@ -219,14 +219,6 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 		</>
     )
 }
-const mapStateToProps = (state) => {
-  return {groups: state.groups};
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { addGroup: (group) => dispatch({type : "ADD_NEW_GROUP", payload: {group} }), 
-        removeGroup: (group) => dispatch({type : "REMOVE_GROUP", payload: {group} })}
-}
 
 const mapStateToProps = state => {
     return {
