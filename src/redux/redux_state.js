@@ -2,7 +2,7 @@ export const state_prototype = {
     name: "Mister",
     surname: "NO",
     id: 21901784,
-    accountType: "student",
+    accountType: "staff",
     HEScode: "22EF56",
     groups: [],
     attendance: [
@@ -58,7 +58,7 @@ export const state_prototype = {
         }
     ],
     email: "ter_no@gmail.com",
-    isCovid: false,
+    isCovid: true,
     tests: [],
     isolationStartDate: "",
     isoEndDate: "",
@@ -66,5 +66,61 @@ export const state_prototype = {
     vaccinated: false,
     recovered: false,
     negativeTest: false,
-    isAllowedOnCampus: false
+    isAllowedOnCampus: true,
+    weeklyReport: [
+        {
+            date: '22.10.2021',
+            posStudents: 21,
+            posStaff: 15,
+            recovered: 20
+        },
+        {
+            date: '15.10.2021',
+            posStudents: 27,
+            posStaff: 55,
+            recovered: 10
+        },
+        {
+            date: '8.10.2021',
+            posStudents: 23,
+            posStaff: 14,
+            recovered: 24
+        },
+        {
+            date: '22.10.2021',
+            posStudents: 21,
+            posStaff: 15,
+            recovered: 20
+        },
+        {
+            date: '15.10.2021',
+            posStudents: 27,
+            posStaff: 55,
+            recovered: 10
+        },
+        {
+            date: '8.10.2021',
+            posStudents: 23,
+            posStaff: 14,
+            recovered: 24
+        },
+        {
+            date: '22.10.2021',
+            posStudents: 21,
+            posStaff: 15,
+            recovered: 20
+        },
+        {
+            date: '15.10.2021',
+            posStudents: 27,
+            posStaff: 55,
+            recovered: 10
+        },
+        {
+            date: '8.10.2021',
+            posStudents: 23,
+            posStaff: 14,
+            recovered: 24
+        },
+    ]
 }

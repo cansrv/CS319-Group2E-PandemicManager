@@ -1,12 +1,11 @@
 import {useState} from "react"
 import Navbar from "../components/navbar"
 import '../css/StaffCampusPage.css'
-import report from "../components/weeklyReportData"
 import Sidebar from "../components/Sidebar"
 import { Link } from "react-router-dom"
+import {connect} from "react-redux"
 
-const StaffCampusPage = () => {
-        const [status, setStatus] = useState(false)
+const StaffCampusPage = ({status, report}) => {
         return (
             <>
                     <div className='container staffCampusPg'>
@@ -26,7 +25,7 @@ const StaffCampusPage = () => {
                                                             </div>
                                                     </div>
                                                     <div className="col-12 col-sm-7 px-sm-1">
-                                                            {status ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
+                                                            {(status !== true) ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are Allowed On Campus
                                                             </div>) : (<div className="statusRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are  NOT Allowed On Campus
@@ -80,4 +79,11 @@ const StaffCampusPage = () => {
         )
 }
 
-export default StaffCampusPage
+const mapStateToProps = state => {
+        return {
+                status: state.isAllowedOnCampus,
+                report: state.weeklyReport
+        };
+}
+
+export default connect(mapStateToProps)(StaffCampusPage)
