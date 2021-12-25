@@ -18,32 +18,28 @@ public class GroupService {
 
 
     //Methods
-    public String getGroup(String name){
-        return
+    public Group getGroup(String name){
+        return null;
     }
 
-    public String setGroup(List<String> groupList){
-        return
+    public String setGroup(Group group){
+        return null;
     }
 
     public List<String> getUsersOfString(Group group){
-        return
+        return null;
     }
 
     public String setUsersOfGroup(Group group, List<User> userList){
-        return
+        return null;
     }
 
     public String searchUserInGroup(Group group, User user ){
-        return
+        return null;
     }
 
-    public String searchUserByName(Group group, String name){
-        return
-    }
-
-    public String removeUser(Group group, User user){
-        return
+    public String removeUser(Group group, User user) {
+        return null;
     }
 
 }

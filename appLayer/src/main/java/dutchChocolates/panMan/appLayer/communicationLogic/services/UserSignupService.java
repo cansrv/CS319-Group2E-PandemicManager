@@ -59,10 +59,10 @@ public class UserSignupService {
     }
 
     public String checkForUserName(String name){
-        return
+        return null;
     }
 
     public String checkForUserID(String id){
-        return
+        return null;
     }
 }

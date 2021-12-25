@@ -33,46 +33,46 @@ public class UserService {
 
     //Methods
     public String getUser(String id){
-        return
+        return null;
     }
 
     public String setUser(String jsonUser){
-        return
+        return null;
     }
 
     public String checkAccess(Student student){
-        return
+        return null;
     }
 
     public List<String> getStudentCourses(Student student){
-        return
+        return null;
     }
 
     public String setStudentCourse(Student student, List<String> jsonStudentCourses){
-        return
+        return null;
     }
 
     public List<String> getInstructorCourses(Instructor instructor){
-        return
+        return null;
     }
 
     public String setInstructorCourses(Instructor instructor, List<String> jsonInstructorCourses){
-        return
+        return null;
     }
 
     public String getUserCovidInformation(User user){
-        return
+        return null;
     }
 
     public String setUserCovidInformation(User user, List<String> jsonCovidInformation){
-        return
+        return null;
     }
 
     public List<String> getUserGroups(User user){
-        return
+        return null;
     }
 
     public String setUserGroup(User user, List<String> jsonUserGroups){
-        return
+        return null;
     }
 }

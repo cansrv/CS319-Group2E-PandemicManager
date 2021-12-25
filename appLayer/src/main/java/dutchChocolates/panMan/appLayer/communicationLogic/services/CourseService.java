@@ -1,6 +1,8 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
+import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
 import dutchChocolates.panMan.appLayer.repositories.SectionRepository;
@@ -21,15 +23,7 @@ public class CourseService {
 
     //Methods
 
-    public String addCourse(List<String> loginList) {
 
-        for (String s : loginList) {
-            Course course = new Course();
-            course.setCourseName(s);
-            courseRepository.save(course);
-        }
-        return "Successful";
-    }
 
     public String addSection(Boolean isOnline, Integer sectionNumber,  String courseName) {
         Section section = new Section();
@@ -38,7 +32,7 @@ public class CourseService {
         section.setSectionNumber(sectionNumber);
         section.setCourse(course);
         course.getSections().add(section);
-        updateCourse(course);
+        updateCourse();
         return sectionRepository.saveAndFlush(section).toString();
     }
 
@@ -53,12 +47,12 @@ public class CourseService {
 
     //Methods
 
-    public String getCourse(String courseName){
-        return
+    public Course getCourse(String courseName){
+        return courseRepository.getById(courseName);
     }
 
-    public String addUserToCourse(User user){
-        return
+    public void updateCourse() {
+        courseRepository.flush();
     }
 
     public String addCourse(List<String> loginList) {
@@ -71,43 +65,34 @@ public class CourseService {
         return "Successful";
     }
 
-    public String editCourse(List<String> loginList){
-        return
+    public String editCourse(String key, Course course) {
+        return "";
     }
 
-    public String getSection(String sectionName){
-        return
+    public String addUserToCourse(User user, Course course){
+        return "";
     }
 
-    public String setSection(List<String> sectionList){
-        return
+
+
+    public String setLecture(Section section, Lecture lecture){
+        return "";
     }
 
-    public String getLecture(String lectureName){
-        return
-    }
-
-    public String setLecture(List<String> lectureList){
-        return
-    }
-
-    public List<String> getSectionsOfCourse(Course course){
-        return
+    public String getSectionsOfCourse(Course course){
+        return courseRepository.getById(course.getCourseName()).getSections().toString();
     }
 
     public String setSectionsOfCourse(List<String> sectionList){
-
+        return "";
     }
 
-    public List<String> getLecturesOfSection(Section section){
-        return
+    public String getLecturesOfSection(Section section){
+        return sectionRepository.getById(section.getId()).getLectures().toString();
     }
 
     public String setLecturesOfSection(List<String> lectureList){
-        return
+        return "";
     }
-
-
-
 
 }
