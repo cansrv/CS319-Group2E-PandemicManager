@@ -9,8 +9,10 @@ import dutchChocolates.panMan.appLayer.models.actors.Staff;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.Test;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.VaccinationCard;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.Vaccine;
 import dutchChocolates.panMan.appLayer.repositories.InstructorRepository;
@@ -124,7 +126,7 @@ public class UserService {
     public String setStudentSections(Student student, List<Section> studentSections) {
         try {
             student.setSections(studentSections);
-            studentRepository.saveAndFlush(student);
+            studentRepository.save(student);
             return "Successful";
         } catch (Exception e) {
             e.printStackTrace();
@@ -157,7 +159,7 @@ public class UserService {
         try {
             User tempUser = getUser(user);
             tempUser.setCovidInformationCard(covidInformationCard);
-            setUser(user);
+            setUser(tempUser);
             return "Successful";
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,7 +176,7 @@ public class UserService {
         try {
             User tempUser = getUser(user);
             tempUser.setGroupsParticipated(userGroups);
-            setUser(user);
+            setUser(tempUser);
             return "Successful";
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,16 +184,16 @@ public class UserService {
         }
     }
 
-    public VaccinationCard getUserVaccinationCard(User user){
-        User tempUser = getUser(user);
+    public VaccinationCard getUserVaccinationCard(String mail){
+        User tempUser = getUser(mail);
         return tempUser.getCovidInformationCard().getVaccinationCard();
     }
 
-    public String setVaccinationCard(User user, VaccinationCard vaccinationCard){
+    public String setVaccinationCard(String mail, VaccinationCard vaccinationCard){
         try {
-            User tempUser = getUser(user);
+            User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().setVaccinationCard(vaccinationCard);
-            setUser(user);
+            setUser(tempUser);
             return "Successful";
         } catch (Exception e) {
             e.printStackTrace();
@@ -199,21 +201,35 @@ public class UserService {
         }
     }
 
-    public List<Vaccine> getVaccines(User user){
-        User tempUser = getUser(user);
-        return user.getCovidInformationCard().getVaccinationCard().getVaccines();
+    public List<Vaccine> getVaccines(String mail){
+        User tempUser = getUser(mail);
+        return tempUser.getCovidInformationCard().getVaccinationCard().getVaccines();
     }
 
-    public String setVaccines(User user, List<Vaccine> vaccines){
+    public String setVaccines(String mail, List<Vaccine> vaccines){
         try {
-            User tempUser = getUser(user);
+            User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().getVaccinationCard().setVaccines(vaccines);
-            setUser(user);
+            setUser(tempUser);
             return "Successful";
         } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
+
+    public String addTest(String mail, Test test){
+        try{
+            User tempUser = getUser(mail);
+            tempUser.getCovidInformationCard().getTests().add(test);
+            setUser(tempUser);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
+
 
 }

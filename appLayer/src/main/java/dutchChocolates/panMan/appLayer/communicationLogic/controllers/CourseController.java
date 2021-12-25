@@ -32,7 +32,8 @@ public class CourseController {
 
         courseList.add(jsonLogin.get("course_name").getAsString());
 
-        return courseService.addCourse(courseList);
+        //TODO need to be successfully connected with the course services add method.
+        return null;
 
     }
 
