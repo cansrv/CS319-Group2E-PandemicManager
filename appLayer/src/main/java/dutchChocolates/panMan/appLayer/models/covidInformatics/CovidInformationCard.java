@@ -116,4 +116,16 @@ public class CovidInformationCard {
         tests.add(new Test(testDate, testType));
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", vaccinationCard:" + vaccinationCard +
+                ", tests:" + tests +
+                ", hesCodes:" + hesCodes +
+                ", hesCodeStatus:" + hesCodeStatus +
+                ", covidStatus:" + covidStatus +
+                '}';
+    }
 }

@@ -88,5 +88,15 @@ public class Course {
         this.courseName = courseName;
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+                "exams:" + exams +
+                ", sections:" + sections +
+                ", students:" + students +
+                ", instructors:" + instructors +
+                ", TAs:" + TAs +
+                ", courseName:'" + courseName + '\'' +
+                '}';
+    }
 }

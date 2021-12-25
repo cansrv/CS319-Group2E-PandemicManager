@@ -31,60 +31,35 @@ public class UserLoginService {
     //Methods
     @Transactional
     public String signInMethod(String mail, String password) throws EntityNotFoundException, NullPointerException {
-
-
-        String userJson = "{\n" +
-                "    \"username\": \"USERNAME\",\n" +
-                "    \"fullName\": \"FULL_NAME\",\n" +
-                "    \"password\": \"PASSWORD\",\n" +
-                "    \"mail\": \"MAIL\",\n" +
-                "    \"bilkentID\": \"BILKENT_ID\",\n" +
-                "    \"groupsCreated\": \"GROUPS_CREATED\",\n" +
-                "    \"groupsParticipated\": \"GROUPS_PARTICIPATED\",\n" +
-                "    \"covidInformationCard\": \"COVID_INFORMATION_CARD\",\n" +
-                "    \"userType\": \"USER_TYPE\" \n" +
-                "}";
-
         // CHANGE FOR ARBITRARY REPO TYPES
         User tempUser;
 
         try {
             if (mail.contains("@ug")) {
                 tempUser = studentRepository.getById(mail);
-                userJson = userJson.replace("USER_TYPE", "Student");
+                return tempUser.toString();
+                //userJson = userJson.replace("USER_TYPE", "Student");
             } else if (mail.contains("@staff")) {
                 tempUser = staffRepository.getById(mail);
-                userJson = userJson.replace("USER_TYPE", "Staff");
-
+                return tempUser.toString();
+                //userJson = userJson.replace("USER_TYPE", "Staff");
             } else if (mail.contains("@ta")) {
                 tempUser = taRepository.getById(mail);
-                userJson = userJson.replace("USER_TYPE", "TA");
+                return tempUser.toString();
+                //userJson = userJson.replace("USER_TYPE", "TA");
             } else {
                 tempUser = instructorRepository.getById(mail);
-                userJson = userJson.replace("USER_TYPE", "Instructor");
+                return tempUser.toString();
+                //userJson = userJson.replace("USER_TYPE", "Instructor");
             }
-
-            userJson = userJson.replace("USERNAME", tempUser.getUsername());
-            userJson = userJson.replace("FULL_NAME", tempUser.getFullName());
-            userJson = userJson.replace("PASSWORD", tempUser.getPassword());
-            userJson = userJson.replace("MAIL", tempUser.getMail());
-            userJson = userJson.replace("BILKENT_ID", tempUser.getBilkentID());
-            userJson = userJson.replace("GROUPS_CREATED", tempUser.getGroupsCreated().toString());
-            userJson = userJson.replace("GROUPS_PARTICIPATED", tempUser.getGroupsParticipated().toString());
-            userJson = userJson.replace("COVID_INFORMATION_CARD", tempUser.getCovidInformationCard().toString());
-
         }
         catch (Exception ex) {
             if(ex.getClass().equals(EntityNotFoundException.class)) {
                 ex.printStackTrace();
-                return "Entity Not Found";
+
             }
-            ex.printStackTrace();
         }
-
-
-        return userJson;
-
+        return null;
     }
 
 

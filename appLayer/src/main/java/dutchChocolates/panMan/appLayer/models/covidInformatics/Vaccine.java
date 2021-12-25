@@ -89,5 +89,15 @@ public class Vaccine {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", manufacturer:'" + manufacturer + '\'' +
+                ", applicationDate:" + applicationDate +
+                ", country:'" + country + '\'' +
+                ", type:'" + type + '\'' +
+                ", medicalProductName:'" + medicalProductName + '\'' +
+                '}';
+    }
 }

@@ -3,6 +3,7 @@ package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserLoginService;
+import dutchChocolates.panMan.appLayer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

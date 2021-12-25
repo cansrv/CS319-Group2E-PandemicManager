@@ -153,7 +153,7 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "{" +
                 "entryTime=" + entryTime +
                 ", exitTime=" + exitTime +
                 ", username='" + username + '\'' +

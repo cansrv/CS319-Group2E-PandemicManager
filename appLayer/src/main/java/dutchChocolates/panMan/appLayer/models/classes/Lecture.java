@@ -62,4 +62,14 @@ public class Lecture {
         this.attendance = attendance;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", roomName:'" + roomName + '\'' +
+                ", isSpareHour:" + isSpareHour +
+                ", attendance:" + attendance +
+                '}';
+    }
 }

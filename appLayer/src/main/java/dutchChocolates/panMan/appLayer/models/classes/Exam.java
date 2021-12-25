@@ -45,4 +45,11 @@ public class Exam extends Lecture {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", courseCoordinator:" + courseCoordinator +
+                '}';
+    }
 }

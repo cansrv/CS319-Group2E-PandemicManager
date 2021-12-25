@@ -119,4 +119,17 @@ public class Section {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", lectures:" + lectures +
+                ", students:" + students +
+                ", instructors:" + instructors +
+                ", TAs:" + TAs +
+                ", course:" + course +
+                ", isOnline:" + isOnline +
+                ", sectionNumber:" + sectionNumber +
+                '}';
+    }
 }

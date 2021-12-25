@@ -109,4 +109,17 @@ public class VaccinationCard {
         vaccines.add(vaccine);
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id:" + id +
+                ", firstName:'" + firstName + '\'' +
+                ", middleName:'" + middleName + '\'' +
+                ", lastName:'" + lastName + '\'' +
+                ", birthDate:" + birthDate +
+                ", personalIdNumber:'" + personalIdNumber + '\'' +
+                ", vaccines:" + vaccines +
+                '}';
+    }
 }
