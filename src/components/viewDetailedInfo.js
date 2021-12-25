@@ -1,5 +1,6 @@
 import '../css/viewDetailedInfo.css'
 const riskyStudents = [
+	//account type mail yolla
 	{
 		name: "Cenk Duramayan",
 		id: "21903214"

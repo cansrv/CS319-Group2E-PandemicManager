@@ -5,79 +5,9 @@ import Sidebar from '../components/Sidebar'
 import TakeAttendanceModal from '../components/TakeAttendanceModal'
 import ViewDetailedInfoModal from '../components/viewDetailedInfo'
 import {useState} from 'react'
+import {connect} from "react-redux"
 
-const InstructorCoursesPage = () => {
-	const attendance = [
-		{
-			week: 1,
-			attendance: '3/3'
-		},
-		{
-			week: 2,
-			attendance: '2/3'
-		},
-		{
-			week: 3,
-			attendance: '0/3'
-		},
-		{
-			week: 4,
-			attendance: '1/3'
-		},
-		{
-			week: 5,
-			attendance: '3/3'
-		},
-		{
-			week: 1,
-			attendance: '3/3'
-		},
-		{
-			week: 2,
-			attendance: '2/3'
-		},
-		{
-			week: 3,
-			attendance: '0/3'
-		},
-		{
-			week: 4,
-			attendance: '1/3'
-		},
-		{
-			week: 5,
-			attendance: '3/3'
-		}
-
-	]
-	const courses = [
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
-		
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		}
-	]
-
+const InstructorCoursesPage = ({attendance, courses}) => {
 	const [currentWeek, setCurrentWeek] = useState(1);
 	return (
 		<>
@@ -127,11 +57,6 @@ const InstructorCoursesPage = () => {
 							}
 
 						</div>
-						
-
-						
-						
-
 					</div>
 				</div>
 			</div>
@@ -140,4 +65,12 @@ const InstructorCoursesPage = () => {
 		</>
 	)
 }
-export default InstructorCoursesPage
+
+const mapStateToProps = state => {
+	return {
+		attendance: state.attendance,
+		courses: state.courses
+	};
+}
+
+export default connect(mapStateToProps)(InstructorCoursesPage)

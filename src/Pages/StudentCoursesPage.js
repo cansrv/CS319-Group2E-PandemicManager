@@ -2,66 +2,9 @@ import '../css/StudentCoursesPage.css'
 import Navbar from '../components/navbar'
 import courses from '../components/courseData'
 import Sidebar from '../components/Sidebar'
+import {connect} from "react-redux"
 
-const StudentCoursesPage = () => {
-	const attendance = [
-		{
-			week: 1,
-			attendance: '3/3'
-		},
-		{
-			week: 2,
-			attendance: '2/3'
-		},
-		{
-			week: 3,
-			attendance: '0/3'
-		},
-		{
-			week: 4,
-			attendance: '1/3'
-		},
-		{
-			week: 5,
-			attendance: '3/3'
-		},
-
-	]
-	const courses = [
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
-		{
-			name: 'CS-315',
-			section: 4,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		},
-		{
-			name: 'CS-319',
-			section: 1,
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			attendance: attendance
-
-		}
-	]
-
+const StudentCoursesPage = ({courses, attendance}) => {
 	return (
 		<>
 			<div className="container">
@@ -114,4 +57,12 @@ const StudentCoursesPage = () => {
 		</>
 	)
 }
-export default StudentCoursesPage
+
+const mapStateToProps = state => {
+	return {
+		courses: state.courses,
+		attendance: state.attendance
+	};
+}
+
+export default connect(mapStateToProps)(StudentCoursesPage)
