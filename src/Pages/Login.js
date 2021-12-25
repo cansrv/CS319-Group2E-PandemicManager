@@ -7,22 +7,6 @@ const Login = ({login_account, loggedIn}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
 
-    useEffect( () => {
-        var loginInfo = {
-            mail: mail,
-            password: password
-        }
-        axios.post("http://127.0.0.1:4567/login",
-            loginInfo
-        ).then((response) => {
-            console.log(response)
-            if (response.data !== null){
-                login_account(response.data)
-            }
-        }).catch(error => { console.error(error);
-            console.log("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
-    }, [loggedIn])
-
     const mailHandler = (value) => {
         console.log(value);
         setMail(value);
@@ -44,9 +28,22 @@ const Login = ({login_account, loggedIn}) => {
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
+            var loginInfo = {
+            mail: mail,
+            password: password
+        }
+        axios.post("http://127.0.0.1:4567/login",
+            loginInfo
+            ).then((response) => {
+                console.log(response)
+                if (response.data !== null){
+                    login_account(JSON.parse(response.data))
+                    window.location.href = "/home"
+                }
+            }).catch(error => { console.error(error);
+                console.log("Database Problem"); return Promise.reject(error); 
+            })
             console.log("The input creditentials are mail: " + mail + "password: " + password);
-            login_account(true)
-            window.location.href = "/home"
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
@@ -113,7 +110,7 @@ const mapDispatchToProps = (dispatch) => {
     return { login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} })}
 }
 const mapStateToProps = (state) => {
-    return {loggedIn: store.loggedIn}
+    return {loggedIn: state.loggedIn}
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login);
