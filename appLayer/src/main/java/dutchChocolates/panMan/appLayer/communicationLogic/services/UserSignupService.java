@@ -58,5 +58,11 @@ public class UserSignupService {
 
     }
 
+    public String checkForUserName(String name){
+        return null;
+    }
 
+    public String checkForUserID(String id){
+        return null;
+    }
 }

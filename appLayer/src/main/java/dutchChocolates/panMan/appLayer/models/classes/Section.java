@@ -13,15 +13,15 @@ public class Section {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Lecture> lectures;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Student> students;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Instructor> instructors;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<TA> TAs;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Course course;
     private boolean isOnline;
     private int sectionNumber;
