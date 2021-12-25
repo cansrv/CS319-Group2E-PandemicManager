@@ -53,10 +53,11 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const createGroup = () => {
         if ((name !== "") && (date !== "") && addedParticipants.length) {
             var newGroup = {
-            groupName: name,
-            date: date,
-            participants: addedParticipants,
-            isActive: true,
+                id: new Date().getTime().toString(),
+                groupName: name,
+                date: date,
+                participants: addedParticipants,
+                isActive: true,
             }
             add_group(newGroup)
             window.alert("A new group is added")
@@ -72,7 +73,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 
     const deleteGroup = (group) => {
         var filteredArray = groups.filter(function(item) {
-            return item.groupName !== group.groupName
+            return item.id !== group.id
         })
 
         console.log(filteredArray);

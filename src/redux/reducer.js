@@ -1,8 +1,9 @@
 const reducer =  (state,action) =>{
     if (action.type === "LOGIN") {
         return {
+            ...state,
             ...action.payload,
-            ...state
+            
         }
     }
     if (action.type === "ADD_NEW_GROUP") {
@@ -20,6 +21,23 @@ const reducer =  (state,action) =>{
         return {
             ...state,
             groups: newGroups,
+        }
+    }
+    if (action.type === "ADD_NEW_EXAM") {
+        var newExams = [];
+        if (!action.payload.exam.length) {
+            newExams = [...state.exams, action.payload.exam];
+        }
+        return {
+            ...state,
+            exams: newExams,
+        }
+    }
+    if (action.type === "REMOVE_EXAM") {
+        var newExams = action.payload.exam;
+        return {
+            ...state,
+            exams: newExams,
         }
     }
     return state;

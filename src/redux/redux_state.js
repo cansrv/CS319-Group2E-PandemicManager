@@ -5,6 +5,9 @@ export const state_prototype = {
     accountType: "instructor",
     HEScode: "22EF56",
     groups: [],
+    exams: [],
+    attendance: [],
+    courses: ["CS-319", "CS-423"],
     attendance: [
         {
             week: 1,
