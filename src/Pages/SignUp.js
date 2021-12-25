@@ -1,13 +1,17 @@
 import "../css/SignUp.css"
 import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom"
+import axios from "axios";
 
 export const SignUp = () => {
     const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', surname: '', id: '', password: '', HEScode: ''});
     const [dataSendNeeded, setDataSendNeeded] = useState(false)
 
     useEffect( () => {
-        //axios
+        axios.post("http://127.0.0.1:4567/signup",
+            signUpInfo
+        ).then((response) => {
+            console.log(response)})
     }, [dataSendNeeded])
 
     const handleChange = (e) => {
