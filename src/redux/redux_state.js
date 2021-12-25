@@ -2,7 +2,7 @@ export const state_prototype = {
     name: "Mister",
     surname: "NO",
     id: 21901784,
-    accountType: "staff",
+    accountType: "student",
     HEScode: "22EF56",
     groups: [],
     exams: [],
