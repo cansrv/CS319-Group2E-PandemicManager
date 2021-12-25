@@ -64,7 +64,7 @@ const StudentCoursesPage = () => {
 
 	return (
 		<>
-			<div className="container px-5">
+			<div className="container">
 				<div className="row">
 					<Navbar />
 				</div>

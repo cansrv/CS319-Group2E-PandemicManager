@@ -315,7 +315,7 @@ const InstructorCampusPage = (user) => {
 						</div>
 						<Link to="/groups">
                             <button className='groupsButton mb-3 py-3'>
-                            Groups
+                            	Groups
                             </button>
                         </Link>
 					</div>

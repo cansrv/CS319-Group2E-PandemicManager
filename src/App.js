@@ -37,7 +37,7 @@ function App() {
                         : <InstructorCampusPage userType={userType}/>)}></Route>
                 <Route path="/myProfile" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile userType={userType}/>}></Route>
                 <Route path="/tests" element={!loggedIn ? <Navigate to="/"/> : <StudentTestsPage userType={userType}/>}></Route>
-                <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage userType={userType}/>}></Route>
+                <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage />}></Route>
             </Routes>
         </BrowserRouter>
         </Provider>

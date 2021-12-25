@@ -81,7 +81,7 @@ const InstructorCoursesPage = () => {
 	const [currentWeek, setCurrentWeek] = useState(1);
 	return (
 		<>
-			<div className="container px-5">
+			<div className="container">
 				<div className="row">
 					<Navbar />
 				</div>

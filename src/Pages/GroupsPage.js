@@ -2,32 +2,10 @@ import Navbar from "../components/navbar"
 import Sidebar from "../components/Sidebar"
 import "../css/GroupsPage.css"
 import { useState } from "react"
+import {connect} from "react-redux"
 
-const GroupsPage = () => {
-    const [groups, setGroups] = useState([
-        {
-            
-            groupName: "Library Group - 1",
-            date: "10/12/2021",
-            participants: ["21902570", "21902572", "21902574"],
-            isActive: true,
-        },
-        {
-            
-            groupName: "Library Group - 2",
-            date: "11/12/2021",
-            participants: ["21902570", "21902572", "21902574", "21902576"],
-            isActive: true,
-        },
-        {
-            
-            groupName: "Study Group in EA0",
-            date: "12/12/2021",
-            participants: ["21902570", "21902572"],
-            isActive: false,
-        },
-    ])
-
+const GroupsPage = (addGroup, removeGroup, groups) => {
+    
     const [addedParticipants, setAddedParticipants] = useState([])
 
     const [date, setDate] = useState("")
@@ -82,7 +60,7 @@ const GroupsPage = () => {
             participants: addedParticipants,
             isActive: true,
             }
-            setGroups([...groups, newGroup])
+            addGroup([...groups, newGroup])
             window.alert("A new group is added")
             setName("")
             setNewParticipant("")
@@ -99,7 +77,7 @@ const GroupsPage = () => {
             return item.groupName !== group.groupName
         })
         console.log(filteredArray);
-        setGroups(filteredArray);
+        removeGroup(filteredArray);
         console.log(group.groupName, "is removed");
     }
 
@@ -243,5 +221,13 @@ const GroupsPage = () => {
 		</>
     )
 }
+const mapStateToProps = (state) => {
+  return {groups: state.groups};
+}
 
-export default GroupsPage
+const mapDispatchToProps = (dispatch) => {
+  return { addGroup: (group) => dispatch({type : "ADD_NEW_GROUP", payload: {group} }), 
+        removeGroup: (group) => dispatch({type : "REMOVE_GROUP", payload: {group} })}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroupsPage)
