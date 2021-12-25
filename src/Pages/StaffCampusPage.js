@@ -35,7 +35,7 @@ const StaffCampusPage = ({status, report}) => {
                                             <div className="row mt-4 d-flex justify-content-center">
                                                     <p className = 'reportText'>Weekly Covid-19 Report</p>
                                             </div>
-                                            <div className="row covidTable table-responsive mb-4">
+                                            {!(report.length === 0) ? (<div className="row covidTable table-responsive mb-4">
                                                     <table className="table table-striped  col-11 ml-4   ">
                                                             <thead className = 'text-center sticky-top bg-light'>
                                                             <tr>
@@ -58,7 +58,13 @@ const StaffCampusPage = ({status, report}) => {
                                                             })}
                                                             </tbody>
                                                     </table>
-                                            </div>
+                                            </div>): (
+                                                        <div className="row d-flex justify-content-center align-items-center covidTable  mb-4">
+                                                                <h1> No Reports Available</h1>
+                                                        </div>
+
+                                            )
+                                            }
                                             <div className="row d-flex justify-content-center">
                                                     <div className="col-12 col-sm-4 mb-2">
                                                             <Link to="/groups">
