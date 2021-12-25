@@ -40,6 +40,12 @@ const reducer =  (state,action) =>{
             exams: newExams,
         }
     }
+    if (action.type === "EDIT_HES_CODE") {
+        return {
+            ...state,
+            HEScode: action.payload.HEScode,
+        }
+    }
     return state;
 }
 

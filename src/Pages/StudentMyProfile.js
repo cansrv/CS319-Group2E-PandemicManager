@@ -5,8 +5,9 @@ import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
 import {connect} from "react-redux"
 
-const StudentMyProfilePage = ({name, surname, email, ID}) => {
+const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode}) => {
     const input = useRef(null)
+    const [newHESCode, setNewHESCode] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
       const id = input.current.value
@@ -18,6 +19,23 @@ const StudentMyProfilePage = ({name, surname, email, ID}) => {
             window.alert(id)
         }
     }
+
+    const codeHandler = (value) => {
+        console.log(value)
+        setNewHESCode(value)
+    }
+    
+    const editHandler = () => {
+        if (newHESCode !== "") {
+            edit_HES_code(newHESCode);
+            setNewHESCode("")
+            window.alert("Your HES Code have been changed")
+        }
+        else {
+            window.alert("Please enter a valid HES Code")
+        }
+    }
+
     return (
         <div className='container'>
             <div className='row'>
@@ -32,11 +50,40 @@ const StudentMyProfilePage = ({name, surname, email, ID}) => {
                     <div className="row">
                         <div className="col-xl-6 col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
                             <div className="row">
-                                <button className="editButton btn btn-lg py-xl-3 px-xl-5 mt-5">Edit HES Code</button>
+                                <button className="editButton btn btn-lg py-xl-3 px-xl-5 mt-5" data-toggle="modal" data-target="#editHESCodeModal">Edit HES Code</button>
+                                <div className="modal fade" id="editHESCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div className="modal-dialog modal-dialog-centered" role="document">
+                                <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLongTitle">Create a Group</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <form>
+                                    <div className="form-group row d-flex justify-content-between">
+                                        <label for="hesCode" className="col-sm-4 col-form-label">New HES Code:</label>
+                                        <div className="col-sm-8">
+                                        <input type="text" 
+                                        className="form-control" 
+                                        id="hesCode" 
+                                        placeholder="New HES Code" 
+                                        value={newHESCode}
+                                        required
+                                        onChange={(e) => codeHandler(e.target.value)}></input>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-primary" onClick={() => editHandler()}>Change HES Code</button>
+                                </div>
+                                </div>
                             </div>
-                            <div className="row">
-                                <button className="editButton btn btn-lg py-xl-3 px-xl-5 mt-5">Edit Vaccination Card</button>
                             </div>
+                            </div>
+                            
                             <div className="row">
                                 <button className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5">Mark Self as Risky</button>
                             </div>
@@ -47,7 +94,7 @@ const StudentMyProfilePage = ({name, surname, email, ID}) => {
                                         <input ref={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID"/>
                                     </div>
                                     <div className="col d-flex">
-                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" >Mark Someone Risky</button>
+                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none">Mark Someone Risky</button>
                                     </div>
                                 </div>
                             </form>
@@ -64,11 +111,11 @@ const StudentMyProfilePage = ({name, surname, email, ID}) => {
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Surname:</span> {surname}</div>
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Email:</span> {email}</div>
                                         <div className="covid-info-content py-3 ml-3"> <span className="bold">Bilkent ID:</span> {ID}</div>
+                                        <div className="covid-info-content py-3 ml-3"> <span className="bold">HES Code:</span> {HEScode}</div>
                                     </div>
                                 </div>
                                 <div className="row mt-4 ml-3 mb-5">
-                                    {/*LINKS*/}
-                                    <div className="vaccination-card-link">Display Vaccination Card</div>
+                                    <div className="vaccination-card-link"></div>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +130,14 @@ const mapStateToProps = state => {
         name: state.name,
         surname: state.surname,
         email: state.email,
-        ID: state.id
+        ID: state.id,
+        HEScode: state.HEScode
     };
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        edit_HES_code: (HEScode) => dispatch({type : "EDIT_HES_CODE", payload: {HEScode: HEScode} }),
+    }
+}
 
-export default connect(mapStateToProps)(StudentMyProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentMyProfilePage);
