@@ -19,7 +19,7 @@ import ExamsPage from './Pages/ExamsPage';
 
 function App() {
     const store = createStore(reducer, state_prototype ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-    const [userType, setUserType] = useState("student")
+    const [userType, setUserType] = useState("staff")
     const [loggedIn, setLoggedIn] = useState(true)
 
     return (
