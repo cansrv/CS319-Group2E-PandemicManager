@@ -64,7 +64,7 @@ export const state_prototype = {
         }
     ],
     email: "ter_no@gmail.com",
-    isCovid: true,
+    isCovid: false,
     tests: [
         {
             date: "27.11.2021",

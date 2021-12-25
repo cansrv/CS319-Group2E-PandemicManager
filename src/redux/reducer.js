@@ -46,6 +46,12 @@ const reducer =  (state,action) =>{
             HEScode: action.payload.HEScode,
         }
     }
+    if (action.type === "MARK_SELF_RISKY") {
+        return {
+            ...state,
+            isCovid: true,
+        }
+    }
     return state;
 }
 

@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
 import {connect} from "react-redux"
 
-const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode}) => {
+const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode, mark_self_risky, isCovid}) => {
     const input = useRef(null)
     const [newHESCode, setNewHESCode] = useState("")
     const handleSubmit = (e) => {
@@ -34,6 +34,11 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode}
         else {
             window.alert("Please enter a valid HES Code")
         }
+    }
+
+    const handleRiskStatus = () => {
+        mark_self_risky()
+        window.alert("You have marked yourself as RISKY")
     }
 
     return (
@@ -85,7 +90,8 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode}
                             </div>
                             
                             <div className="row">
-                                <button className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5">Mark Self as Risky</button>
+                                <button type="button" className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5" data-toggle="tooltip" data-placement="top" title="I sure hope what you are doing" 
+                                onClick={() => handleRiskStatus()} disabled={isCovid}>Mark Self as Risky</button>
                             </div>
                             <div className="row">
                             <form className="my-5" onSubmit={(e) => handleSubmit(e)}>
@@ -131,12 +137,14 @@ const mapStateToProps = state => {
         surname: state.surname,
         email: state.email,
         ID: state.id,
-        HEScode: state.HEScode
+        HEScode: state.HEScode,
+        isCovid: state.isCovid
     };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         edit_HES_code: (HEScode) => dispatch({type : "EDIT_HES_CODE", payload: {HEScode: HEScode} }),
+        mark_self_risky: () => dispatch({type : "MARK_SELF_RISKY"}),
     }
 }
 
