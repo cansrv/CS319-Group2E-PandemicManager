@@ -136,8 +136,8 @@ const StudentHomePage = ({
                                         {isCovid?(
                                             <>
                                             <div className="row px-3">Stay At Home</div>
-                                            <div className="row px-3">Start of Isolation: {isolationStartDate}</div>
-                                            <div className="row px-3">End of Isolation: {isoEndDate}</div>
+                                            <div className="row px-3">Start of Isolation: {(isolationStartDate === "")? "CALL HEALTH CENTER": isolationStartDate}</div>
+                                            <div className="row px-3">End of Isolation: {isoEndDate === ""? "CALL HEALTH CENTER": isoEndDate}</div>
                                             </>
                                         ) : <p className="mx-auto">You are allowed on campus!!</p>}
                                     </div>
