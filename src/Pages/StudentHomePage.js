@@ -16,7 +16,8 @@ const StudentHomePage = ({
                              recovered,
                              negativeTest,
                              isAllowedOnCampus,
-                              courses
+                            courses, 
+                            accountType
                          }) => {
     return (
             <div className='container'>
@@ -51,10 +52,10 @@ const StudentHomePage = ({
                                     {isCovid?"Covid Situation: RISKY" : "Covid Situation: NOT RISKY" }
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-10 offset-1 offset-lg-0 d-flex my-md-1  flex-column justify-content-around">
+                            <div className="col-lg-4 col-10 offset-1 offset-lg-0 d-flex my-md-1 flex-column justify-content-around">
                                 <div className="row d-flex justify-content-center mx-auto">
-                                    <div className="col-10 ">
-                                        <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                                    <div className="col-10">
+                                        {accountType !== "staff" ? (<div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                                             <div className="carousel-inner ">
                                                 {!(courses.length === 0 )? (
                                                 <div className="carousel-item carouselCourse active class-info ">
@@ -87,10 +88,6 @@ const StudentHomePage = ({
                                                     </div>
                                                         
                                                     )}
-                                                    
-                                                
-                                                
-                                                
                                             {!(courses.length === 0 ) ? courses.slice(1).map((course=>{
                                                         return(
                                                             <div className="carousel-item carouselCourse class-info  ">
@@ -126,7 +123,11 @@ const StudentHomePage = ({
                                                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span className="sr-only">Next</span>
                                             </button>
+                                        </div>) : 
+                                        <div className="isolation-info d-flex justify-content-center mx-auto display-4 p-4">
+                                            Welcome to PanMan!
                                         </div>
+                                        }
                                     </div>
                             </div>
                                 <div className="row">
@@ -160,7 +161,8 @@ const mapStateToProps = state => {
         recovered: state.recovered,
         negativeTest: state.negativeTest,
         isAllowedOnCampus: state.isAllowedOnCampus,
-        courses: state.courses
+        courses: state.courses,
+        accountType: state.accountType,
     };
 }
 
