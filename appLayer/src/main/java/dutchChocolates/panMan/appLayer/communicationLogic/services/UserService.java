@@ -81,6 +81,22 @@ public class UserService {
         return tempUser;
     }
 
+    public User getUser(String mail){
+        User tempUser;
+
+        if (mail.contains("@ug")) {
+            tempUser = studentRepository.getById(mail);
+        } else if (mail.contains("@staff")) {
+            tempUser = staffRepository.getById(mail);
+        } else if (mail.contains("@ta")) {
+            tempUser = taRepository.getById(mail);
+        } else {
+            tempUser = instructorRepository.getById(mail);
+        }
+
+        return tempUser;
+    }
+
     public String setUser(User user) {
         try {
             if (user.getMail().contains("@ug")) {
@@ -94,15 +110,10 @@ public class UserService {
             }
             return "Successful";
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
             return "Fail";
         }
 
-    }
-
-    public String checkAccess(User user) {
-        return null;
     }
 
     public List<Section> getStudentSections(Student student) {
@@ -116,7 +127,6 @@ public class UserService {
             studentRepository.saveAndFlush(student);
             return "Successful";
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
             return "Fail";
         }
@@ -133,7 +143,6 @@ public class UserService {
             setUser(instructor);
             return "Successful";
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
             return "Fail";
         }
@@ -151,7 +160,6 @@ public class UserService {
             setUser(user);
             return "Successful";
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
             return "Fail";
         }
@@ -169,9 +177,43 @@ public class UserService {
             setUser(user);
             return "Successful";
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
             return "Fail";
         }
     }
+
+    public VaccinationCard getUserVaccinationCard(User user){
+        User tempUser = getUser(user);
+        return tempUser.getCovidInformationCard().getVaccinationCard();
+    }
+
+    public String setVaccinationCard(User user, VaccinationCard vaccinationCard){
+        try {
+            User tempUser = getUser(user);
+            tempUser.getCovidInformationCard().setVaccinationCard(vaccinationCard);
+            setUser(user);
+            return "Successful";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
+    public List<Vaccine> getVaccines(User user){
+        User tempUser = getUser(user);
+        return user.getCovidInformationCard().getVaccinationCard().getVaccines();
+    }
+
+    public String setVaccines(User user, List<Vaccine> vaccines){
+        try {
+            User tempUser = getUser(user);
+            tempUser.getCovidInformationCard().getVaccinationCard().setVaccines(vaccines);
+            setUser(user);
+            return "Successful";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
 }
