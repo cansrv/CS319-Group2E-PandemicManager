@@ -16,7 +16,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
 
         if (check) {
             //yollancak data
-            window.alert(id)
+            window.alert(id + " has been marked as risky")
         }
     }
 

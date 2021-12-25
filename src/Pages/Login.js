@@ -25,15 +25,23 @@ const Login = ({login_account}) => {
         setPassword(value);
     };
 
+    const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
     const login = (e) => {
         e.preventDefault()
-        if (mail !== "" && password !== "") {
+        if (validateEmail(mail) && password !== "") {
             console.log("The input creditentials are mail: " + mail + "password: " + password);
             setLoggedIn(true)
             window.location.href = "/home"
         }
-        else if (mail == "") {
-            window.alert("Please enter mail");
+        else if (!validateEmail(mail)) {
+            window.alert("Please enter a valid mail");
         }
         else if (password == "") {
             window.alert("Please enter password");
