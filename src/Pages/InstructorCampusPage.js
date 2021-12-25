@@ -9,6 +9,9 @@ import Sidebar from "../components/Sidebar"
 
 const InstructorCampusPage = (user) => {
 
+	const [status, setstatus] = useState(true);
+	const [report, setreport] = useState([])
+
 	const courses = [
 		"CS-319",
 		"CS-415",
@@ -26,104 +29,6 @@ const InstructorCampusPage = (user) => {
 			
 		},
 	])
-
-	const [status, setStatus] = useState(false)
-	const [addedParticipants, setAddedParticipants] = useState([])
-
-    const [name, setName] = useState("")
-    const [date, setDate] = useState("")
-    const [examType, setExamType] = useState("")
-    const [examBuilding, setExamBuilding] = useState("")
-    const [examRoom, setExamRoom] = useState("")
-    const [newParticipant, setNewParticipant] = useState("");
-    const [examClassification, setExamClassification] = useState("");
-    const [examCourse, setExamCourse] = useState("");
-
-	const createExam = () => {
-		if (date !== "" && examType !== "" && examBuilding !== "" && examRoom !== "" && addedParticipants.length && examClassification !== "" && examCourse !== "") {
-			var examPlace = examBuilding + "-" + examRoom
-			var newExam = {
-				course: examCourse,
-				classification: examClassification,
-				instructor: "Eray Tüzün",
-				type: examType,
-				participantsList: addedParticipants,
-				place: examPlace,
-			}
-			setExams([...exams, newExam])
-			window.alert("A new group is added")
-			setDate("")
-			setExamType("")
-			setExamBuilding("")
-			setExamRoom("")
-			setNewParticipant("")
-			setExamClassification("")
-			setExamCourse("")
-		}
-		else {
-			window.alert("All fields are required to be filled.")
-		}
-	}
-
-    const addParticipant = () => {
-        console.log(newParticipant, " will be added")
-        if(addedParticipants.includes(newParticipant)) {
-            window.alert("This participant already exists in this exam")
-            console.log(newParticipant, " already exists")
-        }
-        else if (newParticipant == "") {
-            window.alert("Invalid Participant ID")
-        }
-        else {
-            setAddedParticipants([...addedParticipants, newParticipant])
-            console.log(newParticipant, " is added")
-        }
-    }
-
-    const removeParticipant = (participant) => {
-        var filteredArray = addedParticipants.filter(function(item) {
-            return item !== participant
-        })
-        console.log(filteredArray);
-        setAddedParticipants(filteredArray);
-        console.log(participant, "is removed");
-    }
-
-	const examBuildingHandler = (value) => {
-		console.log(value);
-        setExamBuilding(value);
-	}
-	const examRoomHandler = (value) => {
-		console.log(value);
-        setExamRoom(value);
-	}
-    
-    const dateHandler = (value) => {
-        console.log(value);
-		var formattedDate =  value.substring(8) + "/" + value.substring(5,7) + "/" + value.substring(0, 4) 
-		console.log(formattedDate);
-        setDate(formattedDate);
-    };
-
-    const newParticipantHandler = (value) => {
-        console.log(value);
-        setNewParticipant(value);
-    };
-
-	const examTypeHandler = (value) => {
-		console.log(value);
-		setExamType(value);
-	}
-
-	const examClassificationHandler = (value) => {
-		console.log(value);
-		setExamClassification(value);
-	}
-
-	const examCourseHandler = (value) => {
-		console.log(value);
-		setExamCourse(value);
-	}
 
 	return (
 		<>
@@ -167,7 +72,7 @@ const InstructorCampusPage = (user) => {
 									</tr>
 								</thead>
 								<tbody>
-									{report.map((report) => {
+									{report?.map((report) => {
 										return (
 											<tr className="text-center">
 												<td>{report.date}</td>
@@ -194,7 +99,7 @@ const InstructorCampusPage = (user) => {
 									</tr>
 								</thead>
 								<tbody>
-									{exams.map((exams) => {
+									{exams?.map((exams) => {
 										return (
 											<tr className="text-center">
 												<td>{exams.date}</td>

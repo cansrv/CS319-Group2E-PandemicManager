@@ -1,10 +1,9 @@
 import Navbar from "../components/navbar"
 import Sidebar from "../components/Sidebar"
-import "../css/GroupsPage.css"
 import { useState } from "react"
 import {connect} from "react-redux"
 
-const ExamsPage = ({add_exam, remove_exam, exams, courses, name, surname, email, accountType}) => {
+const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname, email, accountType}) => {
     
 	
 	const [addedParticipants, setAddedParticipants] = useState([])
@@ -83,9 +82,9 @@ const ExamsPage = ({add_exam, remove_exam, exams, courses, name, surname, email,
     }
 
 	const examBuildingHandler = (value) => {
-		console.log(value.toUppercase());
-
-        setExamBuilding(value.toUppercase());
+        var strValue = "" + value;
+		console.log(strValue.toUpperCase());
+        setExamBuilding(strValue.toUpperCase());
 	}
 	const examRoomHandler = (value) => {
 		console.log(value);
@@ -149,26 +148,26 @@ const ExamsPage = ({add_exam, remove_exam, exams, courses, name, surname, email,
                                 </div>
                                 <div className="modal-body">
                                     <form>
-									<div class="form-group">
+									<div className="form-group">
 										<label for="courseSelect">Select Course</label>
-										<select class="form-control" id="courseSelect" value={examCourse} onChange={(e) => examCourseHandler(e.target.value)}>
+										<select className="form-control" id="courseSelect" value={examCourse} onChange={(e) => examCourseHandler(e.target.value)}>
 											<option>Select an Option</option>
-										    {courses?.map((course) => {
+										    {coursesThaught?.map((course) => {
 											    return  <option>{course}</option>
 										})}
 										</select>
 									</div>
-									<div class="form-group">
+									<div className="form-group">
 										<label for="examType">Select Exam Type</label>
-										<select class="form-control" id="examType" onChange={(e) => examTypeHandler(e.target.value)} value={examType}>
+										<select className="form-control" id="examType" onChange={(e) => examTypeHandler(e.target.value)} value={examType}>
 											<option>Select an Option</option>
 											<option>Face to Face</option>
 											<option>Online</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div className="form-group">
 										<label for="examType">Select Exam Classification</label>
-										<select class="form-control" id="examType" onChange={(e) => examClassificationHandler(e.target.value)} value={examClassification}>
+										<select className="form-control" id="examType" onChange={(e) => examClassificationHandler(e.target.value)} value={examClassification}>
 											<option>Select an Option</option>
 										<option>Midterm 1</option>
 										<option>Midterm 2</option>
@@ -317,7 +316,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, courses, name, surname, email,
 const mapStateToProps = state => {
     return {
         exams: state.exams,
-        courses: state.courses,
+        coursesThaught: state.coursesThaught,
         name: state.name,
         surname: state.surname,
         email: state.email,

@@ -6,8 +6,6 @@ export const state_prototype = {
     HEScode: "22EF56",
     groups: [],
     exams: [],
-    attendance: [],
-    courses: ["CS-319", "CS-423"],
     attendance: [
         {
             week: 1,
@@ -30,6 +28,11 @@ export const state_prototype = {
             attendance: '3/3'
         },
 
+    ],
+    coursesThaught: [
+        "CS-319",
+        "CS-423",
+        "CS-405"
     ],
     courses: [
         {

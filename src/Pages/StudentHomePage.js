@@ -4,7 +4,6 @@ import '../css/StudentHomePage.css'
 import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
 import {connect} from "react-redux"
-import { Carousel } from "react-bootstrap"
 
 
 const StudentHomePage = ({
