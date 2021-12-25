@@ -53,7 +53,7 @@ const StudentTestsPage = ({ tests}) => {
                     </div>
                     <div className="col-lg-5 d-flex justify-content-center align-items-center mb-5 my-3">
                         <div className="btn test-appointment-button py-2 px-4 d-flex justify-content-center align-items-center">
-                            <p className="get-appointment-text">Get Test Appointment</p>
+                            <a href="https://stars.bilkent.edu.tr/accounts/login/" className="get-appointment-text">Get Test Appointment</a>
                         </div>
                     </div>
             </div>
@@ -64,7 +64,6 @@ const StudentTestsPage = ({ tests}) => {
 }
 const mapStateToProps = state => {
     return {
-
         tests: state.tests
     };
 }

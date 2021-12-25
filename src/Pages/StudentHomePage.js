@@ -54,7 +54,7 @@ const StudentHomePage = ({
                             </div>
                             <div className="col-lg-4 col-10 offset-1 offset-lg-0 d-flex my-md-1 flex-column justify-content-around">
                                 <div className="row d-flex justify-content-center mx-auto">
-                                    <div className="col-10 d-flex justify-conent-center">
+                                    <div className="col-10">
                                         {accountType !== "staff" ? (<div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                                             <div className="carousel-inner ">
                                                 {!(courses.length === 0 )? (
