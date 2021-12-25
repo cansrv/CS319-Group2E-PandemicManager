@@ -1,34 +1,19 @@
 import {useState} from "react"
 import Navbar from "../components/navbar"
 import '../css/InstructorCampusPage.css'
-import report from "../components/weeklyReportData"
-import exams from "../components/examData"
+
+
 import { Link } from "react-router-dom"
 import Sidebar from "../components/Sidebar"
+import { connect } from "react-redux"
 
 
-const InstructorCampusPage = (user) => {
+const InstructorCampusPage = ({report, status}) => {
 
-	const [status, setstatus] = useState(true);
-	const [report, setreport] = useState([])
 
-	const courses = [
-		"CS-319",
-		"CS-415",
-		"CS-453"
-	]
 
-	const [exams, setExams] = useState([
-		{
-			course: 'CS-319',
-			classification: "Midterm 1",
-			instructor: 'Eray Tuzun',
-			type: 'Face to Face',
-			participantsList: [21902570, 21902572, 21902574],
-			place: "EE-102"
-			
-		},
-	])
+
+
 
 	return (
 		<>
@@ -43,7 +28,7 @@ const InstructorCampusPage = (user) => {
 					<div className="col-12 col-md-10 bg-light ">
 						<div className="row mt-4 d-flex justify-content-between ml-5">
 							<div className="col-12 col-sm-8 px-sm-1">
-								{status ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
+								{!status ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
 									You Are Allowed On Campus
 								</div>) : (<div className="statusRisky d-flex text-center justify-content-center align-items-center">
 									You Are  NOT Allowed On Campus
@@ -61,7 +46,7 @@ const InstructorCampusPage = (user) => {
 						<div className="row mt-4 d-flex justify-content-center">
 							<p className='reportText'>Weekly Covid-19 Report</p>
 						</div>
-						<div className="row covidTable table-responsive mb-4"> 
+						{!(report.length === 0) ? (<div className="row covidTable table-responsive mb-4">
 							<table className="table table-striped  col-11 ml-4   ">
 								<thead className='text-center sticky-top bg-light'>
 									<tr>
@@ -72,7 +57,7 @@ const InstructorCampusPage = (user) => {
 									</tr>
 								</thead>
 								<tbody>
-									{report?.map((report) => {
+									{report.map((report) => {
 										return (
 											<tr className="text-center">
 												<td>{report.date}</td>
@@ -84,8 +69,14 @@ const InstructorCampusPage = (user) => {
 									})}
 								</tbody>
 							</table>
-						</div>
-						<div className="row mt-4 d-flex justify-content-center">
+						</div>) : (
+							<div className="row d-flex justify-content-center align-items-center covidTable  mb-4">
+								<h1> No Reports Available</h1>
+							</div>
+
+						)
+						}
+						{/*<div className="row mt-4 d-flex justify-content-center">
 							<p className='reportText'>Exam Information</p>
 						</div>
 						<div className="row examTable table-responsive mb-4"> 
@@ -111,7 +102,7 @@ const InstructorCampusPage = (user) => {
 									})}
 								</tbody>
 							</table>
-						</div>
+						</div>*/}
 						<Link to="/groups">
                             <button className='groupsButton mb-3 py-3 btn'>
                             	Groups
@@ -124,4 +115,10 @@ const InstructorCampusPage = (user) => {
 	)
 }
 
-export default InstructorCampusPage
+const mapStateToProps = state => {
+	return {
+		status: state.isCovid,
+		report: state.weeklyReport
+	};
+}
+export default connect(mapStateToProps)(InstructorCampusPage)
