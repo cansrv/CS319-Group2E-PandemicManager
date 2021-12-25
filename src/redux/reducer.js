@@ -5,7 +5,6 @@ const reducer = (state, action) => {
         return {
             ...state,
             ...action.payload,
-
         }
     }
     if(action.type === "ADD_NEW_GROUP") {

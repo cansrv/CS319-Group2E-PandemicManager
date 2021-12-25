@@ -27,7 +27,6 @@ export const state_prototype = {
             lecture: 5,
             attendance: '3/3'
         },
-
     ],
     coursesThaught: [
         "CS-319",
