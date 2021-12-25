@@ -15,10 +15,12 @@ const Login = ({login_account, loggedIn}) => {
         axios.post("http://127.0.0.1:4567/login",
             loginInfo
         ).then((response) => {
-            console.log("enter")
-            console.log(response.data)
-            login_account(response.data)
-        })//.catch(error => { console.error(error); window.alert("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
+            console.log(response)
+            if (response.data !== null){
+                login_account(response.data)
+            }
+        }).catch(error => { console.error(error);
+            console.log("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
     }, [loggedIn])
 
     const mailHandler = (value) => {
