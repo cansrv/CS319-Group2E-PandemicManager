@@ -65,7 +65,28 @@ export const state_prototype = {
     ],
     email: "ter_no@gmail.com",
     isCovid: true,
-    tests: [],
+    tests: [
+        {
+            date: "27.11.2021",
+            type: "Diagnovir",
+            result: "POSITIVE",
+        },
+        {
+            date: "12.09.2021",
+            type: "Diagnovir",
+            result: "NEGATIVE",
+        },
+        {
+            date: "11.07.2021",
+            type: "PCR",
+            result: "NEGATIVE",
+        },
+        {
+            date: "23.04.2021",
+            type: "PCR",
+            result: "NEGATIVE",
+        }
+    ],
     isolationStartDate: "",
     isoEndDate: "",
     isoRemainingDays: 0,

@@ -3,31 +3,10 @@ import Navbar from "../components/navbar"
 import '../css/StudentTestsPage.css'
 import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
+import { connect } from "react-redux"
 
-const StudentTestsPage = () => {
-    const [isCovid, setIsCovid] = useState(true)
-    const [tests, setTests] = useState( [
-        {
-            date: "27.11.2021",
-            type: "Diagnovir",
-            result: "POSITIVE",
-        },
-        {
-            date: "12.09.2021",
-            type: "Diagnovir",
-            result: "NEGATIVE",
-        },
-        {
-            date: "11.07.2021",
-            type: "PCR",
-            result: "NEGATIVE",
-        },
-        {
-            date: "23.04.2021",
-            type: "PCR",
-            result: "NEGATIVE",
-        }
-    ])
+const StudentTestsPage = ({ tests}) => {
+    
 
     return (
         <div className='container'>
@@ -55,7 +34,7 @@ const StudentTestsPage = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            {tests !== []? tests.map((test)=> {
+                            {(tests.length !== 0)? tests.map((test)=> {
                                 return(
                                     <tr>
                                         <td scope="row" className="table-data green-border">{test.date}</td>
@@ -83,5 +62,10 @@ const StudentTestsPage = () => {
             </div>
     )
 }
+const mapStateToProps = state => {
+    return {
 
-export default StudentTestsPage;
+        tests: state.tests
+    };
+}
+export default connect(mapStateToProps)(StudentTestsPage)
