@@ -2,9 +2,9 @@ import Sidebar from "../components/Sidebar"
 import '../css/Navbar.css'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
+import {connect} from "react-redux"
 
-const Navbar = () => {
-	const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "Student"})
+const Navbar = ({name, surname, accountType}) => {
 	const [click, setClick] = useState(false)
 	return(
 		<>
@@ -22,8 +22,8 @@ const Navbar = () => {
 						<div className="d-none d-lg-block user-logo mr-3"></div>
 						<div className="d-none d-lg-block">
 							<div>
-								<div className="username">{ `${person.name} ${person.surname}`}</div>
-								<div className="account-status text-muted">{person.accountType}</div>
+								<div className="username">{ `${name} ${surname}`}</div>
+								<div className="account-status text-muted">{accountType}</div>
 							</div>
 						</div>
 					</div>
@@ -54,7 +54,7 @@ const Navbar = () => {
 				</Link>
 
 				{
-					!(person.accountType === "staff") ? <Link to="/courses" className="text-decoration-none text-white">
+					!(accountType === "staff") ? <Link to="/courses" className="text-decoration-none text-white">
 						<section className="sidebar-link mb-1 hover-effect"><span
 							className="ml-lg-3 ml-2 text-light">Courses</span></section>
 					</Link> : null}
@@ -70,5 +70,12 @@ const Navbar = () => {
 	)
 }
 
+const mapStateToProps = state => {
+	return {
+		name: state.name,
+		surname: state.surname,
+		accountType: state.accountType
+	};
+}
 
-export default Navbar
+export default connect(mapStateToProps)(Navbar);
