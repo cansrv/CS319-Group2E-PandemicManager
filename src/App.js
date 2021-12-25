@@ -19,7 +19,7 @@ import ExamsPage from './Pages/ExamsPage';
 
 function App() {
     const store = createStore(reducer, state_prototype ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-    const [userType, setUserType] = useState("instructor")
+    const [userType, setUserType] = useState("student")
     const [loggedIn, setLoggedIn] = useState(true)
 
     return (
@@ -31,13 +31,13 @@ function App() {
                 <Route path = "/home" element = {!loggedIn ? <Navigate to="/"/> : <StudentHomePage/>}></Route>
                 <Route path= "/courses"  
                 element={!loggedIn ? <Navigate to="/"/> : 
-                        (userType === "student" ? <StudentCoursesPage userType={userType}/> 
-                        : <InstructorCoursesPage userType={userType}/>)}>
+                        (userType === "student" ? <StudentCoursesPage /> 
+                        : <InstructorCoursesPage />)}>
                 </Route>
-                <Route path="/campus" element={!loggedIn ? <Navigate to="/"/> : (userType === "student" ? <StaffCampusPage userType={userType}/> 
-                        : <InstructorCampusPage userType={userType}/>)}></Route>
-                <Route path="/myProfile" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile userType={userType}/>}></Route>
-                <Route path="/tests" element={!loggedIn ? <Navigate to="/"/> : <StudentTestsPage userType={userType}/>}></Route>
+                <Route path="/campus" element={!loggedIn ? <Navigate to="/"/> : (userType === "staff" ? <StaffCampusPage /> 
+                        : <InstructorCampusPage />)}></Route>
+                <Route path="/myProfile" element={!loggedIn ? <Navigate to="/"/> : <StudentMyProfile />}></Route>
+                <Route path="/tests" element={!loggedIn ? <Navigate to="/"/> : <StudentTestsPage />}></Route>
                 <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage />}></Route>
                 <Route path="/exams" element={!loggedIn ? <Navigate to="/"/> : <ExamsPage />}></Route>
             </Routes>

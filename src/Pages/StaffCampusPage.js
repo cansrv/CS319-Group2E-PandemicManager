@@ -18,12 +18,7 @@ const StaffCampusPage = ({status, report}) => {
                                             <Sidebar/>
                                     </div>
                                     <div className="col-12 col-md-10   bg-light ">
-                                            <div className="row mt-4">
-                                                    <div className="d-none d-sm-block col-12 col-sm-4">
-                                                            <div className="universityId text-center d-flex justify-content-center align-items-center">
-                                                                    Bilkent University
-                                                            </div>
-                                                    </div>
+                                            <div className="row mt-4 d-flex justify-content-center">
                                                     <div className="col-12 col-sm-7 px-sm-1">
                                                             {(status !== true) ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are Allowed On Campus
