@@ -230,6 +230,45 @@ public class UserService {
         }
     }
 
+    public String addVaccine(String mail, Vaccine vaccine){
+        try{
+            User tempUser = getUser(mail);
+            tempUser.getCovidInformationCard().getVaccinationCard().addVaccine(vaccine);
+            setUser(tempUser);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
+    public String addVaccinationCard(String mail, VaccinationCard vaccinationCard){
+        try{
+            User tempUser = getUser(mail);
+            tempUser.getCovidInformationCard().setVaccinationCard(vaccinationCard);
+            setUser(tempUser);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
+    public String addExam(String mail, Course course, Exam exam){
+        try{
+            Instructor tempUser = (Instructor) getUser(mail);
+            for(Course listCourse : tempUser.getCourses()){
+                if(listCourse.getCourseName().equals(course.getCourseName())){
+                    course.getExams().add(exam);
+                }
+            }
+            setUser(tempUser);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
 
 
 }

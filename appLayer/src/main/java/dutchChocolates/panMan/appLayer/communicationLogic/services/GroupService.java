@@ -9,7 +9,6 @@ import java.util.List;
 
 public class GroupService {
     //Properties
-
     @Autowired
     GroupRepository groupRepository;
 
