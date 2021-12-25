@@ -3,6 +3,8 @@ package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
+import dutchChocolates.panMan.appLayer.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     //Properties
+    @Autowired
     UserService userService;
 
 
@@ -32,10 +35,25 @@ public class UserController {
     public String addVaccine(@RequestBody String jsonVaccineRequest){
         JsonObject jsonVaccine = new JsonParser().parse(jsonVaccineRequest).getAsJsonObject();
 
-        String userSpec = jsonVaccine.get("mail").getAsString();
+        return jsonVaccine.get("mail").getAsString();
 
-        return userSpec;
+    }
 
+    @PostMapping("/searchUser")
+    public String searchUser(@RequestBody String searchKey) {
+        JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
+
+        String sKey = jsonObject.get("sKey").getAsString();
+        try {
+            User u = userService.getUser(sKey);
+            return u.toString();
+        } catch (Exception ex) {
+            if(ex.getClass().equals(NullPointerException.class)) {
+                ex.printStackTrace();
+                return "No such user exists";
+            }
+        }
+        return "Fatal Error";
     }
 
     public UserService getUserService() {

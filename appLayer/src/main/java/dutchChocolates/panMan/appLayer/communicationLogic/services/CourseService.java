@@ -36,14 +36,6 @@ public class CourseService {
     }
 
 
-    /*
-    return args -> {
-            Student testStudent = studentRepository.getById("can.surav@ug.bilkent.edu.tr");
-            Course course = new Course(new ArrayList<Exam>(), new ArrayList<Section>(), studentRepository.findAll(), instructorRepository.findAll(), taRepository.findAll(), "CS319");
-            courseRepository.save(course);
-        };
-     */
-
     //Methods
 
     public Course getCourse(String courseName){
@@ -55,9 +47,9 @@ public class CourseService {
     }
 
     public String addCourse(List<String> courseList) {
-        for(int i = 0; i < courseList.size(); i++) {
+        for (String s : courseList) {
             Course course = new Course();
-            course.setCourseName(courseList.get(i));
+            course.setCourseName(s);
             courseRepository.save(course);
         }
         return "Successful";
