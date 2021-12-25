@@ -8,8 +8,8 @@ import CampusIcon from "../images/Icon.png"
 import LogoutIcon from "../images/logout.png"
 import { Link } from 'react-router-dom'
 import {useState} from 'react'
-const Sidebar = () => {
-    const [person, setPerson] = useState({name: "Mehmet", surname: "Yılmaz", accountType: "student"})
+import {connect} from "react-redux"
+const Sidebar = ({accountType}) => {
     return (
         <div className="sidebar">
             <aside className="d-flex flex-column">
@@ -25,7 +25,7 @@ const Sidebar = () => {
             <Link to="/campus" className="text-decoration-none text-white">
                 <section className="sidebar-link mb-1 hover-effect"><img src={CampusIcon} className="ml-lg-3 sidebar-icon"/><span className="ml-lg-3 ml-2">Campus</span></section>
             </Link>
-                {!(person.accountType === "staff") ? <Link to="/courses" className="text-decoration-none text-white">
+                {!(accountType === "staff") ? <Link to="/courses" className="text-decoration-none text-white">
                 <section className="sidebar-link mb-1 hover-effect flex-1"><img src={CoursesIcon} className="ml-lg-3 sidebar-icon"/><span className="ml-lg-3 ml-2">Courses</span></section>
             </Link> : null}
             <Link to="/" className="text-decoration-none text-white">
@@ -35,5 +35,8 @@ const Sidebar = () => {
         </div>
     )
 }
+const mapStateToProps = state => {
+    return {accountType: state.accountType};
+}
 
-export default Sidebar
+export default  connect(mapStateToProps)(Sidebar)
