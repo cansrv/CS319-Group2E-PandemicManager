@@ -81,7 +81,7 @@ const StudentMyProfilePage = ({name, surname, email, ID}) => {
 const mapStateToProps = state => {
     return {
         name: state.name,
-        surname: state.name,
+        surname: state.surname,
         email: state.email,
         ID: state.id
     };
