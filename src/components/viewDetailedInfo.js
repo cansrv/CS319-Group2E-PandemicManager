@@ -51,9 +51,9 @@ const riskyStudents = [
 		id: "21903214"
 	},
 ]
-const ViewDetailedInfoModal = ({courses, switchCourseType}) => {
+const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) => {
 	return (
-		< div className="modal fade" id="viewDetailedInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+		< div className="modal fade" id={`viewDetailedInfoModal${name + section}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
 			<div className="modal-dialog modal-lg modal-dialog-centered" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
@@ -88,13 +88,15 @@ const ViewDetailedInfoModal = ({courses, switchCourseType}) => {
 								<div className="row">
 									<div className="col-12">
 										<div onClick= {() => {
-											switchCourseType(courses.type)
-										}} className = "btn d-flex align-items-center justify-content-center switchF2F">Make Lesson Face To Face</div>
+											switchCourseType(course.type)
+										}} className ={`btn d-flex align-items-center justify-content-center switchF2F ${(type === "Face to Face")?"disabled": null}`}
+										>Make Lesson Face To Face</div>
 									</div>
 									<div className="col-12">
 										<div onClick={() => {
-											switchCourseType(courses.type)
-										}} className="btn d-flex align-items-center justify-content-center switchOnline">Make Lesson Online</div>
+											switchCourseType(course.type)
+										}} className={`btn d-flex align-items-center justify-content-center switchOnline ${(type === "Online") ? "disabled" : null}`}
+										>Make Lesson Online</div>
 									</div>
 
 								</div>

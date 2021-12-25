@@ -2,7 +2,7 @@ export const state_prototype = {
     name: "Mister",
     surname: "NO",
     id: 21901784,
-    accountType: "staff",
+    accountType: "instructor",
     HEScode: "22EF56",
     groups: [],
     exams: [],
@@ -45,7 +45,7 @@ export const state_prototype = {
             name: 'CS-315',
             section: 4,
             instructor: 'Eray Tuzun',
-            type: 'Face to Face',
+            type: 'Online',
 
         },
         {
