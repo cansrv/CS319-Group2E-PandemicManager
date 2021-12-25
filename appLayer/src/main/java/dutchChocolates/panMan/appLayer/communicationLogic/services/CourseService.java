@@ -11,15 +11,13 @@ import java.util.List;
 @Service
 public class CourseService {
     //Properties
-
     @Autowired
     CourseRepository courseRepository;
 
-    public String addCourse(List<String> loginList) {
-
-        for(int i = 0; i < loginList.size(); i++) {
+    public String addCourse(List<String> courseList) {
+        for(int i = 0; i < courseList.size(); i++) {
             Course course = new Course();
-            course.setCourseName(loginList.get(i));
+            course.setCourseName(courseList.get(i));
             courseRepository.save(course);
         }
         return "Successful";
@@ -27,13 +25,7 @@ public class CourseService {
 
     //Constructors
 
-    /*
-    return args -> {
-            Student testStudent = studentRepository.getById("can.surav@ug.bilkent.edu.tr");
-            Course course = new Course(new ArrayList<Exam>(), new ArrayList<Section>(), studentRepository.findAll(), instructorRepository.findAll(), taRepository.findAll(), "CS319");
-            courseRepository.save(course);
-        };
-     */
+
 
     //Methods
 

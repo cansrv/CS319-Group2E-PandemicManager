@@ -39,15 +39,7 @@ public class UserLoginController {
 
         return userLoginService.signInMethod(loginList.get(0), loginList.get(1));
 
-
-    }
-/*
-    public UserLoginService getUserLoginService() {
-        return userLoginService;
     }
 
-    public void setUserLoginService(UserLoginService userLoginService) {
-        this.userLoginService = userLoginService;
-    }
-*/
+
 }

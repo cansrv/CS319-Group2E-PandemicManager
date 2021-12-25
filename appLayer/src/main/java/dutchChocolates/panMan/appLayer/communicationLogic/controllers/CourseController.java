@@ -26,14 +26,13 @@ public class CourseController {
     //Methods
     @PostMapping("/coursePopulator")
     @ResponseBody
-    public String login(@RequestBody String jsonLoginRequest){
-        List<String> loginList = new ArrayList<String>();
-        JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();
+    public String addCourse(@RequestBody String jsonCourseRequest){
+        List<String> courseList = new ArrayList<String>();
+        JsonObject jsonCourse = new JsonParser().parse(jsonCourseRequest).getAsJsonObject();
 
-        loginList.add(jsonLogin.get("course_name").getAsString());
+        courseList.add(jsonCourse.get("course_name").getAsString());
 
-        return courseService.addCourse(loginList);
-
+        return courseService.addCourse(courseList);
     }
 
     public CourseService getCourseService() {
