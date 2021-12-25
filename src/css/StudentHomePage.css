@@ -1,0 +1,79 @@
+.covidInfo {
+  width: 95%;
+  height: content-box;
+  background: rgba(120, 210, 61, 0.9);
+  border: 5px solid #78d23d;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.covidInfoText {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 22px;
+  color: #ffffff;
+}
+
+.covid-situation-label {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 29px;
+  color: white;
+}
+.isCovid {
+  background: #ff0000;
+}
+
+.isNotCovid {
+  background: #78d23d;
+}
+
+.class-info {
+  width: fit-content;
+  height: fit-content;
+  background: rgba(229, 229, 229, 0.23);
+  border: 7px solid #25c4da;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.isolation-info {
+  height: fit-content;
+  background: white;
+  border: 7px solid #25c4da;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.iso-info-header {
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 2.3rem;
+  color: #000000;
+}
+
+.qr {
+  max-width: available;
+}
+.carouselCourse {
+  height: fit-content;
+  width: 428px;
+}
+.bg {
+  background: #25c4da;
+}
+
+.welcomeMessage {
+  font-size: 1rem;
+}

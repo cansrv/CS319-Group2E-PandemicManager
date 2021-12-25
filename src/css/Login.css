@@ -1,0 +1,89 @@
+html {
+  background-color: #25c4da;
+  font-family: Quicksand;
+}
+.mainContainer {
+  background-color: #25c4da;
+}
+
+.leftContainer {
+  color: white;
+}
+
+.seperator {
+  background: url(../images/seperator.png) no-repeat;
+  z-index: +1;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.rightContainer {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logoContainer {
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  background: url("../images/panman_logo.png") no-repeat center;
+  width: 280px;
+  height: 290px;
+}
+.nameContainer {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 45px;
+  text-align: center;
+  width: 500px;
+  height: 93px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+}
+
+.aboutContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 498px;
+  height: 208px;
+  font-weight: 300;
+  font-size: 29px;
+  line-height: 36px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 231px;
+}
+
+.label {
+  font-style: normal;
+  font-weight: bold;
+  line-height: 40px;
+  color: white;
+  font-size: 20px;
+}
+
+.loginButton {
+  border-radius: 10px;
+  background-color: white;
+  color: #25c4da;
+  font-weight: bold;
+  font-size: 22px;
+  border: 1px solid #ffffff;
+}
+
+.loginButton:hover {
+  background-color: #25c4da;
+  color: white;
+}
+
+.signupPrompt {
+  font-weight: 300;
+  font-size: 22px;
+  color: white;
+}

@@ -1,0 +1,75 @@
+*{
+	font-family:sans-serif;
+}
+.universityId {
+	height: 88px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+
+
+
+background: #FFFFFF;
+border: 5px solid #25C4DA;
+box-sizing: border-box;
+border-radius: 10px;
+}
+.content{
+	height: 100%;
+}
+.statusRisky{
+
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+	color: white;
+
+	height: 88px;
+	background: #FF0000;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+.statusNotRisky{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+	color: white;
+
+	height: 88px;
+
+
+	background: #78D23DE5;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+.covidTable{
+	height: 420px ;
+	overflow: scroll ;
+	box-sizing: border-box;
+
+}
+.groupsButton{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+	width: 100%;
+	color: white;
+	background: #25C4DA;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border:white;
+	border-radius: 10px;
+	
+}
+.staffCampusPg{
+	height: 100%;
+}
+.reportText{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+}
