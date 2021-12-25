@@ -31,7 +31,7 @@ function App() {
                 <Route path= "/courses"  
                 element={!loggedIn ? <Navigate to="/"/> : 
                         (store.getState().accountType === "student" ? <StudentCoursesPage />
-                        : <InstructorCoursesPage />)}>
+                        : store.getState().accountType === "staff" ? <StudentHomePage/> : <InstructorCoursesPage />)}>
                 </Route>
                 <Route path="/campus" element={!loggedIn ? <Navigate to="/"/> : (store.getState().accountType === "staff" ? <StaffCampusPage />
                         : <InstructorCampusPage />)}></Route>
