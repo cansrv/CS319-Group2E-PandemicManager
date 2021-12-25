@@ -22,7 +22,7 @@ public class UserLoginController {
     @Autowired
     private StudentRepository studentRepository;
 
-    private final String LOGIN_MAIL = "email";
+    private final String LOGIN_MAIL = "mail";
     private final String LOGIN_PASSWORD = "password";
 
     //Constructors
