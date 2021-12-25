@@ -18,7 +18,6 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
-
     //Constructors
 
 
@@ -26,13 +25,26 @@ public class CourseController {
     //Methods
     @PostMapping("/coursePopulator")
     @ResponseBody
-    public String login(@RequestBody String jsonLoginRequest){
+    public String addCourse(@RequestBody String courseName){
         List<String> loginList = new ArrayList<String>();
-        JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();
+        JsonObject jsonLogin = new JsonParser().parse(courseName).getAsJsonObject();
 
         loginList.add(jsonLogin.get("course_name").getAsString());
 
         return courseService.addCourse(loginList);
+
+    }
+
+
+    @PostMapping("/sectionPopulator")
+    @ResponseBody
+    public String addSection(@RequestBody String sectionBody) {
+        List<Object> sectionList = new ArrayList<>();
+        JsonObject jsonLogin = new JsonParser().parse(sectionBody).getAsJsonObject();
+        Boolean isOnline = jsonLogin.get("is_online").getAsBoolean();
+        Integer sectionNum = jsonLogin.get("section_number").getAsInt();
+        String courseName = jsonLogin.get("course_course_name").getAsString();
+        return courseService.addSection(isOnline, sectionNum, courseName);
 
     }
 

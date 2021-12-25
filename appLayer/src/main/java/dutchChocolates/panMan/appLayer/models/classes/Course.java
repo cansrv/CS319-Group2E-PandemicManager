@@ -11,15 +11,15 @@ import java.util.List;
 public class Course {
     //Properties
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Exam> exams;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Section> sections;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Student> students;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Instructor> instructors;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<TA> TAs;
     @Id
     private String courseName;

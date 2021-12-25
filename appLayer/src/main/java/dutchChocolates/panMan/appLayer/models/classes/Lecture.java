@@ -14,7 +14,7 @@ public class Lecture {
     @Column(name = "id", nullable = false)    private Long id;
     private String roomName;
     private boolean isSpareHour;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Attendance attendance;
 
     public Long getId() {

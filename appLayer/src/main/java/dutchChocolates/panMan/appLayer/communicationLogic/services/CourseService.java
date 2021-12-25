@@ -1,7 +1,9 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
+import dutchChocolates.panMan.appLayer.repositories.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,28 +16,42 @@ public class CourseService {
 
     @Autowired
     CourseRepository courseRepository;
+    @Autowired
+    SectionRepository sectionRepository;
+
+    //Methods
 
     public String addCourse(List<String> loginList) {
 
-        for(int i = 0; i < loginList.size(); i++) {
+        for (String s : loginList) {
             Course course = new Course();
-            course.setCourseName(loginList.get(i));
+            course.setCourseName(s);
             courseRepository.save(course);
         }
         return "Successful";
     }
 
-    //Constructors
+    public String addSection(Boolean isOnline, Integer sectionNumber,  String courseName) {
+        Section section = new Section();
+        Course course = getCourse(courseName);
+        section.setOnline(isOnline);
+        section.setSectionNumber(sectionNumber);
+        section.setCourse(course);
+        course.getSections().add(section);
+        updateCourse(course);
+        return sectionRepository.saveAndFlush(section).toString();
+    }
 
-    /*
-    return args -> {
-            Student testStudent = studentRepository.getById("can.surav@ug.bilkent.edu.tr");
-            Course course = new Course(new ArrayList<Exam>(), new ArrayList<Section>(), studentRepository.findAll(), instructorRepository.findAll(), taRepository.findAll(), "CS319");
-            courseRepository.save(course);
-        };
-     */
 
-    //Methods
+    public Course getCourse(String name) {
+        return courseRepository.getById(name);
+    }
+
+    public void updateCourse(Course course) {
+        courseRepository.flush();
+    }
+
+
 
 
 
