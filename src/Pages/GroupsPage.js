@@ -8,21 +8,21 @@ const GroupsPage = () => {
         {
             
             groupName: "Library Group - 1",
-            date: "10.12.2021",
+            date: "10/12/2021",
             participants: ["21902570", "21902572", "21902574"],
             isActive: true,
         },
         {
             
             groupName: "Library Group - 2",
-            date: "11.12.2021",
+            date: "11/12/2021",
             participants: ["21902570", "21902572", "21902574", "21902576"],
             isActive: true,
         },
         {
             
             groupName: "Study Group in EA0",
-            date: "12.12.2021",
+            date: "12/12/2021",
             participants: ["21902570", "21902572"],
             isActive: false,
         },
@@ -156,7 +156,7 @@ const GroupsPage = () => {
                                         <label for="dateInput" className="col-sm-4 col-form-label">Date</label>
                                         <div className="col-sm-8">
                                         <input type="date" className="form-control" id="dateInput" placeholder="Date"
-                                        value={date}
+                                        
                                         onChange={(e) => dateHandler(e.target.value)}></input>
                                         </div>
                                     </div>
