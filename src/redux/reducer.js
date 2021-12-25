@@ -1,3 +1,5 @@
+import courses from "../components/courseData";
+
 const reducer = (state, action) => {
     if(action.type === "LOGIN") {
         return {
@@ -55,11 +57,30 @@ const reducer = (state, action) => {
         newTime = String(newTime.toDateString())
         time = String(time.toDateString())
 
-         return {
+        return {
             ...state,
             isCovid: true,
             isolationStartDate: time,
             isoEndDate: newTime
+        }
+    }
+    if(action.type === "SWITCH_COURSE_TYPE") {
+        var theIndex = courses.findIndex((item => (item.name === action.payload.course.name && (item.section === action.payload.course.section))))
+        console.log(theIndex)
+        console.log(action.payload.course)
+        var newArray = courses
+        var theType = newArray[theIndex].type
+        if (theType === "Online") {
+            newArray[theIndex].type = "Face to Face"
+        }
+        else {
+            newArray[theIndex].type = "Online"
+        }
+
+        console.log(newArray)
+        return {
+            ...state,
+            courses: Array(...newArray)
         }
     }
     return state;

@@ -46,13 +46,12 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 															</>
 														)
 													})}
-
 												</ul>
 											</div>
 											<div className="card-footer cardColoredPart text-muted">
 												<a data-toggle="modal" href={`#viewDetailedInfoModal${courses.name + courses.section}`} className= "text-white">View Detailed Info</a>
 											</div>
-											<ViewDetailedInfoModal name = {courses.name} section={courses.section} type={courses.type} />
+											<ViewDetailedInfoModal name = {courses.name} section={courses.section} type={courses.type} course={courses}/>
 										</div>
 									</div>
 

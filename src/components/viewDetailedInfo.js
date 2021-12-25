@@ -52,6 +52,11 @@ const riskyStudents = [
 	},
 ]
 const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) => {
+	const handleTypeSwitch = (course) => {
+		switchCourseType(course)
+		window.alert("You have switched course type")
+	}
+
 	return (
 		< div className="modal fade" id={`viewDetailedInfoModal${name + section}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
 			<div className="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -88,13 +93,13 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) 
 								<div className="row">
 									<div className="col-12">
 										<div onClick= {() => {
-											switchCourseType(course.type)
+											handleTypeSwitch(course)
 										}} className ={`btn d-flex align-items-center justify-content-center switchF2F ${(type === "Face to Face")?"disabled": null}`}
 										>Make Lesson Face To Face</div>
 									</div>
 									<div className="col-12">
 										<div onClick={() => {
-											switchCourseType(course.type)
+											handleTypeSwitch(course)
 										}} className={`btn d-flex align-items-center justify-content-center switchOnline ${(type === "Online") ? "disabled" : null}`}
 										>Make Lesson Online</div>
 									</div>
@@ -114,8 +119,8 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type}) 
 }
 const mapDispatchToProps = dispatch => {
 	return {
-		switchCourseType: (courseType) => {
-			dispatch({type: "SWITCH_COURSE_TYPE", payload: courseType})
+		switchCourseType: (course) => {
+			dispatch({type: "SWITCH_COURSE_TYPE", payload: {course: course}})
 		}
 	};
 }
