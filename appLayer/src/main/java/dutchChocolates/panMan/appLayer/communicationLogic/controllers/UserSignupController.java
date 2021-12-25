@@ -39,10 +39,6 @@ public class UserSignupController {
         signupList.add(jsonSignup.get(SIGNUP_ID).getAsString());
         signupList.add(jsonSignup.get(SIGNUP_HES_CODE).getAsString());
 
-        //TODO fix the returned string and add the service logic into this method.
-        //Return => if signup data exists in database return user with it's type as json.
-
-
         return userSignupService.signUpUser(signupList);
     }
 

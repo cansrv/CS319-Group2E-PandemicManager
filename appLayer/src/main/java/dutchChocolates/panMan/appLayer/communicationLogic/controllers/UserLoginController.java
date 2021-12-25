@@ -41,8 +41,7 @@ public class UserLoginController {
 
         return userLoginService.getByMail(loginList.get(0));
 
-        //TODO fix the returned string and add the service logic into this method.
-        //Return => if login data exists in database return user with it's type as json, null otherwise.
+
     }
 
     public UserLoginService getUserLoginService() {
