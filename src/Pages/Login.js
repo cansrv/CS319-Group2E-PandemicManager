@@ -1,12 +1,19 @@
-    import "../css/Login.css"
+import "../css/Login.css"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import {connect} from "react-redux"
 
-const Login = () => {
-
+const Login = ({login_account}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
+
+    useEffect( () => {
+        if (loggedIn === true) {
+            //axios
+            //login_account()
+        }
+    }, [loggedIn])
 
     const mailHandler = (value) => {
         console.log(value);
@@ -86,4 +93,8 @@ const Login = () => {
     )
 }
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+    return { login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} })}
+}
+
+export default connect(mapDispatchToProps)(Login);

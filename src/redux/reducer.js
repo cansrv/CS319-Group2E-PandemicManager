@@ -1,5 +1,16 @@
 const reducer =  (state,action) =>{
-
+    if (action.type === "LOGIN") {
+        return {
+            ...action.payload,
+            ...state
+        }
+    }
+    if (action.type === "LOGIN") {
+        return {
+            ...action.payload,
+            ...state
+        }
+    }
     return state;
 }
 

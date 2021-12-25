@@ -18,7 +18,7 @@ import {state_prototype} from "../src/redux/redux_state"
 
 function App() {
     const store = createStore(reducer, state_prototype ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-    const [userType, setUserType] = useState("instructor")
+    const [userType, setUserType] = useState("student")
     const [loggedIn, setLoggedIn] = useState(true)
 
     return (
