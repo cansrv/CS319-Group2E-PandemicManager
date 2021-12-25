@@ -4,6 +4,8 @@ import '../css/StudentHomePage.css'
 import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
 import {connect} from "react-redux"
+import { Carousel } from "react-bootstrap"
+
 
 const StudentHomePage = ({
                              isCovid,
@@ -15,6 +17,7 @@ const StudentHomePage = ({
                              recovered,
                              negativeTest,
                              isAllowedOnCampus,
+                              courses
                          }) => {
     return (
             <div className='container'>
@@ -51,30 +54,77 @@ const StudentHomePage = ({
                             </div>
                             <div className="col-lg-4 col-10 offset-1 offset-lg-0 d-flex my-md-1  flex-column justify-content-around">
                                 <div className="row d-flex justify-content-center mx-auto">
-                                    <div className="col-12 offset-lg-4">
+                                    <div className="col-10 ">
                                         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                                            <div className="carousel-inner">
-                                                <div className="carousel-item active class-info">
-                                                    <h1 className="text-center "> Current 1</h1>
-                                                    <h1 className="text-center"> Current Courses</h1>
-                                                    <h1 className="text-center"> Current Courses</h1>
-                                                    <h1 className="text-center"> Current Courses</h1>
-                                                </div>
-                                                <div className="carousel-item">
-                                                    <h1 className="text-center"> Current 2</h1>
-                                                </div>
-                                                <div className="carousel-item">
-                                                    <h1 className="text-center"> Current 3</h1>
-                                                </div>
+                                            <div className="carousel-inner ">
+                                                {!(courses.length === 0 )? (
+                                                <div className="carousel-item carouselCourse active class-info ">
+                                                    <div className = "col-10 d-flex align-items-center flex-column">
+                                                        <div className="row">
+                                                            <h3 >Current Courses</h3>
+                                                        </div>
+                                                        <div className="row">
+                                                            <h3>{courses[0].name}</h3>
+                                                        </div>
+                                                        <div className="row">
+                                                            <h3>Section: {courses[0].section}</h3>
+                                                        </div>
+                                                        <div className="row">
+                                                            <h3>{courses[0].instructor}</h3>
+                                                        </div>
+                                                        <div className="row">
+                                                            <h3>{courses[0].type}</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>) : 
+                                                
+                                                    (<div className="carousel-item carouselCourse active class-info ">
+                                                        <div className="col-10 d-flex align-items-center flex-column">
+                                                            <div className="row">
+                                                                <h3 >No Courses</h3>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                        
+                                                    )}
+                                                    
+                                                
+                                                
+                                                
+                                            {!(courses.length === 0 ) ? courses.slice(1).map((course=>{
+                                                        return(
+                                                            <div className="carousel-item carouselCourse class-info  ">
+                                                            <div className="col-10 d-flex align-items-center flex-column">
+                                                                <div className="row">
+                                                                    <h3 >Current Courses</h3>
+                                                                </div>
+                                                                <div className="row">
+                                                                    <h3>{course.name}</h3>
+                                                                </div>
+                                                                <div className="row">
+                                                                    <h3>Section: {course.section}</h3>
+                                                                </div>
+                                                                <div className="row">
+                                                                    <h3>{course.instructor}</h3>
+                                                                </div>
+                                                                <div className="row">
+                                                                    <h3>{course.type}</h3>
+                                                                </div>`
+                                                            </div>
+                                                            </div>
+                                                        )
+                                                    })): <div></div>}
+                                                
                                             </div>
-                                            <button className="carousel-control-prev" type="button"
+                                            <button className="carousel-control-prev bg" type="button"
                                                     data-target="#carouselExampleControls" data-slide="prev">
-                                                <span className="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span className="sr-only">Previous</span>
                                             </button>
-                                            <button className="carousel-control-next" type="button"
+                                        <button className="carousel-control-next bg" type="button"
                                                     data-target="#carouselExampleControls" data-slide="next">
-                                                <span className="carousel-control-next-icon bg-dark text-dark" aria-hidden="true"></span>
+                                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span className="sr-only">Next</span>
                                             </button>
                                         </div>
@@ -111,6 +161,7 @@ const mapStateToProps = state => {
         recovered: state.recovered,
         negativeTest: state.negativeTest,
         isAllowedOnCampus: state.isAllowedOnCampus,
+        courses: state.courses
     };
 }
 

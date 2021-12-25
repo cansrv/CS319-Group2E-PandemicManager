@@ -66,3 +66,10 @@
 .qr {
     max-width: available;
 }
+.carouselCourse{
+    height: fit-content;
+    width: 428px;
+}
+.bg{
+    background: #25C4DA;
+}
