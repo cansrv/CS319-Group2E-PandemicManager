@@ -11,15 +11,18 @@ import GroupsPage from './Pages/GroupsPage';
 import InstructorCoursesPage from './Pages/InstructorCoursesPage';
 import StudentMyProfile from "./Pages/StudentMyProfile"
 import {useState} from "react"
-
-
+import {createStore} from "redux";
+import {Provider} from "react-redux"
+import reducer from "../src/redux/reducer"
+import {state_prototype} from "../src/redux/redux_state"
 
 function App() {
-
+    const store = createStore(reducer, state_prototype ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
     const [userType, setUserType] = useState("instructor")
     const [loggedIn, setLoggedIn] = useState(true)
 
-    return ( 
+    return (
+        <Provider store={store}>
         <BrowserRouter>
             <Routes>
                 <Route path = "/signup" element = {<SignUp></SignUp>}></Route>
@@ -37,7 +40,7 @@ function App() {
                 <Route path="/groups" element={!loggedIn ? <Navigate to="/"/> : <GroupsPage userType={userType}/>}></Route>
             </Routes>
         </BrowserRouter>
-
+        </Provider>
                 );
             }
 
