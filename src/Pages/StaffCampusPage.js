@@ -1,12 +1,11 @@
 import {useState} from "react"
 import Navbar from "../components/navbar"
 import '../css/StaffCampusPage.css'
-import report from "../components/weeklyReportData"
 import Sidebar from "../components/Sidebar"
 import { Link } from "react-router-dom"
+import {connect} from "react-redux"
 
-const StaffCampusPage = () => {
-        const [status, setStatus] = useState(false)
+const StaffCampusPage = ({status, report}) => {
         return (
             <>
                     <div className='container staffCampusPg'>
@@ -26,7 +25,7 @@ const StaffCampusPage = () => {
                                                             </div>
                                                     </div>
                                                     <div className="col-12 col-sm-7 px-sm-1">
-                                                            {status ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
+                                                            {(status !== true) ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are Allowed On Campus
                                                             </div>) : (<div className="statusRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are  NOT Allowed On Campus
@@ -36,7 +35,7 @@ const StaffCampusPage = () => {
                                             <div className="row mt-4 d-flex justify-content-center">
                                                     <p className = 'reportText'>Weekly Covid-19 Report</p>
                                             </div>
-                                            <div className="row covidTable table-responsive mb-4">
+                                            {!(report.length === 0) ? (<div className="row covidTable table-responsive mb-4">
                                                     <table className="table table-striped  col-11 ml-4   ">
                                                             <thead className = 'text-center sticky-top bg-light'>
                                                             <tr>
@@ -59,7 +58,13 @@ const StaffCampusPage = () => {
                                                             })}
                                                             </tbody>
                                                     </table>
-                                            </div>
+                                            </div>): (
+                                                        <div className="row d-flex justify-content-center align-items-center covidTable  mb-4">
+                                                                <h1> No Reports Available</h1>
+                                                        </div>
+
+                                            )
+                                            }
                                             <div className="row d-flex justify-content-center">
                                                     <div className="col-12 col-sm-4 mb-2">
                                                             <Link to="/groups">
@@ -80,4 +85,11 @@ const StaffCampusPage = () => {
         )
 }
 
-export default StaffCampusPage
+const mapStateToProps = state => {
+        return {
+                status: state.isAllowedOnCampus,
+                report: state.weeklyReport
+        };
+}
+
+export default connect(mapStateToProps)(StaffCampusPage)
