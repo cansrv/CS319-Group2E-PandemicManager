@@ -89,7 +89,7 @@ export const state_prototype = {
     ],
     isolationStartDate: "",
     isoEndDate: "",
-    isoRemainingDays: 0,
+
     vaccinated: false,
     recovered: false,
     negativeTest: false,

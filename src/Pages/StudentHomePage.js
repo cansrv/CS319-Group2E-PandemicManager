@@ -135,7 +135,7 @@ const StudentHomePage = ({
                                         <p className="row iso-info-header m-auto">Isolation Information</p>
                                         {isCovid?(
                                             <>
-                                            <div className="row px-3">Remaining Days: {isoRemainingDays} Days </div>
+                                            <div className="row px-3">Stay At Home</div>
                                             <div className="row px-3">Start of Isolation: {isolationStartDate}</div>
                                             <div className="row px-3">End of Isolation: {isoEndDate}</div>
                                             </>
