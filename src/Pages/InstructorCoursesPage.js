@@ -107,7 +107,8 @@ const InstructorCoursesPage = () => {
 														return (
 															<li className=" list-group-item d-flex justify-content-between">
 																<div>Week {attendance.week}</div>
-																<a data-toggle="modal" href="#takeAttendanceModal"  onClick={()=>setCurrentWeek(attendance.week)}> Take Attendance</a>
+																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.week}`)}  onClick={()=>{setCurrentWeek(attendance.week)
+																	console.log(attendance.week)}}> Take Attendance</a>
 																
 															</li>
 														)
@@ -134,7 +135,7 @@ const InstructorCoursesPage = () => {
 					</div>
 				</div>
 			</div>
-		<TakeAttendanceModal/>
+		<TakeAttendanceModal week ={attendance.week}/>
 		<ViewDetailedInfoModal/>
 		</>
 	)

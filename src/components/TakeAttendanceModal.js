@@ -53,10 +53,11 @@ const Students = [
 	},
 ]
 
-const TakeAttendanceModal = () =>{
+const TakeAttendanceModal = ({week}) =>{
+	const [attendance, setAttendance] =useState(false)
 	const [checkAll, setCheckAll] =useState(false); 
 	return(
-		< div className="modal fade" id = "takeAttendanceModal" tabindex = "-1" role = "dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+		< div className="modal fade" id={String(`takeAttendanceModal${week}`)} tabindex = "-1" role = "dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
 			<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
 				<div className="modal-content">
 					<div className="modal-header">

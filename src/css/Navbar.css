@@ -1,7 +1,6 @@
 .panman-bg {
 background: #25C4DA;
-
-
+	position: relative;
 }
 
 .panman-logo {
@@ -62,3 +61,15 @@ background: #25C4DA;
 	width: 49%;
 }
 
+.bg-toggler {
+	background-image: url("../images/toggler-icon.png");
+	background-size: 47px 35px;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 27px;
+	left: 0;
+}
+
+.toggler-w {
+	width: 7%;
+}

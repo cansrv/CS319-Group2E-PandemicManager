@@ -1,9 +1,15 @@
 import "../css/SignUp.css"
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom"
 
 export const SignUp = () => {
     const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', surname: '', id: '', password: '', HEScode: ''});
+    const [dataSendNeeded, setDataSendNeeded] = useState(false)
+
+    useEffect( () => {
+        //axios
+    }, [dataSendNeeded])
+
     const handleChange = (e) => {
         const name = e.target.id;
         const value = e.target.value;
@@ -11,9 +17,19 @@ export const SignUp = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(signUpInfo);
-        window.alert("your account has been created with the following information:\n" + signUpInfo.name + "\n" +
-            signUpInfo.surname + "\n" +signUpInfo.password + "\n" +signUpInfo.email + "\n" +signUpInfo.HEScode + "\n" +signUpInfo.id + "\n");
+        const empty_check = (signUpInfo.name !== "") &&
+            (signUpInfo.surname !== "") &&
+            (signUpInfo.email !== "") &&
+            (signUpInfo.id !== "") &&
+            (signUpInfo.password !== "") &&
+            (signUpInfo.HEScode !== "")
+        if (empty_check) {
+            window.alert("not empty")
+            setDataSendNeeded(!dataSendNeeded)
+        }
+         else {
+            window.alert("Please enter all of the fields to create an account");
+        }
     };
 
 

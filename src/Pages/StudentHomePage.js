@@ -3,18 +3,19 @@ import Navbar from "../components/navbar"
 import '../css/StudentHomePage.css'
 import Sidebar from "../components/Sidebar"
 import QR from "../images/QR2 1.png"
+import {connect} from "react-redux"
 
-const StudentHomePage = () => {
-    const [isCovid, setIsCovid] = useState(true)
-    const [remainingDays, setremainingDays] = useState(10)
-    const [isoStart, setIsoStart] = useState("27.11.2021")
-    const [isoEnd, setIsoEnd] = useState("10.11.2021")
-    const [hes, setHes] = useState("YFMN23")
-    const [vaccinated, setVaccinated] = useState(true)
-    const [recovered, setRecovered] = useState(false)
-    const [negTest, setNegTest] = useState(false)
-    const [campusStatus, setCampusStatus] = useState(false)
-
+const StudentHomePage = ({
+                             isCovid,
+                             isoRemainingDays,
+                             isolationStartDate,
+                             isoEndDate,
+                             HEScode,
+                             vaccinated,
+                             recovered,
+                             negativeTest,
+                             isAllowedOnCampus,
+                         }) => {
     return (
             <div className='container'>
                 <div className='row'>
@@ -36,11 +37,11 @@ const StudentHomePage = () => {
                                     </div>
                                     <div className="row">
                                         <div className="col- offset-2 col-lg-8">
-                                            <h1 className="covidInfoText">HES Code: {hes}</h1>
+                                            <h1 className="covidInfoText">HES Code: {HEScode}</h1>
                                             <h1 className="covidInfoText">Vaccinated: {vaccinated?"YES":"NO"}</h1>
                                             <h1 className="covidInfoText">Recovered: {recovered?"YES":"NO"}</h1>
-                                            <h1 className="covidInfoText">Negative Test (48hrs): {negTest?"YES":"NO"}</h1>
-                                            <h1 className="covidInfoText">Allowed on Campus: {campusStatus?"YES":"NO"}</h1>
+                                            <h1 className="covidInfoText">Negative Test (48hrs): {negativeTest?"YES":"NO"}</h1>
+                                            <h1 className="covidInfoText">Allowed on Campus: {isAllowedOnCampus?"YES":"NO"}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +85,9 @@ const StudentHomePage = () => {
                                         <p className="row iso-info-header m-auto">Isolation Information</p>
                                         {isCovid?(
                                             <>
-                                            <div className="row px-3">Remaining Days: {remainingDays} Days </div>
-                                            <div className="row px-3">Start of Isolation: {isoStart}</div>
-                                            <div className="row px-3">End of Isolation: {isoEnd}</div>
+                                            <div className="row px-3">Remaining Days: {isoRemainingDays} Days </div>
+                                            <div className="row px-3">Start of Isolation: {isolationStartDate}</div>
+                                            <div className="row px-3">End of Isolation: {isoEndDate}</div>
                                             </>
                                         ) : <p className="mx-auto">You are allowed on campus!!</p>}
                                     </div>
@@ -99,4 +100,19 @@ const StudentHomePage = () => {
     )
 }
 
-export default StudentHomePage;
+const mapStateToProps = state => {
+    return {
+        isCovid: state.isCovid,
+        isoRemainingDays: state.isoRemainingDays,
+        isolationStartDate: state.isolationStartDate,
+        isoEndDate: state.isoEndDate,
+        HEScode: state.HEScode,
+        vaccinated: state.vaccinated,
+        recovered: state.recovered,
+        negativeTest: state.negativeTest,
+        isAllowedOnCampus: state.isAllowedOnCampus,
+    };
+}
+
+export default connect(mapStateToProps)(StudentHomePage);
+
