@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
@@ -91,13 +92,33 @@ public class UserController {
         return "Fatal Error";
     }
 
+    private VaccinationCard vaccinationCardParser(JsonObject vaccinationCardObject) throws ParseException {
+        VaccinationCard tempVaccinationCard = new VaccinationCard();
+
+        tempVaccinationCard.setFirstName(vaccinationCardObject.get("firstName").getAsString());
+        tempVaccinationCard.setMiddleName(vaccinationCardObject.get("middleName").getAsString());
+        tempVaccinationCard.setLastName(vaccinationCardObject.get("lastName").getAsString());
+        tempVaccinationCard.setPersonalIdNumber(vaccinationCardObject.get("personalIdNumber").getAsString());
+
+        String idStr = vaccinationCardObject.get("id").getAsString();
+        Long id = Long.valueOf(idStr);
+        tempVaccinationCard.setId(id);
+
+        Date date = DateFormat.getInstance().parse(vaccinationCardObject.get("date").getAsString());
+        tempVaccinationCard.setBirthDate(date);
+
+        JsonArray vaccineArray = vaccinationCardObject.get("vaccines").getAsJsonArray();
+
+        return tempVaccinationCard;
+    }
+
+
     private Test addTest(JsonObject testObject) throws ParseException {
         Date testDate = DateFormat.getInstance().parse(testObject.get("testDate").getAsString());
         TestType testType = TestType.valueOf(testObject.get("testType").getAsString());
         ResultType resultType = ResultType.valueOf(testObject.get("resultType").getAsString());
         VariantType variantType = VariantType.valueOf(testObject.get("variantType").getAsString());
         return new Test(testDate, testType, resultType, variantType);
-
     }
 
 }

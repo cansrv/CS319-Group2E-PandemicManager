@@ -5,6 +5,7 @@ import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
@@ -22,6 +23,8 @@ public class CourseService {
     CourseRepository courseRepository;
     @Autowired
     SectionRepository sectionRepository;
+    @Autowired
+    UserService userService;
 
     //Methods
 
@@ -131,6 +134,22 @@ public class CourseService {
 
     public String setLecturesOfSection(List<String> lectureList){
         return "";
+    }
+
+    public String addExam(String mail, Course course, Exam exam){
+        try{
+            Instructor tempUser = (Instructor) userService.getUser(mail);
+            for(Course listCourse : tempUser.getCourses()){
+                if(listCourse.getCourseName().equals(course.getCourseName())){
+                    course.getExams().add(exam);
+                }
+            }
+            userService.setUser(tempUser);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
 }

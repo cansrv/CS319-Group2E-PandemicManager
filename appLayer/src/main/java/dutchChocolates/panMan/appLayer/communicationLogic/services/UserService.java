@@ -254,21 +254,5 @@ public class UserService {
         }
     }
 
-    public String addExam(String mail, Course course, Exam exam){
-        try{
-            Instructor tempUser = (Instructor) getUser(mail);
-            for(Course listCourse : tempUser.getCourses()){
-                if(listCourse.getCourseName().equals(course.getCourseName())){
-                    course.getExams().add(exam);
-                }
-            }
-            setUser(tempUser);
-            return "Successful";
-        }catch(Exception e){
-            e.printStackTrace();
-            return "Fail";
-        }
-    }
-
 
 }
