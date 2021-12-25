@@ -1,4 +1,5 @@
 export const state_prototype = {
+    loggedIn: false,
     name: "Mister",
     surname: "NO",
     id: 21901784,

@@ -1,12 +1,11 @@
 import "../css/Login.css"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import {connect} from "react-redux"
-
-const Login = ({login_account}) => {
+import {connect} from "react-redux" 
+import axios from "axios"
+const Login = ({login_account, loggedIn}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
-    const [loggedIn, setLoggedIn] = useState(false)
 
     useEffect( () => {
         var loginInfo = {
@@ -16,9 +15,10 @@ const Login = ({login_account}) => {
         axios.post("http://127.0.0.1:4567/login",
             loginInfo
         ).then((response) => {
-            console.log(response)
+            console.log("enter")
+            console.log(response.data)
             login_account(response.data)
-        }).catch(error => { console.error(error); window.alert("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
+        })//.catch(error => { console.error(error); window.alert("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
     }, [loggedIn])
 
     const mailHandler = (value) => {
@@ -43,7 +43,7 @@ const Login = ({login_account}) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
             console.log("The input creditentials are mail: " + mail + "password: " + password);
-            setLoggedIn(true)
+            login_account(true)
             window.location.href = "/home"
         }
         else if (!validateEmail(mail)) {
@@ -110,5 +110,8 @@ const Login = ({login_account}) => {
 const mapDispatchToProps = (dispatch) => {
     return { login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} })}
 }
+const mapStateToProps = (state) => {
+    return {loggedIn: store.loggedIn}
+}
 
-export default connect(mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
