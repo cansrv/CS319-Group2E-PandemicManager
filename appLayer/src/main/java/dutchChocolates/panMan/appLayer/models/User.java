@@ -32,7 +32,7 @@ public abstract class User {
     private List<Group> groupsCreated;
     @ManyToMany
     private List<Group> groupsParticipated;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private CovidInformationCard covidInformationCard;
 
     // Constructors

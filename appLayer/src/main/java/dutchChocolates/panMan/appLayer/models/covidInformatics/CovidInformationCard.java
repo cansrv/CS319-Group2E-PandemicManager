@@ -10,10 +10,11 @@ public class CovidInformationCard {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)    private Long id;
-    @OneToOne
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @OneToOne(cascade=CascadeType.ALL)
     VaccinationCard vaccinationCard;
-    @ElementCollection
+    @OneToMany
     List<Test> tests;
     @ElementCollection
     List<String> hesCodes;
@@ -32,8 +33,9 @@ public class CovidInformationCard {
 
     public CovidInformationCard(String hesCode) {
         this.vaccinationCard = null;
+        hesCodes = new ArrayList<String>();
         this.hesCodes.add(hesCode);
-        this.covidStatus = null;
+        this.covidStatus = CovidStatus.Negative;
         this.hesCodeStatus = HESCodeStatus.OK;
         this.tests = new ArrayList<>();
     }
