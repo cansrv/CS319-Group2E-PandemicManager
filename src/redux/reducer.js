@@ -7,13 +7,13 @@ const reducer =  (state,action) =>{
     }
     if (action.type === "ADD_NEW_GROUP") {
         return {
-            ...action.payload,
+            groups: new Array(action.payload.group),
             ...state
         }
     }
     if (action.type === "REMOVE_GROUP") {
         return {
-            ...action.payload,
+            groups: new Array(action.payload.group),
             ...state
         }
     }

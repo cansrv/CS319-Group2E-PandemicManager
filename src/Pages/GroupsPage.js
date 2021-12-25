@@ -4,10 +4,8 @@ import "../css/GroupsPage.css"
 import { useState } from "react"
 import {connect} from "react-redux"
 
-const GroupsPage = (addGroup, removeGroup, groups) => {
-    
+const GroupsPage = ({add_group, groups, remove_group}) => {
     const [addedParticipants, setAddedParticipants] = useState([])
-
     const [date, setDate] = useState("")
     const [name, setName] = useState("")
     const [newParticipant, setNewParticipant] = useState("");
@@ -60,7 +58,7 @@ const GroupsPage = (addGroup, removeGroup, groups) => {
             participants: addedParticipants,
             isActive: true,
             }
-            addGroup([...groups, newGroup])
+            add_group(newGroup)
             window.alert("A new group is added")
             setName("")
             setNewParticipant("")
@@ -77,7 +75,7 @@ const GroupsPage = (addGroup, removeGroup, groups) => {
             return item.groupName !== group.groupName
         })
         console.log(filteredArray);
-        removeGroup(filteredArray);
+        remove_group(filteredArray)
         console.log(group.groupName, "is removed");
     }
 
@@ -230,4 +228,16 @@ const mapDispatchToProps = (dispatch) => {
         removeGroup: (group) => dispatch({type : "REMOVE_GROUP", payload: {group} })}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GroupsPage)
+const mapStateToProps = state => {
+    return {
+        groups: state.groups
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        add_group: ( group) => dispatch({type : "ADD_NEW_GROUP", payload: {group: group} }),
+        remove_group: ( group) => dispatch({type : "REMOVE_GROUP", payload: {group: group} })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroupsPage);
