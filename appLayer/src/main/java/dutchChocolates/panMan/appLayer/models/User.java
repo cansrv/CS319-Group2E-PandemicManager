@@ -26,7 +26,6 @@ public abstract class User {
     @Id
     @Column(name = "mail", unique = true)
     private String mail;
-    private String phoneNumber;
     private String bilkentID;
     @ManyToMany
     private List<Group> groupsCreated;
@@ -44,11 +43,10 @@ public abstract class User {
         this.setCovidInformationCard(new CovidInformationCard(hesCode));
     }
 
-    public User(String username, String password, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+    public User(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
         this.mail = mail;
-        this.phoneNumber = phoneNumber;
         this.bilkentID = bilkentID;
         this.groupsCreated = groupsCreated;
         this.groupsParticipated = groupsParticipated;
@@ -108,12 +106,7 @@ public abstract class User {
         return true;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public boolean setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
         return true;
     }
 
@@ -163,7 +156,6 @@ public abstract class User {
                 ", fullName='" + fullName + '\'' +
                 ", password='" + password + '\'' +
                 ", mail='" + mail + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
                 ", bilkentID='" + bilkentID + '\'' +
                 ", groupsCreated=" + groupsCreated +
                 ", groupsParticipated=" + groupsParticipated +

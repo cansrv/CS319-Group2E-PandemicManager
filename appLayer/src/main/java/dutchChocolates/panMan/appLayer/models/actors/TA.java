@@ -5,10 +5,8 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.util.List;
 
 
@@ -19,8 +17,8 @@ public class TA extends Student {
     List<Section> sectionsTaught;
 
     // Constructors
-    public TA(String username, String password, String mail, String phoneNumber, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught, String fullName) {
-        super(username, password, mail, phoneNumber, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections, fullName);
+    public TA(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, List<Section> sectionsTaught, String fullName) {
+        super(username, password, mail, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, sections, fullName);
         this.sectionsTaught = sectionsTaught;
     }
 
