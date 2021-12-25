@@ -16,19 +16,16 @@ public class UserSignupController {
     UserSignupService userSignupService;
 
     private final String SIGNUP_NAME = "name";
-    private final String SIGNUP_EMAIL = "mail";
+    private final String SIGNUP_EMAIL = "email";
     private final String SIGNUP_SURNAME = "surname";
     private final String SIGNUP_ID = "id";
     private final String SIGNUP_PASSWORD = "password";
-    private final String SIGNUP_HES_CODE =  "HESCode";
-
-    //Constructors
-
-
+    private final String SIGNUP_HES_CODE =  "HEScode";
 
     //Methods
     @PostMapping("/signup")
     @ResponseBody
+    @CrossOrigin
     public String signUp(@RequestBody String jsonSignupRequest){
         List<String> signupList = new ArrayList<String>();
         JsonObject jsonSignup = new JsonParser().parse(jsonSignupRequest).getAsJsonObject();

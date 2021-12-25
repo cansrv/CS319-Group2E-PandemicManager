@@ -1,28 +1,11 @@
 import "../css/Login.css"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import {connect} from "react-redux"
-
-const Login = ({login_account}) => {
+import {connect} from "react-redux" 
+import axios from "axios"
+const Login = ({login_account, loggedIn}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
-    const [loggedIn, setLoggedIn] = useState(false)
-
-    useEffect( () => {
-        var loginInfo = {
-            mail: mail,
-            password: password
-        }
-        axios.post("http://127.0.0.1:4567/login",
-            loginInfo
-        ).then((response) => {
-            console.log(response)
-            if (response.data !== null){
-                login_account(response.data)
-            }
-        }).catch(error => { console.error(error);
-            console.log("Database Problem"); setLoggedIn(false); return Promise.reject(error); })
-    }, [loggedIn])
 
     const mailHandler = (value) => {
         console.log(value);
@@ -45,9 +28,22 @@ const Login = ({login_account}) => {
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
+            var loginInfo = {
+            mail: mail,
+            password: password
+        }
+        axios.post("http://127.0.0.1:4567/login",
+            loginInfo
+            ).then((response) => {
+                console.log(response)
+                if (response.data !== null){
+                    login_account(JSON.parse(response.data))
+                    window.location.href = "/home"
+                }
+            }).catch(error => { console.error(error);
+                console.log("Database Problem"); return Promise.reject(error); 
+            })
             console.log("The input creditentials are mail: " + mail + "password: " + password);
-            setLoggedIn(true)
-            window.location.href = "/home"
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
@@ -113,5 +109,8 @@ const Login = ({login_account}) => {
 const mapDispatchToProps = (dispatch) => {
     return { login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} })}
 }
+const mapStateToProps = (state) => {
+    return {loggedIn: state.loggedIn}
+}
 
-export default connect(mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

@@ -5,6 +5,7 @@ const reducer = (state, action) => {
         return {
             ...state,
             ...action.payload,
+            loggedIn: true
         }
     }
     if(action.type === "ADD_NEW_GROUP") {
