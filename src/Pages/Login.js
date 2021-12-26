@@ -1,5 +1,5 @@
 import "../css/Login.css"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {connect} from "react-redux" 
 import axios from "axios"
@@ -63,11 +63,11 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
                 loginInfo
             ).then((response) => {
             console.log("Response" + response)
-            if (response.data !== null){
+            if (response.data !== null) {
                 login_account(response.data)
-                window.location.href = "/home"
+                {<Navigate to="/home"></Navigate>}
             }
-        }).catch(error => { console.error(error);
+            }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
         }
         else if (!validateEmail(mail)) {
