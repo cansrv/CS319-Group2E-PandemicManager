@@ -10,7 +10,8 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
     const [input, setInput] = useState("")
     const [newHESCode, setNewHESCode] = useState("")
 
-    const markSomeoneRisky = () => {
+    const markSomeoneRisky = (e) => {
+        e.preventDefault()
         axios.post("http://127.0.0.1:4567/markSomeoneRisky",
                 input
             ).then((response) => {
@@ -125,7 +126,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                                         <input value={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID or Full Name" onChange={(e) => {handleInput(e)}}/>
                                     </div>
                                     <div className="col d-flex">
-                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" onClick={() => markSomeoneRisky()}>Mark Someone Risky</button>
+                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" onClick={(e) => markSomeoneRisky(e)}>Mark Someone Risky</button>
                                     </div>
                                 </div>
                             </form>
