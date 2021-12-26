@@ -3,7 +3,8 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {connect} from "react-redux" 
 import axios from "axios"
-const Login = ({login_account, loggedIn}) => {
+import {temp_Data, valid_Accounts} from "../Data"
+const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loginAttempt, setLoginAttempt] = useState(false)
@@ -26,7 +27,7 @@ const Login = ({login_account, loggedIn}) => {
         );
     };
 
-    useEffect( () => {
+    /*useEffect( () => {
         var loginInfo = {
             mail: mail,
             password: password
@@ -41,12 +42,20 @@ const Login = ({login_account, loggedIn}) => {
             }
         }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
-    }, [loginAttempt])
+    }, [loginAttempt])*/
 
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
-            setLoginAttempt(true)
+            console.log(({email: mail, password: password}))
+            if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
+                var theIndex = temp_Data.findIndex(item => 
+                    item.email === mail
+                )
+                var theUser = temp_Data[theIndex];
+                login_account(theUser)
+                setHasLoggedIn(true)
+            }
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
