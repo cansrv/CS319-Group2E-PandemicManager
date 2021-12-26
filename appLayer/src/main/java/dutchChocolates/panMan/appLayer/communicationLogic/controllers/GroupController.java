@@ -63,9 +63,9 @@ public class GroupController {
             }
         }
         ArrayList<User> participants = new ArrayList<User>();
-        for(String mail : participantMailList){
-            if(userService.getUser(mail) != null){
-                participants.add(userService.getUser(mail));
+        for(String bilkentId : participantMailList){
+            if(userService.searchUser(bilkentId) != null){
+                participants.add(userService.searchUser(bilkentId));
             }
         }
 
