@@ -10,6 +10,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const [date, setDate] = useState("")
     const [name, setName] = useState("")
     const [newParticipant, setNewParticipant] = useState("");
+    const [location, setLocation] = useState("");
 
     const addParticipant = () => {
         console.log(newParticipant, " will be added")
@@ -35,9 +36,13 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         console.log(participant, "is removed");
     }
 
-    const nameHandler = (value) => {
+    const locationHandler = (value) => {
         console.log(value);
         setName(value);
+    };
+    const nameHandler = (value) => {
+        console.log(value);
+        setLocation(value);
     };
     
     const dateHandler = (value) => {
@@ -58,7 +63,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                 groupName: name,
                 date: date,
                 participants: addedParticipants,
-                isActive: true,
+                location: location,
             }
             add_group(newGroup)
             axios.post("http://127.0.0.1:4567/addGroup",
@@ -72,6 +77,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
             setNewParticipant("")
             setDate("")
             setAddedParticipants([])
+            setLocation("")
         }
         else {
             window.alert("All fields are required to be filled.")
@@ -132,6 +138,18 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between">
+                                        <label for="nameInput" className="col-sm-4 col-form-label">Location</label>
+                                        <div className="col-sm-8">
+                                        <input type="text" 
+                                        className="form-control" 
+                                        id="nameInput" 
+                                        placeholder="Group Name" 
+                                        value={location}
+                                        required
+                                        onChange={(e) => locationHandler(e.target.value)}></input>
+                                        </div>
+                                    </div>
+                                    <div className="form-group row d-flex justify-content-between">
                                         <label for="idInput" className="col-sm-4 col-form-label">Participant ID</label>
                                         <div className="col-sm-5">
                                         <input type="number" className="form-control" id="idInput" 
@@ -146,7 +164,6 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                                         <label for="dateInput" className="col-sm-4 col-form-label">Date</label>
                                         <div className="col-sm-8">
                                         <input type="date" className="form-control" id="dateInput" placeholder="Date"
-                                        
                                         onChange={(e) => dateHandler(e.target.value)}></input>
                                         </div>
                                     </div>
@@ -187,13 +204,8 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 												<div className="groupCardHeader card-header">
 													<span><h5 className="groupCardTitle card-title">{group.groupName}</h5></span>
                                                     <span>
-                                                        <span className="groupCardText card-text">{
-                                                            group.isActive ? (
-                                                                <span className="card-text px-3">(Active)</span>
-                                                            ) : (
-                                                                <span className="card-text px-3">(Inactive)</span>
-                                                            )
-                                                            }
+                                                        <span className="groupCardText card-text">
+                                                            <span className="card-text px-3">{group.location}</span>
                                                             <span className="card-text">{group.date}</span>
                                                         </span>
                                                     </span>

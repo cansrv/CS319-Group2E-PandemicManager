@@ -2,6 +2,7 @@ import Navbar from "../components/navbar"
 import Sidebar from "../components/Sidebar"
 import { useState } from "react"
 import {connect} from "react-redux"
+import axios from "axios"
 
 const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname, email, accountType}) => {
     
@@ -33,6 +34,12 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
                 date: date
 			}
 			add_exam(newExam)
+            axios.post("http://127.0.0.1:4567/addExam",
+                newExam
+            ).then((response) => {
+                console.log("Response" + response)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Exam"); return Promise.reject(error); })
 			window.alert("A new exam is added")
 			setDate("")
 			setExamType("")
@@ -53,6 +60,13 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
     })
         console.log(filteredArray);
         remove_exam(filteredArray);
+        axios.post("http://127.0.0.1:4567/addExam",
+                exam
+            ).then((response) => {
+                console.log("Response" + response)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Exam"); return Promise.reject(error); })
+			window.alert("A new exam is added")
         console.log(exam.name, "is removed");
     }
 

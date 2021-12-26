@@ -4,6 +4,7 @@ import '../css/StudentMyProfile.css'
 import Sidebar from "../components/Sidebar"
 import PanManLogo from "../images/panman_logo.png"
 import {connect} from "react-redux"
+import axios from "axios"
 
 const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode, mark_self_risky, isCovid}) => {
     const input = useRef(null)
@@ -13,11 +14,19 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
       const id = input.current.value
         console.log(id)
       const check = (id === "") || (Number(id) === NaN) || (Number(id) > 0)
-
         if (check) {
             //yollancak data
             window.alert(id + " has been marked as risky")
         }
+    }
+
+    const markSomeoneRisky = () => {
+        axios.post("http://127.0.0.1:4567/markSomeoneRisky",
+                input
+            ).then((response) => {
+                console.log("Response" + response)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Group"); return Promise.reject(error); })
     }
 
     const codeHandler = (value) => {
@@ -100,7 +109,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                                         <input ref={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID"/>
                                     </div>
                                     <div className="col d-flex">
-                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none">Mark Someone Risky</button>
+                                        <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" onClick={() => markSomeoneRisky()}>Mark Someone Risky</button>
                                     </div>
                                 </div>
                             </form>
