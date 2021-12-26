@@ -13,7 +13,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
     const markSomeoneRisky = (e) => {
         e.preventDefault()
         axios.post("http://127.0.0.1:4567/markSomeoneRisky",
-                input
+                {input : input}
             ).then((response) => {
                 console.log("Response" + response)
                 window.alert("You have marked " + input + " as Risky")

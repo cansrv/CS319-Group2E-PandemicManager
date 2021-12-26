@@ -85,6 +85,7 @@ public class UserController {
         try {
             User u = userService.searchUser(sKey);
             u.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            userService.updateDBs();
             return u.toString();
         } catch (Exception ex) {
             if (ex.getClass().equals(NullPointerException.class)) {
