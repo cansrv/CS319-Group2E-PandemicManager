@@ -20,7 +20,7 @@ public interface StaffRepository extends JpaRepository<Staff, String> {
 
 
 
-    @Query("select s from Staff s where s.bilkentID = :#{#id}")
+    @Query("select s from Staff s where s.id = :#{#id}")
     Staff findStaffByBilkentID(@Param("id") String id);
 
 

@@ -1,7 +1,5 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
@@ -9,7 +7,6 @@ import dutchChocolates.panMan.appLayer.models.actors.Staff;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
-import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.Test;
@@ -22,10 +19,8 @@ import dutchChocolates.panMan.appLayer.repositories.TARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public class UserService {
     //Properties
@@ -43,22 +38,22 @@ public class UserService {
 
     //Methods
     public User searchUser(String sKey) {
-        if (studentRepository.findStudentByBilkentID(sKey).getBilkentID().equals(sKey))
+        if (studentRepository.findStudentByBilkentID(sKey).getId().equals(sKey))
             return studentRepository.findStudentByBilkentID(sKey);
         else if (studentRepository.findStudentByFullName(sKey).getFullName().equals(sKey))
             return studentRepository.findStudentByFullName(sKey);
 
-        else if (taRepository.findTAByBilkentID(sKey).getBilkentID().equals(sKey))
+        else if (taRepository.findTAByBilkentID(sKey).getId().equals(sKey))
             return taRepository.findTAByBilkentID(sKey);
         else if (taRepository.findTAByFullName(sKey).getFullName().equals(sKey))
             return taRepository.findTAByFullName(sKey);
 
-        else if (staffRepository.findStaffByBilkentID(sKey).getBilkentID().equals(sKey))
+        else if (staffRepository.findStaffByBilkentID(sKey).getId().equals(sKey))
             return staffRepository.findStaffByBilkentID(sKey);
         else if (staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey))
             return staffRepository.findStaffByFullName(sKey);
 
-        else if (instructorRepository.findInstructorByBilkentID(sKey).getBilkentID().equals(sKey))
+        else if (instructorRepository.findInstructorByBilkentID(sKey).getId().equals(sKey))
             return instructorRepository.findInstructorByBilkentID(sKey);
         else if (instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey))
             return instructorRepository.findInstructorByFullName(sKey);
@@ -70,14 +65,14 @@ public class UserService {
     public User getUser(User user) {
         User tempUser;
 
-        if (user.getMail().contains("@ug")) {
-            tempUser = studentRepository.getById(user.getMail());
-        } else if (user.getMail().contains("@staff")) {
-            tempUser = staffRepository.getById(user.getMail());
-        } else if (user.getMail().contains("@ta")) {
-            tempUser = taRepository.getById(user.getMail());
+        if (user.getEmail().contains("@ug")) {
+            tempUser = studentRepository.getById(user.getEmail());
+        } else if (user.getEmail().contains("@staff")) {
+            tempUser = staffRepository.getById(user.getEmail());
+        } else if (user.getEmail().contains("@ta")) {
+            tempUser = taRepository.getById(user.getEmail());
         } else {
-            tempUser = instructorRepository.getById(user.getMail());
+            tempUser = instructorRepository.getById(user.getEmail());
         }
 
         return tempUser;
@@ -101,11 +96,11 @@ public class UserService {
 
     public String setUser(User user) {
         try {
-            if (user.getMail().contains("@ug")) {
+            if (user.getEmail().contains("@ug")) {
                 studentRepository.save((Student) user);
-            } else if (user.getMail().contains("@staff")) {
+            } else if (user.getEmail().contains("@staff")) {
                 staffRepository.save((Staff) user);
-            } else if (user.getMail().contains("@ta")) {
+            } else if (user.getEmail().contains("@ta")) {
                 taRepository.save((TA) user);
             } else {
                 instructorRepository.save((Instructor) user);
@@ -119,7 +114,7 @@ public class UserService {
     }
 
     public List<Section> getStudentSections(Student student) {
-        Student tempStudent = studentRepository.getById(student.getMail());
+        Student tempStudent = studentRepository.getById(student.getEmail());
         return tempStudent.getSections();
     }
 

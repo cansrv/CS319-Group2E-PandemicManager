@@ -21,7 +21,7 @@ public interface InstructorRepository extends JpaRepository<Instructor, String> 
 
 
 
-    @Query("select i from Instructor i where i.bilkentID = :#{#id}")
+    @Query("select i from Instructor i where i.id = :#{#id}")
     Instructor findInstructorByBilkentID(@Param("id") String id);
 
 }

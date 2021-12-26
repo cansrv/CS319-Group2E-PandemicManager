@@ -26,8 +26,8 @@ public abstract class User {
     private String password;
     @Id
     @Column(name = "mail", unique = true)
-    private String mail;
-    private String bilkentID;
+    private String email;
+    private String id;
     @ManyToMany
     private List<Group> groupsCreated;
     @ManyToMany
@@ -38,9 +38,9 @@ public abstract class User {
     // Constructors
     public User(String password, String mail, String name, String surname, String bilkentID, String hesCode) {
         this.password = password;
-        this.mail = mail;
+        this.email = mail;
         this.fullName = name + " " + surname;
-        this.bilkentID = bilkentID;
+        this.id = bilkentID;
         this.username = bilkentID + fullName;
         groupsParticipated = new ArrayList<>();
         groupsCreated = new ArrayList<>();
@@ -50,8 +50,8 @@ public abstract class User {
     public User(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
-        this.mail = mail;
-        this.bilkentID = bilkentID;
+        this.email = mail;
+        this.id = bilkentID;
         this.groupsCreated = groupsCreated;
         this.groupsParticipated = groupsParticipated;
         this.covidInformationCard = covidInformationCard;
@@ -101,12 +101,12 @@ public abstract class User {
         return true;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
     public boolean setMail(String mail) {
-        this.mail = mail;
+        this.email = mail;
         return true;
     }
 
@@ -114,12 +114,12 @@ public abstract class User {
         return true;
     }
 
-    public String getBilkentID() {
-        return bilkentID;
+    public String getId() {
+        return id;
     }
 
     public boolean setBilkentID(String bilkentID) {
-        this.bilkentID = bilkentID;
+        this.id = bilkentID;
         return true;
     }
 
@@ -159,8 +159,8 @@ public abstract class User {
                 "   username='" + username +
                 "   fullName='" + fullName +
                 "   password='" + password +
-                "   mail='" + mail + '\'' +
-                "   bilkentID='" + bilkentID + '\'' +
+                "   mail='" + email + '\'' +
+                "   bilkentID='" + id + '\'' +
                 "   groupsCreated=" + groupsCreated +
                 "   groupsParticipated=" + groupsParticipated +
                 "   covidInformationCard=" + covidInformationCard +
