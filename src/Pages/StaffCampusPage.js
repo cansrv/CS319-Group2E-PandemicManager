@@ -20,7 +20,7 @@ const StaffCampusPage = ({status, report}) => {
                                     <div className="col-12 col-md-10   bg-light ">
                                             <div className="row mt-4 d-flex justify-content-center">
                                                     <div className="col-12 col-sm-7 px-sm-1">
-                                                            {(status !== true) ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
+                                                            {!((status !== "Positive") && (status !== "Risky")) ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are Allowed On Campus
                                                             </div>) : (<div className="statusRisky d-flex text-center justify-content-center align-items-center">
                                                                     You Are  NOT Allowed On Campus
@@ -82,7 +82,7 @@ const StaffCampusPage = ({status, report}) => {
 
 const mapStateToProps = state => {
         return {
-                status: state.isAllowedOnCampus,
+                status: state.covidStatus
                 report: state.weeklyReport
         };
 }

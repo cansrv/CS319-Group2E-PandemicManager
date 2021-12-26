@@ -28,7 +28,7 @@ const InstructorCampusPage = ({report, status}) => {
 					<div className="col-12 col-md-10 bg-light ">
 						<div className="row mt-4 d-flex justify-content-between ml-5">
 							<div className="col-12 col-sm-8 px-sm-1">
-								{!status ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
+								{!((status !== "Positive") && (status !== "Risky"))  ? (<div className="statusNotRisky d-flex text-center justify-content-center align-items-center">
 									You Are Allowed On Campus
 								</div>) : (<div className="statusRisky d-flex text-center justify-content-center align-items-center">
 									You Are  NOT Allowed On Campus

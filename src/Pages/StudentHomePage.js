@@ -17,7 +17,8 @@ const StudentHomePage = ({
                              negativeTest,
                              isAllowedOnCampus,
                             courses, 
-                            accountType
+                            accountType,
+                             covidStatus
                          }) => {
     return (
             <div className='container'>
@@ -48,8 +49,9 @@ const StudentHomePage = ({
                                         </div>
                                     </div>
                                 </div>
-                                <div className={`covid-situation-label text-center py-3 my-4 my-sm-5 ml-3 col-11  ${isCovid? "isCovid": "isNotCovid"}`}>
-                                    {isCovid?"Covid Situation: RISKY" : "Covid Situation: NOT RISKY" }
+                                <div className={`covid-situation-label text-center py-3 my-4 my-sm-5 ml-3 col-11  ${
+                                    (covidStatus === "Marked") || (covidStatus === "Risky")? "isCovid": "isNotCovid"}`}>
+                                    {`Covid Situation: ${covidStatus}`}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-10 offset-1 offset-lg-0 d-flex my-md-1 flex-column justify-content-around">
@@ -133,7 +135,7 @@ const StudentHomePage = ({
                                 <div className="row">
                                     <div className="col-lg-12 col-10 offset-1 py-3 px-4 offset-lg-2 my-3 my-sm-5 isolation-info d-flex flex-column">
                                         <p className="row iso-info-header m-auto">Isolation Information</p>
-                                        {isCovid?(
+                                        {covidStatus === "Positive"?(
                                             <>
                                             <div className="row px-3">Stay At Home</div>
                                             <div className="row px-3">Start of Isolation: {(isolationStartDate === "")? "CALL HEALTH CENTER": isolationStartDate}</div>
@@ -163,6 +165,7 @@ const mapStateToProps = state => {
         isAllowedOnCampus: state.isAllowedOnCampus,
         courses: state.courses,
         accountType: state.accountType,
+        covidStatus: state.covidStatus
     };
 }
 

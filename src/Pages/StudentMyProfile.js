@@ -6,7 +6,7 @@ import PanManLogo from "../images/panman_logo.png"
 import {connect} from "react-redux"
 import axios from "axios"
 
-const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode, mark_self_risky, isCovid}) => {
+const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode, mark_self_risky, isCovid, covidStatus}) => {
     const [input, setInput] = useState("")
     const [newHESCode, setNewHESCode] = useState("")
 
@@ -117,7 +117,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                             
                             <div className="row">
                                 <button type="button" className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5" data-toggle="tooltip" data-placement="top" title="I sure hope what you are doing" 
-                                onClick={() => handleRiskStatus()} disabled={isCovid}>Mark Self as Risky</button>
+                                onClick={() => handleRiskStatus()} disabled={((covidStatus !== "Positive") && (covidStatus !== "Risky")) }>Mark Self as Risky</button>
                             </div>
                             <div className="row">
                             <form className="my-5" >
@@ -165,6 +165,7 @@ const mapStateToProps = state => {
         ID: state.id,
         HEScode: state.HEScode,
         isCovid: state.isCovid
+        covidStatus: state.covidStatus
     };
 }
 const mapDispatchToProps = (dispatch) => {
