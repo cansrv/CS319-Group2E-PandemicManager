@@ -6,6 +6,7 @@ import axios from "axios"
 const Login = ({login_account, loggedIn}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
+    const [loginAttempt, setLoginAttempt] = useState(false)
 
     const mailHandler = (value) => {
         console.log(value);
@@ -25,26 +26,27 @@ const Login = ({login_account, loggedIn}) => {
         );
     };
 
-    const login = (e) => {
-        e.preventDefault()
-        if (validateEmail(mail) && password !== "") {
-            var loginInfo = {
+    useEffect( () => {
+        var loginInfo = {
             mail: mail,
             password: password
         }
-        
         axios.post("http://127.0.0.1:4567/login",
             loginInfo
-            ).then((response) => {
-                console.log(response)
-                if (response.data !== null){
-                    login_account(response.data)
-                    window.location.href = "/home"
-                }
-            }).catch(error => { console.error(error);
-                console.log("Database Problem"); return Promise.reject(error); 
-            })
-            console.log("The input creditentials are mail: " + mail + "password: " + password);
+        ).then((response) => {
+            console.log(response)
+            if (response.data !== null){
+                login_account(response.data)
+                window.location.href = "home"
+            }
+        }).catch(error => { console.error(error);
+            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
+    }, [loginAttempt])
+
+    const login = (e) => {
+        e.preventDefault()
+        if (validateEmail(mail) && password !== "") {
+            setLoginAttempt(true)
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
