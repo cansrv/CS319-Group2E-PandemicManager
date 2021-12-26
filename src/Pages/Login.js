@@ -26,7 +26,7 @@ const Login = ({login_account, loggedIn}) => {
         );
     };
 
-    /*useEffect( () => {
+    useEffect( () => {
         var loginInfo = {
             mail: mail,
             password: password
@@ -40,7 +40,7 @@ const Login = ({login_account, loggedIn}) => {
             }
         }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
-    }, [loginAttempt])*/
+    }, [loginAttempt])
 
     const login = (e) => {
         e.preventDefault()
