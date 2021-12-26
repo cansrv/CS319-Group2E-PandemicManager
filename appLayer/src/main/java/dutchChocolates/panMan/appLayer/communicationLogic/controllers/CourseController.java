@@ -7,6 +7,7 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.*;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,16 +37,34 @@ public class CourseController {
 
 
     //Methods
-    @PostMapping("/coursePopulator")
+    @PostMapping("/populateCourse")
     @ResponseBody
-    public String addCourse(@RequestBody String courseName){
-        List<String> courseList = new ArrayList<>();
-        JsonObject jsonLogin = new JsonParser().parse(courseName).getAsJsonObject();
+    public String addCourse(@RequestBody String courseJson){
+        JsonObject jsonCourse = new JsonParser().parse(courseJson).getAsJsonObject();
 
-        courseList.add(jsonLogin.get("course_name").getAsString());
+        String studentMail = jsonCourse.get("students").getAsJsonArray().get(0).toString();
+        Student student = (Student) userService.getUser(studentMail);
 
-        //TODO need to be successfully connected with the course services add method.
-        return null;
+        String taMail = jsonCourse.get("TAs").getAsJsonArray().get(0).toString();
+        TA ta = (TA) userService.getUser(taMail);
+
+        String instructorMail = jsonCourse.get("instructors").getAsJsonArray().get(0).toString();
+        Instructor instructor = (Instructor) userService.getUser(studentMail);
+
+        ArrayList<Student> students = new ArrayList<Student>();
+        ArrayList<TA> TAs = new ArrayList<TA>();
+        ArrayList<Instructor> instructors = new ArrayList<Instructor>();
+
+        students.add(student);
+        TAs.add(ta);
+        instructors.add(instructor);
+
+        Course course = new Course();
+        course.setInstructors(instructors);
+        course.setTAs(TAs);
+        course.setInstructors(instructors);
+
+        return courseService.addCourse(course);
 
     }
 
