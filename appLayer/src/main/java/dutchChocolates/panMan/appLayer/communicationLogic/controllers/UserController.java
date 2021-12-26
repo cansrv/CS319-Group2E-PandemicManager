@@ -76,11 +76,15 @@ public class UserController {
     @PostMapping("/markSomeoneRisky")
     @CrossOrigin
     public String markSomeoneRisky(@RequestBody String searchKey) {
+        System.out.println(searchKey);
+
         JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
 
         String sKey = jsonObject.get("input").getAsString();
+        System.out.println("sKey is: "+sKey);
         try {
-            User u = userService.markUserRisky(sKey);
+            User u = userService.searchUser(sKey);
+            u.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
             return u.toString();
         } catch (Exception ex) {
             if (ex.getClass().equals(NullPointerException.class)) {
