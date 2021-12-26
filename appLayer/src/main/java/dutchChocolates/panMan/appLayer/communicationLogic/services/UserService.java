@@ -39,34 +39,42 @@ public class UserService {
         if (studentRepository.findStudentByBilkentID(sKey).getId().equals(sKey)) {
             Student s = studentRepository.findStudentByBilkentID(sKey);
             s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            studentRepository.flush();
             return s;
         } else if (studentRepository.findStudentByFullName(sKey).getFullName().equals(sKey)) {
             Student s = studentRepository.findStudentByFullName(sKey);
             s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            studentRepository.flush();
             return s;
         } else if (taRepository.findTAByBilkentID(sKey).getId().equals(sKey)) {
             TA t = taRepository.findTAByBilkentID(sKey);
             t.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            taRepository.flush();
             return t;
         } else if (taRepository.findTAByFullName(sKey).getFullName().equals(sKey)) {
             TA t = taRepository.findTAByFullName(sKey);
             t.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            taRepository.flush();
             return t;
         } else if (staffRepository.findStaffByBilkentID(sKey).getId().equals(sKey)) {
             Staff s = staffRepository.findStaffByBilkentID(sKey);
             s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            staffRepository.flush();
             return s;
         } else if (staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey)) {
             Staff s = staffRepository.findStaffByFullName(sKey);
             s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            staffRepository.flush();
             return s;
         } else if (instructorRepository.findInstructorByBilkentID(sKey).getId().equals(sKey)) {
             Instructor i = instructorRepository.findInstructorByBilkentID(sKey);
             i.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            instructorRepository.flush();
             return i;
         } else if (instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey)) {
             Instructor i = instructorRepository.findInstructorByFullName(sKey);
             i.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            instructorRepository.flush();
             return i;
         } else
             return null;
@@ -118,6 +126,7 @@ public class UserService {
         User tempUser;
 
         if (mail.contains("@ug")) {
+
             tempUser = studentRepository.getById(mail);
         } else if (mail.contains("@staff")) {
             tempUser = staffRepository.getById(mail);
@@ -128,6 +137,13 @@ public class UserService {
         }
 
         return tempUser;
+    }
+
+    public void updateDBs() {
+        staffRepository.flush();
+        studentRepository.flush();
+        instructorRepository.flush();
+        taRepository.flush();
     }
 
     public String setUser(User user) {
