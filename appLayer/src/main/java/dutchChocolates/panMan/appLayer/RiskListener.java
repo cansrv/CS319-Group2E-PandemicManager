@@ -8,14 +8,17 @@ import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.util.Date;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 public class RiskListener {
 
 
-    private static void httpReq() throws IOException {
-        URL url = new URL("localhost:4567/riskEval");
+    private static void httpReqPreClass() throws IOException {
+        URL url = new URL("http://localhost:4567/preClassRisk");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+    }
+
+    private static void httpReqContinuous() throws IOException {
+        URL url = new URL("http://localhost:4567/continuousRisk");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
     }
@@ -29,11 +32,17 @@ public class RiskListener {
             try {
                 Thread.sleep(59000);
 
+                if(dateString.contains(":00:") || dateString.contains(":10:") || dateString.contains(":20:") ||
+                        dateString.contains(":30:") || dateString.contains(":40:") || dateString.contains(":50:")) {
+                    System.out.println(dateString);
+                    httpReqContinuous();
+                }
+
                 // 8.30
                 if (dateString.contains("08:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -45,7 +54,7 @@ public class RiskListener {
                 else if (dateString.contains("09:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -57,7 +66,7 @@ public class RiskListener {
                 else if (dateString.contains("10:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -69,7 +78,7 @@ public class RiskListener {
                 else if (dateString.contains("11:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -81,7 +90,7 @@ public class RiskListener {
                 else if (dateString.contains("12:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -93,7 +102,7 @@ public class RiskListener {
                 else if (dateString.contains("13:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -105,7 +114,7 @@ public class RiskListener {
                 else if (dateString.contains("14:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -116,7 +125,7 @@ public class RiskListener {
                 else if (dateString.contains("15:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
@@ -127,7 +136,7 @@ public class RiskListener {
                 else if (dateString.contains("16:15:")) {
                     if (doPrint) {
                         System.out.println(dateString);
-                        httpReq();
+                        httpReqPreClass();
                         doPrint = false;
                     }
 
