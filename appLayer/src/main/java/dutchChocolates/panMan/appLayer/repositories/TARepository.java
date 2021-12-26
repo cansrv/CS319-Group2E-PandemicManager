@@ -21,6 +21,6 @@ public interface TARepository extends JpaRepository<TA, String> {
 
 
 
-    @Query("select t from TA t where t.bilkentID = :#{#id}")
+    @Query("select t from TA t where t.id = :#{#id}")
     TA findTAByBilkentID(@Param("id") String id);
 }
