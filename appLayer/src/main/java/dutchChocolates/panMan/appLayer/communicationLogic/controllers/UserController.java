@@ -98,8 +98,10 @@ public class UserController {
         String sKey = jsonObject.get("email").getAsString();
         try {
             User u = userService.getUser(sKey);
-            userService.updateDBs();
             u.getCovidInformationCard().setCovidStatus(CovidStatus.Risky);
+            userService.updateDBs();
+
+
         } catch (Exception ex) {
             if (ex.getClass().equals(NullPointerException.class)) {
                 ex.printStackTrace();

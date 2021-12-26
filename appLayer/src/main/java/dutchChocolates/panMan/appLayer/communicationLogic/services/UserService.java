@@ -82,24 +82,24 @@ public class UserService {
 
 
     public User searchUser(String sKey) {
-        if (studentRepository.findStudentByBilkentID(sKey).getId().equals(sKey))
+        if (studentRepository.findStudentByBilkentID(sKey) != null)
             return studentRepository.findStudentByBilkentID(sKey);
-        else if (studentRepository.findStudentByFullName(sKey).getFullName().equals(sKey))
+        else if (studentRepository.findStudentByFullName(sKey) != null)
             return studentRepository.findStudentByFullName(sKey);
 
-        else if (taRepository.findTAByBilkentID(sKey).getId().equals(sKey))
+        else if (taRepository.findTAByBilkentID(sKey) != null)
             return taRepository.findTAByBilkentID(sKey);
-        else if (taRepository.findTAByFullName(sKey).getFullName().equals(sKey))
+        else if (taRepository.findTAByFullName(sKey) != null)
             return taRepository.findTAByFullName(sKey);
 
-        else if (staffRepository.findStaffByBilkentID(sKey).getId().equals(sKey))
+        else if (staffRepository.findStaffByBilkentID(sKey) != null)
             return staffRepository.findStaffByBilkentID(sKey);
-        else if (staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey))
+        else if (staffRepository.findStaffByFullName(sKey) != null)
             return staffRepository.findStaffByFullName(sKey);
 
-        else if (instructorRepository.findInstructorByBilkentID(sKey).getId().equals(sKey))
+        else if (instructorRepository.findInstructorByBilkentID(sKey) != null)
             return instructorRepository.findInstructorByBilkentID(sKey);
-        else if (instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey))
+        else if (instructorRepository.findInstructorByFullName(sKey) != null)
             return instructorRepository.findInstructorByFullName(sKey);
 
         else
