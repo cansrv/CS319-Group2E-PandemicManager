@@ -1,6 +1,6 @@
 const valid_Accounts = [
-    {email: "eray.tuzun@cs.bilkent.edu.tr", password: "cs319"}
-    {email: "yigit.turkcapar@ug.bilkent.edu.tr", password: "1907"}
+    {email: "eray.tuzun@cs.bilkent.edu.tr", password: "cs319"},
+    {email: "yigit.turkcapar@ug.bilkent.edu.tr", password: "1907"},
     {email: "yagiz.sabuncuoglu@bilkent.edu.tr", password: "maliMoc"}
 ]
 
