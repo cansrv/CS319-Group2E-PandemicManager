@@ -34,6 +34,19 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
     const editHandler = () => {
         if (newHESCode !== "") {
             edit_HES_code(newHESCode);
+            var newInfo = {
+                email: email,
+                newHESCode: newHESCode
+            }
+            axios.post("http://127.0.0.1:4567/markSelfRisky",
+                newInfo
+            ).then((response) => {
+                    console.log("Response" + response)
+                }).catch(error => { 
+                    console.error(error);
+                    window.alert("Database Error HES Code Change"); 
+                    return Promise.reject(error); 
+                })
             setNewHESCode("")
             window.alert("Your HES Code have been changed")
         }
@@ -109,9 +122,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                             <form className="my-5" >
                                 <div className="row">
                                     <div className="col d-flex">
-                                        <input value={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID or Full Name" onChange={(e) => {
-                                            handleInput(e)
-                                            }}/>
+                                        <input value={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID or Full Name" onChange={(e) => {handleInput(e)}}/>
                                     </div>
                                     <div className="col d-flex">
                                         <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" onClick={() => markSomeoneRisky()}>Mark Someone Risky</button>
