@@ -11,7 +11,7 @@ export const state_prototype = {
     coursesThaught: [],
     courses: [],
     email: "",
-    isCovid: false,
+    covidStatus: "",
     tests: [],
     isolationStartDate: "",
     isoEndDate: "",
