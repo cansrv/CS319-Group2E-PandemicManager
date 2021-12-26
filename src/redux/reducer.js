@@ -34,6 +34,32 @@ const reducer = (state, action) => {
             loggedIn: true
         }
     }
+    if (action.type === "LOGOUT") {
+        return {
+            loggedIn: false,
+            name: "",
+            surname: "",
+            id: "",
+            accountType: "",
+            HEScode: "",
+            groups: [],
+            exams: [],
+            attendance: [],
+            coursesThaught: [],
+            courses: [],
+            email: "",
+            isCovid: false,
+            tests: [],
+            isolationStartDate: "",
+            isoEndDate: "",
+            vaccinated: false,
+            recovered: false,
+            negativeTest: false,
+            exams: [],
+            isAllowedOnCampus: true,
+            weeklyReport: []
+        }
+    }
     if(action.type === "ADD_NEW_GROUP") {
         var newGroups = [];
         if(!action.payload.group.length) {
