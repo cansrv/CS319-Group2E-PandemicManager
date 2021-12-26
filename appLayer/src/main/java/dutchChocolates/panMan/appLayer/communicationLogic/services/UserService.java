@@ -8,10 +8,7 @@ import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
-import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
-import dutchChocolates.panMan.appLayer.models.covidInformatics.Test;
-import dutchChocolates.panMan.appLayer.models.covidInformatics.VaccinationCard;
-import dutchChocolates.panMan.appLayer.models.covidInformatics.Vaccine;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.*;
 import dutchChocolates.panMan.appLayer.repositories.InstructorRepository;
 import dutchChocolates.panMan.appLayer.repositories.StaffRepository;
 import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
@@ -37,6 +34,45 @@ public class UserService {
     private TARepository taRepository;
 
     //Methods
+
+    public User markUserRisky(String sKey) {
+        if (studentRepository.findStudentByBilkentID(sKey).getId().equals(sKey)) {
+            Student s = studentRepository.findStudentByBilkentID(sKey);
+            s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return s;
+        } else if (studentRepository.findStudentByFullName(sKey).getFullName().equals(sKey)) {
+            Student s = studentRepository.findStudentByFullName(sKey);
+            s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return s;
+        } else if (taRepository.findTAByBilkentID(sKey).getId().equals(sKey)) {
+            TA t = taRepository.findTAByBilkentID(sKey);
+            t.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return t;
+        } else if (taRepository.findTAByFullName(sKey).getFullName().equals(sKey)) {
+            TA t = taRepository.findTAByFullName(sKey);
+            t.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return t;
+        } else if (staffRepository.findStaffByBilkentID(sKey).getId().equals(sKey)) {
+            Staff s = staffRepository.findStaffByBilkentID(sKey);
+            s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return s;
+        } else if (staffRepository.findStaffByFullName(sKey).getFullName().equals(sKey)) {
+            Staff s = staffRepository.findStaffByFullName(sKey);
+            s.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return s;
+        } else if (instructorRepository.findInstructorByBilkentID(sKey).getId().equals(sKey)) {
+            Instructor i = instructorRepository.findInstructorByBilkentID(sKey);
+            i.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return i;
+        } else if (instructorRepository.findInstructorByFullName(sKey).getFullName().equals(sKey)) {
+            Instructor i = instructorRepository.findInstructorByFullName(sKey);
+            i.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
+            return i;
+        } else
+            return null;
+    }
+
+
     public User searchUser(String sKey) {
         if (studentRepository.findStudentByBilkentID(sKey).getId().equals(sKey))
             return studentRepository.findStudentByBilkentID(sKey);
@@ -78,7 +114,7 @@ public class UserService {
         return tempUser;
     }
 
-    public User getUser(String mail){
+    public User getUser(String mail) {
         User tempUser;
 
         if (mail.contains("@ug")) {
@@ -134,7 +170,7 @@ public class UserService {
         return instructorFromDatabase.getSections();
     }
 
-    public List<Course> getInstructorCourses(String mail){
+    public List<Course> getInstructorCourses(String mail) {
         Instructor instructorFromDatabase = instructorRepository.getById(mail);
         return instructorFromDatabase.getCourses();
     }
@@ -184,12 +220,12 @@ public class UserService {
         }
     }
 
-    public VaccinationCard getVaccinationCard(String mail){
+    public VaccinationCard getVaccinationCard(String mail) {
         User tempUser = getUser(mail);
         return tempUser.getCovidInformationCard().getVaccinationCard();
     }
 
-    public String setVaccinationCard(String mail, VaccinationCard vaccinationCard){
+    public String setVaccinationCard(String mail, VaccinationCard vaccinationCard) {
         try {
             User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().setVaccinationCard(vaccinationCard);
@@ -201,12 +237,12 @@ public class UserService {
         }
     }
 
-    public List<Vaccine> getVaccines(String mail){
+    public List<Vaccine> getVaccines(String mail) {
         User tempUser = getUser(mail);
         return tempUser.getCovidInformationCard().getVaccinationCard().getVaccines();
     }
 
-    public String setVaccines(String mail, List<Vaccine> vaccines){
+    public String setVaccines(String mail, List<Vaccine> vaccines) {
         try {
             User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().getVaccinationCard().setVaccines(vaccines);
@@ -218,37 +254,37 @@ public class UserService {
         }
     }
 
-    public String addTest(String mail, Test test){
-        try{
+    public String addTest(String mail, Test test) {
+        try {
             User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().getTests().add(test);
             setUser(tempUser);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String addVaccine(String mail, Vaccine vaccine){
-        try{
+    public String addVaccine(String mail, Vaccine vaccine) {
+        try {
             User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().getVaccinationCard().addVaccine(vaccine);
             setUser(tempUser);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String addVaccinationCard(String mail, VaccinationCard vaccinationCard){
-        try{
+    public String addVaccinationCard(String mail, VaccinationCard vaccinationCard) {
+        try {
             User tempUser = getUser(mail);
             tempUser.getCovidInformationCard().setVaccinationCard(vaccinationCard);
             setUser(tempUser);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }

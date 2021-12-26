@@ -9,8 +9,7 @@ import java.util.List;
 public abstract class Group {
     //Properties
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     Long id;
     @ManyToMany
     List<User> participants;

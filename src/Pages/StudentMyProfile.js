@@ -29,6 +29,8 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                 window.alert("Database Error Group"); return Promise.reject(error); })
     }
 
+
+
     const codeHandler = (value) => {
         console.log(value)
         setNewHESCode(value)
@@ -47,6 +49,12 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
 
     const handleRiskStatus = () => {
         mark_self_risky()
+        axios.post("http://127.0.0.1:4567/markSelfRisky",
+            {email: email}
+        ).then((response) => {
+            console.log("Response" + response)
+        }).catch(error => { console.error(error);
+            window.alert("Database Error Group"); return Promise.reject(error); })
         window.alert("You have marked yourself as RISKY")
     }
 
