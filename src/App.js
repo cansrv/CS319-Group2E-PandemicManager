@@ -26,18 +26,18 @@ function App() {
             <Routes>
                 <Route path = "/signup" element = {<SignUp></SignUp>}></Route>
                 <Route path = "/" element = {<Login></Login>}></Route> 
-                <Route path = "/home" element = {!store.getState().loggedIn ? <Navigate to="/"/> : <StudentHomePage/>}></Route>
+                <Route path = "/home" element = {false ? <Navigate to="/"/> : <StudentHomePage/>}></Route>
                 <Route path= "/courses"  
-                element={!store.getState().loggedIn ? <Navigate to="/"/> : 
+                element={false ? <Navigate to="/"/> : 
                         (store.getState().accountType === "student" ? <StudentCoursesPage />
                         : store.getState().accountType === "staff" ? <StudentHomePage/> : <InstructorCoursesPage />)}>
                 </Route>
-                <Route path="/campus" element={!store.getState().loggedIn ? <Navigate to="/"/> : (store.getState().accountType === "staff" ? <StaffCampusPage />
+                <Route path="/campus" element={false ? <Navigate to="/"/> : (store.getState().accountType === "staff" ? <StaffCampusPage />
                         : <InstructorCampusPage />)}></Route>
-                <Route path="/myProfile" element={!store.getState().loggedIn ? <Navigate to="/"/> : <StudentMyProfile />}></Route>
-                <Route path="/tests" element={!store.getState().loggedIn ? <Navigate to="/"/> : <StudentTestsPage />}></Route>
-                <Route path="/groups" element={!store.getState().loggedIn ? <Navigate to="/"/> : <GroupsPage />}></Route>
-                <Route path="/exams" element={!store.getState().loggedIn ? <Navigate to="/"/> : <ExamsPage />}></Route>
+                <Route path="/myProfile" element={false ? <Navigate to="/"/> : <StudentMyProfile />}></Route>
+                <Route path="/tests" element={false ? <Navigate to="/"/> : <StudentTestsPage />}></Route>
+                <Route path="/groups" element={false ? <Navigate to="/"/> : <GroupsPage />}></Route>
+                <Route path="/exams" element={false ? <Navigate to="/"/> : <ExamsPage />}></Route>
             </Routes>
         </BrowserRouter>
         </Provider>
