@@ -34,10 +34,9 @@ const Login = ({login_account, loggedIn}) => {
         axios.post("http://127.0.0.1:4567/login",
             loginInfo
         ).then((response) => {
-            console.log(response)
+            console.log("Response" + response)
             if (response.data !== null){
                 login_account(response.data)
-                window.location.href = "home"
             }
         }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })

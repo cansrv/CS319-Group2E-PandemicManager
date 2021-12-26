@@ -30,26 +30,26 @@ public class UserLoginService {
 
     //Methods
     @Transactional
-    public String signInMethod(String mail, String password) throws EntityNotFoundException, NullPointerException {
+    public User signInMethod(String mail, String password) throws EntityNotFoundException, NullPointerException {
         // CHANGE FOR ARBITRARY REPO TYPES
         User tempUser;
 
         try {
             if (mail.contains("@ug")) {
                 tempUser = studentRepository.getById(mail);
-                return tempUser.toString();
+                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Student");
             } else if (mail.contains("@staff")) {
                 tempUser = staffRepository.getById(mail);
-                return tempUser.toString();
+                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Staff");
             } else if (mail.contains("@ta")) {
                 tempUser = taRepository.getById(mail);
-                return tempUser.toString();
+                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "TA");
             } else {
                 tempUser = instructorRepository.getById(mail);
-                return tempUser.toString();
+                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Instructor");
             }
         }

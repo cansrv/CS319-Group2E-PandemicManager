@@ -59,10 +59,10 @@ public class Attendance {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", students:" + students +
-                ", date:" + date +
+        return "{" + "\n" +
+                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   students:" + "\"" + students + "\"" + ",\n" +
+                "   date:" + "\"" + date + "\"" + "\n" +
                 '}';
     }
 }

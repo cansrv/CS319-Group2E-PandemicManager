@@ -27,9 +27,6 @@ public class CourseService {
     UserService userService;
 
     //Methods
-
-
-
     public String addSection(Boolean isOnline, Integer sectionNumber,  String courseName) {
         Section section = new Section();
         Course course = getCourse(courseName);
@@ -40,9 +37,6 @@ public class CourseService {
         updateCourse();
         return sectionRepository.saveAndFlush(section).toString();
     }
-
-
-    //Methods
 
     public Course getCourse(String courseName){
         return courseRepository.getById(courseName);
@@ -102,7 +96,6 @@ public class CourseService {
         }
     }
 
-
     public String addLecture(Course course, Section section, Lecture lecture){
         try{
             Course tempCourse = courseRepository.getById(course.getCourseName());
@@ -124,32 +117,20 @@ public class CourseService {
         return courseRepository.getById(course.getCourseName()).getSections().toString();
     }
 
-    public String setSectionsOfCourse(List<String> sectionList){
-        return "";
-    }
-
     public String getLecturesOfSection(Section section){
         return sectionRepository.getById(section.getId()).getLectures().toString();
     }
 
-    public String setLecturesOfSection(List<String> lectureList){
-        return "";
+    public Exam getExam(){
+        return null;
     }
 
-    public String addExam(String mail, Course course, Exam exam){
-        try{
-            Instructor tempUser = (Instructor) userService.getUser(mail);
-            for(Course listCourse : tempUser.getCourses()){
-                if(listCourse.getCourseName().equals(course.getCourseName())){
-                    course.getExams().add(exam);
-                }
-            }
-            userService.setUser(tempUser);
-            return "Successful";
-        }catch(Exception e){
-            e.printStackTrace();
-            return "Fail";
-        }
+    public String deleteExam(){
+        return null;
+    }
+
+    public String setExam(){
+        return null;
     }
 
 }

@@ -10,17 +10,11 @@ import java.util.List;
 @Entity
 public class Exam extends Lecture {
     //Properties
-    private Long id;
     @ManyToOne
     private Instructor courseCoordinator;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     //Constructors
     public Exam() {
@@ -48,7 +42,7 @@ public class Exam extends Lecture {
     @Override
     public String toString() {
         return "{" +
-                "id:" + id +
+                "id:" + super.getId() +
                 ", courseCoordinator:" + courseCoordinator +
                 '}';
     }

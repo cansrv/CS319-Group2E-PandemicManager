@@ -55,6 +55,23 @@ public class CourseController {
 
     }
 
+    @PostMapping("/getExam")
+    @ResponseBody
+    public String requestExam(@RequestBody String mail){
+        return null;
+    }
+
+    @PostMapping("/createExam")
+    @ResponseBody
+    public String createExam(@RequestBody String examJson){
+        return null;
+    }
+
+    @PostMapping("/deleteExam")
+    @ResponseBody
+    public String deleteExam(@RequestBody String mail){
+        return null;
+    }
 
     private Attendance attendanceParser(JsonObject jsonObject) {
         return null;

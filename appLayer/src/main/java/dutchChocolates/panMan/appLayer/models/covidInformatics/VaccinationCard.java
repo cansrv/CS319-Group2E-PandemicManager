@@ -112,14 +112,14 @@ public class VaccinationCard {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", firstName:'" + firstName + '\'' +
-                ", middleName:'" + middleName + '\'' +
-                ", lastName:'" + lastName + '\'' +
-                ", birthDate:" + birthDate +
-                ", personalIdNumber:'" + personalIdNumber + '\'' +
-                ", vaccines:" + vaccines +
+        return "{" + "\n" +
+                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   firstName:'" + "\"" + firstName + "\"" + '\'' + ",\n" +
+                "   middleName:'" + "\"" + middleName + "\"" + '\'' + ",\n" +
+                "   lastName:'" + "\"" + lastName + "\"" + '\'' + ",\n" +
+                "   birthDate:" + "\"" + birthDate + "\"" + ",\n" +
+                "   personalIdNumber:'" + "\"" + personalIdNumber + "\"" + ",\n" +
+                "   vaccines:" + "\"" + vaccines + "\"" + "\n" +
                 '}';
     }
 }

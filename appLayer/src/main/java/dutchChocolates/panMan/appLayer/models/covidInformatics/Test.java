@@ -84,4 +84,14 @@ public class Test {
 
     }
 
+    @Override
+    public String toString() {
+        return "Test{" + "\n" +
+                "id=" + "\"" + id + "\"" + ",\n" +
+                ", testDate=" + "\"" + testDate + "\"" + ",\n" +
+                ", testType=" + "\"" + testType + "\"" + ",\n" +
+                ", resultType=" + "\"" + resultType + "\"" + ",\n" +
+                ", variantType=" + "\"" + variantType + "\"" + "\n" +
+                '}';
+    }
 }

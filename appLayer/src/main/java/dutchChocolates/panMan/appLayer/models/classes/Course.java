@@ -90,13 +90,13 @@ public class Course {
 
     @Override
     public String toString() {
-        return "{" +
-                "exams:" + exams +
-                ", sections:" + sections +
-                ", students:" + students +
-                ", instructors:" + instructors +
-                ", TAs:" + TAs +
-                ", courseName:'" + courseName + '\'' +
+        return "{" + "\n" +
+                "   exams:" + '\"' + exams + '\"' + ",\n" +
+                "   sections:" + '\"' + sections + '\"' + ",\n" +
+                "   students:" + '\"' + students + '\"' + ",\n" +
+                "   instructors:" + '\"' + instructors + '\"' + ",\n" +
+                "   TAs:" + '\"' + TAs + '\"' + ",\n" +
+                "   courseName:'" + '\"' + courseName + '\"' + "\n" +
                 '}';
     }
 }

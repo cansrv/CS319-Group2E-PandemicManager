@@ -91,13 +91,13 @@ public class Vaccine {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", manufacturer:'" + manufacturer + '\'' +
-                ", applicationDate:" + applicationDate +
-                ", country:'" + country + '\'' +
-                ", type:'" + type + '\'' +
-                ", medicalProductName:'" + medicalProductName + '\'' +
+        return "{" + "\n" +
+                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   manufacturer:'" + "\"" + manufacturer + "\"" + ",\n" +
+                "   applicationDate:" + applicationDate + ",\n" +
+                "   country:'" + country + '\'' + ",\n" +
+                "   type:'" + "\"" + type + "\"" +",\n" +
+                "   medicalProductName:'" + "\"" + medicalProductName + "\"" + "\n" +
                 '}';
     }
 }
