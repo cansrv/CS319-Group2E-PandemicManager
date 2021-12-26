@@ -8,10 +8,7 @@ import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -59,6 +56,7 @@ public class UserController {
 
     @PostMapping("/addVaccine")
     @ResponseBody
+    @CrossOrigin
     public String addVaccine(@RequestBody String jsonVaccineRequest) {
         // TODO: Fill this method to make sense.
         JsonObject jsonVaccine = new JsonParser().parse(jsonVaccineRequest).getAsJsonObject();
@@ -68,6 +66,7 @@ public class UserController {
     }
 
     @PostMapping("/addTest")
+    @CrossOrigin
     public String addTest(@RequestBody String test) throws ParseException {
         return userService.addTest(new JsonParser().parse(test).getAsJsonObject().getAsJsonObject("mail").getAsString(),
                  addTest(new JsonParser().parse(test).getAsJsonObject().getAsJsonObject("test")));
@@ -75,6 +74,7 @@ public class UserController {
 
 
     @PostMapping("/markSomeoneRisky")
+    @CrossOrigin
     public String markSomeoneRisky(@RequestBody String searchKey) {
         JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
 
@@ -90,9 +90,28 @@ public class UserController {
         }
         return "Fatal Error";
     }
+    @PostMapping("/markSelfRisky")
+    @CrossOrigin
+    public String marSelfRisky(@RequestBody String searchKey) {
+        JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
+
+        String sKey = jsonObject.get("email").getAsString();
+        try {
+            User u = userService.getUser(sKey);
+            userService.updateDBs();
+            u.getCovidInformationCard().setCovidStatus(CovidStatus.Risky);
+        } catch (Exception ex) {
+            if (ex.getClass().equals(NullPointerException.class)) {
+                ex.printStackTrace();
+                return "No such user exists";
+            }
+        }
+        return "Fatal Error";
+    }
 
 
     @PostMapping("/searchUser")
+    @CrossOrigin
     public String searchUser(@RequestBody String searchKey) {
         JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
 
