@@ -11,7 +11,8 @@ public class Lecture {
     //Properties
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)    private Long id;
+    @Column(name = "id", nullable = false)
+    private Long id;
     private String roomName;
     private boolean isSpareHour;
     @OneToOne(cascade = CascadeType.ALL)

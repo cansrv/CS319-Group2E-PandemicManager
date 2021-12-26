@@ -56,10 +56,21 @@ public class UserLoginService {
         catch (Exception ex) {
             if(ex.getClass().equals(EntityNotFoundException.class)) {
                 ex.printStackTrace();
-
             }
         }
         return null;
+    }
+
+    public String getUserType(String mail){
+        if (mail.contains("@ug")) {
+            return "student";
+        } else if (mail.contains("@staff")) {
+            return "staff";
+        } else if (mail.contains("@ta")) {
+            return "ta";
+        } else {
+            return "instructor";
+        }
     }
 
 
