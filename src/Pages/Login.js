@@ -47,15 +47,28 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
-            /*console.log(({email: mail, password: password}))
-            if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
+            console.log(({email: mail, password: password}))
+            /*if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
                 var theIndex = temp_Data.findIndex(item => 
                     item.email === mail
                 )
                 var theUser = temp_Data[theIndex];
                 login_account(theUser)
             }*/
-            window.location.href = "/home"
+            var loginInfo = {
+                mail: mail,
+                password: password
+            }
+            axios.post("http://127.0.0.1:4567/login",
+                loginInfo
+            ).then((response) => {
+            console.log("Response" + response)
+            if (response.data !== null){
+                login_account(response.data)
+                window.location.href = "/home"
+            }
+        }).catch(error => { console.error(error);
+            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");

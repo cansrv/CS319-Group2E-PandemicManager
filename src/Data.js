@@ -8,6 +8,7 @@ export const valid_Accounts = [
 export const temp_Data = [{
     name: "Eray",
     surname: "Tüzün",
+    loggedIn: "false",
     id: 21901001,
     accountType: "instructor",
     HEScode: "22EF56",
@@ -162,6 +163,7 @@ export const temp_Data = [{
     {
         name: "Yiğit",
         surname: "Türkçapar",
+        loggedIn: "false",
         id: 21901784,
         accountType: "student",
         HEScode: "AB03CD",
@@ -312,6 +314,7 @@ export const temp_Data = [{
     {
         name: "Yağız",
         surname: "Sabuncuoğlu",
+        loggedIn: "false",
         id: 21909090,
         accountType: "staff",
         HEScode: "09OP09",
