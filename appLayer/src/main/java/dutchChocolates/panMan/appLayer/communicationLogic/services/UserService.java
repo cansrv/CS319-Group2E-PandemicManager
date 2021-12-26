@@ -16,6 +16,7 @@ import dutchChocolates.panMan.appLayer.repositories.TARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -82,27 +83,31 @@ public class UserService {
 
 
     public User searchUser(String sKey) {
-        if (studentRepository.findStudentByBilkentID(sKey) != null)
-            return studentRepository.findStudentByBilkentID(sKey);
-        else if (studentRepository.findStudentByFullName(sKey) != null)
-            return studentRepository.findStudentByFullName(sKey);
-
-        else if (taRepository.findTAByBilkentID(sKey) != null)
-            return taRepository.findTAByBilkentID(sKey);
-        else if (taRepository.findTAByFullName(sKey) != null)
-            return taRepository.findTAByFullName(sKey);
-
-        else if (staffRepository.findStaffByBilkentID(sKey) != null)
-            return staffRepository.findStaffByBilkentID(sKey);
-        else if (staffRepository.findStaffByFullName(sKey) != null)
-            return staffRepository.findStaffByFullName(sKey);
-
-        else if (instructorRepository.findInstructorByBilkentID(sKey) != null)
-            return instructorRepository.findInstructorByBilkentID(sKey);
-        else if (instructorRepository.findInstructorByFullName(sKey) != null)
-            return instructorRepository.findInstructorByFullName(sKey);
-
-        else
+        if (studentRepository.findStudentByBilkentID(sKey) != null) {
+            Student s = studentRepository.findStudentByBilkentID(sKey);
+            return s;
+        } else if (studentRepository.findStudentByFullName(sKey) != null) {
+            Student s = studentRepository.findStudentByFullName(sKey);
+            return s;
+        } else if (taRepository.findTAByBilkentID(sKey) != null) {
+            TA t = taRepository.findTAByBilkentID(sKey);
+            return t;
+        } else if (taRepository.findTAByFullName(sKey) != null) {
+            TA t = taRepository.findTAByFullName(sKey);
+            return t;
+        } else if (staffRepository.findStaffByBilkentID(sKey) != null) {
+            Staff s = staffRepository.findStaffByBilkentID(sKey);
+            return s;
+        } else if (staffRepository.findStaffByFullName(sKey) != null) {
+            Staff s = staffRepository.findStaffByFullName(sKey);
+            return s;
+        } else if (instructorRepository.findInstructorByBilkentID(sKey) != null) {
+            Instructor i = instructorRepository.findInstructorByBilkentID(sKey);
+            return i;
+        } else if (instructorRepository.findInstructorByFullName(sKey) != null) {
+            Instructor i = instructorRepository.findInstructorByFullName(sKey);
+            return i;
+        } else
             return null;
     }
 
