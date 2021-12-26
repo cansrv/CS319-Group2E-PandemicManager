@@ -138,12 +138,12 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between">
-                                        <label for="nameInput" className="col-sm-4 col-form-label">Location</label>
+                                        <label for="locationInput" className="col-sm-4 col-form-label">Location</label>
                                         <div className="col-sm-8">
                                         <input type="text" 
                                         className="form-control" 
-                                        id="nameInput" 
-                                        placeholder="Group Name" 
+                                        id="locationInput" 
+                                        placeholder="Location" 
                                         value={location}
                                         required
                                         onChange={(e) => locationHandler(e.target.value)}></input>
