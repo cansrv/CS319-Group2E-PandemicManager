@@ -164,7 +164,7 @@ const mapStateToProps = state => {
         email: state.email,
         ID: state.id,
         HEScode: state.HEScode,
-        isCovid: state.isCovid
+        isCovid: state.isCovid,
         covidStatus: state.covidStatus
     };
 }

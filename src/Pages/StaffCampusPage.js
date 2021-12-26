@@ -82,7 +82,7 @@ const StaffCampusPage = ({status, report}) => {
 
 const mapStateToProps = state => {
         return {
-                status: state.covidStatus
+                status: state.covidStatus,
                 report: state.weeklyReport
         };
 }
