@@ -30,10 +30,11 @@ public class GroupController {
         return gson.toJson(group);
     }
 
-    @PostMapping("/createGroup")
+    @PostMapping("/addGroup")
     @ResponseBody
     @CrossOrigin
     public String injectGroup(@RequestBody String groupJson){
+        System.out.println(groupJson);
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
         UserCreatedGroup group = (UserCreatedGroup) gson.fromJson(groupJson, Group.class);

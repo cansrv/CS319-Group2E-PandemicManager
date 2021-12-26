@@ -27,6 +27,7 @@ public class GroupService {
 
     public String setGroup(Group group){
         try{
+            System.out.println(group.toString());
             groupRepository.save((UserCreatedGroup) group);
             return "Success";
         }catch(Exception e){
