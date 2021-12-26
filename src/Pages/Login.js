@@ -55,7 +55,9 @@ const Login = ({login_account, loggedIn, }) => {
                 )
                 var theUser = temp_Data[theIndex];
                 login_account(theUser)
-                
+            }
+            else {
+                window.alert("Invalid Creditentials");
             }
             /*var loginInfo = {
                 mail: mail,
@@ -70,7 +72,8 @@ const Login = ({login_account, loggedIn, }) => {
                 return <Link to="/home"/>
             }
             }).catch(error => { console.error(error);
-            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })*/
+                window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })*/
+            
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");

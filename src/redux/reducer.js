@@ -36,6 +36,7 @@ const reducer = (state, action) => {
     }
     if (action.type === "LOGOUT") {
         return {
+            ...state,
             loggedIn: false,
             name: "",
             surname: "",
