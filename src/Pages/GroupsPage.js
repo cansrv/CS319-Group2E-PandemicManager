@@ -42,7 +42,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     };
     const nameHandler = (value) => {
         console.log(value);
-        setLocation(value);
+        setName(value);
     };
     
     const dateHandler = (value) => {
