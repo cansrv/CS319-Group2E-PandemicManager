@@ -9,6 +9,7 @@ import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
+import dutchChocolates.panMan.appLayer.repositories.LectureRepository;
 import dutchChocolates.panMan.appLayer.repositories.SectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class CourseService {
     CourseRepository courseRepository;
     @Autowired
     SectionRepository sectionRepository;
+    @Autowired
+    LectureRepository lectureRepository;
     @Autowired
     UserService userService;
 
@@ -121,16 +124,29 @@ public class CourseService {
         return sectionRepository.getById(section.getId()).getLectures().toString();
     }
 
-    public Exam getExam(){
-        return null;
+    public Exam getExam(Long id){
+        Exam tempExam = (Exam) lectureRepository.getById(id);
+        return tempExam;
     }
 
-    public String deleteExam(){
-        return null;
+    public String deleteExam(Exam exam){
+        try{
+            lectureRepository.delete(exam);
+            return "Success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
-    public String setExam(){
-        return null;
+    public String setExam(Exam exam){
+        try{
+            lectureRepository.save(exam);
+            return "Success";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
 }

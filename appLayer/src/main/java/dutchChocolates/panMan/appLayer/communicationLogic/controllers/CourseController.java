@@ -1,9 +1,13 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.CourseService;
+import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.*;
+import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,20 +61,35 @@ public class CourseController {
 
     @PostMapping("/getExam")
     @ResponseBody
-    public String requestExam(@RequestBody String mail){
-        return null;
+    public String requestExam(@RequestBody Long id){
+        Exam exam = (Exam) courseService.getExam(id);
+
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+        return gson.toJson(exam);
     }
 
     @PostMapping("/createExam")
     @ResponseBody
     public String createExam(@RequestBody String examJson){
-        return null;
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+
+        Exam exam = gson.fromJson(examJson, Exam.class);
+        courseService.setExam(exam);
+
+        return examJson;
     }
 
     @PostMapping("/deleteExam")
     @ResponseBody
-    public String deleteExam(@RequestBody String mail){
-        return null;
+    public String deleteExam(@RequestBody Long id){
+        try{
+            Exam exam = courseService.getExam(id);
+            courseService.deleteExam(exam);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
     private Attendance attendanceParser(JsonObject jsonObject) {

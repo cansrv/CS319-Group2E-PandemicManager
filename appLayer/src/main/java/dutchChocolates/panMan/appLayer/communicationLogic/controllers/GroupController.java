@@ -1,6 +1,10 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.GroupService;
+import dutchChocolates.panMan.appLayer.models.Group;
+import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,21 +24,36 @@ public class GroupController {
     @ResponseBody
     @CrossOrigin
     public String requestGroup(@RequestBody Long id){
-        return null;
+        UserCreatedGroup group = (UserCreatedGroup) groupService.getGroup(id);
+
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+        return gson.toJson(group);
     }
 
     @PostMapping("/createGroup")
     @ResponseBody
     @CrossOrigin
     public String injectGroup(@RequestBody String groupJson){
-        return null;
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+
+        UserCreatedGroup group = (UserCreatedGroup) gson.fromJson(groupJson, Group.class);
+        groupService.setGroup(group);
+
+        return groupJson;
     }
 
     @PostMapping("/deleteGroup")
     @ResponseBody
     @CrossOrigin
     public String deleteGroup(@RequestBody Long id){
-        return null;
+        try{
+            UserCreatedGroup group = (UserCreatedGroup) groupService.getGroup(id);
+            groupService.removeGroup(group);
+            return "Successful";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 
 

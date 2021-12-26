@@ -41,7 +41,7 @@ public abstract class User {
         this.email = mail;
         this.fullName = name + " " + surname;
         this.id = bilkentID;
-        this.username = bilkentID + fullName;
+        this.username = bilkentID + " " + fullName;
         groupsParticipated = new ArrayList<>();
         groupsCreated = new ArrayList<>();
         this.setCovidInformationCard(new CovidInformationCard(hesCode));
