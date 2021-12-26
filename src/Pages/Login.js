@@ -5,7 +5,8 @@ import {connect} from "react-redux"
 import axios from "axios"
 import {Redirect} from "react-dom"
 import {temp_Data, valid_Accounts} from "../Data"
-const Login = ({login_account, loggedIn, }) => {
+
+const Login = ({login_account, loggedIn, fetch_courses}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loginAttempt, setLoginAttempt] = useState(false)
@@ -70,6 +71,16 @@ const Login = ({login_account, loggedIn, }) => {
             if (response.data !== null) {
                 login_account(response.data)
             }
+            }).catch(error => { console.error(error);
+                window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
+
+            axios.post("http://127.0.0.1:4567/getCourses",
+                {mail: mail}
+            ).then((response) => {
+                console.log("Response" + response)
+                if (response.data !== null) {
+                    fetch_courses(response.data)
+                }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
             
@@ -137,7 +148,10 @@ const Login = ({login_account, loggedIn, }) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return { login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} })}
+    return {
+        login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} }),
+        fetch_courses: (payload) => dispatch({type : "FETCH_COURSES", payload: {payload} })
+    }
 }
 const mapStateToProps = (state) => {
     return {loggedIn: state.loggedIn}
