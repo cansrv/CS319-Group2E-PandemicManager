@@ -2,7 +2,8 @@ import courses from "../components/courseData";
 
 const reducer = (state, action) => {
     if(action.type === "LOGIN") {
-        var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
+        // var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
+        var theGroups = action.payload.groupsParticipated
         var theNameParsed = action.payload.fullName.split(" ")
         var theName = theNameParsed[0]
         var theSurname = theNameParsed[theNameParsed.length - 1]
