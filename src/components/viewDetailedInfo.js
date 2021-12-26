@@ -1,5 +1,6 @@
 import '../css/viewDetailedInfo.css'
 import { connect } from 'react-redux'
+import axios from 'axios'
 const riskyStudents = [
 	//account type mail yolla
 	{
@@ -23,7 +24,13 @@ const riskyStudents = [
 const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, accountType}) => {
 	const handleTypeSwitch = (course) => {
 		switchCourseType(course)
-		window.alert("You have switched course type")
+		axios.post("http://127.0.0.1:4567/switchCourseType",
+                course
+            ).then((response) => {
+                console.log("Response" + response)
+                window.alert("You have switched type of course: " + course.name)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Switch Type"); return Promise.reject(error); })
 	}
 
 	return (
