@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {connect} from "react-redux" 
 import axios from "axios"
+import {Redirect} from "react-dom"
 import {temp_Data, valid_Accounts} from "../Data"
 const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
     const [mail, setMail] = useState("")
@@ -65,7 +66,7 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
             console.log("Response" + response)
             if (response.data !== null) {
                 login_account(response.data)
-                return <Navigate to="/home"></Navigate>
+                return < Redirect to="/home" />
             }
             }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })

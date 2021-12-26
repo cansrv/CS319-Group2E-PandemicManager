@@ -37,6 +37,8 @@ public class UserSignupService {
     public String signUpUser(List<String> parameters) {
         String mail = parameters.get(1);
         User user;
+        if(! mail.contains(".bilkent.edu.tr"))
+            return null;
         if(mail.contains("@ug")) {
             user = new Student(parameters.get(0),parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
             return studentRepository.save(((Student) user)).toString();

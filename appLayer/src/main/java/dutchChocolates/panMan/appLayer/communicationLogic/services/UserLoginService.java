@@ -37,21 +37,21 @@ public class UserLoginService {
         try {
             if (mail.contains("@ug")) {
                 tempUser = studentRepository.getById(mail);
-                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Student");
             } else if (mail.contains("@staff")) {
                 tempUser = staffRepository.getById(mail);
-                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Staff");
             } else if (mail.contains("@ta")) {
                 tempUser = taRepository.getById(mail);
-                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "TA");
             } else {
                 tempUser = instructorRepository.getById(mail);
-                return tempUser;
                 //userJson = userJson.replace("USER_TYPE", "Instructor");
             }
+            if(tempUser.getPassword().equals(password))
+                return tempUser;
+            else
+                return null;
         }
         catch (Exception ex) {
             if(ex.getClass().equals(EntityNotFoundException.class)) {
