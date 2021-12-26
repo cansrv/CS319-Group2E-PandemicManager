@@ -49,7 +49,7 @@ const Login = ({login_account, loggedIn, }) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
             console.log(({email: mail, password: password}))
-            if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
+            /*if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
                 var theIndex = temp_Data.findIndex(item => 
                     item.email === mail
                 )
@@ -58,8 +58,8 @@ const Login = ({login_account, loggedIn, }) => {
             }
             else {
                 window.alert("Invalid Creditentials");
-            }
-            /*var loginInfo = {
+            }*/
+            var loginInfo = {
                 mail: mail,
                 password: password
             }
@@ -69,10 +69,9 @@ const Login = ({login_account, loggedIn, }) => {
             console.log("Response" + response)
             if (response.data !== null) {
                 login_account(response.data)
-                return <Link to="/home"/>
             }
             }).catch(error => { console.error(error);
-                window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })*/
+                window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
             
         }
         else if (!validateEmail(mail)) {

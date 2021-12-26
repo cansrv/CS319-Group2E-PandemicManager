@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar"
 import "../css/GroupsPage.css"
 import { useState } from "react"
 import {connect} from "react-redux"
+import axios from "axios"
 
 const GroupsPage = ({add_group, groups, remove_group}) => {
     const [addedParticipants, setAddedParticipants] = useState([])
@@ -60,6 +61,12 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                 isActive: true,
             }
             add_group(newGroup)
+            axios.post("http://127.0.0.1:4567/addGroup",
+                newGroup
+            ).then((response) => {
+                console.log("Response" + response)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Group"); return Promise.reject(error); })
             window.alert("A new group is added")
             setName("")
             setNewParticipant("")
@@ -75,10 +82,15 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         var filteredArray = groups.filter(function(item) {
             return item.id !== group.id
         })
-
         console.log(filteredArray);
         remove_group(filteredArray);
-        console.log(group.groupName, "is removed");
+        axios.post("http://127.0.0.1:4567/removeGroup",
+                group
+            ).then((response) => {
+                console.log("Response" + response)
+            }).catch(error => { console.error(error);
+                window.alert("Database Error Group"); return Promise.reject(error); })
+        console.log(group.groupName, " is removed");
     }
 
     return (

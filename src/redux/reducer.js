@@ -1,7 +1,7 @@
 import courses from "../components/courseData";
 
 const reducer = (state, action) => {
-    /*if(action.type === "LOGIN") {
+    if(action.type === "LOGIN") {
         var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
         var theNameParsed = action.payload.fullName.split(" ")
         var theName = theNameParsed[0]
@@ -26,14 +26,14 @@ const reducer = (state, action) => {
             tests: theTests,
             isAllowedOnCampus: theAllowance
         }
-    }*/
-    if (action.type === "LOGIN") {
+    }
+    /*if (action.type === "LOGIN") {
         return {
             ...state,
             ...action.payload,
             loggedIn: true
         }
-    }
+    }*/
     if (action.type === "LOGOUT") {
         return {
             ...state,
