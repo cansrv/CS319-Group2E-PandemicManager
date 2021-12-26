@@ -3,53 +3,22 @@ import { connect } from 'react-redux'
 const riskyStudents = [
 	//account type mail yolla
 	{
-		name: "Cenk Duramayan",
+		name: "Cenk Duran",
 		id: "21903214"
 	},
 	{
-		name: "Tuco",
+		name: "Berk Türkçapar",
 		id: "21903214"
 	},
 	{
-		name: "Ytekin",
+		name: "Yiğit Ekin",
 		id: "21903214"
 	},
 	{
-		name: "BJK",
+		name: "Can Önal",
 		id: "21903214"
 	},
-	{
-		name: "Corona elif",
-		id: "21903214"
-	},
-	{
-		name: "CoronA yAMUR",
-		id: "21903214"
-	},
-	{
-		name: "Cenk Duramayan",
-		id: "21903214"
-	},
-	{
-		name: "Tuco",
-		id: "21903214"
-	},
-	{
-		name: "Ytekin",
-		id: "21903214"
-	},
-	{
-		name: "BJK",
-		id: "21903214"
-	},
-	{
-		name: "Corona elif",
-		id: "21903214"
-	},
-	{
-		name: "CoronA yAMUR",
-		id: "21903214"
-	},
+	
 ]
 const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, accountType}) => {
 	const handleTypeSwitch = (course) => {

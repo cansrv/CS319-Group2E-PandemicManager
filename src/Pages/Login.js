@@ -5,7 +5,7 @@ import {connect} from "react-redux"
 import axios from "axios"
 import {Redirect} from "react-dom"
 import {temp_Data, valid_Accounts} from "../Data"
-const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
+const Login = ({login_account, loggedIn, }) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loginAttempt, setLoginAttempt] = useState(false)
@@ -49,14 +49,15 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
             console.log(({email: mail, password: password}))
-            /*if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
+            if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
                 var theIndex = temp_Data.findIndex(item => 
                     item.email === mail
                 )
                 var theUser = temp_Data[theIndex];
                 login_account(theUser)
-            }*/
-            var loginInfo = {
+                
+            }
+            /*var loginInfo = {
                 mail: mail,
                 password: password
             }
@@ -66,10 +67,10 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
             console.log("Response" + response)
             if (response.data !== null) {
                 login_account(response.data)
-                return < Redirect to="/home" />
+                return <Link to="/home"/>
             }
             }).catch(error => { console.error(error);
-            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
+            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })*/
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
@@ -115,11 +116,12 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
                         <div className="form-group flex-row d-flex justify-content-center align-items-center">
                             <div className="buttonContainer">
                             
-                                    <button type="submit" href= {loggedIn ? "/home" : "/login"} className="btn loginButton"
+                            <Link to = "/home" className="pl-2">
+                                <button type="submit" className="btn loginButton"
                                     onClick={(e) => login(e)}>Log-in</button>
-                                
-                                    
-                                
+                                    {}
+                            </Link>
+                            {loggedIn ? (<Navigate to="/home"/>): (null)}
                             </div>
                         </div>
                         <div className = "signupPrompt flex-row d-flex justify-content-center align-items-center pb-3">
