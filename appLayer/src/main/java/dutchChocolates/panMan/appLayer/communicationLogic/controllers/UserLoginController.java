@@ -16,27 +16,17 @@ public class UserLoginController {
     //Properties
     @Autowired
     private UserLoginService userLoginService;
-
-
+    
     private final String LOGIN_MAIL = "mail";
     private final String LOGIN_PASSWORD = "password";
 
     //Constructors
 
 
-
-    @PostMapping("")
-    @ResponseBody
-    @CrossOrigin
-    public User method() {
-        return new Student();
-    }
-
     //Methods
     @PostMapping("/login")
     @ResponseBody
     @CrossOrigin
-
     public String login(@RequestBody String jsonLoginRequest){
         List<String> loginList = new ArrayList<String>();
         JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();

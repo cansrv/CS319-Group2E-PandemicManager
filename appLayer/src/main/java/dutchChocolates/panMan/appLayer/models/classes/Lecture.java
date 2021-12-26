@@ -65,11 +65,11 @@ public class Lecture {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", roomName:'" + roomName + '\'' +
-                ", isSpareHour:" + isSpareHour +
-                ", attendance:" + attendance +
+        return "{" + "\n" +
+                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   roomName:'" + "\"" + roomName + "\"" + ",\n" +
+                "   isSpareHour:" + "\"" + isSpareHour + "\"" + ",\n" +
+                "   attendance:" + "\"" + attendance + "\"" + "\n" +
                 '}';
     }
 }

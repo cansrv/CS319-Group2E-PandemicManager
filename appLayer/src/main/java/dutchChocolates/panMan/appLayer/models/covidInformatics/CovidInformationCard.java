@@ -119,13 +119,13 @@ public class CovidInformationCard {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", vaccinationCard:" + vaccinationCard +
-                ", tests:" + tests +
-                ", hesCodes:" + hesCodes +
-                ", hesCodeStatus:" + hesCodeStatus +
-                ", covidStatus:" + covidStatus +
+        return "{" + "\n" +
+                "       id:" + "\"" + id + "\"" + ",\n" +
+                "       vaccinationCard:" + "\"" + vaccinationCard + "\"" + ",\n" +
+                "       tests:" + "\"" + tests + "\"" + ",\n" +
+                "       hesCodes:" + "\"" + hesCodes + "\"" + ",\n" +
+                "       hesCodeStatus:" + "\"" + hesCodeStatus + "\"" + ",\n" +
+                "       covidStatus:" + "\"" + covidStatus + "\"" + "\n" +
                 '}';
     }
 }

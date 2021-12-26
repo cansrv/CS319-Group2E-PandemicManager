@@ -47,9 +47,9 @@ public class Exam extends Lecture {
 
     @Override
     public String toString() {
-        return "{" +
-                "id:" + id +
-                ", courseCoordinator:" + courseCoordinator +
+        return "{" + "\n" +
+                "   id:" + '\"' + id + '\"' + ",\n" +
+                "   courseCoordinator:" + '\"' + courseCoordinator + '\"' + "\n" +
                 '}';
     }
 }

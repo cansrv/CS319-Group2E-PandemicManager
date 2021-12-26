@@ -4,7 +4,7 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GroupRepository extends JpaRepository<Group, String> {
+public interface GroupRepository extends JpaRepository<Group, Long> {
     //Properties
 
 

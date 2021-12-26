@@ -121,15 +121,15 @@ public class Section {
 
     @Override
     public String toString() {
-        return "{" +
-                "id=" + id +
-                ", lectures:" + lectures +
-                ", students:" + students +
-                ", instructors:" + instructors +
-                ", TAs:" + TAs +
-                ", course:" + course +
-                ", isOnline:" + isOnline +
-                ", sectionNumber:" + sectionNumber +
+        return "{" + "\n" +
+                "   id=" + "\"" + id + "\"" + ",\n" +
+                "   lectures:" + "\"" + lectures + "\"" + ",\n" +
+                "   students:" + "\"" + students + "\"" + ",\n" +
+                "   instructors:" + "\"" + instructors + "\"" + ",\n" +
+                "   TAs:" + "\"" + TAs + "\"" + ",\n" +
+                "   course:" + "\"" + course + "\"" + ",\n" +
+                "   isOnline:" + "\"" + isOnline + "\"" + ",\n" +
+                "   sectionNumber:" + "\"" + sectionNumber + "\"" + "\n" +
                 '}';
     }
 }

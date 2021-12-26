@@ -134,9 +134,14 @@ public class UserService {
         }
     }
 
-    public List<Section> getInstructorSections(Instructor instructor) {
-        Instructor instructorFromDatabase = instructorRepository.getById(instructor.getMail());
+    public List<Section> getInstructorSections(String mail) {
+        Instructor instructorFromDatabase = instructorRepository.getById(mail);
         return instructorFromDatabase.getSections();
+    }
+
+    public List<Course> getInstructorCourses(String mail){
+        Instructor instructorFromDatabase = instructorRepository.getById(mail);
+        return instructorFromDatabase.getCourses();
     }
 
     public String setInstructorCourses(Instructor instructor, List<Course> instructorCourses) {
@@ -172,7 +177,7 @@ public class UserService {
         return tempUser.getGroupsParticipated();
     }
 
-    public String setUserGroup(User user, List<Group> userGroups) {
+    public String setUserGroups(User user, List<Group> userGroups) {
         try {
             User tempUser = getUser(user);
             tempUser.setGroupsParticipated(userGroups);
@@ -184,7 +189,7 @@ public class UserService {
         }
     }
 
-    public VaccinationCard getUserVaccinationCard(String mail){
+    public VaccinationCard getVaccinationCard(String mail){
         User tempUser = getUser(mail);
         return tempUser.getCovidInformationCard().getVaccinationCard();
     }
