@@ -32,12 +32,13 @@ const Login = ({login_account, loggedIn}) => {
             mail: mail,
             password: password
         }
+        
         axios.post("http://127.0.0.1:4567/login",
             loginInfo
             ).then((response) => {
                 console.log(response)
                 if (response.data !== null){
-                    login_account(JSON.parse(response.data))
+                    login_account(response.data)
                     window.location.href = "/home"
                 }
             }).catch(error => { console.error(error);
