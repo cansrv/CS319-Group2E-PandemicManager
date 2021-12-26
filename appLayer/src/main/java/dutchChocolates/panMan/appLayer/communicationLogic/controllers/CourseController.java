@@ -129,6 +129,26 @@ public class CourseController {
         }
     }
 
+    @PostMapping("/getCourses")
+    @ResponseBody
+    public String getCourses(@RequestBody String mail){
+        JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
+
+        Instructor instructor = (Instructor) userService.getUser(jsonRepOfMail.get("mail").getAsString());
+
+        ArrayList<Course> courseList = (ArrayList<Course>) courseService.getCoursesOfInstructor(instructor);
+        ArrayList<String> courseNameList = new ArrayList<String>();
+
+        for(Course course : courseList){
+            if(course.getCourseName() != null){
+                courseNameList.add(course.getCourseName());
+            }
+        }
+
+        return courseNameList.toString();
+
+    }
+
     private Attendance attendanceParser(JsonObject jsonObject) {
         return null;
     }

@@ -59,6 +59,7 @@ public class GroupController {
             for(int i = 0; i < jsonParticipantArray.size(); i++){
                 System.out.println(jsonParticipantArray.get(i).getAsString());
                 participantMailList.add(jsonParticipantArray.get(i).getAsString());
+                System.out.println();
             }
         }
         ArrayList<User> participants = new ArrayList<User>();
