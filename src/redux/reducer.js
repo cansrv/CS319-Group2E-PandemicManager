@@ -2,10 +2,29 @@ import courses from "../components/courseData";
 
 const reducer = (state, action) => {
     if(action.type === "LOGIN") {
+        var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
+        var theNameParsed = action.payload.fullName.split(" ")
+        var theName = theNameParsed[0]
+        var theSurname = theNameParsed[theNameParsed.length - 1]
+        var theHEScode = action.payload.covidInformationCard.hesCodes[0]
+        var theId = action.payload.username.substring(0, 8)
+        var theTests = action.payload.covidInformationCard.tests
+        var theAllowance = true
+        if (action.payload.covidInformationCard.covidStatus !== "Negative") {
+            theAllowance = false
+        }
+        
         return {
             ...state,
             ...action.payload,
-            loggedIn: true
+            loggedIn: true,
+            groups: theGroups,
+            name: theName,
+            surmame: theSurname,
+            HEScode: theHEScode,
+            id: theId,
+            tests: theTests,
+            isAllowedOnCampus: theAllowance
         }
     }
     if(action.type === "ADD_NEW_GROUP") {

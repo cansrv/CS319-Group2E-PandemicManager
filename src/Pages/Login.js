@@ -37,6 +37,7 @@ const Login = ({login_account, loggedIn}) => {
             console.log("Response" + response)
             if (response.data !== null){
                 login_account(response.data)
+                window.location.href = "/home"
             }
         }).catch(error => { console.error(error);
             console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
