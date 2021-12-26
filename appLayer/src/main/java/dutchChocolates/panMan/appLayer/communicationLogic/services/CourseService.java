@@ -49,6 +49,18 @@ public class CourseService {
         return courseRepository.getById(course.getCourseName());
     }
 
+    public List<Course> getCoursesOfInstructor(Instructor instructor){
+        ArrayList<Course> courseList = (ArrayList<Course>) courseRepository.findAll();
+
+        for(Course course : courseList){
+            if(!course.getInstructors().contains(instructor)){
+                courseList.remove(course);
+            }
+        }
+
+        return courseList;
+    }
+
     public void updateCourse() {
         courseRepository.flush();
     }
@@ -104,7 +116,7 @@ public class CourseService {
             Course tempCourse = courseRepository.getById(course.getCourseName());
             Section tempSection;
             for(Section listSection : tempCourse.getSections()){
-                if(listSection.getId() == section.getId()){
+                if(listSection.getId().equals(section.getId())){
                     listSection.addLecture(lecture);
                 }
             }
@@ -125,8 +137,7 @@ public class CourseService {
     }
 
     public Exam getExam(Long id){
-        Exam tempExam = (Exam) lectureRepository.getById(id);
-        return tempExam;
+        return (Exam) lectureRepository.getById(id);
     }
 
     public String deleteExam(Exam exam){
