@@ -47,15 +47,15 @@ const Login = ({login_account, loggedIn, setHasLoggedIn}) => {
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
-            console.log(({email: mail, password: password}))
+            /*console.log(({email: mail, password: password}))
             if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
                 var theIndex = temp_Data.findIndex(item => 
                     item.email === mail
                 )
                 var theUser = temp_Data[theIndex];
                 login_account(theUser)
-                setHasLoggedIn(true)
-            }
+            }*/
+            window.location.href = "/home"
         }
         else if (!validateEmail(mail)) {
             window.alert("Please enter a valid mail");
