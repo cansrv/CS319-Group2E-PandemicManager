@@ -18,7 +18,6 @@ export const SignUp = () => {
         const name = e.target.id;
         const value = e.target.value;
         setSignUpInfo({ ...signUpInfo, [name]: value });
-        console.log(value)
     };
     const handleSubmit = (e) => {
         e.preventDefault();

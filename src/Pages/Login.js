@@ -17,7 +17,7 @@ const Login = ({login_account, loggedIn, fetch_courses}) => {
     };
     
     const passwordHandler = (value) => {
-        console.log(value);
+        
         setPassword(value);
     };
 
