@@ -1,11 +1,12 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.CourseService;
+import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.Group;
+import dutchChocolates.panMan.appLayer.models.User;
+import dutchChocolates.panMan.appLayer.models.actors.Instructor;
+import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.classes.*;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -22,6 +27,8 @@ public class CourseController {
     //Properties
     @Autowired
     CourseService courseService;
+    @Autowired
+    UserService userService;
 
 
     //Constructors
@@ -70,13 +77,43 @@ public class CourseController {
 
     @PostMapping("/createExam")
     @ResponseBody
-    public String createExam(@RequestBody String examJson){
-        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
+    public String createExam(@RequestBody String examJson) throws ParseException {
+        JsonObject jsonRepOfExam = new JsonParser().parse(examJson).getAsJsonObject();
 
-        Exam exam = gson.fromJson(examJson, Exam.class);
-        courseService.setExam(exam);
+        Long id = Long.valueOf(jsonRepOfExam.get("id").getAsString());
 
-        return examJson;
+        String courseName = jsonRepOfExam.get("course").getAsString();
+        Course course = courseService.getCourse("courseName");
+
+        String instructorMail = jsonRepOfExam.get("instructorMail").getAsString();
+        Instructor instructor = (Instructor) userService.getUser(instructorMail);
+
+        JsonArray jsonParticipantArray = jsonRepOfExam.get("participants").getAsJsonArray();
+        ArrayList<String> participantMailList = new ArrayList<String>();
+        if(jsonParticipantArray != null){
+            for(int i = 0; i < jsonParticipantArray.size(); i++){
+                System.out.println(jsonParticipantArray.get(i).getAsString());
+                participantMailList.add(jsonParticipantArray.get(i).getAsString());
+            }
+        }
+        ArrayList<Student> participants = new ArrayList<Student>();
+        for(String bilkentId : participantMailList){
+            if(userService.searchUser(bilkentId) != null){
+                participants.add((Student) userService.searchUser(bilkentId));
+            }
+        }
+        Attendance attendance = new Attendance(participants);
+
+        String dateStr = jsonRepOfExam.get("date").getAsString();
+        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+
+        Exam exam = new Exam();
+        exam.setId(id);
+        exam.setCourseCoordinator(instructor);
+        exam.setSpareHour(false);
+        exam.setAttendance(attendance);
+
+        return courseService.setExam(exam);
     }
 
     @PostMapping("/deleteExam")

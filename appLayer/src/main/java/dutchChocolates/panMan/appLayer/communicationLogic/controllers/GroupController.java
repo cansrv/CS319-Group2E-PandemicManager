@@ -43,7 +43,6 @@ public class GroupController {
     @CrossOrigin
     public String injectGroup(@RequestBody String groupJson) throws ParseException {
         System.out.println(groupJson);
-        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
         JsonObject jsonRepOfGroup = new JsonParser().parse(groupJson).getAsJsonObject();
 
