@@ -121,11 +121,11 @@ public class CovidInformationCard {
     public String toString() {
         return "{" + "\n" +
                 "       id:" + "\"" + id + "\"" + ",\n" +
-                "       vaccinationCard:" + "\"" + vaccinationCard + "\"" + ",\n" +
-                "       tests:" + "\"" + tests + "\"" + ",\n" +
-                "       hesCodes:" + "\"" + hesCodes + "\"" + ",\n" +
+                "       vaccinationCard:" + vaccinationCard + ",\n" +
+                "       tests:" + tests + ",\n" +
+                "       hesCodes:" + hesCodes + ",\n" +
                 "       hesCodeStatus:" + "\"" + hesCodeStatus + "\"" + ",\n" +
                 "       covidStatus:" + "\"" + covidStatus + "\"" + "\n" +
-                '}';
+                "   }";
     }
 }

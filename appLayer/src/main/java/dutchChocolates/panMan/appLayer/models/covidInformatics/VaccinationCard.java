@@ -119,7 +119,7 @@ public class VaccinationCard {
                 "   lastName:'" + "\"" + lastName + "\"" + '\'' + ",\n" +
                 "   birthDate:" + "\"" + birthDate + "\"" + ",\n" +
                 "   personalIdNumber:'" + "\"" + personalIdNumber + "\"" + ",\n" +
-                "   vaccines:" + "\"" + vaccines + "\"" + "\n" +
+                "   vaccines:" + vaccines + "\n" +
                 '}';
     }
 }

@@ -49,9 +49,9 @@ public abstract class Group {
 
     @Override
     public String toString() {
-        return "{" +
-                "id" + id +
-                ", participants" + participants +
+        return "{" + "\n" +
+                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   participants:" + participants + "\n" +
                 '}';
     }
 }

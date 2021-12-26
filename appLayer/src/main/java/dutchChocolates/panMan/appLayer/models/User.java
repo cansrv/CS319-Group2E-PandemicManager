@@ -154,16 +154,16 @@ public abstract class User {
     @Override
     public String toString() {
         return "{" +
-                "entryTime=" + entryTime +
-                ", exitTime=" + exitTime +
-                ", username='" + username + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", password='" + password + '\'' +
-                ", mail='" + mail + '\'' +
-                ", bilkentID='" + bilkentID + '\'' +
-                ", groupsCreated=" + groupsCreated +
-                ", groupsParticipated=" + groupsParticipated +
-                ", covidInformationCard=" + covidInformationCard +
+                "   entryTime=" + entryTime +
+                "   exitTime=" + exitTime +
+                "   username='" + username +
+                "   fullName='" + fullName +
+                "   password='" + password +
+                "   mail='" + mail + '\'' +
+                "   bilkentID='" + bilkentID + '\'' +
+                "   groupsCreated=" + groupsCreated +
+                "   groupsParticipated=" + groupsParticipated +
+                "   covidInformationCard=" + covidInformationCard +
                 '}';
     }
 }

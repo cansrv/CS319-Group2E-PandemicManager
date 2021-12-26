@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserLoginService;
@@ -37,17 +38,19 @@ public class UserLoginController {
     @PostMapping("/login")
     @ResponseBody
     @CrossOrigin
-
     public String login(@RequestBody String jsonLoginRequest){
         List<String> loginList = new ArrayList<String>();
         JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();
 
         loginList.add(jsonLogin.get(LOGIN_MAIL).getAsString());
         loginList.add(jsonLogin.get(LOGIN_PASSWORD).getAsString());
-        Gson gson = new Gson();
+
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
         String json = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
         System.out.println("-----------------\n" + jsonLoginRequest + "-----------------\n");
         return json;
+
+
 
     }
 
