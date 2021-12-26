@@ -74,6 +74,23 @@ public class UserController {
     }
 
 
+    @PostMapping("/markSomeoneRisky")
+    public String markSomeoneRisky(@RequestBody String searchKey) {
+        JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
+
+        String sKey = jsonObject.get("input").getAsString();
+        try {
+            User u = userService.markUserRisky(sKey);
+            return u.toString();
+        } catch (Exception ex) {
+            if (ex.getClass().equals(NullPointerException.class)) {
+                ex.printStackTrace();
+                return "No such user exists";
+            }
+        }
+        return "Fatal Error";
+    }
+
 
     @PostMapping("/searchUser")
     public String searchUser(@RequestBody String searchKey) {
