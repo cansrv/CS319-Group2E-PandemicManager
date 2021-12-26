@@ -11,6 +11,7 @@ import dutchChocolates.panMan.appLayer.models.classes.*;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -131,6 +132,7 @@ public class CourseController {
 
     @PostMapping("/getCourses")
     @ResponseBody
+    @CrossOrigin
     public String getCourses(@RequestBody String mail){
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
 

@@ -8,9 +8,7 @@ import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
-import dutchChocolates.panMan.appLayer.repositories.CourseRepository;
-import dutchChocolates.panMan.appLayer.repositories.LectureRepository;
-import dutchChocolates.panMan.appLayer.repositories.SectionRepository;
+import dutchChocolates.panMan.appLayer.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,18 @@ public class CourseService {
     SectionRepository sectionRepository;
     @Autowired
     LectureRepository lectureRepository;
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private StaffRepository staffRepository;
+
+    @Autowired
+    private InstructorRepository instructorRepository;
+
+    @Autowired
+    private TARepository taRepository;
+
     @Autowired
     UserService userService;
 
@@ -49,6 +59,19 @@ public class CourseService {
         return courseRepository.getById(course.getCourseName());
     }
 
+    public String addCourse(Course course) {
+        ArrayList<TA> tas = (ArrayList<TA>) course.getTAs();
+        ArrayList<Instructor> instructors = (ArrayList<Instructor>) course.getInstructors();
+        ArrayList<Student> students = (ArrayList<Student>) course.getStudents();
+
+        for (Instructor instructor: instructors) {
+            instructor.getCourses().add(course);
+        }
+        courseRepository.saveAndFlush(course);
+        updateDBs();
+        return "Successful";
+    }
+
     public List<Course> getCoursesOfInstructor(Instructor instructor){
         ArrayList<Course> courseList = (ArrayList<Course>) courseRepository.findAll();
 
@@ -61,19 +84,18 @@ public class CourseService {
         return courseList;
     }
 
+    public void updateDBs() {
+        staffRepository.flush();
+        studentRepository.flush();
+        instructorRepository.flush();
+        taRepository.flush();
+    }
+
+
     public void updateCourse() {
         courseRepository.flush();
     }
 
-    public String addCourse(Course course) {
-        try{
-            courseRepository.save(course);
-            return "Successful";
-        }catch(Exception e){
-            e.printStackTrace();
-            return "Fail";
-        }
-    }
 
     public String addStudentToCourse(Student student, Course course){
         try{

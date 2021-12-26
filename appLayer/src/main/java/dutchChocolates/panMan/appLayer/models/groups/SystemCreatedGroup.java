@@ -19,8 +19,8 @@ public class SystemCreatedGroup extends Group {
         this.location = location;
     }
 
-    public SystemCreatedGroup(long identifier, List<User> participants, Location location) {
-        super(identifier, participants);
+    public SystemCreatedGroup(long identifier, List<User> participants, Location location, String groupName) {
+        super(identifier, participants, groupName);
         this.location = location;
     }
 

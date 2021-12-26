@@ -23,8 +23,8 @@ public class StaffCreatedGroup extends UserCreatedGroup {
         setDate(Date.from(Clock.systemDefaultZone().instant()));
     }
 
-    public StaffCreatedGroup(long identifier, List<User> participants, Location location, Date date) {
-        super(identifier, participants, location, date);
+    public StaffCreatedGroup(long identifier, List<User> participants, Location location, Date date, String groupName) {
+        super(identifier, participants, location, date, groupName);
     }
 
     //Methods

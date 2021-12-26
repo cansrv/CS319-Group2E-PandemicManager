@@ -37,8 +37,8 @@ public class UserCreatedGroup extends Group {
         super();
     }
 
-    public UserCreatedGroup(long identifier, List<User> participants, Location location, Date date) {
-        super(identifier, participants);
+    public UserCreatedGroup(long identifier, List<User> participants, Location location, Date date, String groupName) {
+        super(identifier, participants, groupName);
         this.location = location;
         this.date = date;
     }

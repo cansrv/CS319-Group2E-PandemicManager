@@ -70,6 +70,7 @@ const Login = ({login_account, loggedIn, fetch_courses}) => {
             console.log("Response" + response)
             if (response.data !== null) {
                 login_account(response.data)
+                console.log(response.data)
             }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
@@ -82,7 +83,7 @@ const Login = ({login_account, loggedIn, fetch_courses}) => {
                     fetch_courses(response.data)
                 }
             }).catch(error => { console.error(error);
-                window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
+                window.alert("Invalid Course Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
             
         }
         else if (!validateEmail(mail)) {

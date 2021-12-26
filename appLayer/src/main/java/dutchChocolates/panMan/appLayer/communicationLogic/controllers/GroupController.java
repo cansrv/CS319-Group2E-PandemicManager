@@ -35,7 +35,9 @@ public class GroupController {
         UserCreatedGroup group = (UserCreatedGroup) groupService.getGroup(id);
 
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
-        return gson.toJson(group);
+        String string = gson.toJson(group);
+        string = string.replace("location_id", "location");
+        return string;
     }
 
     @PostMapping("/addGroup")
@@ -77,6 +79,7 @@ public class GroupController {
         group.setDate(date);
         group.setLocation(location);
         group.setParticipants(participants);
+        group.setGroupName(groupName);
 
         return groupService.setGroup(group);
     }

@@ -9,7 +9,7 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private String name;
+    private String location;
 
 
 
@@ -17,23 +17,23 @@ public class Location {
     public Location() {
     }
 
-    public Location(String name) {
-        this.name = name;
+    public Location(String location) {
+        this.location = location;
     }
 
     //Methods
-    public String getName() {
-        return name;
+    public String getLocation() {
+        return location;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLocation(String name) {
+        this.location = name;
     }
 
     @Override
     public String toString() {
         return "{" + "\n" +
-                "   name='" + '\"' + name + '\"' + "\n" +
+                "   name='" + '\"' + location + '\"' + "\n" +
                 '}';
     }
 }

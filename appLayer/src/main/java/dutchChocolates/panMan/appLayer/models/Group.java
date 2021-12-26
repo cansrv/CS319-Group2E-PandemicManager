@@ -14,14 +14,25 @@ public abstract class Group {
     @ManyToMany
     List<User> participants;
 
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    String groupName;
+
     //Constructors
     public Group(List<User> participants) {
         this.participants = participants;
     }
 
-    public Group(long id, List<User> participants) {
+    public Group(long id, List<User> participants, String groupName) {
         this.id = id;
         this.participants = participants;
+        this.groupName = groupName;
     }
 
     public Group() {
