@@ -91,7 +91,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         console.log(filteredArray);
         remove_group(filteredArray);
         axios.post("http://127.0.0.1:4567/deleteGroup",
-                group
+                {id: group.id}
             ).then((response) => {
                 console.log("Response" + response)
             }).catch(error => { console.error(error);
