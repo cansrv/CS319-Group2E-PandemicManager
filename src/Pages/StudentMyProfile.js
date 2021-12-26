@@ -60,7 +60,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                             <div className="modal-dialog modal-dialog-centered" role="document">
                                 <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">Create a Group</h5>
+                                    <h5 className="modal-title" id="exampleModalLongTitle">Change HES Code:</h5>
                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
