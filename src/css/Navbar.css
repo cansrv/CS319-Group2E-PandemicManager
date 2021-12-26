@@ -53,6 +53,11 @@ background: #25C4DA;
 	line-height: 1.5rem;
 	color: #FFFFFF;
 }
+
+.account-status:first-letter {
+	text-transform: uppercase;
+}
+
 .navbar-content-area {
 	width: 100%;
 }
