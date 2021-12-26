@@ -9,27 +9,22 @@ import axios from "axios"
 const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode, mark_self_risky, isCovid}) => {
     const [input, setInput] = useState("")
     const [newHESCode, setNewHESCode] = useState("")
-    const handleSubmit = (e) => {
-        e.preventDefault()
-      const id = input.current.value
-        console.log(id)
-      const check = (id === "") || (Number(id) === NaN) || (Number(id) > 0)
-        if (check) {
-            //yollancak data
-            window.alert(id + " has been marked as risky")
-        }
-    }
 
     const markSomeoneRisky = () => {
         axios.post("http://127.0.0.1:4567/markSomeoneRisky",
                 input
             ).then((response) => {
                 console.log("Response" + response)
+                window.alert("You have marked " + input + " as Risky")
             }).catch(error => { console.error(error);
                 window.alert("Database Error Group"); return Promise.reject(error); })
+                setInput("")
     }
 
-
+    const handleInput = (e) => {
+        console.log(e.target.value)
+        setInput(e.target.value)
+    }
 
     const codeHandler = (value) => {
         console.log(value)
@@ -115,8 +110,8 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                                 <div className="row">
                                     <div className="col d-flex">
                                         <input value={input} type="text" className="form-search form-control-lg px-xl-2 mx-lg-auto mx-md-none mx-auto" placeholder="Bilkent ID or Full Name" onChange={(e) => {
-                                            setInput(e.target.value);
-                                            console.log(e.target.value)}}/>
+                                            handleInput(e)
+                                            }}/>
                                     </div>
                                     <div className="col d-flex">
                                         <button className="markSomeoneRiskyButton btn btn-lg px-xl-3 mx-lg-auto mt-lg-4 mt-xl-0 mx-md-none mx-auto mt-2 mt-md-none" onClick={() => markSomeoneRisky()}>Mark Someone Risky</button>

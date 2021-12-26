@@ -38,7 +38,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 
     const locationHandler = (value) => {
         console.log(value);
-        setName(value);
+        setLocation(value);
     };
     const nameHandler = (value) => {
         console.log(value);
