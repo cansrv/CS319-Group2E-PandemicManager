@@ -10,7 +10,8 @@ const reducer = (state, action) => {
         var theId = action.payload.username.substring(0, 8)
         var theTests = action.payload.covidInformationCard.tests
         var theAllowance = true
-        if (action.payload.covidInformationCard.covidStatus !== "Negative") {
+        var theCovidStatus = action.payload.covidInformationCard.covidStatus
+        if (action.payload.covidInformationCard.covidStatus === "Risky" || action.payload.covidInformationCard.covidStatus === "Positive") {
             theAllowance = false
         }
         
@@ -24,7 +25,8 @@ const reducer = (state, action) => {
             HEScode: theHEScode,
             id: theId,
             tests: theTests,
-            isAllowedOnCampus: theAllowance
+            isAllowedOnCampus: theAllowance,
+            covidStatus: theCovidStatus,
         }
     }
     /*if (action.type === "LOGIN") {
