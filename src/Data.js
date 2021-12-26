@@ -1,3 +1,10 @@
+const valid_Accounts = [
+    {email: "eray.tuzun@cs.bilkent.edu.tr", password: "cs319"}
+    {email: "yigit.turkcapar@ug.bilkent.edu.tr", password: "1907"}
+    {email: "yagiz.sabuncuoglu@bilkent.edu.tr", password: "maliMoc"}
+]
+
+
 export const temp_Data = [{
     name: "Eray",
     surname: "Tüzün",
@@ -334,7 +341,7 @@ export const temp_Data = [{
         ],
         coursesThaught: [],
         courses: [],
-        email: "1907.kanarya@bilkent.edu.tr",
+        email: "yagiz.sabuncuoglu@bilkent.edu.tr",
         isCovid: true,
         tests: [
             {
