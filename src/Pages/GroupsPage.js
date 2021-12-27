@@ -150,9 +150,9 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between">
-                                        <label for="idInput" className="col-sm-4 col-form-label">Participant Mail</label>
+                                        <label for="idInput" className="col-sm-4 col-form-label">Participant ID</label>
                                         <div className="col-sm-5">
-                                        <input type="email" className="form-control" id="idInput"
+                                        <input type="number" className="form-control" id="idInput"
                                         placeholder="Participant ID"
                                         value={newParticipant}
                                         required
