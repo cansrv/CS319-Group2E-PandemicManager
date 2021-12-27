@@ -53,14 +53,7 @@ public class UserLoginController {
         String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
 
         jsonLogin = new JsonParser().parse(tempJson).getAsJsonObject();
-        ArrayList<Group> groups;
-        User user = userService.getUser(loginList.get(0));
-        if (user.getGroupsParticipated() != null) {
-            groups = (ArrayList<Group>) user.getGroupsParticipated();
-        } else {
-            groups = new ArrayList<>();
-        }
-        //gson.to
+
         String mail = jsonLogin.get("email").getAsString();
         JsonElement typeValue = new JsonParser().parse(userLoginService.getUserType(mail));
         jsonLogin.add("accountType", typeValue);
