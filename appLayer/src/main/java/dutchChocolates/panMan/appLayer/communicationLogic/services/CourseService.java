@@ -13,32 +13,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CourseService {
     //Properties
-    @Autowired
+    @Resource
     CourseRepository courseRepository;
-    @Autowired
+    @Resource
     SectionRepository sectionRepository;
-    @Autowired
+    @Resource
     LectureRepository lectureRepository;
-    @Autowired
+    @Resource
     private StudentRepository studentRepository;
-    @Autowired
+    @Resource
     private StaffRepository staffRepository;
-    @Autowired
+    @Resource
     private InstructorRepository instructorRepository;
-    @Autowired
+    @Resource
     private TARepository taRepository;
 
     @Autowired
     UserService userService;
 
     //Methods
-    public String addSection(Boolean isOnline, Integer sectionNumber,  String courseName) {
+    public String addSection(Boolean isOnline, Integer sectionNumber, String courseName) {
         Section section = new Section();
         Course course = getCourse(courseName);
         section.setOnline(isOnline);
@@ -49,11 +50,11 @@ public class CourseService {
         return sectionRepository.saveAndFlush(section).toString();
     }
 
-    public Course getCourse(String courseName){
+    public Course getCourse(String courseName) {
         return courseRepository.getById(courseName);
     }
 
-    public Course getCourse(Course course){
+    public Course getCourse(Course course) {
         return courseRepository.getById(course.getCourseName());
     }
 
@@ -62,7 +63,7 @@ public class CourseService {
         ArrayList<Instructor> instructors = (ArrayList<Instructor>) course.getInstructors();
         ArrayList<Student> students = (ArrayList<Student>) course.getStudents();
 
-        for (Instructor instructor: instructors) {
+        for (Instructor instructor : instructors) {
             instructor.getCourses().add(course);
         }
         courseRepository.saveAndFlush(course);
@@ -70,19 +71,19 @@ public class CourseService {
         return "Successful";
     }
 
-    public List<Course> getCoursesOfUser(User user){
+    public List<Course> getCoursesOfUser(User user) {
         ArrayList<Course> courses = (ArrayList<Course>) courseRepository.findAll();
 
         System.out.println(courseRepository.findAll());
         System.out.println(courses);
 
-        if(user.getEmail().contains("@ug")){
+        if (user.getEmail().contains("@ug")) {
             courses.removeIf(course -> !course.getStudents().contains(user));
-        }else if(user.getEmail().contains("@staff")){
+        } else if (user.getEmail().contains("@staff")) {
             courses = new ArrayList<>();
-        }else if(user.getEmail().contains("@ta")){
+        } else if (user.getEmail().contains("@ta")) {
             courses.removeIf(course -> !course.getTAs().contains(user));
-        }else {
+        } else {
             courses.removeIf(course -> !course.getInstructors().contains(user));
         }
 
@@ -102,86 +103,86 @@ public class CourseService {
     }
 
 
-    public String addStudentToCourse(Student student, Course course){
-        try{
+    public String addStudentToCourse(Student student, Course course) {
+        try {
             Course tempCourse = courseRepository.getById(course.getCourseName());
             tempCourse.getStudents().add(student);
             courseRepository.save(tempCourse);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String addInstructorToCourse(Instructor instructor, Course course){
-        try{
+    public String addInstructorToCourse(Instructor instructor, Course course) {
+        try {
             Course tempCourse = courseRepository.getById(course.getCourseName());
             tempCourse.getInstructors().add(instructor);
             courseRepository.save(tempCourse);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String addTAsToCourse(TA ta, Course course){
-        try{
+    public String addTAsToCourse(TA ta, Course course) {
+        try {
             Course tempCourse = courseRepository.getById(course.getCourseName());
             tempCourse.getTAs().add(ta);
             courseRepository.save(tempCourse);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String addLecture(Course course, Section section, Lecture lecture){
-        try{
+    public String addLecture(Course course, Section section, Lecture lecture) {
+        try {
             Course tempCourse = courseRepository.getById(course.getCourseName());
             Section tempSection;
-            for(Section listSection : tempCourse.getSections()){
-                if(listSection.getId().equals(section.getId())){
+            for (Section listSection : tempCourse.getSections()) {
+                if (listSection.getId().equals(section.getId())) {
                     listSection.addLecture(lecture);
                 }
             }
             courseRepository.save(tempCourse);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String getSectionsOfCourse(Course course){
+    public String getSectionsOfCourse(Course course) {
         return courseRepository.getById(course.getCourseName()).getSections().toString();
     }
 
-    public String getLecturesOfSection(Section section){
+    public String getLecturesOfSection(Section section) {
         return sectionRepository.getById(section.getId()).getLectures().toString();
     }
 
-    public Exam getExam(Long id){
+    public Exam getExam(Long id) {
         return (Exam) lectureRepository.getById(id);
     }
 
-    public String deleteExam(Exam exam){
-        try{
+    public String deleteExam(Exam exam) {
+        try {
             lectureRepository.delete(exam);
             return "Success";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public String setExam(Exam exam){
-        try{
+    public String setExam(Exam exam) {
+        try {
             lectureRepository.save(exam);
             return "Success";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }

@@ -7,7 +7,6 @@ import dutchChocolates.panMan.appLayer.models.User;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Student extends User {
@@ -23,7 +22,7 @@ public class Student extends User {
     }
 
     public Student(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Section> sections, String fullName) {
-        super(username, password, mail, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
+        super(username, password, mail, bilkentID, groupsParticipated, covidInformationCard, fullName);
         this.sections = sections;
     }
 

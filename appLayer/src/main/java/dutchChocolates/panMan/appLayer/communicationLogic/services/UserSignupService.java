@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,17 +21,16 @@ import java.util.List;
 @Service
 public class UserSignupService {
     //Properties
-    @Autowired
+    @Resource
     StudentRepository studentRepository;
-    @Autowired
+    @Resource
     StaffRepository staffRepository;
-    @Autowired
+    @Resource
     TARepository taRepository;
-    @Autowired
+    @Resource
     InstructorRepository instructorRepository;
 
     //Constructors
-
 
 
     //Methods
@@ -38,34 +38,30 @@ public class UserSignupService {
     public String signUpUser(List<String> parameters) {
         String mail = parameters.get(1);
         User user;
-        if(! mail.contains(".bilkent.edu.tr"))
+        if (!mail.contains(".bilkent.edu.tr"))
             return null;
-        if(mail.contains("@ug")) {
-            user = new Student(parameters.get(0),parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
+        if (mail.contains("@ug")) {
+            user = new Student(parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
             return studentRepository.save(((Student) user)).toString();
-        }
-        else if(mail.contains("@staff")) {
-            user = new Staff(parameters.get(0),parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
+        } else if (mail.contains("@staff")) {
+            user = new Staff(parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
             return staffRepository.save(((Staff) user)).toString();
-        }
-        else if(mail.contains("@ta")) {
-            user = new TA(parameters.get(0),parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
+        } else if (mail.contains("@ta")) {
+            user = new TA(parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
             return taRepository.save(((TA) user)).toString();
-        }
-        else {
-            user = new Instructor(parameters.get(0),parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
+        } else {
+            user = new Instructor(parameters.get(0), parameters.get(1), parameters.get(2), parameters.get(3), parameters.get(4), parameters.get(5));
             return instructorRepository.save(((Instructor) user)).toString();
         }
 
 
-
     }
 
-    public String checkForUserName(String name){
+    public String checkForUserName(String name) {
         return null;
     }
 
-    public String checkForUserID(String id){
+    public String checkForUserID(String id) {
         return null;
     }
 }

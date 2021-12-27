@@ -59,7 +59,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const createGroup = () => {
         if ((name !== "") && (date !== "") && addedParticipants.length) {
             var newGroup = {
-                id: new Date().getTime().toString(),
+                groupId: new Date().getTime().toString(),
                 groupName: name,
                 date: date,
                 participants: addedParticipants,
@@ -90,8 +90,8 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         })
         console.log(filteredArray);
         remove_group(filteredArray);
-        axios.post("http://127.0.0.1:8080/deleteGroup",
-                {id: group.id}
+        axios.post("http://127.0.0.1/deleteGroup",
+                {groupId: group.id}
             ).then((response) => {
                 console.log("Response" + response)
             }).catch(error => { console.error(error);

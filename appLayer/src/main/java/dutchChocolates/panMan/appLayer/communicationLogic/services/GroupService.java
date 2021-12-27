@@ -10,34 +10,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class GroupService {
     //Properties
-    @Autowired
+    @Resource
     GroupRepository groupRepository;
 
-    @Autowired
+    @Resource
     private StudentRepository studentRepository;
 
-    @Autowired
+    @Resource
     private StaffRepository staffRepository;
 
-    @Autowired
+    @Resource
     private InstructorRepository instructorRepository;
 
-    @Autowired
+    @Resource
     private TARepository taRepository;
     //Constructors
     @Autowired
     private UserService userService;
 
 
-
     //Methods
-    public Group getGroup(Long id){
+    public Group getGroup(Long id) {
         UserCreatedGroup tempGroup = (UserCreatedGroup) groupRepository.getById(id);
         return tempGroup;
     }
@@ -50,24 +50,24 @@ public class GroupService {
         groupRepository.flush();
     }
 
-    public String setGroup(Group group){
-        try{
+    public String setGroup(Group group) {
+        try {
             System.out.println(group.toString());
             UserCreatedGroupMediator.getInstance().addParticipants(group, group.getParticipants());
-            for (User u: userService.getAllUsers()) {
+            for (User u : userService.getAllUsers()) {
                 u.getGroupsParticipated().add(group);
             }
             updateDBs();
             groupRepository.save((UserCreatedGroup) group);
             updateDBs();
             return "Success";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public ArrayList<Group> getGroupsOfUser(User user){
+    public ArrayList<Group> getGroupsOfUser(User user) {
         ArrayList<Group> groups = (ArrayList<Group>) groupRepository.findAll();
 
         System.out.println(groupRepository.findAll());
@@ -78,19 +78,21 @@ public class GroupService {
         return groups;
     }
 
-    public String removeGroup(Group group){
-        try{
+    public String removeGroup(Group group) {
+        try {
             groupRepository.delete(group);
             return "Success";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
     }
 
-    public User searchRiskyInGroup(){return null;}
+    public User searchRiskyInGroup() {
+        return null;
+    }
 
-    public String searchUserInGroup(Group group, User user ){
+    public String searchUserInGroup(Group group, User user) {
         return null;
     }
 

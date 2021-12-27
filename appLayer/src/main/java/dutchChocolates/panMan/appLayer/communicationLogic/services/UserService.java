@@ -17,27 +17,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
     //Properties
-    @Autowired
+    @Resource
     private StudentRepository studentRepository;
 
-    @Autowired
+    @Resource
     private StaffRepository staffRepository;
 
-    @Autowired
+    @Resource
     private InstructorRepository instructorRepository;
 
-    @Autowired
+    @Resource
     private TARepository taRepository;
 
     //Methods
-
-
 
 
     public User searchUser(String sKey) {
@@ -47,8 +46,8 @@ public class UserService {
         users.addAll(taRepository.findAll());
         users.addAll(instructorRepository.findAll());
         System.out.println(users);
-        for (User u :users) {
-            if(u.getId().equals(sKey) || u.getFullName().equals(sKey))
+        for (User u : users) {
+            if (u.getId().equals(sKey) || u.getFullName().equals(sKey))
                 return u;
         }
         return null;

@@ -8,7 +8,6 @@ import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.groups.Location;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -86,7 +85,7 @@ public class GroupController {
 
         JsonObject jsonRepOfGroup = new JsonParser().parse(groupJson).getAsJsonObject();
 
-        Long id = Long.valueOf(jsonRepOfGroup.get("id").getAsString());
+        Long id = Long.valueOf(jsonRepOfGroup.get("groupId").getAsString());
         String groupName = jsonRepOfGroup.get("groupName").getAsString();
 
         String dateStr = jsonRepOfGroup.get("date").getAsString();
@@ -113,7 +112,7 @@ public class GroupController {
         Location location = new Location(locationStr);
 
         UserCreatedGroup group = new UserCreatedGroup();
-        group.setId(id);
+        group.setGroupId(id);
         group.setDate(date);
         group.setLocation(location);
         group.setParticipants(participants);
