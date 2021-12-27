@@ -117,7 +117,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                             
                             <div className="row">
                                 <button type="button" className="markSelfRiskyButton btn btn-lg py-xl-3 px-xl-5 mt-5" data-toggle="tooltip" data-placement="top" title="I sure hope what you are doing" 
-                                onClick={() => handleRiskStatus()} disabled={((covidStatus !== "Positive") && (covidStatus !== "Risky")) }>Mark Self as Risky</button>
+                                onClick={() => handleRiskStatus()} disabled={!((covidStatus !== "Positive") || (covidStatus !== "Risky")) }>Mark Self as Risky</button>
                             </div>
                             <div className="row">
                             <form className="my-5" >

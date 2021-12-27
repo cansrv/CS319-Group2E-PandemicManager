@@ -22,7 +22,7 @@ const reducer = (state, action) => {
             loggedIn: true,
             groups: theGroups,
             name: theName,
-            surmame: theSurname,
+            surname: theSurname,
             HEScode: theHEScode,
             id: theId,
             tests: theTests,

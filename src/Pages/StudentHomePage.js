@@ -135,7 +135,7 @@ const StudentHomePage = ({
                                 <div className="row">
                                     <div className="col-lg-12 col-10 offset-1 py-3 px-4 offset-lg-2 my-3 my-sm-5 isolation-info d-flex flex-column">
                                         <p className="row iso-info-header m-auto">Isolation Information</p>
-                                        {covidStatus === "Positive"?(
+                                        {((covidStatus !== "Positive") || (covidStatus !== "Risky"))?(
                                             <>
                                             <div className="row px-3">Stay At Home</div>
                                             <div className="row px-3">Start of Isolation: {(isolationStartDate === "")? "CALL HEALTH CENTER": isolationStartDate}</div>
