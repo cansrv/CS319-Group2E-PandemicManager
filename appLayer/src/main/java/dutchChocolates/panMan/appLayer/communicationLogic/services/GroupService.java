@@ -70,6 +70,7 @@ public class GroupService {
     public ArrayList<Group> getGroupsOfUser(User user){
         ArrayList<Group> groups = (ArrayList<Group>) groupRepository.findAll();
 
+        System.out.println(groupRepository.findAll());
         System.out.println(groups);
 
         groups.removeIf(group -> !group.getParticipants().contains(user));

@@ -73,9 +73,8 @@ public class CourseService {
     public List<Course> getCoursesOfUser(User user){
         ArrayList<Course> courses = (ArrayList<Course>) courseRepository.findAll();
 
+        System.out.println(courseRepository.findAll());
         System.out.println(courses);
-
-        String userType = user.getEmail();
 
         if(user.getEmail().contains("@ug")){
             courses.removeIf(course -> !course.getStudents().contains(user));
