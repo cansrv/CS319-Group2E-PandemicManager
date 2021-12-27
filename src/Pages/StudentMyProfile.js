@@ -39,7 +39,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                 email: email,
                 newHESCode: newHESCode
             }
-            axios.post("http://127.0.0.1:8080/markSelfRisky",
+            axios.post("http://127.0.0.1:8080/editHesCode",
                 newInfo
             ).then((response) => {
                     console.log("Response" + response)
