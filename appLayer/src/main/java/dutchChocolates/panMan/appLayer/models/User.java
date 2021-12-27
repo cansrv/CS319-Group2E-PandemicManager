@@ -29,8 +29,6 @@ public abstract class User {
     private String email;
     private String id;
     @ManyToMany
-    private List<Group> groupsCreated;
-    @ManyToMany
     private List<Group> groupsParticipated;
     @OneToOne(cascade=CascadeType.ALL)
     private CovidInformationCard covidInformationCard;
@@ -43,16 +41,14 @@ public abstract class User {
         this.id = bilkentID;
         this.username = bilkentID + " " + fullName;
         groupsParticipated = new ArrayList<>();
-        groupsCreated = new ArrayList<>();
         this.setCovidInformationCard(new CovidInformationCard(hesCode));
     }
 
-    public User(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+    public User(String username, String password, String mail, String bilkentID, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         this.username = username;
         this.password = password;
         this.email = mail;
         this.id = bilkentID;
-        this.groupsCreated = groupsCreated;
         this.groupsParticipated = groupsParticipated;
         this.covidInformationCard = covidInformationCard;
         this.fullName = fullName;
@@ -63,7 +59,6 @@ public abstract class User {
 
     //Operators
     public boolean addToGroupsCreated(Group groupsCreated) {
-        this.groupsCreated.add(groupsCreated);
         return true;
     }
 
@@ -123,12 +118,7 @@ public abstract class User {
         return true;
     }
 
-    public List<Group> getGroupsCreated() {
-        return groupsCreated;
-    }
-
     public boolean setGroupsCreated(List<Group> groupsCreated) {
-        this.groupsCreated = groupsCreated;
         return true;
     }
 
@@ -161,7 +151,6 @@ public abstract class User {
                 "   password='" + password +
                 "   mail='" + email + '\'' +
                 "   bilkentID='" + id + '\'' +
-                "   groupsCreated=" + groupsCreated +
                 "   groupsParticipated=" + groupsParticipated +
                 "   covidInformationCard=" + covidInformationCard +
                 '}';

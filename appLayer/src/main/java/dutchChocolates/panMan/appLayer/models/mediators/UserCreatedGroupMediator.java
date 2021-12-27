@@ -30,12 +30,6 @@ public class UserCreatedGroupMediator {
         return group.getParticipants().addAll(users);
     }
 
-    public boolean exitGroup(Group group, User user) {
-        // TODO: Add exit time to DB.
-        group.getParticipants().remove(user);
-        return user.getGroupsCreated().remove(group);
-    }
-
     public boolean dismissFromGroup(Group group, User user) {
         // TODO: Add exit time to DB.
 
@@ -43,12 +37,4 @@ public class UserCreatedGroupMediator {
         return user.getGroupsParticipated().remove(group);
     }
 
-    public boolean endGroup(Group group, User user) {
-        // TODO: Add exit times of all users to DB.
-
-        for (int i = 0; i < group.getParticipants().size(); i++) {
-            group.getParticipants().get(i).getGroupsParticipated().remove(group);
-        }
-        return user.getGroupsCreated().remove(group);
-    }
 }

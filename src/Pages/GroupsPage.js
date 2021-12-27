@@ -59,7 +59,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const createGroup = () => {
         if ((name !== "") && (date !== "") && addedParticipants.length) {
             var newGroup = {
-                id: new Date().getTime().toString(),
+                groupId: new Date().getTime().toString(),
                 groupName: name,
                 date: date,
                 participants: addedParticipants,
@@ -90,8 +90,8 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         })
         console.log(filteredArray);
         remove_group(filteredArray);
-        axios.post("http://127.0.0.1:8080/deleteGroup",
-                {id: group.id}
+        axios.post("http://127.0.0.1/deleteGroup",
+                {groupId: group.id}
             ).then((response) => {
                 console.log("Response" + response)
             }).catch(error => { console.error(error);
@@ -150,9 +150,9 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between">
-                                        <label for="idInput" className="col-sm-4 col-form-label">Participant ID</label>
+                                        <label for="idInput" className="col-sm-4 col-form-label">Participant Mail</label>
                                         <div className="col-sm-5">
-                                        <input type="number" className="form-control" id="idInput" 
+                                        <input type="email" className="form-control" id="idInput"
                                         placeholder="Participant ID"
                                         value={newParticipant}
                                         required

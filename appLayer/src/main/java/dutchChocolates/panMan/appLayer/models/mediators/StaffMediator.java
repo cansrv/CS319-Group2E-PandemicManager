@@ -32,10 +32,5 @@ public class StaffMediator {
         return staff.addToGroupsCreated(group);
     }
 
-    public boolean endStaffCreatedGroup(StaffCreatedGroup staffCreatedGroup, Staff staff) {
-        StaffCreatedGroupMediator.getInstance().endGroup(staffCreatedGroup);
-        return staff.getGroupsCreated().remove(staffCreatedGroup);
-
-    }
 
 }

@@ -9,8 +9,8 @@ import java.util.List;
 public abstract class Group {
     //Properties
     @Id
-    @Column(name = "id")
-    Long id;
+    @Column(name = "groupId")
+    Long groupId;
     @ManyToMany
     List<User> participants;
 
@@ -29,8 +29,8 @@ public abstract class Group {
         this.participants = participants;
     }
 
-    public Group(long id, List<User> participants, String groupName) {
-        this.id = id;
+    public Group(long groupId, List<User> participants, String groupName) {
+        this.groupId = groupId;
         this.participants = participants;
         this.groupName = groupName;
     }
@@ -48,19 +48,19 @@ public abstract class Group {
         return true;
     }
 
-    public Long getId() {
-        return id;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGroupId(Long id) {
+        this.groupId = id;
     }
 
 
     @Override
     public String toString() {
         return "{" + "\n" +
-                "   id:" + "\"" + id + "\"" + ",\n" +
+                "   id:" + "\"" + groupId + "\"" + ",\n" +
                 "   participants:" + participants + "\n" +
                 '}';
     }

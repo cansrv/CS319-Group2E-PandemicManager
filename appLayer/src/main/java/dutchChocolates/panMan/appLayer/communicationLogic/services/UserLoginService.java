@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,13 +21,13 @@ import java.util.List;
 @Service
 public class UserLoginService {
     //Properties
-    @Autowired
+    @Resource
     private StudentRepository studentRepository;
-    @Autowired
+    @Resource
     private TARepository taRepository;
-    @Autowired
+    @Resource
     private StaffRepository staffRepository;
-    @Autowired
+    @Resource
     private InstructorRepository instructorRepository;
 
     //Constructors
@@ -50,20 +51,19 @@ public class UserLoginService {
                 tempUser = instructorRepository.getById(mail);
                 //userJson = userJson.replace("USER_TYPE", "Instructor");
             }
-            if(tempUser.getPassword().equals(password))
+            if (tempUser.getPassword().equals(password))
                 return tempUser;
             else
                 return null;
-        }
-        catch (Exception ex) {
-            if(ex.getClass().equals(EntityNotFoundException.class)) {
+        } catch (Exception ex) {
+            if (ex.getClass().equals(EntityNotFoundException.class)) {
                 ex.printStackTrace();
             }
         }
         return null;
     }
 
-    public String getUserType(String mail){
+    public String getUserType(String mail) {
         if (mail.contains("@ug")) {
             return "student";
         } else if (mail.contains("@staff")) {
@@ -74,8 +74,6 @@ public class UserLoginService {
             return "instructor";
         }
     }
-
-
 
 
 }

@@ -41,12 +41,6 @@ public class UserMediator {
         return user.addToGroupsCreated(new UserCreatedGroup());
     }
 
-    public boolean createGroup(List<User> participants, String loc, User user) {
-        Location location = new Location(loc);
-        UserCreatedGroup group = new UserCreatedGroup(null, location);
-        UserCreatedGroupMediator.getInstance().addParticipants(group, participants);
-        return user.getGroupsCreated().add(group);
-    }
 
     public boolean addToGroupsParticipated(User user, Group group) {
         user.addToGroupsParticipated(group);
