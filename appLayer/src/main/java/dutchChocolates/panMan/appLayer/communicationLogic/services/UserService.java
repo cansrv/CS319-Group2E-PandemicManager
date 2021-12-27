@@ -14,12 +14,14 @@ import dutchChocolates.panMan.appLayer.repositories.StaffRepository;
 import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
 import dutchChocolates.panMan.appLayer.repositories.TARepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@EnableJpaRepositories
 public class UserService {
     //Properties
     @Autowired

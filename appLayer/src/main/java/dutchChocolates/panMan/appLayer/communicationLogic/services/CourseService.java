@@ -10,12 +10,14 @@ import dutchChocolates.panMan.appLayer.models.classes.Lecture;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@EnableJpaRepositories
 public class CourseService {
     //Properties
     @Autowired
@@ -72,16 +74,24 @@ public class CourseService {
         return "Successful";
     }
 
-    public List<Course> getCoursesOfInstructor(User user){
-        ArrayList<Course> courseList = (ArrayList<Course>) courseRepository.findAll();
+    public List<Course> getCoursesOfUser(User user){
+        ArrayList<Course> courses = (ArrayList<Course>) courseRepository.findAll();
 
-        for(Course course : courseList){
-            if(!course.getInstructors().contains(user)){
-                courseList.remove(course);
-            }
+        System.out.println(courses);
+
+        String userType = user.getEmail();
+
+        if(user.getEmail().contains("@ug")){
+            courses.removeIf(course -> !course.getStudents().contains(user));
+        }else if(user.getEmail().contains("@staff")){
+            courses = new ArrayList<>();
+        }else if(user.getEmail().contains("@ta")){
+            courses.removeIf(course -> !course.getTAs().contains(user));
+        }else {
+            courses.removeIf(course -> !course.getInstructors().contains(user));
         }
 
-        return courseList;
+        return courses;
     }
 
     public void updateDBs() {

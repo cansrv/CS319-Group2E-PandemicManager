@@ -7,12 +7,14 @@ import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import dutchChocolates.panMan.appLayer.models.mediators.UserCreatedGroupMediator;
 import dutchChocolates.panMan.appLayer.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@EnableJpaRepositories
 public class GroupService {
     //Properties
     @Autowired
@@ -68,6 +70,8 @@ public class GroupService {
 
     public ArrayList<Group> getGroupsOfUser(User user){
         ArrayList<Group> groups = (ArrayList<Group>) groupRepository.findAll();
+
+        System.out.println(groups);
 
         groups.removeIf(group -> !group.getParticipants().contains(user));
 

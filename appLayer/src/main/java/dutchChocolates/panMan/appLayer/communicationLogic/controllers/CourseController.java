@@ -3,13 +3,11 @@ package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 import com.google.gson.*;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.CourseService;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
-import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.*;
-import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,12 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class CourseController {
@@ -156,11 +152,9 @@ public class CourseController {
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
-        System.out.println(jsonRepOfMail.toString());
+        User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
-        User instructor = userService.getUser(jsonRepOfMail.get("mail").getAsString());
-
-        ArrayList<Course> courseList = (ArrayList<Course>) courseService.getCoursesOfInstructor(instructor);
+        ArrayList<Course> courseList = (ArrayList<Course>) courseService.getCoursesOfUser(user);
         ArrayList<String> courseNameList = new ArrayList<>();
 
         for(Course course : courseList){
