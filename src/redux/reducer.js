@@ -75,15 +75,18 @@ const reducer = (state, action) => {
         }
     }
     if(action.type === "FETCH_COURSES") {
+        console.log("course: ", action.payload);
         return {
             ...state,
-            courses: action.payload,
+            courses: action.payload.payload,
         }
     }
     if(action.type === "FETCH_GROUPS") {
+        console.log("groups:", action.payload);
+
         return {
             ...state,
-            groups: action.payload,
+            groups: action.payload.payload,
         }
     }
     

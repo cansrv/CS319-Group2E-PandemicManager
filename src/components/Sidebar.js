@@ -29,7 +29,7 @@ const Sidebar = ({accountType, logout}) => {
                 <section className="sidebar-link mb-1 hover-effect flex-1"><img src={CoursesIcon} className="ml-lg-3 sidebar-icon"/><span className="ml-lg-3 ml-2">Courses</span></section>
             </Link> : null}
             <Link to="/" className="text-decoration-none text-white">
-                <section className="sidebar-link hover-effect logout-div"><img src={LogoutIcon} className="sidebar-icon ml-lg-3"/><span className="ml-lg-3 ml-2" onClick={logout}>Logout</span></section>
+                <section className="sidebar-link hover-effect logout-div" onClick={logout}><img src={LogoutIcon} className="sidebar-icon ml-lg-3"/><span className="ml-lg-3 ml-2" onClick={logout}>Logout</span></section>
             </Link>
             </aside>
         </div>

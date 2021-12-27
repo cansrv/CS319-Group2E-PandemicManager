@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@EnableJpaRepositories
 public class CourseService {
     //Properties
     @Autowired
@@ -28,13 +27,10 @@ public class CourseService {
     LectureRepository lectureRepository;
     @Autowired
     private StudentRepository studentRepository;
-
     @Autowired
     private StaffRepository staffRepository;
-
     @Autowired
     private InstructorRepository instructorRepository;
-
     @Autowired
     private TARepository taRepository;
 

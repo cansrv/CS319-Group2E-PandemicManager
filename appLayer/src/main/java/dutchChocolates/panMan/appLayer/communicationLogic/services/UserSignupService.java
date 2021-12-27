@@ -18,7 +18,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@EnableJpaRepositories
 public class UserSignupService {
     //Properties
     @Autowired

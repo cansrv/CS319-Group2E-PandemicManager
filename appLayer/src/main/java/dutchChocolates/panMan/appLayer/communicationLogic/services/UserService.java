@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@EnableJpaRepositories
 public class UserService {
     //Properties
     @Autowired
@@ -42,32 +41,6 @@ public class UserService {
 
 
     public User searchUser(String sKey) {
-        /*if (studentRepository.findStudentByBilkentID(sKey) != null) {
-            Student s = studentRepository.findStudentByBilkentID(sKey);
-            return s;
-        } else if (studentRepository.findStudentByFullName(sKey) != null) {
-            Student s = studentRepository.findStudentByFullName(sKey);
-            return s;
-        } else if (taRepository.findTAByBilkentID(sKey) != null) {
-            TA t = taRepository.findTAByBilkentID(sKey);
-            return t;
-        } else if (taRepository.findTAByFullName(sKey) != null) {
-            TA t = taRepository.findTAByFullName(sKey);
-            return t;
-        } else if (staffRepository.findStaffByBilkentID(sKey) != null) {
-            Staff s = staffRepository.findStaffByBilkentID(sKey);
-            return s;
-        } else if (staffRepository.findStaffByFullName(sKey) != null) {
-            Staff s = staffRepository.findStaffByFullName(sKey);
-            return s;
-        } else if (instructorRepository.findInstructorByBilkentID(sKey) != null) {
-            Instructor i = instructorRepository.findInstructorByBilkentID(sKey);
-            return i;
-        } else if (instructorRepository.findInstructorByFullName(sKey) != null) {
-            Instructor i = instructorRepository.findInstructorByFullName(sKey);
-            return i;
-        } else
-            return null;*/
         System.out.println(sKey);
         ArrayList<User> users = new ArrayList<>(studentRepository.findAll());
         users.addAll(staffRepository.findAll());
