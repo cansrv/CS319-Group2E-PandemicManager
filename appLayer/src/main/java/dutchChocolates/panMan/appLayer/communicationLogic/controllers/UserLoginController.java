@@ -2,8 +2,11 @@ package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
 import com.google.gson.*;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserLoginService;
+import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
+import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.mediators.UserMediator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,9 @@ public class UserLoginController {
     //Properties
     @Autowired
     private UserLoginService userLoginService;
+
+    @Autowired
+    private UserService userService;
 
 
     private final String LOGIN_MAIL = "mail";
@@ -46,6 +52,9 @@ public class UserLoginController {
         String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
 
         jsonLogin = new JsonParser().parse(tempJson).getAsJsonObject();
+
+        User user = userService.getUser(jsonLogin.get(LOGIN_MAIL).getAsString());
+        ArrayList<Group> groups = (ArrayList<Group>) user.getGroupsParticipated();
 
         String mail = jsonLogin.get("email").getAsString();
         JsonElement typeValue = new JsonParser().parse(userLoginService.getUserType(mail));

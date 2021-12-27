@@ -8,6 +8,7 @@ import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.groups.Location;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -28,7 +29,7 @@ public class GroupController {
 
 
     //Methods
-    @PostMapping("/getGroup")
+    @PostMapping("/getAGroup")
     @ResponseBody
     @CrossOrigin
     public String requestGroup(@RequestBody Long id){
@@ -38,6 +39,36 @@ public class GroupController {
         String string = gson.toJson(group);
         string = string.replace("location_id", "location");
         return string;
+    }
+
+    @PostMapping("/getGroups")
+    @ResponseBody
+    @CrossOrigin
+    public String getAllGroups(@RequestBody String id){
+        User user = userService.searchUser(id);
+
+        ArrayList<Group> groups = (ArrayList<Group>) groupService.getGroupsOfUser(user);
+        JsonArray jsonArray = new JsonArray();
+
+        for(int i = 0; i < groups.size(); i++){
+            JsonObject groupObject = new JsonObject();
+            JsonArray userList = new JsonArray();
+
+            UserCreatedGroup userCreatedGroup = (UserCreatedGroup) groups.get(i);
+
+            if(userCreatedGroup != null){
+                groupObject.addProperty("groupName", userCreatedGroup.getGroupName());
+                groupObject.addProperty("location", userCreatedGroup.getLocation().toString());
+                groupObject.addProperty("date", userCreatedGroup.getDate().toString());
+                userList.add(userCreatedGroup.getParticipants().toString());
+            }
+
+            jsonArray.add(groupObject);
+            jsonArray.add(userList);
+
+        }
+
+        return jsonArray.toString();
     }
 
     @PostMapping("/addGroup")

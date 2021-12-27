@@ -1,5 +1,6 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
+import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
 import dutchChocolates.panMan.appLayer.models.actors.Staff;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class UserLoginService {
@@ -31,7 +33,6 @@ public class UserLoginService {
     //Methods
     @Transactional
     public User signInMethod(String mail, String password) throws EntityNotFoundException, NullPointerException {
-        // CHANGE FOR ARBITRARY REPO TYPES
         User tempUser;
 
         try {
@@ -72,6 +73,8 @@ public class UserLoginService {
             return "instructor";
         }
     }
+
+
 
 
 }

@@ -65,6 +65,10 @@ public class GroupService {
         }
     }
 
+    public List<Group> getGroupsOfUser(User user){
+        return (ArrayList<Group>) user.getGroupsParticipated();
+    }
+
     public String removeGroup(Group group){
         try{
             groupRepository.delete(group);
