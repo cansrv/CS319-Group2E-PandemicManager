@@ -66,7 +66,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                 location: location,
             }
             add_group(newGroup)
-            axios.post("http://127.0.0.1:4567/addGroup",
+            axios.post("http://127.0.0.1:8080/addGroup",
                 newGroup
             ).then((response) => {
                 console.log("Response" + response)
@@ -90,7 +90,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         })
         console.log(filteredArray);
         remove_group(filteredArray);
-        axios.post("http://127.0.0.1:4567/deleteGroup",
+        axios.post("http://127.0.0.1:8080/deleteGroup",
                 {id: group.id}
             ).then((response) => {
                 console.log("Response" + response)

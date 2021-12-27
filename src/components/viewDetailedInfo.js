@@ -24,7 +24,7 @@ const riskyStudents = [
 const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, accountType}) => {
 	const handleTypeSwitch = (course) => {
 		switchCourseType(course)
-		axios.post("http://127.0.0.1:4567/switchCourseType",
+		axios.post("http://127.0.0.1:8080/switchCourseType",
                 course
             ).then((response) => {
                 console.log("Response" + response)

@@ -8,7 +8,7 @@ export const SignUp = () => {
     const [dataSendNeeded, setDataSendNeeded] = useState(false)
 
     useEffect( () => {
-        axios.post("http://127.0.0.1:4567/signup",
+        axios.post("http://127.0.0.1:8080/signup",
             signUpInfo
         ).then((response) => {
             console.log(response.data)})

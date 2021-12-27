@@ -34,7 +34,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
                 date: date
 			}
 			add_exam(newExam)
-            axios.post("http://127.0.0.1:4567/addExam",
+            axios.post("http://127.0.0.1:8080/addExam",
                 newExam
             ).then((response) => {
                 console.log("Response" + response)
@@ -60,7 +60,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
     })
         console.log(filteredArray);
         remove_exam(filteredArray);
-        axios.post("http://127.0.0.1:4567/addExam",
+        axios.post("http://127.0.0.1:8080/addExam",
                 exam
             ).then((response) => {
                 console.log("Response" + response)
