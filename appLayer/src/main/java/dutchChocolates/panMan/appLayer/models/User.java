@@ -136,7 +136,7 @@ public abstract class User {
         return groupsParticipated;
     }
 
-    public boolean setGroupsParticipated(List<Group> groupsParticipated) {
+    public boolean setGroupsParticipated(ArrayList<Group> groupsParticipated) {
         this.groupsParticipated = groupsParticipated;
         return true;
     }

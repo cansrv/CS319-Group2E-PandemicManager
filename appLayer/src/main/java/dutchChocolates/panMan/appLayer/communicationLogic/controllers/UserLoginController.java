@@ -1,6 +1,7 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
 import com.google.gson.*;
+import com.sun.istack.Nullable;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserLoginService;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.Group;
@@ -52,10 +53,14 @@ public class UserLoginController {
         String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
 
         jsonLogin = new JsonParser().parse(tempJson).getAsJsonObject();
-
-        User user = userService.getUser(jsonLogin.get(LOGIN_MAIL).getAsString());
-        ArrayList<Group> groups = (ArrayList<Group>) user.getGroupsParticipated();
-
+        ArrayList<Group> groups;
+        User user = userService.getUser(loginList.get(0));
+        if (user.getGroupsParticipated() != null) {
+            groups = (ArrayList<Group>) user.getGroupsParticipated();
+        } else {
+            groups = new ArrayList<>();
+        }
+        //gson.to
         String mail = jsonLogin.get("email").getAsString();
         JsonElement typeValue = new JsonParser().parse(userLoginService.getUserType(mail));
         jsonLogin.add("accountType", typeValue);

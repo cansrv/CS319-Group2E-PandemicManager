@@ -5,6 +5,7 @@ import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Staff extends User {
     public Staff() {
     }
 
-    public Staff(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
+    public Staff(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, ArrayList<Group> groupsParticipated, CovidInformationCard covidInformationCard, String fullName) {
         super(username, password, mail, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
     }
 

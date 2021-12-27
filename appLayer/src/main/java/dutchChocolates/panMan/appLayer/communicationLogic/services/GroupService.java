@@ -2,6 +2,7 @@ package dutchChocolates.panMan.appLayer.communicationLogic.services;
 
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
+import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import dutchChocolates.panMan.appLayer.models.mediators.UserCreatedGroupMediator;
 import dutchChocolates.panMan.appLayer.repositories.*;
@@ -65,8 +66,12 @@ public class GroupService {
         }
     }
 
-    public List<Group> getGroupsOfUser(User user){
-        return (ArrayList<Group>) user.getGroupsParticipated();
+    public ArrayList<Group> getGroupsOfUser(User user){
+        ArrayList<Group> groups = (ArrayList<Group>) groupRepository.findAll();
+
+        groups.removeIf(group -> !group.getParticipants().contains(user));
+
+        return groups;
     }
 
     public String removeGroup(Group group){

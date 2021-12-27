@@ -206,7 +206,7 @@ public class UserService {
         return tempUser.getGroupsParticipated();
     }
 
-    public String setUserGroups(User user, List<Group> userGroups) {
+    public String setUserGroups(User user, ArrayList<Group> userGroups) {
         try {
             User tempUser = getUser(user);
             tempUser.setGroupsParticipated(userGroups);

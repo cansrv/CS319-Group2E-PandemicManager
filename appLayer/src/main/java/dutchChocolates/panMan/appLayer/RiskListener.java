@@ -12,13 +12,13 @@ public class RiskListener {
 
 
     private static void httpReqPreClass() throws IOException {
-        URL url = new URL("http://localhost:4567/preClassRisk");
+        URL url = new URL("http://localhost:8080/preClassRisk");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
     }
 
     private static void httpReqContinuous() throws IOException {
-        URL url = new URL("http://localhost:4567/continuousRisk");
+        URL url = new URL("http://localhost:8080/continuousRisk");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
     }

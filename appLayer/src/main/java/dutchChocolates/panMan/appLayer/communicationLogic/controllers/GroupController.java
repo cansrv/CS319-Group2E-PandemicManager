@@ -47,10 +47,25 @@ public class GroupController {
     public String getAllGroups(@RequestBody String mail){
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
 
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        System.out.println(jsonRepOfMail.toString());
+        System.out.println();System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
         User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
-
-        ArrayList<Group> groups = (ArrayList<Group>) groupService.getGroupsOfUser(user);
+        ArrayList<Group> groups = groupService.getGroupsOfUser(user);
         JsonArray jsonArray = new JsonArray();
 
         for(int i = 0; i < groups.size(); i++){

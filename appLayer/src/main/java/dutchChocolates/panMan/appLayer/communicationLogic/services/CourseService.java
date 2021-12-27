@@ -72,11 +72,11 @@ public class CourseService {
         return "Successful";
     }
 
-    public List<Course> getCoursesOfInstructor(Instructor instructor){
+    public List<Course> getCoursesOfInstructor(User user){
         ArrayList<Course> courseList = (ArrayList<Course>) courseRepository.findAll();
 
         for(Course course : courseList){
-            if(!course.getInstructors().contains(instructor)){
+            if(!course.getInstructors().contains(user)){
                 courseList.remove(course);
             }
         }

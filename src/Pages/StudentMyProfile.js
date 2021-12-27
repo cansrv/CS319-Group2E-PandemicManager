@@ -12,7 +12,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
 
     const markSomeoneRisky = (e) => {
         e.preventDefault()
-        axios.post("http://127.0.0.1:4567/markSomeoneRisky",
+        axios.post("http://127.0.0.1:8080/markSomeoneRisky",
                 {input : input}
             ).then((response) => {
                 console.log("Response" + response)
@@ -39,7 +39,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                 email: email,
                 newHESCode: newHESCode
             }
-            axios.post("http://127.0.0.1:4567/markSelfRisky",
+            axios.post("http://127.0.0.1:8080/markSelfRisky",
                 newInfo
             ).then((response) => {
                     console.log("Response" + response)
@@ -58,7 +58,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
 
     const handleRiskStatus = () => {
         mark_self_risky()
-        axios.post("http://127.0.0.1:4567/markSelfRisky",
+        axios.post("http://127.0.0.1:8080/markSelfRisky",
             {email: email}
         ).then((response) => {
             console.log("Response" + response)

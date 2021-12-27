@@ -34,7 +34,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             mail: mail,
             password: password
         }
-        axios.post("http://127.0.0.1:4567/login",
+        axios.post("http://127.0.0.1:8080/login",
             loginInfo
         ).then((response) => {
             console.log("Response" + response)
@@ -64,7 +64,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
                 mail: mail,
                 password: password
             }
-            axios.post("http://127.0.0.1:4567/login",
+            axios.post("http://127.0.0.1:8080/login",
                 loginInfo
             ).then((response) => {
             console.log("Response" + response)
@@ -75,7 +75,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             }).catch(error => { console.error(error);
                 window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
 
-            axios.post("http://127.0.0.1:4567/getCourses",
+            axios.post("http://127.0.0.1:8080/getCourses",
                 {mail: mail}
             ).then((response) => {
                 console.log("Response" + response)
@@ -85,7 +85,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             }).catch(error => { console.error(error);
                 window.alert("Invalid Course Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
 
-            axios.post("http://127.0.0.1:4567/getGroups",
+            axios.post("http://127.0.0.1:8080/getGroups",
                 {mail: mail}
             ).then((response) => {
                 console.log("Response" + response)

@@ -7,6 +7,7 @@ import dutchChocolates.panMan.appLayer.models.User;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Student extends User {

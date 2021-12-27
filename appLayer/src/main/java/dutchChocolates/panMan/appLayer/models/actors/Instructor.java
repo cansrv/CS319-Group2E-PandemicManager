@@ -6,6 +6,7 @@ import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidInformationCard;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Instructor extends User {
         super(password, mail, name, surname, bilkentID, HESCode);
     }
 
-    public Instructor(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, List<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Course> courses, List<Section> sections, String fullName) {
+    public Instructor(String username, String password, String mail, String bilkentID, List<Group> groupsCreated, ArrayList<Group> groupsParticipated, CovidInformationCard covidInformationCard, List<Course> courses, List<Section> sections, String fullName) {
         super(username, password, mail, bilkentID, groupsCreated, groupsParticipated, covidInformationCard, fullName);
         this.courses = courses;
         this.sections = sections;
