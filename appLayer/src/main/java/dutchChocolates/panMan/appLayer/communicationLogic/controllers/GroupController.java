@@ -44,8 +44,8 @@ public class GroupController {
     @PostMapping("/getGroups")
     @ResponseBody
     @CrossOrigin
-    public String getAllGroups(@RequestBody String id){
-        User user = userService.searchUser(id);
+    public String getAllGroups(@RequestBody String mail){
+        User user = userService.getUser(mail);
 
         ArrayList<Group> groups = (ArrayList<Group>) groupService.getGroupsOfUser(user);
         JsonArray jsonArray = new JsonArray();
