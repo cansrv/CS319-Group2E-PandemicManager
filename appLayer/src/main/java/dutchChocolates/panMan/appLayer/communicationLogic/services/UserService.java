@@ -39,7 +39,31 @@ public class UserService {
 
 
 
+    public User searchUser(String mail){
+        User tempUser;
 
+        try {
+            if (mail.contains("@ug")) {
+                tempUser = studentRepository.getById(mail);
+                return tempUser;
+            } else if (mail.contains("@staff")) {
+                tempUser = staffRepository.getById(mail);
+                return tempUser;
+            } else if (mail.contains("@ta")) {
+                tempUser = taRepository.getById(mail);
+                return tempUser;
+            } else {
+                tempUser = instructorRepository.getById(mail);
+                return tempUser;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    /**
     public User searchUser(String sKey) {
         System.out.println(sKey);
         ArrayList<User> users = new ArrayList<>(studentRepository.findAll());
@@ -53,6 +77,7 @@ public class UserService {
         }
         return null;
     }
+     **/
 
 
     public List<User> getAllUsers() {
