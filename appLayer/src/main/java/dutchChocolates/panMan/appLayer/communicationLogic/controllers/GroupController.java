@@ -45,7 +45,10 @@ public class GroupController {
     @ResponseBody
     @CrossOrigin
     public String getAllGroups(@RequestBody String mail){
-        User user = userService.getUser(mail);
+        JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
+
+        User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
+
 
         ArrayList<Group> groups = (ArrayList<Group>) groupService.getGroupsOfUser(user);
         JsonArray jsonArray = new JsonArray();
