@@ -29,6 +29,8 @@ public class GroupService {
     @Autowired
     private TARepository taRepository;
     //Constructors
+    @Autowired
+    private UserService userService;
 
 
 
@@ -49,9 +51,10 @@ public class GroupService {
     public String setGroup(Group group){
         try{
             System.out.println(group.toString());
-            ArrayList<User> users = new ArrayList<>(group.getParticipants());
             UserCreatedGroupMediator.getInstance().addParticipants(group, group.getParticipants());
-
+            for (User u: userService.getAllUsers()) {
+                u.getGroupsParticipated().add(group);
+            }
             updateDBs();
             groupRepository.save((UserCreatedGroup) group);
             updateDBs();

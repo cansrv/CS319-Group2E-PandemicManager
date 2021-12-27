@@ -40,7 +40,7 @@ public class UserService {
 
 
     public User searchUser(String sKey) {
-        if (studentRepository.findStudentByBilkentID(sKey) != null) {
+        /*if (studentRepository.findStudentByBilkentID(sKey) != null) {
             Student s = studentRepository.findStudentByBilkentID(sKey);
             return s;
         } else if (studentRepository.findStudentByFullName(sKey) != null) {
@@ -65,7 +65,27 @@ public class UserService {
             Instructor i = instructorRepository.findInstructorByFullName(sKey);
             return i;
         } else
-            return null;
+            return null;*/
+        System.out.println(sKey);
+        ArrayList<User> users = new ArrayList<>(studentRepository.findAll());
+        users.addAll(staffRepository.findAll());
+        users.addAll(taRepository.findAll());
+        users.addAll(instructorRepository.findAll());
+        System.out.println(users);
+        for (User u :users) {
+            if(u.getId().equals(sKey) || u.getFullName().equals(sKey))
+                return u;
+        }
+        return null;
+    }
+
+
+    public List<User> getAllUsers() {
+        ArrayList<User> users = new ArrayList<>(studentRepository.findAll());
+        users.addAll(staffRepository.findAll());
+        users.addAll(taRepository.findAll());
+        users.addAll(instructorRepository.findAll());
+        return users;
     }
 
     public User getUser(User user) {
