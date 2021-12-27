@@ -6,7 +6,7 @@ import axios from "axios"
 import {Redirect} from "react-dom"
 import {temp_Data, valid_Accounts} from "../Data"
 
-const Login = ({login_account, loggedIn, fetch_courses}) => {
+const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loginAttempt, setLoginAttempt] = useState(false)
@@ -84,6 +84,16 @@ const Login = ({login_account, loggedIn, fetch_courses}) => {
                 }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Course Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
+
+            axios.post("http://127.0.0.1:4567/getGroups",
+                {mail: mail}
+            ).then((response) => {
+                console.log("Response" + response)
+                if (response.data !== null) {
+                    fetch_groups(response.data)
+                }
+            }).catch(error => { console.error(error);
+                window.alert("Invalid Course Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
             
         }
         else if (!validateEmail(mail)) {
@@ -151,7 +161,9 @@ const Login = ({login_account, loggedIn, fetch_courses}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         login_account: (payload) => dispatch({type : "LOGIN", payload: {...payload} }),
-        fetch_courses: (payload) => dispatch({type : "FETCH_COURSES", payload: {payload} })
+        fetch_courses: (payload) => dispatch({type : "FETCH_COURSES", payload: {payload} }),
+        fetch_groups: (payload) => dispatch({type : "FETCH_GROUPS", payload: {payload} })
+
     }
 }
 const mapStateToProps = (state) => {

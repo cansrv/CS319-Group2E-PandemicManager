@@ -80,7 +80,13 @@ const reducer = (state, action) => {
             courses: action.payload,
         }
     }
-
+    if(action.type === "FETCH_GROUPS") {
+        return {
+            ...state,
+            groups: action.payload,
+        }
+    }
+    
     if(action.type === "REMOVE_GROUP") {
         var newGroups = action.payload.group;
         return {
