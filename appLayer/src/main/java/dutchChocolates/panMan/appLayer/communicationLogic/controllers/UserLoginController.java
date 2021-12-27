@@ -60,10 +60,7 @@ public class UserLoginController {
 
         String json = gson.toJson(jsonLogin);
 
-        System.out.println("-----------------\n" + jsonLoginRequest + "-----------------\n");
         return json;
-
-
 
     }
 

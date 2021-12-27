@@ -154,13 +154,14 @@ public class CourseController {
     @CrossOrigin
     public String getCourses(@RequestBody String mail){
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
         System.out.println(jsonRepOfMail.toString());
 
         User instructor = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
         ArrayList<Course> courseList = (ArrayList<Course>) courseService.getCoursesOfInstructor(instructor);
-        ArrayList<String> courseNameList = new ArrayList<String>();
+        ArrayList<String> courseNameList = new ArrayList<>();
 
         for(Course course : courseList){
             if(course.getCourseName() != null){
@@ -168,7 +169,8 @@ public class CourseController {
             }
         }
 
-        return courseNameList.toString();
+        JsonArray jsonArray = gson.toJsonTree(courseNameList).getAsJsonArray();
+        return gson.toJson(jsonArray);
 
     }
 

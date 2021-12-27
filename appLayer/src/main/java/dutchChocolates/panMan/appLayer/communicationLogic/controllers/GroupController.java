@@ -46,26 +46,15 @@ public class GroupController {
     @CrossOrigin
     public String getAllGroups(@RequestBody String mail){
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+        Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
         System.out.println(jsonRepOfMail.toString());
-        System.out.println();System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
 
         User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
         ArrayList<Group> groups = groupService.getGroupsOfUser(user);
+        System.out.println(groups.toString());
+
         JsonArray jsonArray = new JsonArray();
 
         for(int i = 0; i < groups.size(); i++){
@@ -86,7 +75,7 @@ public class GroupController {
 
         }
 
-        return jsonArray.toString();
+        return gson.toJson(jsonArray);
     }
 
     @PostMapping("/addGroup")
@@ -105,7 +94,7 @@ public class GroupController {
         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
 
         JsonArray jsonParticipantArray = jsonRepOfGroup.get("participants").getAsJsonArray();
-        ArrayList<String> participantMailList = new ArrayList<String>();
+        ArrayList<String> participantMailList = new ArrayList<>();
         if(jsonParticipantArray != null){
             for(int i = 0; i < jsonParticipantArray.size(); i++){
                 System.out.println(jsonParticipantArray.get(i).getAsString());
