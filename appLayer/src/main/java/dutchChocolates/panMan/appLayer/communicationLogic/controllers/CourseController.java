@@ -172,8 +172,19 @@ public class CourseController {
             for (Student std: s.getStudents()) {
                 participants.add(std.getId() );
             }
-
             jsonObject.add("participants", participants);
+            JsonObject lectureObjectToReturn = new JsonObject();
+            JsonArray lectureArray= new JsonArray();
+            JsonArray lectures = new JsonArray();
+            for(int i = 0; i < s.getLectures().size(); i++) {
+                lectures.add(i + 1);
+            }
+
+
+            lectureObjectToReturn.add("attendance", new JsonArray());
+            lectureObjectToReturn.add("lecture", lectures);
+            lectureArray.add(lectureObjectToReturn);
+            jsonObject.add("attendance", lectureArray);
             toReturn.add(jsonObject);
         }
 

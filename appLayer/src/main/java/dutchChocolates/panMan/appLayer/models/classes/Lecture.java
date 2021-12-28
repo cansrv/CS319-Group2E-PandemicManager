@@ -7,6 +7,7 @@ import dutchChocolates.panMan.appLayer.models.actors.TA;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Lecture {
     //Properties
     @Id

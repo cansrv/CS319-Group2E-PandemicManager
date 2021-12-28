@@ -61,7 +61,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
         console.log(filteredArray);
         remove_exam(filteredArray);
         axios.post("http://127.0.0.1:8080/addExam",
-                exam
+                filteredArray
             ).then((response) => {
                 console.log("Response" + response)
             }).catch(error => { console.error(error);
