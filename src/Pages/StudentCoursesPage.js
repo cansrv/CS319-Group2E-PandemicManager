@@ -21,7 +21,6 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 						<div className="row">
 							{courses.map((courses) => {
 								return (
-
 									<div className="col-12 col-md-6">
 										<div class="card courseCard text-center my-4 ">
 											<div class="card-header cardColoredPart">
