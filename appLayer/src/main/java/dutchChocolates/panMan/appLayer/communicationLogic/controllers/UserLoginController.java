@@ -104,6 +104,8 @@ public class UserLoginController {
             testArray.add(testObject);
         }
 
+        userJsonRepresentation.add("tests", testArray);
+
         userLoginService.signInMethod(userJsonRepresentation.get("email").getAsString(), userJsonRepresentation.get("password").getAsString());
         System.out.println(gson.toJson(userJsonRepresentation));
         return gson.toJson(userJsonRepresentation);
