@@ -29,7 +29,7 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, a
             ).then((response) => {
                 window.alert("You have switched type of course: " + course.name)
             }).catch(error => { console.error(error);
-                window.alert("Database Error Switch Type"); return Promise.reject(error); })
+                return Promise.reject(error); })
 	}
 
 	return (

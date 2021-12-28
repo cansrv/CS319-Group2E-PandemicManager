@@ -5,6 +5,7 @@ import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.groups.UserCreatedGroup;
 import dutchChocolates.panMan.appLayer.models.mediators.UserCreatedGroupMediator;
+import dutchChocolates.panMan.appLayer.models.mediators.UserMediator;
 import dutchChocolates.panMan.appLayer.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -80,7 +81,15 @@ public class GroupService {
 
     public String removeGroup(Group group) {
         try {
+            for (User u:
+
+                 group.getParticipants()) {
+                User tmp = userService.getUser(u);
+                tmp.getGroupsParticipated().remove(group);
+            }
+            updateDBs();
             groupRepository.delete(group);
+            updateDBs();
             return "Success";
         } catch (Exception e) {
             e.printStackTrace();

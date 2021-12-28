@@ -66,6 +66,7 @@ public class GroupController {
                 groupObject.addProperty("groupName", userCreatedGroup.getGroupName());
                 groupObject.addProperty("location", userCreatedGroup.getLocation().getLocation());
                 groupObject.addProperty("date", userCreatedGroup.getDate().toString());
+                groupObject.addProperty("id", userCreatedGroup.getGroupId().toString());
                 for (User u: userCreatedGroup.getParticipants()) {
                     userList.add(u.getId());
                 }
@@ -124,9 +125,10 @@ public class GroupController {
     @PostMapping("/deleteGroup")
     @ResponseBody
     @CrossOrigin
-    public String deleteGroup(@RequestBody Long id){
+    public String deleteGroup(@RequestBody String id){
         try{
-            UserCreatedGroup group = (UserCreatedGroup) groupService.getGroup(id);
+
+            UserCreatedGroup group = (UserCreatedGroup) groupService.getGroup(Long.valueOf(new JsonParser().parse(id).getAsJsonObject().get("id").getAsString()));
             groupService.removeGroup(group);
             return "Successful";
         }catch(Exception e){

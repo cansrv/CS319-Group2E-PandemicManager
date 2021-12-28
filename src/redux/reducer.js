@@ -71,8 +71,8 @@ const reducer = (state, action) => {
     }
     if(action.type === "ADD_NEW_GROUP") {
         var newGroups = [];
-        if(!action.payload.group.length) {
-            newGroups = [...state.groups, action.payload.group];
+        if(!action.payload.group?.length) {
+            newGroups = [...state?.groups, action.payload.group];
         }
         return {
             ...state,
@@ -87,8 +87,6 @@ const reducer = (state, action) => {
         }
     }
     if(action.type === "FETCH_GROUPS") {
-        
-
         return {
             ...state,
             groups: action.payload.payload,

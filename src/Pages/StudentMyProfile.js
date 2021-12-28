@@ -18,7 +18,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                 
                 window.alert("You have marked " + input + " as Risky")
             }).catch(error => { console.error(error);
-                window.alert("Database Error Group"); return Promise.reject(error); })
+                return Promise.reject(error); })
                 setInput("")
     }
 
@@ -45,7 +45,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
                     
                 }).catch(error => { 
                     console.error(error);
-                    window.alert("Database Error HES Code Change"); 
+                   
                     return Promise.reject(error); 
                 })
             setNewHESCode("")
@@ -63,7 +63,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
         ).then((response) => {
             
         }).catch(error => { console.error(error);
-            window.alert("Database Error Group"); return Promise.reject(error); })
+            return Promise.reject(error); })
         window.alert("You have marked yourself as RISKY")
     }
 

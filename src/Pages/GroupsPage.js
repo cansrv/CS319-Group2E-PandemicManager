@@ -59,7 +59,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const createGroup = () => {
         if ((name !== "") && (date !== "") && addedParticipants.length) {
             var newGroup = {
-                groupId: new Date().getTime().toString(),
+                id: new Date().getTime().toString(),
                 groupName: name,
                 date: date,
                 participants: addedParticipants,
@@ -71,7 +71,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
             ).then((response) => {
                 
             }).catch(error => { console.error(error);
-                window.alert("Database Error Group"); return Promise.reject(error); })
+                return Promise.reject(error); })
             window.alert("A new group is added")
             setName("")
             setNewParticipant("")
@@ -91,12 +91,11 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         
         remove_group(filteredArray);
         axios.post("http://127.0.0.1/deleteGroup",
-                {groupId: group.id}
+                {id: group.id}
             ).then((response) => {
                 
             }).catch(error => { console.error(error);
-                window.alert("Database Error Group"); return Promise.reject(error); })
-        
+                return Promise.reject(error); })
     }
 
     return (
@@ -197,7 +196,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
                             </div>
                         </div>
 						<div className="row">
-							{groups.length ? groups?.map((group)=>{
+							{groups?.length ? groups?.map((group)=>{
 								return(
 										<div className="col-12 col-md-6">
 											<div className="groupCard text-center my-4 ">

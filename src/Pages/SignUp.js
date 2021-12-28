@@ -7,12 +7,12 @@ export const SignUp = () => {
     const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', surname: '', id: '', password: '', HEScode: ''});
     const [dataSendNeeded, setDataSendNeeded] = useState(false)
 
-    useEffect( () => {
+    /*useEffect( () => {
         axios.post("http://127.0.0.1:8080/signup",
             signUpInfo
         ).then((response) => {
             
-    }, [dataSendNeeded])})
+    }, [dataSendNeeded])})*/
 
     const handleChange = (e) => {
         const name = e.target.id;
@@ -28,8 +28,18 @@ export const SignUp = () => {
             (signUpInfo.password !== "") &&
             (signUpInfo.HEScode !== "")
         if (empty_check) {
-            window.alert("not empty")
-            setDataSendNeeded(!dataSendNeeded)
+            window.alert("You have successfully signed up! Please go back to Login Page to start using PANMAN!")
+            // setDataSendNeeded(!dataSendNeeded)
+            axios.post("http://127.0.0.1:8080/signup",
+            signUpInfo
+        ).then((response) => {
+            
+    })
+            setSignUpInfo (
+                {
+                    name: '', email: '', surname: '', id: '', password: '', HEScode: ''
+                }
+            )
         }
          else {
             window.alert("Please enter all of the fields to create an account");
@@ -61,7 +71,7 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Name: </label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="text" className="form-control" id="name"
-                                                   onChange={(e) => handleChange(e)} placeholder="Name"/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Name" value={signUpInfo.name}/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -69,14 +79,14 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Surname: </label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="text" className="form-control" id="surname"
-                                                   onChange={(e) => handleChange(e)} placeholder="Surname"/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Surname" value={signUpInfo.surname}/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
                                         <label htmlFor="id" className="col-lg-3 col-form-label form-text"> ID: </label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="number" className="form-control" id="id"
-                                                   onChange={(e) => handleChange(e)} placeholder="Ex:21xxxxxx"/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Ex:21xxxxxx" value={signUpInfo.id}/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -84,7 +94,7 @@ export const SignUp = () => {
                                                   className="col-lg-3 col-form-label form-text"> Mail: </label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="email" className="form-control" id="email"
-                                                   onChange={(e) => handleChange(e)} placeholder="Bilkent Mail"/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Bilkent Mail" value={signUpInfo.email}/>
                                         </div>
                                     </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -92,7 +102,7 @@ export const SignUp = () => {
                                                className="col-lg-3 col-form-label form-text"> Password: </label>
                                         <div className = "col-lg-7 col-12 sign-up-form-container" >
                                         <input type="password" className="form-control" id="password"
-                                               onChange={(e) => handleChange(e)} placeholder="Password"/>
+                                               onChange={(e) => handleChange(e)} placeholder="Password" value={signUpInfo.password}/>
                                     </div>
                                         </div>
                                     <div className="form-group row d-flex justify-content-between align-items-center">
@@ -100,7 +110,7 @@ export const SignUp = () => {
                                             Code: </label>
                                         <div className="col-lg-7 col-12 sign-up-form-container">
                                             <input type="text" className="form-control" id="HEScode"
-                                                   onChange={(e) => handleChange(e)} placeholder="Ex:29ef23"/>
+                                                   onChange={(e) => handleChange(e)} placeholder="Ex:29ef23" value={signUpInfo.HEScode}/>
                                         </div>
                                     </div>
                                     <div className="row d-flex justify-content-between align-items-center col-sm-11">

@@ -52,7 +52,7 @@ const InstructorCoursesPage = ({ courses}) => {
             attendance: 'Not Attended'
         },
 
-    ],
+    ]
 	return (
 		<>
 			<div className="container">

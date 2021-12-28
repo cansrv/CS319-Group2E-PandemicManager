@@ -39,7 +39,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
             ).then((response) => {
                 
             }).catch(error => { console.error(error);
-                window.alert("Database Error Exam"); return Promise.reject(error); })
+                return Promise.reject(error); })
 			window.alert("A new exam is added")
 			setDate("")
 			setExamType("")
@@ -65,8 +65,8 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
             ).then((response) => {
                 
             }).catch(error => { console.error(error);
-                window.alert("Database Error Exam"); return Promise.reject(error); })
-			window.alert("A new exam is added")
+                return Promise.reject(error); })
+			window.alert(exam.name+ " "+ exam.place + " is deleted")
         
     }
 

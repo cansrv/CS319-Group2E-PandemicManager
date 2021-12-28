@@ -81,6 +81,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
                 
                 if (response.data !== null) {
                     fetch_courses(response.data)
+                    console.log(response.data)
                 }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Course Creditentials"); setLoginAttempt(false); return Promise.reject(error); })

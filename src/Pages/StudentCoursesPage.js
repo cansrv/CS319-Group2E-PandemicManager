@@ -10,26 +10,46 @@ const StudentCoursesPage = ({courses,id}) => {
 	var attendance = [
         {
             lecture: 1,
-            attendance: '3/3'
+            attendance: 'Attended'
         },
         {
             lecture: 2,
-            attendance: '2/3'
+            attendance: 'Attended'
         },
         {
             lecture: 3,
-            attendance: '0/3'
+            attendance: 'Not Attended'
         },
         {
             lecture: 4,
-            attendance: '1/3'
+            attendance: 'Attended'
         },
         {
             lecture: 5,
-            attendance: '3/3'
+            attendance: 'Not Attended'
+        },
+        {
+            lecture: 6,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 7,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 8,
+            attendance: 'Not Attended'
+        },
+        {
+            lecture: 9,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 10,
+            attendance: 'Not Attended'
         },
 
-    ],
+    ]
 
 	return (
 		<>
