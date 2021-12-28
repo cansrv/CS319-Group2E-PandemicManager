@@ -54,6 +54,10 @@ public class CourseService {
         return courseRepository.getById(courseName);
     }
 
+    public void updateCourse(Course course) {
+        courseRepository.saveAndFlush(course);
+    }
+
     public Course getCourse(Course course) {
         return courseRepository.getById(course.getCourseName());
     }

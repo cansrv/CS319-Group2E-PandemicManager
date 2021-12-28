@@ -107,7 +107,6 @@ const TakeAttendanceModal = ({lecture, courseName, section}) =>{
 									<input type="text" onChange = {
 										(e) => {
 											setFilter(e.target.value)
-											console.log(e.target.value)
 										}
 									}className="form-control" placeholder="Filter by ID" aria-label="Filter by ID" aria-describedby="searchBox"/>
 									<div className="input-group-append">
@@ -124,7 +123,7 @@ const TakeAttendanceModal = ({lecture, courseName, section}) =>{
 											<li className="list-group-item ">
 												<div className="custom-control custom-checkbox">
 													<input type="checkbox" className="custom-control-input" id={`${lecture}${courseName}${section}${Student.id}`} onClick={() => {Student.isAttended = !Student.isAttended
-													console.log(Students);}} defaultChecked={true}  />
+													}} defaultChecked={true}  />
 													<label className="custom-control-label d-flex justify-content-between" for={`${lecture}${courseName}${section}${Student.id}`} >
 														<div className="col-7">{Student.name}</div>
 														<div className="col-4">{Student.id}</div>

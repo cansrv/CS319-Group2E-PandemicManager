@@ -11,7 +11,7 @@ export const SignUp = () => {
         axios.post("http://127.0.0.1:8080/signup",
             signUpInfo
         ).then((response) => {
-            console.log(response.data)})
+            
     }, [dataSendNeeded])
 
     const handleChange = (e) => {

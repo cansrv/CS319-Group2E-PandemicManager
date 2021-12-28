@@ -144,6 +144,20 @@ public class CourseController {
         }
     }
 
+    @PostMapping("/switchCourseType")
+    @ResponseBody
+    @CrossOrigin
+    public String switchCourseType(@RequestBody String section) {
+        JsonObject sectionObject = new JsonParser().parse(section).getAsJsonObject();
+        String course = sectionObject.get("course").getAsString();
+        int sectionNum = Integer.parseInt(sectionObject.get("section").getAsString());
+        Course courseObj = courseService.getCourse(course);
+        courseObj.getSections().get(sectionNum - 1).setOnline(! courseObj.getSections().get(sectionNum -1).isOnline());
+        courseService.updateCourse(courseObj);
+        return "OWYES";
+    }
+
+
     @PostMapping("/getCourses")
     @ResponseBody
     @CrossOrigin
@@ -170,7 +184,7 @@ public class CourseController {
             jsonObject.addProperty("section", String.valueOf( s.getSectionNumber()));
             JsonArray participants = new JsonArray();
             for (Student std: s.getStudents()) {
-                participants.add(std.getId() );
+                participants.add(std.getId());
             }
             jsonObject.add("participants", participants);
             JsonObject lectureObjectToReturn = new JsonObject();
@@ -181,7 +195,7 @@ public class CourseController {
             }
 
 
-            lectureObjectToReturn.add("attendance", new JsonArray());
+            lectureObjectToReturn.add("attendance", participants);
             lectureObjectToReturn.add("lecture", lectures);
             lectureArray.add(lectureObjectToReturn);
             jsonObject.add("attendance", lectureArray);

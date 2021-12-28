@@ -12,7 +12,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
     const [loginAttempt, setLoginAttempt] = useState(false)
 
     const mailHandler = (value) => {
-        console.log(value);
+        
         setMail(value);
     };
     
@@ -37,19 +37,19 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
         axios.post("http://127.0.0.1:8080/login",
             loginInfo
         ).then((response) => {
-            console.log("Response" + response)
+            
             if (response.data !== null){
                 login_account(response.data)
                 window.location.href = "/home"
             }
         }).catch(error => { console.error(error);
-            console.log("Database Problem"); setLoginAttempt(false); return Promise.reject(error); })
+             setLoginAttempt(false); return Promise.reject(error); })
     }, [loginAttempt])*/
 
     const login = (e) => {
         e.preventDefault()
         if (validateEmail(mail) && password !== "") {
-            console.log(({email: mail, password: password}))
+            
             /*if (valid_Accounts.find(item => item.email === mail && item.password === password)) {
                 var theIndex = temp_Data.findIndex(item => 
                     item.email === mail
@@ -67,10 +67,10 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             axios.post("http://127.0.0.1:8080/login",
                 loginInfo
             ).then((response) => {
-            console.log("login" + response.data)
+            
             if (response.data !== null) {
                 login_account(response.data)
-                console.log("login",response.data)
+                
             }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })
@@ -78,7 +78,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             axios.post("http://127.0.0.1:8080/getCourses",
                 {mail: mail}
             ).then((response) => {
-                console.log("Response" + response)
+                
                 if (response.data !== null) {
                     fetch_courses(response.data)
                 }
@@ -88,7 +88,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             axios.post("http://127.0.0.1:8080/getGroups",
                 {mail: mail}
             ).then((response) => {
-                console.log("Response" + response)
+                
                 if (response.data !== null) {
                     fetch_groups(response.data)
                 }

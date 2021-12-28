@@ -13,17 +13,17 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
     const [location, setLocation] = useState("");
 
     const addParticipant = () => {
-        console.log(newParticipant, " will be added")
+        
         if(addedParticipants.includes(newParticipant)) {
             window.alert("This participant already exists in this group")
-            console.log(newParticipant, " already exists")
+            
         }
         else if (newParticipant == "") {
             window.alert("Invalid Participant ID")
         }
         else {
             setAddedParticipants([...addedParticipants, newParticipant])
-            console.log(newParticipant, " is added")
+            
         }
     }
 
@@ -31,28 +31,28 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         var filteredArray = addedParticipants.filter(function(item) {
             return item !== participant
         })
-        console.log(filteredArray);
+        
         setAddedParticipants(filteredArray);
-        console.log(participant, "is removed");
+        
     }
 
     const locationHandler = (value) => {
-        console.log(value);
+        
         setLocation(value);
     };
     const nameHandler = (value) => {
-        console.log(value);
+        
         setName(value);
     };
     
     const dateHandler = (value) => {
-        console.log(value);
+        
 		var formattedDate =  value.substring(8) + "/" + value.substring(5,7) + "/" + value.substring(0, 4) 
-		console.log(formattedDate);
+		
         setDate(formattedDate);
     };
     const newParticipantHandler = (value) => {
-        console.log(value);
+        
         setNewParticipant(value);
     };
     
@@ -69,7 +69,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
             axios.post("http://127.0.0.1:8080/addGroup",
                 newGroup
             ).then((response) => {
-                console.log("Response" + response)
+                
             }).catch(error => { console.error(error);
                 window.alert("Database Error Group"); return Promise.reject(error); })
             window.alert("A new group is added")
@@ -88,15 +88,15 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
         var filteredArray = groups.filter(function(item) {
             return item.id !== group.id
         })
-        console.log(filteredArray);
+        
         remove_group(filteredArray);
         axios.post("http://127.0.0.1/deleteGroup",
                 {groupId: group.id}
             ).then((response) => {
-                console.log("Response" + response)
+                
             }).catch(error => { console.error(error);
                 window.alert("Database Error Group"); return Promise.reject(error); })
-        console.log(group.groupName, " is removed");
+        
     }
 
     return (

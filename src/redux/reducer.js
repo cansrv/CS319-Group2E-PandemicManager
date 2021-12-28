@@ -1,7 +1,7 @@
 import courses from "../components/courseData";
 
 const reducer = (state, action) => {
-    console.log("LOGINNNNN",action.payload);
+    
     if(action.type === "LOGIN") {
         // var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
         var theGroups = action.payload.groupsParticipated
@@ -76,14 +76,14 @@ const reducer = (state, action) => {
         }
     }
     if(action.type === "FETCH_COURSES") {
-        console.log("course: ", action.payload);
+        
         return {
             ...state,
             courses: action.payload.payload,
         }
     }
     if(action.type === "FETCH_GROUPS") {
-        console.log("groups:", action.payload);
+        
 
         return {
             ...state,
@@ -139,8 +139,8 @@ const reducer = (state, action) => {
     }
     if(action.type === "SWITCH_COURSE_TYPE") {
         var theIndex = courses.findIndex((item => (item.name === action.payload.course.name && (item.section === action.payload.course.section))))
-        console.log(theIndex)
-        console.log(action.payload.course)
+        
+        
         var newArray = courses
         var theType = newArray[theIndex].type
         if (theType === "Online") {
@@ -150,7 +150,7 @@ const reducer = (state, action) => {
             newArray[theIndex].type = "Online"
         }
 
-        console.log(newArray)
+        
         return {
             ...state,
             courses: Array(...newArray)

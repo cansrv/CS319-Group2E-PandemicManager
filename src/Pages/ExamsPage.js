@@ -37,7 +37,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
             axios.post("http://127.0.0.1:8080/addExam",
                 newExam
             ).then((response) => {
-                console.log("Response" + response)
+                
             }).catch(error => { console.error(error);
                 window.alert("Database Error Exam"); return Promise.reject(error); })
 			window.alert("A new exam is added")
@@ -58,30 +58,30 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
         var filteredArray = exams.filter(function(item) {
             return item.id !== exam.id
     })
-        console.log(filteredArray);
+        
         remove_exam(filteredArray);
         axios.post("http://127.0.0.1:8080/addExam",
                 filteredArray
             ).then((response) => {
-                console.log("Response" + response)
+                
             }).catch(error => { console.error(error);
                 window.alert("Database Error Exam"); return Promise.reject(error); })
 			window.alert("A new exam is added")
-        console.log(exam.name, "is removed");
+        
     }
 
     const addParticipant = () => {
-        console.log(newParticipant, " will be added")
+        
         if(addedParticipants.includes(newParticipant)) {
             window.alert("This participant already exists in this exam")
-            console.log(newParticipant, " already exists")
+            
         }
         else if (newParticipant == "") {
             window.alert("Invalid Participant ID")
         }
         else {
             setAddedParticipants([...addedParticipants, newParticipant])
-            console.log(newParticipant, " is added")
+            
         }
     }
 
@@ -90,45 +90,45 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
         var filteredArray = addedParticipants.filter(function(item) {
             return item !== participant
         })
-        console.log(filteredArray);
+        
         setAddedParticipants(filteredArray);
-        console.log(participant, "is removed");
+        
     }
 
 	const examBuildingHandler = (value) => {
         var strValue = "" + value;
-		console.log(strValue.toUpperCase());
+		
         setExamBuilding(strValue.toUpperCase());
 	}
 	const examRoomHandler = (value) => {
-		console.log(value);
+		
         setExamRoom(value);
 	}
     
     const dateHandler = (value) => {
-        console.log(value);
+        
 		var formattedDate =  value.substring(8) + "/" + value.substring(5,7) + "/" + value.substring(0, 4) 
-		console.log(formattedDate);
+		
         setDate(formattedDate);
     };
 
     const newParticipantHandler = (value) => {
-        console.log(value);
+        
         setNewParticipant(value);
     };
 
 	const examTypeHandler = (value) => {
-		console.log(value);
+		
 		setExamType(value);
 	}
 
 	const examClassificationHandler = (value) => {
-		console.log(value);
+		
 		setExamClassification(value);
 	}
 
 	const examCourseHandler = (value) => {
-		console.log(value);
+		
 		setExamCourse(value);
 	}
 

@@ -27,7 +27,6 @@ const ViewDetailedInfoModal = ({name, switchCourseType, course, section, type, a
 		axios.post("http://127.0.0.1:8080/switchCourseType",
                 course
             ).then((response) => {
-                console.log("Response" + response)
                 window.alert("You have switched type of course: " + course.name)
             }).catch(error => { console.error(error);
                 window.alert("Database Error Switch Type"); return Promise.reject(error); })

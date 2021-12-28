@@ -3,8 +3,9 @@ import Navbar from '../components/navbar'
 import courses from '../components/courseData'
 import Sidebar from '../components/Sidebar'
 import {connect} from "react-redux"
+import reducer from '../redux/reducer'
 
-const StudentCoursesPage = ({courses, attendance}) => {
+const StudentCoursesPage = ({courses, attendance,id}) => {
 	return (
 		<>
 			<div className="container">
@@ -29,11 +30,11 @@ const StudentCoursesPage = ({courses, attendance}) => {
 											</div>
 											<div class="card-body">
 												<ul class="attendanceList list-group list-group-flush">
-													{attendance.map((attendance) => {
+													{courses.attendance.map((attendance) => {
 														return (
 															<li class=" list-group-item d-flex justify-content-between">
-																<div>Lecture {attendance.lecture}</div>
-																<div>{attendance.attendance}</div>
+																<div>Lecture {attendance.lecture[0]}</div>
+																<div>{attendance.attendance[0].includes(id)? "Attended":"Absent"}</div>
 															</li>
 														)
 													})}
@@ -61,7 +62,8 @@ const StudentCoursesPage = ({courses, attendance}) => {
 const mapStateToProps = state => {
 	return {
 		courses: state.courses,
-		attendance: state.attendance
+		attendance: state.attendance,
+		id: state.id,
 	};
 }
 
