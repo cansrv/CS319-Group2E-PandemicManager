@@ -106,7 +106,6 @@ public class CourseService {
         courseRepository.flush();
     }
 
-
     public String addStudentToCourse(Student student, Course course) {
         try {
             Course tempCourse = courseRepository.getById(course.getCourseName());

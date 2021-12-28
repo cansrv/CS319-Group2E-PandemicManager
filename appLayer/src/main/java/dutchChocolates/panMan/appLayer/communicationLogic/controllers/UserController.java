@@ -1,17 +1,19 @@
 package dutchChocolates.panMan.appLayer.communicationLogic.controllers;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.User;
+import dutchChocolates.panMan.appLayer.models.actors.Instructor;
+import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Exam;
+import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +55,56 @@ public class UserController {
 
         return userService.setUserCovidInformation(userService.getUser(sKey), covidInformationCard);
     }
+
+    @PostMapping("/getExams")
+    @ResponseBody
+    @CrossOrigin
+    public String getExamsOfUser(@RequestBody String mail){
+        JsonObject jsonMail = new JsonParser().parse(mail).getAsJsonObject();
+        String mailStr = jsonMail.get("mail").getAsString();
+
+        ArrayList<Exam> exams = userService.getExamsOfUser(mailStr);
+
+        ArrayList<String> courseNameList = new ArrayList<>();
+        ArrayList<String> dateList = new ArrayList<>();
+        ArrayList<String> isOnlineList = new ArrayList<>();
+
+        for(Exam exam : exams) {
+            dateList.add(SimpleDateFormat.getInstance().format(exam.getAttendance().getDate()).substring(0, 8));
+
+            if (exam.isSpareHour()) {
+                isOnlineList.add("Online");
+            } else {
+                isOnlineList.add("Face to Face");
+            }
+
+            Instructor instructor = exam.getCourseCoordinator();
+            ArrayList<Section> instructorSections = new ArrayList<>();
+            for (Course course : instructor.getCourses()) {
+                instructorSections.addAll(course.getSections());
+                for (Section section : instructorSections) {
+                    if (section.getStudents().contains(userService.getUser(mailStr))) {
+                        courseNameList.add(course.getCourseName());
+                    }
+                }
+            }
+        }
+
+        JsonArray toReturn = new JsonArray();
+        JsonObject arrayElement = new JsonObject();
+
+        for(int i = 0; i < courseNameList.size(); i++){
+            arrayElement.addProperty("name", courseNameList.get(i));
+            arrayElement.addProperty("date", dateList.get(i));
+            arrayElement.addProperty("isOnline", isOnlineList.get(i));
+
+            toReturn.add(arrayElement);
+        }
+
+
+        return new Gson().toJson(toReturn);
+    }
+
 
     @PostMapping("/addVaccine")
     @ResponseBody

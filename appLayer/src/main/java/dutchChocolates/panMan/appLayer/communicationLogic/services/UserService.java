@@ -7,12 +7,10 @@ import dutchChocolates.panMan.appLayer.models.actors.Staff;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.actors.TA;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
+import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
 import dutchChocolates.panMan.appLayer.models.covidInformatics.*;
-import dutchChocolates.panMan.appLayer.repositories.InstructorRepository;
-import dutchChocolates.panMan.appLayer.repositories.StaffRepository;
-import dutchChocolates.panMan.appLayer.repositories.StudentRepository;
-import dutchChocolates.panMan.appLayer.repositories.TARepository;
+import dutchChocolates.panMan.appLayer.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
@@ -35,6 +33,9 @@ public class UserService {
 
     @Resource
     private TARepository taRepository;
+
+    @Resource
+    private CourseRepository courseRepository;
 
     //Methods
 
@@ -315,5 +316,19 @@ public class UserService {
         }
     }
 
+    public ArrayList<Exam> getExamsOfUser(String mail){
+        User user = getUser(mail);
+        ArrayList<Course> courseList = (ArrayList<Course>) (courseRepository.findAll());
+        ArrayList<Exam> examList = new ArrayList<>();
+
+        for(Course course : courseList){
+            if(!course.getStudents().contains(user)){
+                examList.addAll(course.getExams());
+            }
+        }
+
+        return examList;
+
+    }
 
 }
