@@ -5,7 +5,32 @@ import Sidebar from '../components/Sidebar'
 import {connect} from "react-redux"
 import reducer from '../redux/reducer'
 
-const StudentCoursesPage = ({courses, attendance,id}) => {
+const StudentCoursesPage = ({courses,id}) => {
+
+	var attendance = [
+        {
+            lecture: 1,
+            attendance: '3/3'
+        },
+        {
+            lecture: 2,
+            attendance: '2/3'
+        },
+        {
+            lecture: 3,
+            attendance: '0/3'
+        },
+        {
+            lecture: 4,
+            attendance: '1/3'
+        },
+        {
+            lecture: 5,
+            attendance: '3/3'
+        },
+
+    ],
+
 	return (
 		<>
 			<div className="container">
@@ -19,9 +44,9 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 					</div>
 					<div className="col-12 col-md-10 bg-light ">
 						<div className="row">
-							{ courses?.length ? (
-							courses.map((courses) => {
+							{courses.map((courses) => {
 								return (
+
 									<div className="col-12 col-md-6">
 										<div class="card courseCard text-center my-4 ">
 											<div class="card-header cardColoredPart">
@@ -30,15 +55,12 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 											</div>
 											<div class="card-body">
 												<ul class="attendanceList list-group list-group-flush">
-													{courses.attendance.map((attendance) => {
+													{attendance.map((attendance) => {
 														return (
-															attendance.map((a) => {
-																return (
-																<li class=" list-group-item d-flex justify-content-between">
-																	<div>Lecture {attendance.lecture[0]}</div>
-																	<div>{attendance.attendance[0].includes(id)? "Attended":"Absent"}</div>
-																</li>)
-															})
+															<li class=" list-group-item d-flex justify-content-between">
+																<div>Lecture {attendance.lecture}</div>
+																<div>{attendance.attendance}</div>
+															</li>
 														)
 													})}
 												</ul>
@@ -50,12 +72,7 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 									</div>
 
 								)
-							})) : (
-								<div className="container bg-danger display-4 text-light d-flex justify-content-center mx-5 rounded">
-                                            No Groups Found
-                                        </div>
-							)
-
+							})
 							}
 
 						</div>
@@ -70,7 +87,7 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 const mapStateToProps = state => {
 	return {
 		courses: state.courses,
-		attendance: state.attendance,
+		
 		id: state.id,
 	};
 }

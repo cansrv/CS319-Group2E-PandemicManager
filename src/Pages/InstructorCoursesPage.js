@@ -7,8 +7,52 @@ import ViewDetailedInfoModal from '../components/viewDetailedInfo'
 import {useState} from 'react'
 import {connect} from "react-redux"
 
-const InstructorCoursesPage = ({attendance, courses}) => {
+const InstructorCoursesPage = ({ courses}) => {
 	const [currentWeek, setCurrentWeek] = useState(1);
+
+	var attendance = [
+        {
+            lecture: 1,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 2,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 3,
+            attendance: 'Not Attended'
+        },
+        {
+            lecture: 4,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 5,
+            attendance: 'Not Attended'
+        },
+        {
+            lecture: 6,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 7,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 8,
+            attendance: 'Not Attended'
+        },
+        {
+            lecture: 9,
+            attendance: 'Attended'
+        },
+        {
+            lecture: 10,
+            attendance: 'Not Attended'
+        },
+
+    ],
 	return (
 		<>
 			<div className="container">
@@ -33,14 +77,13 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 											</div>
 											<div className="card-body">
 												<ul className="attendanceList list-group list-group-flush">
-													{courses.attendance.map((attendance) => {
+													{attendance.map((attendance) => {
 														return (
 															<>
 															<li className=" list-group-item d-flex justify-content-between">
-																<div>Lecture {attendance.lecture[0]}</div>
-																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.lecture[0]}${courses.name}${courses.section[0]}`)}  onClick={()=>{setCurrentWeek(attendance.lecture[0])
-																	
-																	}}> Take Attendance</a>
+																<div>Lecture {attendance.lecture}</div>
+																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.lecture}${courses.name}${courses.section}`)}  onClick={()=>{setCurrentWeek(attendance.lecture)
+																	console.log(attendance.lecture)}}> Take Attendance</a>
 																
 															</li>
 															<TakeAttendanceModal lecture ={attendance.lecture} courseName = {courses.name} section = {courses.section}/>
@@ -72,7 +115,7 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 
 const mapStateToProps = state => {
 	return {
-		attendance: state.attendance,
+	// attendance: state.attendance,
 		courses: state.courses
 	};
 }
