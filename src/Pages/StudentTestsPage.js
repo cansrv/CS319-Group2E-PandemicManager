@@ -38,7 +38,7 @@ const StudentTestsPage = ({ tests}) => {
                                 return(
                                     <tr>
                                         <td scope="row" className="table-data green-border">{test.date}</td>
-                                        <td className="table-data green-border">{test.type}</td>
+                                        <td className="table-data green-border">{test.test}</td>
                                         <td className="table-data green-border">{test.result}</td>
                                     </tr>
                                 )
