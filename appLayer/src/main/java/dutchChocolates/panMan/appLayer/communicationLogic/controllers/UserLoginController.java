@@ -23,18 +23,6 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
-    @Autowired
-    private UserService userService;
-//Constructors
-
-
-    @PostMapping("")
-    @ResponseBody
-    @CrossOrigin
-    public User method() {
-        return new Student();
-    }
-
     //Methods
     @PostMapping("/login")
     @ResponseBody
@@ -44,8 +32,8 @@ public class UserLoginController {
         JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
         String mailStr = jsonLogin.get("mail").getAsString();
-        User user = userService.getUser(mailStr);
-
+        String pwrd = jsonLogin.get("password").getAsString();
+        User user = userLoginService.signInMethod(mailStr, pwrd);
         String[] nameArr = user.getFullName().split(" ");
 
         String userTypeTemp;
@@ -74,8 +62,11 @@ public class UserLoginController {
         String accountType = userTypeTemp;
         String HEScode = hesCodes.get(hesCodes.size() - 1);
         String covidStatus = String.valueOf(user.getCovidInformationCard().getCovidStatus());
-        boolean vaccinated = false;//user.getCovidInformationCard().getVaccinationCard().getVaccines().size() >= 2;
-        boolean isAlowedOnCapmus = (user.getCovidInformationCard().getCovidStatus() != CovidStatus.Risky)
+        boolean vaccinated = false;
+        if(user.getCovidInformationCard().getVaccinationCard() != null) {
+            vaccinated = user.getCovidInformationCard().getVaccinationCard().getVaccines().size() >= 2;
+        }
+        boolean isAllowedOnCampus = (user.getCovidInformationCard().getCovidStatus() != CovidStatus.Risky)
                 || (user.getCovidInformationCard().getCovidStatus() != CovidStatus.Positive);
 
         ArrayList<String> testDates = new ArrayList<>();
@@ -101,7 +92,7 @@ public class UserLoginController {
         userJsonRepresentation.addProperty("HEScode", HEScode);
         userJsonRepresentation.addProperty("covidStatus", covidStatus);
         userJsonRepresentation.addProperty("vaccinated", vaccinated);
-        userJsonRepresentation.addProperty("isAllowedOnCampus", isAlowedOnCapmus);
+        userJsonRepresentation.addProperty("isAllowedOnCampus", isAllowedOnCampus);
 
         JsonArray testArray = new JsonArray();
         for (int i = 0; i < testDates.size(); i++) {

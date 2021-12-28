@@ -33,16 +33,16 @@ const InstructorCoursesPage = ({attendance, courses}) => {
 											</div>
 											<div className="card-body">
 												<ul className="attendanceList list-group list-group-flush">
-													{attendance.map((attendance) => {
+													{courses.attendance.map((attendance) => {
 														return (
 															<>
 															<li className=" list-group-item d-flex justify-content-between">
-																<div>Lecture {attendance.lecture}</div>
-																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.lecture}${courses.name}${courses.section}`)}  onClick={()=>{setCurrentWeek(attendance.lecture)
+																<div>Lecture {attendance.lecture[0]}</div>
+																<a data-toggle="modal" href={String(`#takeAttendanceModal${attendance.lecture[0]}${courses.name}${courses.section[0]}`)}  onClick={()=>{setCurrentWeek(attendance.lecture[0])
 																	console.log(attendance.lecture)}}> Take Attendance</a>
 																
 															</li>
-															<TakeAttendanceModal lecture ={attendance.lecture} courseName = {courses.name} section = {courses.section}/>
+															<TakeAttendanceModal lecture ={attendance.lecture[0]} courseName = {courses.name} section = {courses.section}/>
 															</>
 														)
 													})}
