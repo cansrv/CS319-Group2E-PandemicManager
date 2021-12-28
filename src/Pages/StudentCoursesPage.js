@@ -33,8 +33,8 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 													{courses.attendance.map((attendance) => {
 														return (
 															<li class=" list-group-item d-flex justify-content-between">
-																<div>Lecture {attendance.lecture[0]}</div>
-																<div>{attendance.attendance[0].includes(id)? "Attended":"Absent"}</div>
+																<div>Lecture {attendance.lecture}</div>
+																<div>{attendance.attendance.includes(id) ? "Attended":"Absent"}</div>
 															</li>
 														)
 													})}
