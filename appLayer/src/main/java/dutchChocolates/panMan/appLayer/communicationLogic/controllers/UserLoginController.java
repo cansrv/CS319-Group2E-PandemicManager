@@ -97,8 +97,8 @@ public class UserLoginController {
         JsonArray testArray = new JsonArray();
         for (int i = 0; i < testDates.size(); i++) {
             JsonObject testObject = new JsonObject();
-            testObject.addProperty("date", testDates.get(i));
-            testObject.addProperty("test", testTypes.get(i));
+            testObject.addProperty("date", testDates.get(i).substring(0, 9));
+            testObject.addProperty("test", String.valueOf(testTypes.get(i)));
             testObject.addProperty("result", testResults.get(i));
 
             testArray.add(testObject);
