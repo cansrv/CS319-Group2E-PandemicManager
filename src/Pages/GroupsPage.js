@@ -205,7 +205,7 @@ const GroupsPage = ({add_group, groups, remove_group}) => {
 													<span><h5 className="groupCardTitle card-title">{group.groupName}</h5></span>
                                                     <span>
                                                         <span className="groupCardText card-text">
-                                                            <span className="card-text px-3">{group.location.location}</span>
+                                                            <span className="card-text px-3">{group.location}</span>
                                                             <span className="card-text">{group.date}</span>
                                                         </span>
                                                     </span>

@@ -1,18 +1,19 @@
 import courses from "../components/courseData";
 
 const reducer = (state, action) => {
+    console.log("LOGINNNNN",action.payload);
     if(action.type === "LOGIN") {
         // var theGroups = [...action.payload.groupsCreated, ...action.payload.groupsParticipated]
         var theGroups = action.payload.groupsParticipated
         var theNameParsed = action.payload.fullName.split(" ")
         var theName = theNameParsed[0]
         var theSurname = theNameParsed[theNameParsed.length - 1]
-        var theHEScode = action.payload.covidInformationCard.hesCodes[0]
-        var theId = action.payload.username.substring(0, 8)
-        var theTests = action.payload.covidInformationCard.tests
+        var theHEScode = action.payload.HEScode
+        var theId = action.payload.id
+        var theTests = action.payload.tests
         var theAllowance = true
-        var theCovidStatus = action.payload.covidInformationCard.covidStatus
-        if (action.payload.covidInformationCard.covidStatus === "Risky" || action.payload.covidInformationCard.covidStatus === "Positive") {
+        var theCovidStatus = action.payload.covidStatus
+        if (action.payload.covidStatus === "Risky" || action.payload.covidStatus === "Positive") {
             theAllowance = false
         }
         

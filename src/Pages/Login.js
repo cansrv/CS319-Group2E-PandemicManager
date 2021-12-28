@@ -67,7 +67,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             axios.post("http://127.0.0.1:8080/login",
                 loginInfo
             ).then((response) => {
-            console.log("Response" + response)
+            console.log("login" + response.data)
             if (response.data !== null) {
                 login_account(response.data)
                 console.log("login",response.data)
