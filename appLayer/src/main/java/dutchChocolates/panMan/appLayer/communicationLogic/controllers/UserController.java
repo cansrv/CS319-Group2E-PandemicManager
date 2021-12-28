@@ -4,6 +4,7 @@ import com.google.gson.*;
 import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Instructor;
+import dutchChocolates.panMan.appLayer.models.actors.Student;
 import dutchChocolates.panMan.appLayer.models.classes.Course;
 import dutchChocolates.panMan.appLayer.models.classes.Exam;
 import dutchChocolates.panMan.appLayer.models.classes.Section;
@@ -38,12 +39,12 @@ public class UserController {
         covidInformationCard.setCovidStatus(CovidStatus.valueOf(jsonCovidInfo.getAsJsonObject("covidStatus").getAsString()));
         List<String> hesCodes = new ArrayList<>();
         JsonArray hesList = jsonCovidInfo.getAsJsonArray("hesCodes");
-        for(int i = 0; i < hesList.size(); i++) {
+        for (int i = 0; i < hesList.size(); i++) {
             hesCodes.add(hesList.get(i).getAsString());
         }
         List<Test> tests = new ArrayList<>();
         JsonArray testList = jsonCovidInfo.getAsJsonArray("tests");
-        for(int i = 0; i < testList.size(); i++) {
+        for (int i = 0; i < testList.size(); i++) {
             tests.add(addTest(testList.getAsJsonObject()));
         }
 
@@ -59,48 +60,29 @@ public class UserController {
     @PostMapping("/getExams")
     @ResponseBody
     @CrossOrigin
-    public String getExamsOfUser(@RequestBody String mail){
+    public String getExamsOfUser(@RequestBody String mail) {
         JsonObject jsonMail = new JsonParser().parse(mail).getAsJsonObject();
         String mailStr = jsonMail.get("mail").getAsString();
 
         ArrayList<Exam> exams = userService.getExamsOfUser(mailStr);
-
-        ArrayList<String> courseNameList = new ArrayList<>();
-        ArrayList<String> dateList = new ArrayList<>();
-        ArrayList<String> isOnlineList = new ArrayList<>();
-
-        for(Exam exam : exams) {
-            dateList.add(SimpleDateFormat.getInstance().format(exam.getAttendance().getDate()).substring(0, 8));
-
-            if (exam.isSpareHour()) {
-                isOnlineList.add("Online");
-            } else {
-                isOnlineList.add("Face to Face");
+        JsonArray toReturn = new JsonArray();
+        for (Exam e : exams) {
+            JsonObject tempObject = new JsonObject();
+            JsonArray jsonArraySIDs = new JsonArray();
+            for (Student s : e.getAttendance().getStudents()) {
+                jsonArraySIDs.add(s.getId());
             }
-
-            Instructor instructor = exam.getCourseCoordinator();
-            ArrayList<Section> instructorSections = new ArrayList<>();
-            for (Course course : instructor.getCourses()) {
-                instructorSections.addAll(course.getSections());
-                for (Section section : instructorSections) {
-                    if (section.getStudents().contains(userService.getUser(mailStr))) {
-                        courseNameList.add(course.getCourseName());
-                    }
+            tempObject.add("participants", jsonArraySIDs);
+            for (Course c : e.getCourseCoordinator().getCourses()) {
+                if (c.getExams().contains(e)) {
+                    tempObject.addProperty("name", c.getCourseName());
                 }
             }
+            tempObject.addProperty("isOnline", !e.isSpareHour());
+            tempObject.addProperty("date", SimpleDateFormat.getInstance().format(e.getAttendance().getDate()).substring(0,8));
+            toReturn.add(tempObject);
+
         }
-
-        JsonArray toReturn = new JsonArray();
-        JsonObject arrayElement = new JsonObject();
-
-        for(int i = 0; i < courseNameList.size(); i++){
-            arrayElement.addProperty("name", courseNameList.get(i));
-            arrayElement.addProperty("date", dateList.get(i));
-            arrayElement.addProperty("isOnline", isOnlineList.get(i));
-
-            toReturn.add(arrayElement);
-        }
-
 
         return new Gson().toJson(toReturn);
     }
@@ -121,7 +103,7 @@ public class UserController {
     @CrossOrigin
     public String addTest(@RequestBody String test) throws ParseException {
         return userService.addTest(new JsonParser().parse(test).getAsJsonObject().getAsJsonObject("mail").getAsString(),
-                 addTest(new JsonParser().parse(test).getAsJsonObject().getAsJsonObject("test")));
+                addTest(new JsonParser().parse(test).getAsJsonObject().getAsJsonObject("test")));
     }
 
 
@@ -133,7 +115,7 @@ public class UserController {
         JsonObject jsonObject = new JsonParser().parse(searchKey).getAsJsonObject();
 
         String sKey = jsonObject.get("input").getAsString();
-        System.out.println("sKey is: "+sKey);
+        System.out.println("sKey is: " + sKey);
         try {
             User u = userService.searchUser(sKey);
             u.getCovidInformationCard().setCovidStatus(CovidStatus.Marked);
@@ -147,6 +129,7 @@ public class UserController {
         }
         return "Fatal Error";
     }
+
     @PostMapping("/markSelfRisky")
     @CrossOrigin
     public String marSelfRisky(@RequestBody String searchKey) {

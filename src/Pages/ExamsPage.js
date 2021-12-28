@@ -167,7 +167,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
 										<select className="form-control" id="courseSelect" value={examCourse} onChange={(e) => examCourseHandler(e.target.value)}>
 											<option>Select an Option</option>
 										    {coursesThaught?.map((course) => {
-											    return  <option>{course}</option>
+											    return  <option>{course.name}</option>
 										})}
 										</select>
 									</div>
@@ -330,7 +330,7 @@ const ExamsPage = ({add_exam, remove_exam, exams, coursesThaught, name, surname,
 const mapStateToProps = state => {
     return {
         exams: state.exams,
-        coursesThaught: state.coursesThaught,
+        coursesThaught: state.courses,
         name: state.name,
         surname: state.surname,
         email: state.email,

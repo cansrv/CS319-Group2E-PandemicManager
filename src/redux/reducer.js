@@ -16,7 +16,10 @@ const reducer = (state, action) => {
         if (action.payload.covidStatus === "Risky" || action.payload.covidStatus === "Positive") {
             theAllowance = false
         }
-        
+        var coursesThaught = []
+        if(action.payload.accountType === "instructor") {
+            coursesThaught = action.payload.courses
+        }
         return {
             ...state,
             ...action.payload,
@@ -29,6 +32,7 @@ const reducer = (state, action) => {
             tests: theTests,
             isAllowedOnCampus: theAllowance,
             covidStatus: theCovidStatus,
+            coursesThaught : coursesThaught
         }
     }
     /*if (action.type === "LOGIN") {
@@ -138,10 +142,13 @@ const reducer = (state, action) => {
         }
     }
     if(action.type === "SWITCH_COURSE_TYPE") {
-        var theIndex = courses.findIndex((item => (item.name === action.payload.course.name && (item.section === action.payload.course.section))))
+        console.log(state.courses);
+        var theIndex = state.courses.findIndex((item => (item.name === action.payload.course.name && (item.section === action.payload.course.section))))
         
         
-        var newArray = courses
+        var newArray = state.courses
+        console.log(newArray, "NARRAY");
+
         var theType = newArray[theIndex].type
         if (theType === "Online") {
             newArray[theIndex].type = "Face to Face"

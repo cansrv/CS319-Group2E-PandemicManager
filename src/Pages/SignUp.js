@@ -12,7 +12,7 @@ export const SignUp = () => {
             signUpInfo
         ).then((response) => {
             
-    }, [dataSendNeeded])
+    }, [dataSendNeeded])})
 
     const handleChange = (e) => {
         const name = e.target.id;

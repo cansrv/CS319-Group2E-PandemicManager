@@ -64,6 +64,10 @@ public class UserService {
      * }
      **/
 
+    public Student getStudent(String mail) {
+        return studentRepository.getById(mail);
+    }
+
     public User editHESCode(String mail, String hes) {
 
         if (mail.contains("@ug")) {
@@ -322,7 +326,7 @@ public class UserService {
         ArrayList<Exam> examList = new ArrayList<>();
 
         for(Course course : courseList){
-            if(!course.getStudents().contains(user)){
+            if(course.getStudents().contains(user)){
                 examList.addAll(course.getExams());
             }
         }

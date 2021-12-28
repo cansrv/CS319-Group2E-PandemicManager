@@ -149,7 +149,7 @@ public class CourseController {
     @CrossOrigin
     public String switchCourseType(@RequestBody String section) {
         JsonObject sectionObject = new JsonParser().parse(section).getAsJsonObject();
-        String course = sectionObject.get("course").getAsString();
+        String course = sectionObject.get("name").getAsString();
         int sectionNum = Integer.parseInt(sectionObject.get("section").getAsString());
         Course courseObj = courseService.getCourse(course);
         courseObj.getSections().get(sectionNum - 1).setOnline(! courseObj.getSections().get(sectionNum -1).isOnline());
