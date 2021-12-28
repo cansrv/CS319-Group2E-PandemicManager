@@ -47,31 +47,31 @@ public class GroupController {
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
-        System.out.println(jsonRepOfMail.toString());
+        System.out.println("AAAAAAAHELPAAAAAA: " + jsonRepOfMail.toString());
 
         User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
         ArrayList<Group> groups = groupService.getGroupsOfUser(user);
-        System.out.println(groups.toString());
+        System.out.println("groupToString0: " + groups.toString());
 
         JsonArray jsonArray = new JsonArray();
 
-        for(int i = 0; i < groups.size(); i++){
+        for (Group group : groups) {
             JsonObject groupObject = new JsonObject();
             JsonArray userList = new JsonArray();
 
-            UserCreatedGroup userCreatedGroup = (UserCreatedGroup) groups.get(i);
+            UserCreatedGroup userCreatedGroup = (UserCreatedGroup) group;
 
-            if(userCreatedGroup != null){
+            if (userCreatedGroup != null) {
                 groupObject.addProperty("groupName", userCreatedGroup.getGroupName());
-                groupObject.addProperty("location", userCreatedGroup.getLocation().toString());
+                groupObject.addProperty("location", userCreatedGroup.getLocation().getLocation());
                 groupObject.addProperty("date", userCreatedGroup.getDate().toString());
-                userList.add(userCreatedGroup.getParticipants().toString());
+                for (User u: userCreatedGroup.getParticipants()) {
+                    userList.add(u.getId());
+                }
+                groupObject.add("participants", userList);
             }
-
             jsonArray.add(groupObject);
-            jsonArray.add(userList);
-
         }
 
         return gson.toJson(jsonArray);

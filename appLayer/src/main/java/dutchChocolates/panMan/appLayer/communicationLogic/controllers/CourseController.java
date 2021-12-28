@@ -32,11 +32,10 @@ public class CourseController {
     //Constructors
 
 
-
     //Methods
     @PostMapping("/populateCourse")
     @ResponseBody
-    public String addCourse(@RequestBody String courseJson){
+    public String addCourse(@RequestBody String courseJson) {
         JsonObject jsonCourse = new JsonParser().parse(courseJson).getAsJsonObject();
 
         String studentMail = jsonCourse.get("students").getAsJsonArray().get(0).toString();
@@ -69,13 +68,13 @@ public class CourseController {
     @PostMapping("/sectionPopulator")
     @ResponseBody
     public String addSection(@RequestBody String sectionBody) {
-        Boolean isOnline =   new JsonParser().parse(sectionBody).getAsJsonObject().get("is_online").getAsBoolean();
+        Boolean isOnline = new JsonParser().parse(sectionBody).getAsJsonObject().get("is_online").getAsBoolean();
         Integer sectionNum = new JsonParser().parse(sectionBody).getAsJsonObject().get("section_number").getAsInt();
-        String courseName =  new JsonParser().parse(sectionBody).getAsJsonObject().get("course_course_name").getAsString();
+        String courseName = new JsonParser().parse(sectionBody).getAsJsonObject().get("course_course_name").getAsString();
         Section section = new Section();
         section.setSectionNumber(sectionNum);
         section.setOnline(isOnline);
-        Course course =new Course();
+        Course course = new Course();
         course.setCourseName(courseName);
         section.setCourse(course);
         return courseService.addSection(isOnline, sectionNum, courseName);
@@ -84,7 +83,7 @@ public class CourseController {
 
     @PostMapping("/getExam")
     @ResponseBody
-    public String requestExam(@RequestBody Long id){
+    public String requestExam(@RequestBody Long id) {
         Exam exam = (Exam) courseService.getExam(id);
 
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
@@ -106,15 +105,15 @@ public class CourseController {
 
         JsonArray jsonParticipantArray = jsonRepOfExam.get("participants").getAsJsonArray();
         ArrayList<String> participantMailList = new ArrayList<String>();
-        if(jsonParticipantArray != null){
-            for(int i = 0; i < jsonParticipantArray.size(); i++){
+        if (jsonParticipantArray != null) {
+            for (int i = 0; i < jsonParticipantArray.size(); i++) {
                 System.out.println(jsonParticipantArray.get(i).getAsString());
                 participantMailList.add(jsonParticipantArray.get(i).getAsString());
             }
         }
         ArrayList<Student> participants = new ArrayList<Student>();
-        for(String bilkentId : participantMailList){
-            if(userService.searchUser(bilkentId) != null){
+        for (String bilkentId : participantMailList) {
+            if (userService.searchUser(bilkentId) != null) {
                 participants.add((Student) userService.searchUser(bilkentId));
             }
         }
@@ -134,12 +133,12 @@ public class CourseController {
 
     @PostMapping("/deleteExam")
     @ResponseBody
-    public String deleteExam(@RequestBody Long id){
-        try{
+    public String deleteExam(@RequestBody Long id) {
+        try {
             Exam exam = courseService.getExam(id);
             courseService.deleteExam(exam);
             return "Successful";
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "Fail";
         }
@@ -148,23 +147,37 @@ public class CourseController {
     @PostMapping("/getCourses")
     @ResponseBody
     @CrossOrigin
-    public String getCourses(@RequestBody String mail){
+    public String getCourses(@RequestBody String mail) {
         JsonObject jsonRepOfMail = new JsonParser().parse(mail).getAsJsonObject();
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
 
         User user = userService.getUser(jsonRepOfMail.get("mail").getAsString());
 
         ArrayList<Course> courseList = (ArrayList<Course>) courseService.getCoursesOfUser(user);
-        ArrayList<String> courseNameList = new ArrayList<>();
+        ArrayList<Section> sectionList = new ArrayList<>();
 
-        for(Course course : courseList){
-            if(course.getCourseName() != null){
-                courseNameList.add(course.getCourseName());
+        for (Course c : courseList) {
+            sectionList.addAll(c.getSections());
+        }
+        JsonArray toReturn = new JsonArray();
+        for(Section s: sectionList) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("name", s.getCourse().getCourseName());
+            if(s.isOnline())
+                jsonObject.addProperty("type", "Online");
+            else
+                jsonObject.addProperty("type", "Face to Face");
+            jsonObject.addProperty("section", String.valueOf( s.getSectionNumber()));
+            JsonArray participants = new JsonArray();
+            for (Student std: s.getStudents()) {
+                participants.add(std.getId() );
             }
+
+            jsonObject.add("participants", participants);
+            toReturn.add(jsonObject);
         }
 
-        JsonArray jsonArray = gson.toJsonTree(courseNameList).getAsJsonArray();
-        return gson.toJson(jsonArray);
+        return gson.toJson(toReturn);
 
     }
 
