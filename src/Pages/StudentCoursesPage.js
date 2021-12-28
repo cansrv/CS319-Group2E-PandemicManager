@@ -19,7 +19,8 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 					</div>
 					<div className="col-12 col-md-10 bg-light ">
 						<div className="row">
-							{courses.map((courses) => {
+							{ courses?.length ? (
+							courses.map((courses) => {
 								return (
 									<div className="col-12 col-md-6">
 										<div class="card courseCard text-center my-4 ">
@@ -46,7 +47,11 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 									</div>
 
 								)
-							})
+							})) : (
+								<div className="container bg-danger display-4 text-light d-flex justify-content-center mx-5 rounded">
+                                    No Course Data Found
+                                </div>
+							)
 							}
 
 						</div>
