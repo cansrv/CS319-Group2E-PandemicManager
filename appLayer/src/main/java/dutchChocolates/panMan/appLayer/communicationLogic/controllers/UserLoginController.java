@@ -7,11 +7,14 @@ import dutchChocolates.panMan.appLayer.communicationLogic.services.UserService;
 import dutchChocolates.panMan.appLayer.models.Group;
 import dutchChocolates.panMan.appLayer.models.User;
 import dutchChocolates.panMan.appLayer.models.actors.Student;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.CovidStatus;
+import dutchChocolates.panMan.appLayer.models.covidInformatics.Test;
 import dutchChocolates.panMan.appLayer.models.mediators.UserMediator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,10 +25,6 @@ public class UserLoginController {
 
     @Autowired
     private UserService userService;
-
-
-    private final String LOGIN_MAIL = "mail";
-    private final String LOGIN_PASSWORD = "password";
 
     //Constructors
 
@@ -43,24 +42,80 @@ public class UserLoginController {
     @ResponseBody
     @CrossOrigin
     public String login(@RequestBody String jsonLoginRequest){
-        List<String> loginList = new ArrayList<String>();
         JsonObject jsonLogin = new JsonParser().parse(jsonLoginRequest).getAsJsonObject();
-
-        loginList.add(jsonLogin.get(LOGIN_MAIL).getAsString());
-        loginList.add(jsonLogin.get(LOGIN_PASSWORD).getAsString());
-
+        JsonObject userJson = new JsonObject();
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
-        String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
 
-        jsonLogin = new JsonParser().parse(tempJson).getAsJsonObject();
+        String mailStr = jsonLogin.get("mail").getAsString();
+        User user = userService.getUser(mailStr);
 
-        String mail = jsonLogin.get("email").getAsString();
-        JsonElement typeValue = new JsonParser().parse(userLoginService.getUserType(mail));
-        jsonLogin.add("accountType", typeValue);
+        String[] nameArr = user.getFullName().split(" ");
 
-        String json = gson.toJson(jsonLogin);
+        String userTypeTemp;
 
-        return json;
+        if(mailStr.contains("@ug")){
+            userTypeTemp = "student";
+        }else if(mailStr.contains("@staff")){
+            userTypeTemp = "staff";
+        }else if(mailStr.contains("@ta")){
+            userTypeTemp = "ta";
+        }else{
+            userTypeTemp = "instructor";
+        }
+
+        ArrayList<String> hesCodes = (ArrayList<String>) user.getCovidInformationCard().getHesCodes();
+
+        ArrayList<Test> tests = (ArrayList<Test>) user.getCovidInformationCard().getTests();
+
+
+        //CONSTRUCTION OF THE VALUES OF THE JSON
+        String mail = user.getEmail();
+        String name = nameArr[0];
+        String surname = nameArr[nameArr.length - 1];
+        String id = user.getId();
+        String accountType = userTypeTemp;
+        String HEScode = hesCodes.get(hesCodes.size() - 1);
+        String covidStatus = String.valueOf(user.getCovidInformationCard().getCovidStatus());
+        boolean vaccinated = user.getCovidInformationCard().getVaccinationCard().getVaccines().size() >= 2;
+        boolean isAlowedOnCapmus = (user.getCovidInformationCard().getCovidStatus() != CovidStatus.Risky)
+                                   || (user.getCovidInformationCard().getCovidStatus() != CovidStatus.Positive);
+
+        ArrayList<String> testDates = new ArrayList<>();
+        ArrayList<String> testTypes = new ArrayList<>();
+        ArrayList<String> testResults = new ArrayList<>();
+
+        for(Test test : tests){
+            testDates.add(test.getTestDate().toString().replace("-", "/"));
+            testTypes.add(test.getTestType().toString());
+            testResults.add(test.getResultType().toString());
+        }
+
+        //CONSTRUCTION OF THE JSON OBJECT
+        JsonObject userJsonRepresentation = new JsonObject();
+
+        userJsonRepresentation.addProperty("mail", mail);
+        userJsonRepresentation.addProperty("name", name);
+        userJsonRepresentation.addProperty("surname", surname);
+        userJsonRepresentation.addProperty("id", id);
+        userJsonRepresentation.addProperty("accountType", accountType);
+        userJsonRepresentation.addProperty("HEScode", HEScode);
+        userJsonRepresentation.addProperty("covidStatus", covidStatus);
+        userJsonRepresentation.addProperty("vaccinated", vaccinated);
+        userJsonRepresentation.addProperty("isAlowedOnCapmus", isAlowedOnCapmus);
+
+        JsonArray testArray = new JsonArray();
+        for(int i = 0; i < testDates.size(); i++){
+            JsonObject testObject = new JsonObject();
+            testObject.addProperty("date", testDates.get(i));
+            testObject.addProperty("test", testTypes.get(i));
+            testObject.addProperty("result", testResults.get(i));
+
+            testArray.add(testObject);
+        }
+
+        userLoginService.signInMethod(userJsonRepresentation.get("mail").getAsString(), userJsonRepresentation.get("password").getAsString());
+
+        return userJsonRepresentation.getAsString();
 
     }
 
