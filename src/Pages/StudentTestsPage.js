@@ -34,7 +34,7 @@ const StudentTestsPage = ({ tests}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {(tests.length !== 0)? tests.map((test)=> {
+                            {(tests?.length !== 0)? tests?.map((test)=> {
                                 return(
                                     <tr>
                                         <td scope="row" className="table-data green-border">{test.date}</td>
