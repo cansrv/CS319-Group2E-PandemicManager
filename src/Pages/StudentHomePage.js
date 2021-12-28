@@ -50,7 +50,7 @@ const StudentHomePage = ({
                                     </div>
                                 </div>
                                 <div className={`covid-situation-label text-center py-3 my-4 my-sm-5 ml-3 col-11  ${
-                                    (covidStatus === "Marked") || (covidStatus === "Risky")? "isCovid": "isNotCovid"}`}>
+                                    (covidStatus === "Marked") || (covidStatus === "Risky") ? "isCovid": "isNotCovid"}`}>
                                     {`Covid Situation: ${covidStatus}`}
                                 </div>
                             </div>

@@ -32,10 +32,13 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 												<ul class="attendanceList list-group list-group-flush">
 													{courses.attendance.map((attendance) => {
 														return (
-															<li class=" list-group-item d-flex justify-content-between">
-																<div>Lecture {attendance.lecture}</div>
-																<div>{attendance.attendance.includes(id) ? "Attended":"Absent"}</div>
-															</li>
+															attendance.map((a) => {
+																return (
+																<li class=" list-group-item d-flex justify-content-between">
+																	<div>Lecture {attendance.lecture[0]}</div>
+																	<div>{attendance.attendance[0].includes(id)? "Attended":"Absent"}</div>
+																</li>)
+															})
 														)
 													})}
 												</ul>
@@ -49,9 +52,10 @@ const StudentCoursesPage = ({courses, attendance,id}) => {
 								)
 							})) : (
 								<div className="container bg-danger display-4 text-light d-flex justify-content-center mx-5 rounded">
-                                    No Course Data Found
-                                </div>
+                                            No Groups Found
+                                        </div>
 							)
+
 							}
 
 						</div>
