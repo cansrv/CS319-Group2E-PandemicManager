@@ -151,7 +151,6 @@ public abstract class User {
                 "   password='" + password +
                 "   mail='" + email + '\'' +
                 "   bilkentID='" + id + '\'' +
-                "   groupsParticipated=" + groupsParticipated +
                 "   covidInformationCard=" + covidInformationCard +
                 '}';
     }

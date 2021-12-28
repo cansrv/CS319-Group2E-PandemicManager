@@ -50,8 +50,10 @@ public class UserLoginController {
         loginList.add(jsonLogin.get(LOGIN_PASSWORD).getAsString());
 
         Gson gson = new GsonBuilder().setExclusionStrategies().registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY).create();
-        String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
 
+        System.out.println("PRE GSON");
+        String tempJson = gson.toJson(userLoginService.signInMethod(loginList.get(0), loginList.get(1)));
+        System.out.println("AFTER GSONf");
         jsonLogin = new JsonParser().parse(tempJson).getAsJsonObject();
 
         String mail = jsonLogin.get("email").getAsString();

@@ -17,9 +17,9 @@ public class Course {
     private List<Section> sections;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Student> students;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Instructor> instructors;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TA> TAs;
     @Id
     private String courseName;
@@ -92,7 +92,6 @@ public class Course {
     public String toString() {
         return "{" + "\n" +
                 "   exams:" + '\"' + exams + '\"' + ",\n" +
-                "   sections:" + '\"' + sections + '\"' + ",\n" +
                 "   students:" + '\"' + students + '\"' + ",\n" +
                 "   instructors:" + '\"' + instructors + '\"' + ",\n" +
                 "   TAs:" + '\"' + TAs + '\"' + ",\n" +

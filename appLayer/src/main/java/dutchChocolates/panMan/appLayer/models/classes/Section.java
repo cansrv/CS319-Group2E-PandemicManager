@@ -15,11 +15,11 @@ public class Section {
     private Long id;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Lecture> lectures;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Student> students;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Instructor> instructors;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TA> TAs;
     @ManyToOne(cascade = CascadeType.ALL)
     private Course course;
@@ -127,7 +127,6 @@ public class Section {
                 "   students:" + "\"" + students + "\"" + ",\n" +
                 "   instructors:" + "\"" + instructors + "\"" + ",\n" +
                 "   TAs:" + "\"" + TAs + "\"" + ",\n" +
-                "   course:" + "\"" + course + "\"" + ",\n" +
                 "   isOnline:" + "\"" + isOnline + "\"" + ",\n" +
                 "   sectionNumber:" + "\"" + sectionNumber + "\"" + "\n" +
                 '}';

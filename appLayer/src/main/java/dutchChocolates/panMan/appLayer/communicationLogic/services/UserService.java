@@ -39,32 +39,59 @@ public class UserService {
     //Methods
 
 
+    /**
+     * public User searchUser(String mail){
+     * User tempUser;
+     * try {
+     * if (mail.contains("@ug")) {
+     * tempUser = studentRepository.getById(mail);
+     * return tempUser;
+     * } else if (mail.contains("@staff")) {
+     * tempUser = staffRepository.getById(mail);
+     * return tempUser;
+     * } else if (mail.contains("@ta")) {
+     * tempUser = taRepository.getById(mail);
+     * return tempUser;
+     * } else {
+     * tempUser = instructorRepository.getById(mail);
+     * return tempUser;
+     * }
+     * }catch(Exception e){
+     * e.printStackTrace();
+     * return null;
+     * }
+     * }
+     **/
 
-    public User searchUser(String mail){
-        User tempUser;
+    public User editHESCode(String mail, String hes) {
 
-        try {
-            if (mail.contains("@ug")) {
-                tempUser = studentRepository.getById(mail);
-                return tempUser;
-            } else if (mail.contains("@staff")) {
-                tempUser = staffRepository.getById(mail);
-                return tempUser;
-            } else if (mail.contains("@ta")) {
-                tempUser = taRepository.getById(mail);
-                return tempUser;
-            } else {
-                tempUser = instructorRepository.getById(mail);
-                return tempUser;
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
+        if (mail.contains("@ug")) {
+            Student std = studentRepository.getById(mail);
+            std.getCovidInformationCard().getHesCodes().remove(0);
+            std.getCovidInformationCard().getHesCodes().add(hes);
+            studentRepository.saveAndFlush(std);
+            return std;
+        } else if (mail.contains("@staff")) {
+            Staff staff = staffRepository.getById(mail);
+            staff.getCovidInformationCard().getHesCodes().remove(0);
+            staff.getCovidInformationCard().getHesCodes().add(hes);
+            staffRepository.saveAndFlush(staff);
+            return staff;
+        } else if (mail.contains("@ta")) {
+            TA ta = taRepository.getById(mail);
+            ta.getCovidInformationCard().getHesCodes().remove(0);
+            ta.getCovidInformationCard().getHesCodes().add(hes);
+            taRepository.saveAndFlush(ta);
+            return ta;
+        } else {
+            Instructor instructor = instructorRepository.getById(mail);
+            instructor.getCovidInformationCard().getHesCodes().remove(0);
+            instructor.getCovidInformationCard().getHesCodes().add(hes);
+            instructorRepository.saveAndFlush(instructor);
+            return instructor;
         }
     }
 
-
-    /**
     public User searchUser(String sKey) {
         System.out.println(sKey);
         ArrayList<User> users = new ArrayList<>(studentRepository.findAll());
@@ -78,7 +105,6 @@ public class UserService {
         }
         return null;
     }
-     **/
 
 
     public List<User> getAllUsers() {

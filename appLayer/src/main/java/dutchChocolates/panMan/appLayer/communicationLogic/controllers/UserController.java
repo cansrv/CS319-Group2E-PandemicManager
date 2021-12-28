@@ -135,6 +135,20 @@ public class UserController {
         return "Fatal Error";
     }
 
+
+    @PostMapping("/editHesCode")
+    @CrossOrigin
+    public String editHesCode(@RequestBody String request) {
+        List<String> reqs = new ArrayList<String>();
+        JsonObject jsonLogin = new JsonParser().parse(request).getAsJsonObject();
+
+        reqs.add(jsonLogin.get("email").getAsString());
+        reqs.add(jsonLogin.get("newHESCode").getAsString());
+
+        return userService.editHESCode(reqs.get(0), reqs.get(1)).toString();
+
+    }
+
     private VaccinationCard vaccinationCardParser(JsonObject vaccinationCardObject) throws ParseException {
         VaccinationCard tempVaccinationCard = new VaccinationCard();
 

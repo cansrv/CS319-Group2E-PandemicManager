@@ -70,7 +70,7 @@ const Login = ({login_account, loggedIn, fetch_courses, fetch_groups}) => {
             console.log("Response" + response)
             if (response.data !== null) {
                 login_account(response.data)
-                console.log(response.data)
+                console.log("login",response.data)
             }
             }).catch(error => { console.error(error);
                 window.alert("Invalid Creditentials"); setLoginAttempt(false); return Promise.reject(error); })

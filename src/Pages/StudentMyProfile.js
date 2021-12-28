@@ -42,7 +42,7 @@ const StudentMyProfilePage = ({name, surname, email, ID, edit_HES_code, HEScode,
             axios.post("http://127.0.0.1:8080/editHesCode",
                 newInfo
             ).then((response) => {
-                    console.log("Response" + response)
+                    console.log("HES: " + response.data)
                 }).catch(error => { 
                     console.error(error);
                     window.alert("Database Error HES Code Change"); 

@@ -61,7 +61,6 @@ public abstract class Group {
     public String toString() {
         return "{" + "\n" +
                 "   id:" + "\"" + groupId + "\"" + ",\n" +
-                "   participants:" + participants + "\n" +
                 '}';
     }
 }
